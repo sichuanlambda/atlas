@@ -1,0 +1,150 @@
+{
+  "lastUpdated": "2026-02-16T19:45:00Z",
+  "status": "idle",
+  "currentWork": "Building dashboard",
+  "workstreams": [
+    {
+      "id": "nola-guide",
+      "name": "New Orleans City Guide",
+      "status": "complete",
+      "emoji": "✅",
+      "summary": "14 buildings live with full GPT analysis, SEO copy, and marketing drafts",
+      "lastUpdate": "2026-02-16",
+      "details": [
+        "14 buildings submitted with Wikipedia images (IDs 921-934)",
+        "SEO-optimized place page content live",
+        "Reddit drafts ready (r/NewOrleans, r/architecture, r/ArchitecturePorn)",
+        "X thread draft ready"
+      ]
+    },
+    {
+      "id": "prs",
+      "name": "Architecture Helper PRs",
+      "status": "complete",
+      "emoji": "✅",
+      "summary": "8 PRs merged & deployed",
+      "lastUpdate": "2026-02-16",
+      "details": [
+        "PR #1: Fix 4 crash bugs, clean up nav",
+        "PR #2: Pagination + lazy loading",
+        "PR #3: City guide seeding infrastructure",
+        "PR #4: Style normalization (~150 variants → ~40 canonical)",
+        "PR #5: Style normalization rake task",
+        "PR #6: Building count fix, Select All, multi-style cards",
+        "PR #7: Async GPT analysis (fixes R12 timeouts) + admin building management",
+        "PR #8: OG meta tags, external image URLs, building names, bulk import"
+      ]
+    },
+    {
+      "id": "nyc-guide",
+      "name": "NYC City Guide",
+      "status": "queued",
+      "emoji": "📋",
+      "summary": "Research complete, ready to execute",
+      "lastUpdate": "2026-02-16",
+      "details": [
+        "City research scored NYC #1 for traffic potential",
+        "Building selection pending",
+        "Will use improved pipeline (bulk import, image optimization, external URLs)"
+      ]
+    },
+    {
+      "id": "pinterest",
+      "name": "Pinterest Distribution",
+      "status": "waiting",
+      "emoji": "⏳",
+      "summary": "API confirmed available, waiting on Nathan to set up Pinterest Business account",
+      "lastUpdate": "2026-02-16",
+      "details": [
+        "Pinterest API v5 supports programmatic pin creation",
+        "Plan: board per city + board per style",
+        "400+ existing buildings could generate hundreds of pins",
+        "Need: Pinterest Business account + API app + access token"
+      ]
+    },
+    {
+      "id": "programmatic-seo",
+      "name": "Programmatic SEO Pages",
+      "status": "idea",
+      "emoji": "💡",
+      "summary": "Auto-generate style-by-city and style overview pages to 10x SEO surface area",
+      "lastUpdate": "2026-02-16",
+      "details": [
+        "Target queries: '[style] architecture in [city]', '[style] buildings examples'",
+        "Data already exists — just needs page generation",
+        "Could add hundreds of indexable pages with zero manual content"
+      ]
+    }
+  ],
+  "waitingOnNathan": [
+    {
+      "item": "Set up Pinterest Business account",
+      "context": "Need account at pinterest.com/business/create, then create app at developers.pinterest.com",
+      "priority": "high",
+      "added": "2026-02-16"
+    },
+    {
+      "item": "Post NOLA Reddit drafts",
+      "context": "Drafts ready in workspace. Best posted Tue-Thu 10am-12pm CT for r/NewOrleans",
+      "priority": "medium",
+      "added": "2026-02-16"
+    },
+    {
+      "item": "Post X thread about NOLA",
+      "context": "7-tweet thread draft ready. Nathan already posted the OpenClaw overview tweet.",
+      "priority": "low",
+      "added": "2026-02-16"
+    }
+  ],
+  "ideas": [
+    {
+      "title": "Pinterest automated distribution",
+      "description": "Batch-create pins for all 400+ buildings. Board per city + board per style.",
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "title": "Programmatic SEO pages",
+      "description": "Auto-generate '[style] in [city]' pages from existing data. Hundreds of new indexable URLs.",
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "title": "Backlink outreach",
+      "description": "Find architecture bloggers and city tourism sites. Draft outreach emails.",
+      "impact": "medium",
+      "effort": "low"
+    },
+    {
+      "title": "Google Web Stories",
+      "description": "'5 Hidden Gems in [City]' visual stories for Google Discover traffic.",
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "title": "Fix Stripe checkout flow",
+      "description": "StripeController doesn't exist yet. Needs proper checkout integration.",
+      "impact": "low",
+      "effort": "medium"
+    }
+  ],
+  "metrics": {
+    "citiesLive": 6,
+    "citiesList": ["Denver", "Den Haag", "San Francisco", "Chicago", "New Orleans"],
+    "totalBuildings": 421,
+    "visibleBuildings": 349,
+    "totalStyles": 40,
+    "prsMerged": 8,
+    "totalUsers": 333
+  },
+  "recentActivity": [
+    { "date": "2026-02-16T19:00:00Z", "text": "All 4 improvements tested & verified (PR #8)", "type": "milestone" },
+    { "date": "2026-02-16T18:30:00Z", "text": "PR #8 merged: OG tags, external image URLs, building names, bulk import", "type": "pr" },
+    { "date": "2026-02-16T17:00:00Z", "text": "PR #7 merged: Async analysis + admin building management", "type": "pr" },
+    { "date": "2026-02-16T16:30:00Z", "text": "All 14 NOLA buildings live with analysis (IDs 921-934)", "type": "milestone" },
+    { "date": "2026-02-16T16:00:00Z", "text": "Duplicate NOLA records cleaned up, SEO copy updated (evergreen, no hardcoded counts)", "type": "task" },
+    { "date": "2026-02-16T15:30:00Z", "text": "NOLA place page created with 14 buildings, SEO content, Reddit drafts, X thread draft", "type": "milestone" },
+    { "date": "2026-02-16T15:00:00Z", "text": "City research complete: NYC and New Orleans selected as next targets", "type": "research" },
+    { "date": "2026-02-16T14:00:00Z", "text": "Nathan shared Architecture Helper admin access with Atlas", "type": "milestone" }
+  ]
+}
