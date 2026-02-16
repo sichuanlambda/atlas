@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-02-16T19:45:00Z",
+  "lastUpdated": "2026-02-16T22:20:00Z",
   "status": "idle",
-  "currentWork": "Building dashboard",
+  "currentWork": "Pinterest distribution launched",
   "workstreams": [
     {
       "id": "nola-guide",
@@ -51,15 +51,17 @@
     {
       "id": "pinterest",
       "name": "Pinterest Distribution",
-      "status": "waiting",
-      "emoji": "⏳",
-      "summary": "API confirmed available, waiting on Nathan to set up Pinterest Business account",
+      "status": "active",
+      "emoji": "📌",
+      "summary": "Account live, 2 pins published, 10 boards created, 12 pins queued",
       "lastUpdate": "2026-02-16",
       "details": [
-        "Pinterest API v5 supports programmatic pin creation",
-        "Plan: board per city + board per style",
-        "400+ existing buildings could generate hundreds of pins",
-        "Need: Pinterest Business account + API app + access token"
+        "Pinterest Business account set up (@nathaninproduct)",
+        "10 boards created: 4 city + 6 style",
+        "2 pins published (St. Louis Cathedral, Saenger Theatre)",
+        "12 pins remaining in queue",
+        "Schedule: 4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
+        "Template v1 active with SEO-optimized title/description format"
       ]
     },
     {
@@ -77,12 +79,6 @@
     }
   ],
   "waitingOnNathan": [
-    {
-      "item": "Set up Pinterest Business account",
-      "context": "Need account at pinterest.com/business/create, then create app at developers.pinterest.com",
-      "priority": "high",
-      "added": "2026-02-16"
-    },
     {
       "item": "Post NOLA Reddit drafts",
       "context": "Drafts ready in workspace. Best posted Tue-Thu 10am-12pm CT for r/NewOrleans",
@@ -138,6 +134,7 @@
     "totalUsers": 333
   },
   "recentActivity": [
+    { "date": "2026-02-16T22:15:00Z", "text": "Pinterest launched: 2 pins published, 10 boards created, 12 queued", "type": "milestone" },
     { "date": "2026-02-16T19:00:00Z", "text": "All 4 improvements tested & verified (PR #8)", "type": "milestone" },
     { "date": "2026-02-16T18:30:00Z", "text": "PR #8 merged: OG tags, external image URLs, building names, bulk import", "type": "pr" },
     { "date": "2026-02-16T17:00:00Z", "text": "PR #7 merged: Async analysis + admin building management", "type": "pr" },
@@ -146,5 +143,44 @@
     { "date": "2026-02-16T15:30:00Z", "text": "NOLA place page created with 14 buildings, SEO content, Reddit drafts, X thread draft", "type": "milestone" },
     { "date": "2026-02-16T15:00:00Z", "text": "City research complete: NYC and New Orleans selected as next targets", "type": "research" },
     { "date": "2026-02-16T14:00:00Z", "text": "Nathan shared Architecture Helper admin access with Atlas", "type": "milestone" }
-  ]
+  ],
+  "pinterest": {
+    "account": "@nathaninproduct",
+    "totalPins": 2,
+    "totalBoards": 10,
+    "boards": {
+      "city": ["New Orleans Architecture", "San Francisco Architecture", "Chicago Architecture", "Denver Architecture"],
+      "style": ["Gothic Architecture", "Beaux-Arts Architecture", "Neoclassical Architecture", "Art Deco Buildings", "Victorian Architecture", "Baroque Architecture"]
+    },
+    "recentPins": [
+      {
+        "title": "St. Louis Cathedral | New Orleans Architecture Guide",
+        "url": "https://www.pinterest.com/pin/1143281055425831346",
+        "board": "New Orleans Architecture",
+        "building": "St. Louis Cathedral",
+        "city": "New Orleans",
+        "template": "v1",
+        "created": "2026-02-16T22:10:00Z",
+        "metrics": {"impressions": 0, "saves": 0, "clicks": 0}
+      },
+      {
+        "title": "Saenger Theatre | Art Deco Architecture in New Orleans",
+        "url": "https://www.pinterest.com/pin/1143281055425831772",
+        "board": "New Orleans Architecture",
+        "building": "Saenger Theatre",
+        "city": "New Orleans",
+        "template": "v1",
+        "created": "2026-02-16T22:15:00Z",
+        "metrics": {"impressions": 0, "saves": 0, "clicks": 0}
+      }
+    ],
+    "queue": 12,
+    "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
+    "currentTemplate": {
+      "version": "v1",
+      "title": "{building_name} | {primary_style} Architecture in {city}",
+      "description": "{description}... Explore the full AI-powered architectural analysis. #{city} #{style} #ArchitectureLovers"
+    },
+    "nextReview": "2026-02-19T10:00:00Z"
+  }
 }

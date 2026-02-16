@@ -368,3 +368,18 @@ h1, h2, h3, .section-title {
   .file-desc { flex-basis: 100%; order: 3; }
   .file-meta { order: 2; }
 }
+
+/* Pinterest */
+.pinterest-schedule { background: #1a1a2e; padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1rem; color: #ccc; font-size: 0.9rem; }
+.section-subtitle { font-size: 1rem; font-weight: 600; color: #e0e0e0; margin: 1rem 0 0.5rem; }
+.pins-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 1rem; }
+.pins-table th, .pins-table td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid #2a2a3e; }
+.pins-table th { color: #888; font-weight: 500; }
+.pins-table a { color: #e1306c; text-decoration: none; }
+.pins-table a:hover { text-decoration: underline; }
+.template-display { background: #1a1a2e; padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.8; }
+.template-display code { background: #2a2a3e; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; }
+.boards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.board-group { background: #1a1a2e; padding: 0.75rem 1rem; border-radius: 8px; }
+.board-group ul { margin: 0.5rem 0 0; padding-left: 1.2rem; font-size: 0.85rem; color: #ccc; }
+.board-group li { margin-bottom: 0.25rem; }

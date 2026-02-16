@@ -104,6 +104,60 @@ function renderFileSection(manifest) {
   }).join('');
 }
 
+function renderPinterest(p) {
+  const nextReview = new Date(p.nextReview);
+  const now = Date.now();
+  const daysUntil = Math.max(0, Math.ceil((nextReview - now) / 86400000));
+  const reviewText = daysUntil === 0 ? 'Today' : daysUntil === 1 ? 'Tomorrow' : `In ${daysUntil} days`;
+
+  return `
+    <div class="section-title">📌 Pinterest</div>
+    <div class="metrics">
+      ${metric(p.totalPins, 'Pins Published')}
+      ${metric(p.totalBoards, 'Boards')}
+      ${metric(p.queue, 'In Queue')}
+      ${metric(p.account, 'Account')}
+    </div>
+    <div class="pinterest-schedule">
+      <strong>Schedule:</strong> ${p.schedule} &nbsp;|&nbsp; <strong>Next Review:</strong> ${reviewText} (${nextReview.toLocaleDateString()})
+    </div>
+
+    <div class="section-subtitle">Recent Pins</div>
+    <table class="pins-table">
+      <thead><tr><th>Title</th><th>Board</th><th>Template</th><th>Date</th><th>Impressions</th><th>Saves</th><th>Clicks</th></tr></thead>
+      <tbody>
+        ${p.recentPins.map(pin => `<tr>
+          <td><a href="${pin.url}" target="_blank">${pin.title}</a></td>
+          <td>${pin.board}</td>
+          <td>${pin.template}</td>
+          <td>${timeAgo(pin.created)}</td>
+          <td>${pin.metrics.impressions}</td>
+          <td>${pin.metrics.saves}</td>
+          <td>${pin.metrics.clicks}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+
+    <div class="section-subtitle">Content Template (${p.currentTemplate.version})</div>
+    <div class="template-display">
+      <div><strong>Title:</strong> <code>${p.currentTemplate.title}</code></div>
+      <div><strong>Description:</strong> <code>${p.currentTemplate.description}</code></div>
+    </div>
+
+    <div class="section-subtitle">Boards</div>
+    <div class="boards-grid">
+      <div class="board-group">
+        <strong>🏙 City Boards (${p.boards.city.length})</strong>
+        <ul>${p.boards.city.map(b => `<li>${b}</li>`).join('')}</ul>
+      </div>
+      <div class="board-group">
+        <strong>🎨 Style Boards (${p.boards.style.length})</strong>
+        <ul>${p.boards.style.map(b => `<li>${b}</li>`).join('')}</ul>
+      </div>
+    </div>
+  `;
+}
+
 function render(d, manifest) {
   const m = d.metrics;
   return `
@@ -135,6 +189,8 @@ function render(d, manifest) {
         <ul class="ws-details">${w.details.map(x => `<li>${x}</li>`).join('')}</ul>
       </div>
     `).join('')}
+
+    ${d.pinterest ? renderPinterest(d.pinterest) : ''}
 
     <div class="section-title">📂 Shared Workspace</div>
     <div class="file-browser">
