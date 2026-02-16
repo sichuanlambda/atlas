@@ -1,0 +1,39 @@
+{
+  "folders": [
+    {
+      "name": "Reddit Drafts",
+      "path": "files/drafts/reddit/",
+      "files": [
+        {"name": "nola-reddit-drafts.md", "description": "3 Reddit post drafts for New Orleans", "added": "2026-02-16", "status": "ready"}
+      ]
+    },
+    {
+      "name": "Twitter/X Drafts",
+      "path": "files/drafts/twitter/",
+      "files": [
+        {"name": "nola-twitter-thread.md", "description": "7-tweet thread for @nathansrobinson", "added": "2026-02-16", "status": "ready"}
+      ]
+    },
+    {
+      "name": "SEO Content",
+      "path": "files/content/",
+      "files": [
+        {"name": "nola-seo-copy.md", "description": "New Orleans place page SEO content", "added": "2026-02-16", "status": "deployed"}
+      ]
+    },
+    {
+      "name": "Research",
+      "path": "files/research/",
+      "files": [
+        {"name": "city-research.md", "description": "14-city scoring analysis", "added": "2026-02-16", "status": "complete"},
+        {"name": "pinterest-strategy.md", "description": "Pinterest algorithm research & posting plan", "added": "2026-02-16", "status": "complete"}
+      ]
+    },
+    {
+      "name": "From Nathan",
+      "path": "files/from-nathan/",
+      "description": "Drop files here for Atlas to review",
+      "files": []
+    }
+  ]
+}
