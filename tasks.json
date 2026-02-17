@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-17T18:56:00Z",
+  "lastReviewed": "2026-02-17T19:26:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -8,14 +8,14 @@
       "project": "architecture-helper",
       "status": "in_progress",
       "priority": "high",
-      "progress": "7/11 submitted, all 18 images ready",
+      "progress": "3-4/18 submitted (API shows 3 DC buildings), all 18 images ready in /tmp/dc_buildings/",
       "atlasCanDo": true,
       "running": false,
       "blockedReason": "Need browser session to submit remaining buildings via web UI",
       "nathanSteps": null,
       "created": "2026-02-17T15:30:00Z",
       "updated": "2026-02-17T17:26:00Z",
-      "notes": "All 18 DC building images downloaded and ready in /tmp/dc_buildings/. 7 previously submitted. 11 remaining need web UI submission (upload image + address). API auth issue blocks programmatic submission."
+      "notes": "All 18 DC building images downloaded and ready in /tmp/dc_buildings/. API shows only 3 DC buildings actually in database. Admin bulk_import endpoint exists (POST /admin/building_analyses/bulk_import) but requires Devise session auth — no token/API key auth available. Browser automation unavailable (no sandbox browser, Chrome relay not attached). Need either: (a) Nathan to attach Chrome tab for browser relay, (b) add API key auth to admin controller, or (c) Nathan to manually submit via admin UI."
     },
     {
       "id": "fix-style-pages",
@@ -142,13 +142,13 @@
       "id": "pinterest-pins",
       "title": "Create Pinterest pins for all cities",
       "project": "architecture-helper",
-      "status": "in_progress",
+      "status": "blocked_on_nathan",
       "priority": "medium",
       "progress": "4 pins published, 10 queued, ~400 buildings to cover",
-      "atlasCanDo": true,
+      "atlasCanDo": false,
       "running": false,
-      "blockedReason": null,
-      "nathanSteps": null,
+      "blockedReason": "Need Pinterest Business account + API app + OAuth token from Nathan",
+      "nathanSteps": ["Set up Pinterest Business account", "Create API app in Pinterest Developer portal", "Generate OAuth token and share with Atlas"],
       "created": "2026-02-17T16:15:00Z",
       "updated": "2026-02-17T16:15:00Z",
       "notes": "Cron job handles 4x daily posting. Need to queue more pins for SF, Chicago, Denver, Den Haag, NYC."
