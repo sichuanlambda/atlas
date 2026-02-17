@@ -92,6 +92,7 @@ function renderHeartbeat(heartbeat) {
   const s = getHeartbeatStatus(heartbeat);
   const hetznerToken = localStorage.getItem('atlas_hetzner_token') || '';
   const serverId = localStorage.getItem('atlas_hetzner_server_id') || '';
+  const githubToken = localStorage.getItem('atlas_github_token') || '';
   const hasCredentials = hetznerToken && serverId;
 
   return `
@@ -123,7 +124,12 @@ function renderHeartbeat(heartbeat) {
       </div>
 
       <div class="heartbeat-settings hidden" id="hb-settings">
-        <div class="settings-note">Credentials stored in your browser only (localStorage). Never sent anywhere except Hetzner API.</div>
+        <div class="settings-note">Credentials stored in your browser only (localStorage). Never sent anywhere except the respective APIs.</div>
+        <div class="settings-field">
+          <label>GitHub Token <span style="font-weight:400;color:var(--text-muted)">(needed for task messages to reach Atlas)</span></label>
+          <input type="password" id="github-token" value="${githubToken}" placeholder="GitHub personal access token (repo scope)">
+        </div>
+        <div class="settings-divider" style="border-top:1px solid var(--border-light);margin:0.75rem 0;"></div>
         <div class="settings-field">
           <label>Hetzner API Token</label>
           <input type="password" id="hetzner-token" value="${hetznerToken}" placeholder="Your Hetzner Cloud API token">
@@ -151,8 +157,10 @@ function initHeartbeatControls() {
   document.getElementById('btn-save-creds')?.addEventListener('click', () => {
     const token = document.getElementById('hetzner-token').value.trim();
     const serverId = document.getElementById('hetzner-server-id').value.trim();
+    const ghToken = document.getElementById('github-token').value.trim();
     if (token) localStorage.setItem('atlas_hetzner_token', token);
     if (serverId) localStorage.setItem('atlas_hetzner_server_id', serverId);
+    if (ghToken) localStorage.setItem('atlas_github_token', ghToken);
     document.getElementById('hb-settings')?.classList.add('hidden');
     location.reload();
   });
@@ -161,6 +169,7 @@ function initHeartbeatControls() {
   document.getElementById('btn-clear-creds')?.addEventListener('click', () => {
     localStorage.removeItem('atlas_hetzner_token');
     localStorage.removeItem('atlas_hetzner_server_id');
+    localStorage.removeItem('atlas_github_token');
     location.reload();
   });
 
@@ -226,10 +235,44 @@ function getTaskMessages(taskId) {
 }
 
 function saveTaskMessage(taskId, message) {
+  // Save locally for instant display
   const all = JSON.parse(localStorage.getItem('atlas_task_messages') || '{}');
   if (!all[taskId]) all[taskId] = [];
-  all[taskId].push({ text: message, time: new Date().toISOString() });
+  const msg = { taskId, text: message, time: new Date().toISOString(), from: 'nathan' };
+  all[taskId].push(msg);
   localStorage.setItem('atlas_task_messages', JSON.stringify(all));
+
+  // Push to GitHub so Atlas actually receives it
+  pushMessageToGitHub(msg);
+}
+
+async function pushMessageToGitHub(msg) {
+  const token = localStorage.getItem('atlas_github_token');
+  if (!token) {
+    console.warn('No GitHub token — message saved locally only. Add token in ⚙️ settings.');
+    return;
+  }
+  try {
+    // Fetch current file
+    const res = await fetch('https://api.github.com/repos/sichuanlambda/atlas/contents/task-messages.json', {
+      headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    const file = await res.json();
+    const content = JSON.parse(atob(file.content));
+    content.messages.push(msg);
+    // Update file
+    await fetch('https://api.github.com/repos/sichuanlambda/atlas/contents/task-messages.json', {
+      method: 'PUT',
+      headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: `Task message from Nathan: ${msg.taskId}`,
+        content: btoa(JSON.stringify(content, null, 2)),
+        sha: file.sha
+      })
+    });
+  } catch (e) {
+    console.error('Failed to push message to GitHub:', e);
+  }
 }
 
 function initTaskCards() {
@@ -373,6 +416,7 @@ function renderTaskCard(t) {
           <input type="text" id="msg-input-${t.id}" class="task-msg-input" placeholder="Add context or follow-up..." />
           <button class="task-send-btn" data-task-id="${t.id}">Send to Atlas</button>
         </div>
+        ${!localStorage.getItem('atlas_github_token') ? '<div class="msg-warning">⚠️ Add a GitHub token in ⚙️ settings for messages to reach Atlas</div>' : ''}
       </div>
     </div>
   `;

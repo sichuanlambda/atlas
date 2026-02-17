@@ -892,3 +892,10 @@ h1, h2, h3, .section-title {
   animation: spin 0.8s linear infinite;
   flex-shrink: 0;
 }
+
+.msg-warning {
+  font-size: 0.72rem;
+  color: var(--yellow);
+  margin-top: 0.3rem;
+  font-style: italic;
+}
