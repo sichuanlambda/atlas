@@ -4,8 +4,8 @@
     "state": "FL",
     "slug": "fort-lauderdale",
     "zones": 739,
-    "uniqueCodes": 1,
-    "sizeKb": 331,
+    "uniqueCodes": 85,
+    "sizeKb": 333,
     "center": [
       26.14131023139645,
       -80.1497144612699
@@ -40,8 +40,8 @@
     "state": "TX",
     "slug": "dallas",
     "zones": 3808,
-    "uniqueCodes": 60,
-    "sizeKb": 2089,
+    "uniqueCodes": 1074,
+    "sizeKb": 2093,
     "center": [
       32.8183832474968,
       -96.7337235210239
@@ -52,8 +52,8 @@
     "state": "FL",
     "slug": "miami-dade",
     "zones": 4011,
-    "uniqueCodes": 3962,
-    "sizeKb": 1824,
+    "uniqueCodes": 63,
+    "sizeKb": 1825,
     "center": [
       25.6050790358735,
       -80.39254327455795
@@ -88,8 +88,8 @@
     "state": "CA",
     "slug": "sacramento",
     "zones": 10929,
-    "uniqueCodes": 33,
-    "sizeKb": 3120,
+    "uniqueCodes": 237,
+    "sizeKb": 3142,
     "center": [
       38.561697118332,
       -121.4616543835685
@@ -100,8 +100,8 @@
     "state": "TX",
     "slug": "austin",
     "zones": 22492,
-    "uniqueCodes": 1,
-    "sizeKb": 6640,
+    "uniqueCodes": 548,
+    "sizeKb": 6780,
     "center": [
       30.29608213139105,
       -97.73296338282191
@@ -112,8 +112,8 @@
     "state": "CA",
     "slug": "los-angeles",
     "zones": 58873,
-    "uniqueCodes": 1,
-    "sizeKb": 14741,
+    "uniqueCodes": 2126,
+    "sizeKb": 15174,
     "center": [
       34.0183361989192,
       -118.411874371278
