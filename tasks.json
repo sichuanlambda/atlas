@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-17T17:57:00Z",
+  "lastReviewed": "2026-02-17T18:26:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -97,16 +97,16 @@
       "id": "boston-images",
       "title": "Download & prep Boston building images",
       "project": "architecture-helper",
-      "status": "pending",
+      "status": "completed",
       "priority": "medium",
-      "progress": "Building list ready, images not downloaded",
+      "progress": "18/18 downloaded",
       "atlasCanDo": true,
       "running": false,
       "blockedReason": null,
       "nathanSteps": null,
       "created": "2026-02-17T16:15:00Z",
-      "updated": "2026-02-17T16:15:00Z",
-      "notes": "Building list in memory/boston-buildings-list.txt."
+      "updated": "2026-02-17T18:26:00Z",
+      "notes": "All 18 Boston building images downloaded to /tmp/boston_buildings/. Covers Trinity Church, BPL, Faneuil Hall, State House, Old South Meeting House, Old North Church, Park Street Church, Custom House Tower, Hancock Tower, Prudential Tower, City Hall, Gardner Museum, MIT Stata Center, MIT Chapel, Harvard Memorial Hall, King's Chapel, Ames Building, Christian Science Center. Building list in files/boston-buildings-list.txt."
     },
     {
       "id": "barcelona-images",
