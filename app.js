@@ -251,23 +251,43 @@ function renderZoningCoverage(z) {
   const downloaded = cities.filter(c => c.status === 'downloaded').length;
   const totalZones = cities.reduce((s, c) => s + (c.zoneCount || 0), 0);
 
+  const totalSize = cities.reduce((s, c) => s + (c.fileSizeMB || 0), 0);
+  const slugify = name => name.toLowerCase().replace(/\s+/g, '-').replace(/\//g, '-');
+
   return `
-    <div class="section-title">🗺️ Zoning Data Coverage <a href="zoning-map.html" style="font-size:0.7em;font-weight:normal;margin-left:12px;color:var(--accent,#4a90a4);">Open Map Explorer →</a></div>
+    <div class="section-title">🗺️ Zoning Data Coverage</div>
     <div class="metrics">
       ${metric(downloaded + '/' + cities.length, 'Cities Downloaded')}
-      ${metric(totalZones, 'Total Zones')}
+      ${metric(totalZones.toLocaleString(), 'Total Zones')}
+      ${metric(totalSize.toFixed(0) + ' MB', 'Raw Data')}
     </div>
+
+    <a href="zoning-map.html" class="map-explorer-card">
+      <div class="map-explorer-inner">
+        <div class="map-explorer-icon">🗺️</div>
+        <div class="map-explorer-text">
+          <div class="map-explorer-title">Open Interactive Zoning Map</div>
+          <div class="map-explorer-desc">Explore zoning boundaries for ${downloaded} cities — click zones to identify, color-coded by type</div>
+        </div>
+        <div class="map-explorer-arrow">→</div>
+      </div>
+    </a>
+
     <table class="pins-table">
       <thead><tr><th>City</th><th>State</th><th>Status</th><th>Zones</th><th>Unique Codes</th><th>Size (MB)</th></tr></thead>
       <tbody>
-        ${cities.map(c => `<tr>
-          <td>${c.city}</td>
-          <td>${c.state}</td>
-          <td>${statusIcon[c.status] || '⬜'} ${statusLabel[c.status] || c.status}</td>
-          <td>${c.zoneCount || '—'}</td>
-          <td>${c.uniqueZoneCodes || '—'}</td>
-          <td>${c.fileSizeMB ? c.fileSizeMB.toFixed(1) : '—'}</td>
-        </tr>`).join('')}
+        ${cities.map(c => {
+          const slug = slugify(c.city);
+          const isDownloaded = c.status === 'downloaded';
+          return `<tr class="${isDownloaded ? 'clickable-row' : ''}" ${isDownloaded ? `onclick="window.open('zoning-map.html#${slug}','_blank')"` : ''}>
+            <td>${isDownloaded ? `<a href="zoning-map.html#${slug}" target="_blank" style="color:var(--accent,#4a90a4);text-decoration:none;">${c.city}</a>` : c.city}</td>
+            <td>${c.state}</td>
+            <td>${statusIcon[c.status] || '⬜'} ${statusLabel[c.status] || c.status}</td>
+            <td>${c.zoneCount ? c.zoneCount.toLocaleString() : '—'}</td>
+            <td>${c.uniqueZoneCodes || '—'}</td>
+            <td>${c.fileSizeMB ? c.fileSizeMB.toFixed(1) : '—'}</td>
+          </tr>`;
+        }).join('')}
       </tbody>
     </table>
     ${cities.length === 0 ? '<div class="empty-folder">No zoning data collected yet</div>' : ''}

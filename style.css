@@ -383,3 +383,33 @@ h1, h2, h3, .section-title {
 .board-group { background: var(--bg-alt); padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-light); }
 .board-group ul { margin: 0.5rem 0 0; padding-left: 1.2rem; font-size: 0.85rem; color: var(--text); }
 .board-group li { margin-bottom: 0.25rem; }
+
+/* Zoning Map Explorer Card */
+.map-explorer-card {
+  display: block;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--bg-alt), var(--card));
+  border: 2px solid var(--accent, #4a90a4);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+}
+.map-explorer-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(74,144,164,0.2);
+}
+.map-explorer-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.map-explorer-icon { font-size: 2rem; }
+.map-explorer-text { flex: 1; }
+.map-explorer-title { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+.map-explorer-desc { font-size: 0.85rem; color: var(--text-muted); }
+.map-explorer-arrow { font-size: 1.5rem; color: var(--accent, #4a90a4); font-weight: 300; }
+
+.clickable-row { cursor: pointer; }
+.clickable-row:hover { background: var(--bg-alt); }

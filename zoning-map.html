@@ -241,11 +241,27 @@
     }
 
     // Check URL hash for direct city link
-    if (window.location.hash) {
-      const slug = window.location.hash.slice(1);
-      document.getElementById('city-select').value = slug;
-      setTimeout(() => loadCity(slug), 500);
+    function checkHash() {
+      if (window.location.hash) {
+        const slug = window.location.hash.slice(1);
+        const select = document.getElementById('city-select');
+        select.value = slug;
+        // Wait for cities to load if needed
+        if (cities.length > 0) {
+          loadCity(slug);
+        } else {
+          setTimeout(checkHash, 300);
+        }
+      }
     }
+    setTimeout(checkHash, 600);
+    window.addEventListener('hashchange', () => {
+      const slug = window.location.hash.slice(1);
+      if (slug) {
+        document.getElementById('city-select').value = slug;
+        loadCity(slug);
+      }
+    });
   </script>
 </body>
 </html>
