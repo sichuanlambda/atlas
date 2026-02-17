@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-17T23:26:00Z",
+  "lastReviewed": "2026-02-17T23:56:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -184,11 +184,11 @@
       "id": "gsc-indexing-script",
       "title": "Build Google Search Console indexing script",
       "project": "seo",
-      "status": "pending",
+      "status": "in_progress",
       "priority": "medium",
-      "progress": "JSON key stored, both properties configured",
+      "progress": "Sub-agent building script",
       "atlasCanDo": true,
-      "running": false,
+      "running": true,
       "blockedReason": null,
       "nathanSteps": null,
       "created": "2026-02-17T20:05:00Z",
