@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-17T20:26:00Z",
+  "lastReviewed": "2026-02-17T20:56:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -70,30 +70,30 @@
       "id": "dc-place-page",
       "title": "Create Washington DC Place page",
       "project": "architecture-helper",
-      "status": "in_progress",
+      "status": "completed",
       "priority": "high",
-      "progress": "Sub-agent spawned for browser Place creation",
+      "progress": "Place page live at /places/washington-dc",
       "atlasCanDo": true,
-      "running": true,
+      "running": false,
       "blockedReason": null,
       "nathanSteps": null,
       "created": "2026-02-17T16:15:00Z",
-      "updated": "2026-02-17T20:05:00Z",
-      "notes": "11 DC buildings in DB. Create Place via admin browser. SEO copy in memory/dc-seo-copy.md. Coordinates: 38.9072, -77.0369."
+      "updated": "2026-02-17T20:56:00Z",
+      "notes": "Place created with SEO content. Shows 3/11 buildings linked — remaining DC buildings may need association via admin. Coordinates: 38.9072, -77.0369."
     },
     {
       "id": "philly-buildings",
       "title": "Submit Philadelphia buildings + create Place page",
       "project": "architecture-helper",
-      "status": "pending",
+      "status": "in_progress",
       "priority": "high",
-      "progress": "18 images downloaded, ready to submit",
+      "progress": "Sub-agent spawned for submissions",
       "atlasCanDo": true,
-      "running": false,
+      "running": true,
       "blockedReason": null,
       "nathanSteps": null,
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-17T20:05:00Z",
+      "updated": "2026-02-17T20:56:00Z",
       "notes": "Images in /tmp/philly_buildings/. Copy to /tmp/openclaw/uploads/ before submitting. SEO copy in memory/philly-seo-copy.md. Use 60s delays between submissions. Create Place page after all buildings submitted."
     },
     {
