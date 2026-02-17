@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-17T20:56:00Z",
+  "lastReviewed": "2026-02-17T21:26:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -87,14 +87,14 @@
       "project": "architecture-helper",
       "status": "in_progress",
       "priority": "high",
-      "progress": "Sub-agent spawned for submissions",
+      "progress": "Sub-agent v2 spawned (browser started this time)",
       "atlasCanDo": true,
       "running": true,
       "blockedReason": null,
       "nathanSteps": null,
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-17T20:56:00Z",
-      "notes": "Images in /tmp/philly_buildings/. Copy to /tmp/openclaw/uploads/ before submitting. SEO copy in memory/philly-seo-copy.md. Use 60s delays between submissions. Create Place page after all buildings submitted."
+      "updated": "2026-02-17T21:26:00Z",
+      "notes": "Previous attempt failed due to browser not running. Restarted browser (openclaw profile) and spawned new sub-agent atlas-philly-buildings-v2. Images in /tmp/philly_buildings/. 18 buildings + Place page."
     },
     {
       "id": "boston-buildings",

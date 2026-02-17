@@ -1,13 +1,13 @@
 {
-  "lastHeartbeat": "2026-02-17T20:56:00Z",
+  "lastHeartbeat": "2026-02-17T21:26:00Z",
   "status": "ok",
-  "lastAction": "Marked dc-place-page completed. Spawned sub-agent atlas-philly-buildings for 18 Philly building submissions + Place page.",
+  "lastAction": "Spawned atlas-philly-buildings-v2 sub-agent (browser started, previous attempt failed). Updated task statuses.",
   "activeJobs": [
     {
       "id": "philly-buildings",
-      "label": "atlas-philly-buildings",
-      "sessionKey": "agent:main:subagent:f5af4c29-b573-4859-911b-61b26c040b49",
-      "started": "2026-02-17T20:56:00Z"
+      "label": "atlas-philly-buildings-v2",
+      "sessionKey": "agent:main:subagent:aa01074a-3e62-4788-840d-701ee58ccd9c",
+      "spawnedAt": "2026-02-17T21:26:00Z"
     }
   ]
 }
