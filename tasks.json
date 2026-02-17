@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-17T21:26:00Z",
+  "lastReviewed": "2026-02-17T21:56:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -87,14 +87,14 @@
       "project": "architecture-helper",
       "status": "in_progress",
       "priority": "high",
-      "progress": "2/18 buildings submitted (Independence Hall, City Hall). Need continuation.",
+      "progress": "2/18 submitted. Sub-agent v3 spawned to continue from building #3.",
       "atlasCanDo": true,
-      "running": false,
+      "running": true,
       "blockedReason": null,
       "nathanSteps": null,
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-17T21:33:00Z",
-      "notes": "Sub-agent v2 completed: 2/18 submitted (Independence Hall, City Hall). Process works but each building takes 3-5 min. 16 remaining + Place page. Next sub-agent should start from building #3 (PSFS Building). Login as atlas@architecturehelper.com."
+      "updated": "2026-02-17T21:56:00Z",
+      "notes": "Sub-agent v3 spawned to continue from building #3 (PSFS Building). 2/18 done so far. Login as atlas@architecturehelper.com."
     },
     {
       "id": "boston-buildings",
