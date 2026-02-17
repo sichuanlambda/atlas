@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-17T22:56:00Z",
+  "lastReviewed": "2026-02-17T23:26:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -152,32 +152,32 @@
       "id": "cre-enrichment-batch2",
       "title": "Enrich CRE products batch 2 (50 products)",
       "project": "cresoftware",
-      "status": "in_progress",
+      "status": "completed",
       "priority": "medium",
-      "progress": "0/50 — sub-agent spawned",
+      "progress": "25/50 enriched (25 failed/blocked sites)",
       "atlasCanDo": true,
-      "running": true,
+      "running": false,
       "blockedReason": null,
       "nathanSteps": null,
       "dependsOn": ["cre-enrichment-batch1"],
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-17T22:56:00Z",
-      "notes": "Products 81-130. Sub-agent atlas-cre-enrich-batch2 spawned at 22:56 UTC."
+      "updated": "2026-02-17T23:26:00Z",
+      "notes": "Products 81-130. 25 enriched successfully, 25 failed (blocked sites, non-CRE, unreachable). Committed and pushed."
     },
     {
       "id": "cre-enrichment-batch3",
       "title": "Enrich CRE products batch 3 (remaining ~44 products)",
       "project": "cresoftware",
-      "status": "pending",
+      "status": "in_progress",
       "priority": "medium",
-      "progress": "0/44",
+      "progress": "0/44 — sub-agent spawning",
       "atlasCanDo": true,
-      "running": false,
+      "running": true,
       "blockedReason": null,
       "nathanSteps": null,
       "dependsOn": ["cre-enrichment-batch2"],
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-17T20:05:00Z",
+      "updated": "2026-02-17T23:26:00Z",
       "notes": "Products 131-174. Final batch to complete full directory enrichment."
     },
     {
