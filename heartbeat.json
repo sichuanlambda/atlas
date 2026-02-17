@@ -1,6 +1,12 @@
 {
-  "lastHeartbeat": "2026-02-17T21:56:00Z",
+  "lastHeartbeat": "2026-02-17T22:26:00Z",
   "status": "ok",
-  "lastAction": "Spawned atlas-philly-buildings-v3 sub-agent to continue Philly submissions (buildings 3-18 + Place page).",
-  "activeJobs": ["atlas-philly-buildings-v3"]
+  "lastAction": "Spawned sub-agent for CRE enrichment batch 1. Updated philly/boston/barcelona to blocked_on_nathan (browser relay down).",
+  "activeJobs": [
+    {
+      "label": "atlas-cre-enrich-batch1",
+      "task": "cre-enrichment-batch1",
+      "spawnedAt": "2026-02-17T22:26:00Z"
+    }
+  ]
 }

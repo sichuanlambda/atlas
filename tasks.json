@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-17T21:56:00Z",
+  "lastReviewed": "2026-02-17T22:26:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -85,61 +85,68 @@
       "id": "philly-buildings",
       "title": "Submit Philadelphia buildings + create Place page",
       "project": "architecture-helper",
-      "status": "in_progress",
+      "status": "blocked_on_nathan",
       "priority": "high",
-      "progress": "2/18 submitted. Sub-agent v3 spawned to continue from building #3.",
+      "progress": "2/18 submitted. Browser relay down.",
       "atlasCanDo": true,
-      "running": true,
-      "blockedReason": null,
-      "nathanSteps": null,
+      "running": false,
+      "blockedReason": "Chrome extension relay has no tab attached — browser automation non-functional. Need Nathan to attach a tab or fix relay.",
+      "nathanSteps": [
+        "Click the OpenClaw Browser Relay toolbar icon in Chrome to attach a tab",
+        "Or restart the browser relay extension"
+      ],
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-17T21:56:00Z",
-      "notes": "Sub-agent v3 spawned to continue from building #3 (PSFS Building). 2/18 done so far. Login as atlas@architecturehelper.com."
+      "updated": "2026-02-17T22:26:00Z",
+      "notes": "2/18 buildings submitted (Independence Hall, City Hall). Sub-agents v2 and v3 both failed due to browser relay being disconnected. All 18 images ready in /tmp/openclaw/uploads/. Login as atlas@architecturehelper.com."
     },
     {
       "id": "boston-buildings",
       "title": "Submit Boston buildings + create Place page",
       "project": "architecture-helper",
-      "status": "pending",
+      "status": "blocked_on_nathan",
       "priority": "high",
-      "progress": "18 images downloaded, ready to submit",
+      "progress": "18 images downloaded, blocked on browser relay",
       "atlasCanDo": true,
       "running": false,
-      "blockedReason": null,
-      "nathanSteps": null,
+      "blockedReason": "Browser relay down — same issue as philly-buildings",
+      "nathanSteps": [
+        "Fix browser relay (attach tab) so Atlas can submit buildings"
+      ],
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-17T20:05:00Z",
+      "updated": "2026-02-17T22:26:00Z",
       "notes": "Images in /tmp/boston_buildings/. Copy to /tmp/openclaw/uploads/ before submitting. SEO copy in memory/boston-seo-copy.md. Use 60s delays between submissions. Create Place page after all buildings submitted."
     },
     {
       "id": "barcelona-buildings",
       "title": "Submit Barcelona buildings + create Place page",
       "project": "architecture-helper",
-      "status": "pending",
+      "status": "blocked_on_nathan",
       "priority": "high",
-      "progress": "18 images downloaded, ready to submit",
+      "progress": "18 images downloaded, blocked on browser relay",
       "atlasCanDo": true,
       "running": false,
-      "blockedReason": null,
-      "nathanSteps": null,
+      "blockedReason": "Browser relay down — same issue as philly-buildings",
+      "nathanSteps": [
+        "Fix browser relay (attach tab) so Atlas can submit buildings"
+      ],
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-17T20:05:00Z",
+      "updated": "2026-02-17T22:26:00Z",
       "notes": "Images in /tmp/barcelona_buildings/. Copy to /tmp/openclaw/uploads/ before submitting. SEO copy in memory/barcelona-seo-copy.md. Use 60s delays between submissions. Create Place page after all buildings submitted. First European city!"
     },
     {
       "id": "cre-enrichment-batch1",
       "title": "Enrich CRE products batch 1 (50 products)",
       "project": "cresoftware",
-      "status": "pending",
+      "status": "in_progress",
       "priority": "medium",
       "progress": "30/174 enriched total, this batch: 0/50",
       "atlasCanDo": true,
-      "running": false,
+      "running": true,
       "blockedReason": null,
       "nathanSteps": null,
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-17T20:05:00Z",
-      "notes": "Scrape company websites for features/pricing/descriptions. Products 31-80 in data/products.json. ~$0.04/product on Sonnet = ~$2 for this batch. Repo: /home/openclaw/projects/cre-directory. Git push with github-atlas.env token."
+      "updated": "2026-02-17T22:26:00Z",
+      "notes": "Scrape company websites for features/pricing/descriptions. Products 31-80 in data/products.json. ~$0.04/product on Sonnet = ~$2 for this batch. Repo: /home/openclaw/projects/cre-directory. Git push with github-atlas.env token. Sub-agent spawned at 22:26 UTC."
     },
     {
       "id": "cre-enrichment-batch2",
