@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-17T22:26:00Z",
+  "lastReviewed": "2026-02-17T22:56:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -139,30 +139,30 @@
       "project": "cresoftware",
       "status": "completed",
       "priority": "medium",
-      "progress": "69/174 enriched total, batch 1 complete (39 enriched, 11 failed/unreachable)",
+      "progress": "57/174 enriched total, batch 1 complete",
       "atlasCanDo": true,
       "running": false,
       "blockedReason": null,
       "nathanSteps": null,
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-17T22:26:00Z",
-      "notes": "Scrape company websites for features/pricing/descriptions. Products 31-80 in data/products.json. ~$0.04/product on Sonnet = ~$2 for this batch. Repo: /home/openclaw/projects/cre-directory. Git push with github-atlas.env token. Sub-agent spawned at 22:26 UTC."
+      "updated": "2026-02-17T22:56:00Z",
+      "notes": "Batch 1 complete. 57 products enriched overall. Two sub-agents ran successfully. Pushed to GitHub."
     },
     {
       "id": "cre-enrichment-batch2",
       "title": "Enrich CRE products batch 2 (50 products)",
       "project": "cresoftware",
-      "status": "pending",
+      "status": "in_progress",
       "priority": "medium",
-      "progress": "0/50",
+      "progress": "0/50 — sub-agent spawned",
       "atlasCanDo": true,
-      "running": false,
+      "running": true,
       "blockedReason": null,
       "nathanSteps": null,
       "dependsOn": ["cre-enrichment-batch1"],
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-17T20:05:00Z",
-      "notes": "Products 81-130. Same approach as batch 1."
+      "updated": "2026-02-17T22:56:00Z",
+      "notes": "Products 81-130. Sub-agent atlas-cre-enrich-batch2 spawned at 22:56 UTC."
     },
     {
       "id": "cre-enrichment-batch3",
