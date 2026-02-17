@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-17T13:00:00Z",
+  "lastUpdated": "2026-02-17T21:00:00Z",
   "status": "idle",
   "currentWork": "Overnight batch complete \u2014 NYC guide live, zoning data for 10 cities acquired, next cities ranked",
   "workstreams": [
@@ -55,13 +55,13 @@
       "name": "Pinterest Distribution",
       "status": "active",
       "emoji": "\ud83d\udccc",
-      "summary": "Account live, 4 pins published, 10 boards created, 10 pins queued",
+      "summary": "Account live, 5 pins published, 10 boards created, 9 pins queued",
       "lastUpdate": "2026-02-17",
       "details": [
         "Pinterest Business account set up (@nathaninproduct)",
         "10 boards created: 4 city + 6 style",
-        "4 pins published (St. Louis Cathedral, Saenger Theatre, Pontalba Buildings, NOMA)",
-        "10 pins remaining in queue",
+        "5 pins published (St. Louis Cathedral, Saenger Theatre, Pontalba Buildings, NOMA, Pitot House)",
+        "9 pins remaining in queue",
         "Schedule: 4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
         "Template v1 active with SEO-optimized title/description format"
       ]
