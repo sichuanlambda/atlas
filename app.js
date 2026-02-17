@@ -1,13 +1,15 @@
 const TYPE_ICONS = { pr: '🔀', milestone: '🏁', task: '📝', research: '🔍' };
 
 async function init() {
-  const [dataRes, manifestRes] = await Promise.all([
+  const [dataRes, manifestRes, heartbeatRes] = await Promise.all([
     fetch('data.json'),
-    fetch('files/manifest.json')
+    fetch('files/manifest.json'),
+    fetch('heartbeat.json?t=' + Date.now()).catch(() => null)
   ]);
   const d = await dataRes.json();
   const manifest = await manifestRes.json();
-  document.getElementById('app').innerHTML = render(d, manifest);
+  const heartbeat = heartbeatRes && heartbeatRes.ok ? await heartbeatRes.json() : null;
+  document.getElementById('app').innerHTML = render(d, manifest, heartbeat);
 
   // Workstream expand/collapse
   document.querySelectorAll('.workstream').forEach(el => {
@@ -43,6 +45,9 @@ async function init() {
     if (e.target === e.currentTarget) closeFileModal();
   });
   document.querySelector('.file-modal-close')?.addEventListener('click', closeFileModal);
+
+  // Heartbeat controls
+  initHeartbeatControls();
 }
 
 function showFileModal(name, content) {
@@ -62,6 +67,130 @@ function timeAgo(iso) {
   if (s < 3600) return Math.floor(s/60) + 'm ago';
   if (s < 86400) return Math.floor(s/3600) + 'h ago';
   return Math.floor(s/86400) + 'd ago';
+}
+
+// === Heartbeat / Status Controls ===
+
+function getHeartbeatStatus(heartbeat) {
+  if (!heartbeat || !heartbeat.timestamp) return { state: 'unknown', label: 'Unknown', class: 'offline' };
+  const age = Date.now() - new Date(heartbeat.timestamp).getTime();
+  const mins = Math.floor(age / 60000);
+  if (mins < 45) return { state: 'online', label: 'Online', class: 'online', ago: timeAgo(heartbeat.timestamp) };
+  if (mins < 120) return { state: 'idle', label: 'Idle', class: 'idle', ago: timeAgo(heartbeat.timestamp) };
+  return { state: 'offline', label: 'Offline', class: 'offline', ago: timeAgo(heartbeat.timestamp) };
+}
+
+function renderHeartbeat(heartbeat) {
+  const s = getHeartbeatStatus(heartbeat);
+  const hetznerToken = localStorage.getItem('atlas_hetzner_token') || '';
+  const serverId = localStorage.getItem('atlas_hetzner_server_id') || '';
+  const hasCredentials = hetznerToken && serverId;
+
+  return `
+    <div class="heartbeat-section">
+      <div class="heartbeat-header">
+        <div class="heartbeat-status">
+          <span class="heartbeat-dot ${s.class}"></span>
+          <span class="heartbeat-label">Atlas is <strong>${s.label}</strong></span>
+          ${s.ago ? `<span class="heartbeat-ago">Last seen ${s.ago}</span>` : ''}
+        </div>
+        <button class="btn-settings" id="hb-settings-toggle" title="Configure restart credentials">⚙️</button>
+      </div>
+
+      ${heartbeat && heartbeat.lastAction ? `<div class="heartbeat-activity">📋 ${heartbeat.lastAction}</div>` : ''}
+      ${heartbeat && heartbeat.activeJobs && heartbeat.activeJobs.length ? `
+        <div class="heartbeat-jobs">${heartbeat.activeJobs.map(j => `<span class="job-tag">${j}</span>`).join('')}</div>
+      ` : ''}
+
+      <div class="heartbeat-controls ${s.state === 'offline' ? 'show' : ''}">
+        ${s.state === 'offline' ? `<div class="offline-alert">⚠️ Atlas hasn't checked in for a while. You may need to restart.</div>` : ''}
+        <div class="restart-buttons">
+          <button class="btn-restart btn-reboot" id="btn-reboot" ${!hasCredentials ? 'disabled title="Configure Hetzner credentials first"' : 'title="Reboot the Hetzner VPS"'}>
+            🔄 Reboot VPS
+          </button>
+          <button class="btn-restart btn-gateway" id="btn-gateway" ${!hasCredentials ? 'disabled title="Configure Hetzner credentials first"' : 'title="Restart OpenClaw gateway via SSH"'}>
+            🚀 Restart Gateway
+          </button>
+        </div>
+      </div>
+
+      <div class="heartbeat-settings hidden" id="hb-settings">
+        <div class="settings-note">Credentials stored in your browser only (localStorage). Never sent anywhere except Hetzner API.</div>
+        <div class="settings-field">
+          <label>Hetzner API Token</label>
+          <input type="password" id="hetzner-token" value="${hetznerToken}" placeholder="Your Hetzner Cloud API token">
+        </div>
+        <div class="settings-field">
+          <label>Server ID</label>
+          <input type="text" id="hetzner-server-id" value="${serverId}" placeholder="e.g. 12345678">
+        </div>
+        <div class="settings-actions">
+          <button class="btn-save" id="btn-save-creds">Save</button>
+          <button class="btn-clear" id="btn-clear-creds">Clear</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function initHeartbeatControls() {
+  // Settings toggle
+  document.getElementById('hb-settings-toggle')?.addEventListener('click', () => {
+    document.getElementById('hb-settings')?.classList.toggle('hidden');
+  });
+
+  // Save credentials
+  document.getElementById('btn-save-creds')?.addEventListener('click', () => {
+    const token = document.getElementById('hetzner-token').value.trim();
+    const serverId = document.getElementById('hetzner-server-id').value.trim();
+    if (token) localStorage.setItem('atlas_hetzner_token', token);
+    if (serverId) localStorage.setItem('atlas_hetzner_server_id', serverId);
+    document.getElementById('hb-settings')?.classList.add('hidden');
+    location.reload();
+  });
+
+  // Clear credentials
+  document.getElementById('btn-clear-creds')?.addEventListener('click', () => {
+    localStorage.removeItem('atlas_hetzner_token');
+    localStorage.removeItem('atlas_hetzner_server_id');
+    location.reload();
+  });
+
+  // Reboot VPS
+  document.getElementById('btn-reboot')?.addEventListener('click', async () => {
+    if (!confirm('Reboot the Hetzner VPS? Atlas will be offline for ~60 seconds.')) return;
+    const token = localStorage.getItem('atlas_hetzner_token');
+    const serverId = localStorage.getItem('atlas_hetzner_server_id');
+    const btn = document.getElementById('btn-reboot');
+    btn.textContent = '⏳ Rebooting...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(`https://api.hetzner.cloud/v1/servers/${serverId}/actions/reboot`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
+      });
+      if (res.ok) {
+        btn.textContent = '✅ Reboot sent!';
+        setTimeout(() => { btn.textContent = '🔄 Reboot VPS'; btn.disabled = false; }, 10000);
+      } else {
+        const err = await res.json();
+        btn.textContent = '❌ Failed';
+        alert('Reboot failed: ' + (err.error?.message || res.statusText));
+        setTimeout(() => { btn.textContent = '🔄 Reboot VPS'; btn.disabled = false; }, 3000);
+      }
+    } catch (e) {
+      btn.textContent = '❌ Error';
+      alert('Network error: ' + e.message);
+      setTimeout(() => { btn.textContent = '🔄 Reboot VPS'; btn.disabled = false; }, 3000);
+    }
+  });
+
+  // Restart Gateway (reboot is enough — OpenClaw auto-starts on boot)
+  document.getElementById('btn-gateway')?.addEventListener('click', async () => {
+    if (!confirm('This will reboot the VPS to restart the gateway. Continue?')) return;
+    // Gateway restart = same as VPS reboot since OpenClaw auto-starts
+    document.getElementById('btn-reboot')?.click();
+  });
 }
 
 function renderFileSection(manifest) {
@@ -158,7 +287,7 @@ function renderPinterest(p) {
   `;
 }
 
-function render(d, manifest) {
+function render(d, manifest, heartbeat) {
   const m = d.metrics;
   return `
     <div class="header">
@@ -169,6 +298,8 @@ function render(d, manifest) {
         <span>Updated ${timeAgo(d.lastUpdated)}</span>
       </div>
     </div>
+
+    ${renderHeartbeat(heartbeat)}
 
     <div class="metrics">
       ${metric(m.citiesLive, 'Cities Live')}

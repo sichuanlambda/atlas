@@ -413,3 +413,184 @@ h1, h2, h3, .section-title {
 
 .clickable-row { cursor: pointer; }
 .clickable-row:hover { background: var(--bg-alt); }
+
+/* === Heartbeat Section === */
+.heartbeat-section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+}
+.heartbeat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.heartbeat-status {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.heartbeat-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.heartbeat-dot.online {
+  background: var(--green);
+  box-shadow: 0 0 8px rgba(58,125,92,0.5);
+  animation: pulse-green 2s ease-in-out infinite;
+}
+.heartbeat-dot.idle {
+  background: var(--yellow);
+  box-shadow: 0 0 6px rgba(184,134,11,0.4);
+}
+.heartbeat-dot.offline {
+  background: var(--red);
+  box-shadow: 0 0 6px rgba(180,64,64,0.4);
+  animation: pulse-red 1.5s ease-in-out infinite;
+}
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+@keyframes pulse-red {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.15); }
+}
+.heartbeat-label { font-size: 0.95rem; color: var(--text); }
+.heartbeat-ago { font-size: 0.8rem; color: var(--text-muted); }
+.heartbeat-activity {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-alt);
+  border-radius: 6px;
+}
+.heartbeat-jobs {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.job-tag {
+  font-size: 0.75rem;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+.btn-settings {
+  background: none;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.15s;
+}
+.btn-settings:hover { background: var(--bg-alt); }
+
+.heartbeat-controls {
+  margin-top: 0.75rem;
+  display: none;
+}
+.heartbeat-controls.show { display: block; }
+.heartbeat-section:hover .heartbeat-controls { display: block; }
+.offline-alert {
+  background: var(--red-bg);
+  color: var(--red);
+  padding: 0.6rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+.restart-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+.btn-restart {
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.15s;
+  background: var(--card);
+}
+.btn-restart:hover:not(:disabled) {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-1px);
+}
+.btn-restart:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.btn-reboot { border-color: var(--yellow); color: var(--yellow); }
+.btn-reboot:hover:not(:disabled) { background: var(--yellow-bg); }
+.btn-gateway { border-color: var(--accent); color: var(--accent); }
+.btn-gateway:hover:not(:disabled) { background: var(--accent-light); }
+
+.heartbeat-settings {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--bg-alt);
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+}
+.heartbeat-settings.hidden { display: none; }
+.settings-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  font-style: italic;
+}
+.settings-field {
+  margin-bottom: 0.6rem;
+}
+.settings-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+.settings-field input {
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  background: var(--card);
+}
+.settings-field input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-light);
+}
+.settings-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.btn-save, .btn-clear {
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid;
+  transition: all 0.15s;
+}
+.btn-save { background: var(--accent); color: white; border-color: var(--accent); }
+.btn-save:hover { opacity: 0.9; }
+.btn-clear { background: var(--card); color: var(--text-muted); border-color: var(--border); }
+.btn-clear:hover { background: var(--bg-alt); }
