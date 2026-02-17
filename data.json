@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-02-17T01:20:00Z",
+  "lastUpdated": "2026-02-17T01:30:00Z",
   "status": "idle",
-  "currentWork": "Next cities research complete, dashboard updated",
+  "currentWork": "Overnight batch complete \u2014 NYC guide live, zoning data for 10 cities acquired, next cities ranked",
   "workstreams": [
     {
       "id": "nola-guide",
       "name": "New Orleans City Guide",
       "status": "complete",
-      "emoji": "✅",
+      "emoji": "\u2705",
       "summary": "14 buildings live with full GPT analysis, SEO copy, and marketing drafts",
       "lastUpdate": "2026-02-16",
       "details": [
@@ -21,14 +21,14 @@
       "id": "prs",
       "name": "Architecture Helper PRs",
       "status": "complete",
-      "emoji": "✅",
+      "emoji": "\u2705",
       "summary": "8 PRs merged & deployed",
       "lastUpdate": "2026-02-16",
       "details": [
         "PR #1: Fix 4 crash bugs, clean up nav",
         "PR #2: Pagination + lazy loading",
         "PR #3: City guide seeding infrastructure",
-        "PR #4: Style normalization (~150 variants → ~40 canonical)",
+        "PR #4: Style normalization (~150 variants \u2192 ~40 canonical)",
         "PR #5: Style normalization rake task",
         "PR #6: Building count fix, Select All, multi-style cards",
         "PR #7: Async GPT analysis (fixes R12 timeouts) + admin building management",
@@ -38,21 +38,23 @@
     {
       "id": "nyc-guide",
       "name": "NYC City Guide",
-      "status": "queued",
-      "emoji": "📋",
-      "summary": "Research complete, ready to execute",
-      "lastUpdate": "2026-02-16",
+      "status": "complete",
+      "emoji": "\u2705",
+      "summary": "18 buildings live with full GPT analysis and SEO copy",
+      "lastUpdate": "2026-02-17",
       "details": [
-        "City research scored NYC #1 for traffic potential",
-        "Building selection pending",
-        "Will use improved pipeline (bulk import, image optimization, external URLs)"
+        "18 buildings submitted (IDs 935-952)",
+        "Empire State, Chrysler, Flatiron, Grand Central, Guggenheim, One WTC, and more",
+        "Styles: Art Deco, Beaux-Arts, Gothic Revival, International, Postmodern, Neo-Futurism",
+        "Place page live and featured at /places/new-york-city",
+        "Used bulk import API for speed"
       ]
     },
     {
       "id": "pinterest",
       "name": "Pinterest Distribution",
       "status": "active",
-      "emoji": "📌",
+      "emoji": "\ud83d\udccc",
       "summary": "Account live, 2 pins published, 10 boards created, 12 pins queued",
       "lastUpdate": "2026-02-16",
       "details": [
@@ -68,13 +70,43 @@
       "id": "programmatic-seo",
       "name": "Programmatic SEO Pages",
       "status": "idea",
-      "emoji": "💡",
+      "emoji": "\ud83d\udca1",
       "summary": "Auto-generate style-by-city and style overview pages to 10x SEO surface area",
       "lastUpdate": "2026-02-16",
       "details": [
         "Target queries: '[style] architecture in [city]', '[style] buildings examples'",
-        "Data already exists — just needs page generation",
+        "Data already exists \u2014 just needs page generation",
         "Could add hundreds of indexable pages with zero manual content"
+      ]
+    },
+    {
+      "id": "zoning-data",
+      "name": "Zoning Data Acquisition",
+      "status": "active",
+      "emoji": "\ud83d\uddfa\ufe0f",
+      "summary": "10 cities acquired \u2014 120K+ zones, ~566 MB across TX, CA, FL, OK",
+      "lastUpdate": "2026-02-17",
+      "details": [
+        "Pipeline built: acquire.py with pagination, batch mode, point-in-polygon testing",
+        "CA: Los Angeles (58K zones), Sacramento (11K), San Francisco (1.6K)",
+        "TX: Austin (22K zones), Dallas (3.8K)",
+        "FL: Tampa (11K zones), Miami-Dade (4K), Orlando (2K), Fort Lauderdale (739)",
+        "OK: Norman (4.4K zones) \u2014 proof of concept",
+        "Not available: Houston (no zoning), San Antonio (too large), Fort Worth/San Diego/San Jose/Jacksonville (no public service)"
+      ]
+    },
+    {
+      "id": "next-cities",
+      "name": "Next Cities Pipeline",
+      "status": "queued",
+      "emoji": "\ud83d\udccb",
+      "summary": "Wave 1: Washington DC, Philadelphia, Boston",
+      "lastUpdate": "2026-02-17",
+      "details": [
+        "Wave 1 (next): Washington DC, Philadelphia, Boston",
+        "Wave 2: Los Angeles, Detroit, Savannah",
+        "Wave 3: Miami, Charleston, Pittsburgh, Nashville",
+        "Philadelphia identified as sweet spot \u2014 rich architecture, underserved SEO"
       ]
     }
   ],
@@ -125,10 +157,18 @@
     }
   ],
   "metrics": {
-    "citiesLive": 5,
-    "citiesList": ["Denver", "Den Haag", "San Francisco", "Chicago", "New Orleans"],
-    "citiesInProgress": ["New York City"],
-    "totalBuildings": 421,
+    "citiesLive": 6,
+    "citiesList": [
+      "Denver",
+      "Den Haag",
+      "San Francisco",
+      "Chicago",
+      "New Orleans"
+    ],
+    "citiesInProgress": [
+      "New York City"
+    ],
+    "totalBuildings": 439,
     "visibleBuildings": 349,
     "totalStyles": 40,
     "prsMerged": 8,
@@ -138,35 +178,154 @@
     "pinterestBoards": 10
   },
   "zoningCoverage": {
-    "lastUpdated": "2026-02-17T01:15:00Z",
+    "totalCities": 10,
+    "totalZones": 119843,
+    "totalSizeMb": 566,
+    "states": [
+      "CA",
+      "FL",
+      "OK",
+      "TX"
+    ],
     "cities": [
-      {"city": "Denver", "state": "CO", "status": "not_started", "zoneCount": 0, "uniqueZoneCodes": 0, "fileSizeMB": 0},
-      {"city": "San Francisco", "state": "CA", "status": "not_started", "zoneCount": 0, "uniqueZoneCodes": 0, "fileSizeMB": 0},
-      {"city": "Chicago", "state": "IL", "status": "not_started", "zoneCount": 0, "uniqueZoneCodes": 0, "fileSizeMB": 0},
-      {"city": "New Orleans", "state": "LA", "status": "not_started", "zoneCount": 0, "uniqueZoneCodes": 0, "fileSizeMB": 0},
-      {"city": "New York City", "state": "NY", "status": "not_started", "zoneCount": 0, "uniqueZoneCodes": 0, "fileSizeMB": 0}
+      {
+        "city": "Los Angeles",
+        "state": "CA",
+        "zones": 58873,
+        "sizeMb": 378
+      },
+      {
+        "city": "Austin",
+        "state": "TX",
+        "zones": 22496,
+        "sizeMb": 72
+      },
+      {
+        "city": "Tampa",
+        "state": "FL",
+        "zones": 10813,
+        "sizeMb": 27
+      },
+      {
+        "city": "Sacramento",
+        "state": "CA",
+        "zones": 10930,
+        "sizeMb": 31
+      },
+      {
+        "city": "Norman",
+        "state": "OK",
+        "zones": 4446,
+        "sizeMb": 25
+      },
+      {
+        "city": "Miami-Dade",
+        "state": "FL",
+        "zones": 4011,
+        "sizeMb": 9
+      },
+      {
+        "city": "Dallas",
+        "state": "TX",
+        "zones": 3808,
+        "sizeMb": 9
+      },
+      {
+        "city": "Orlando",
+        "state": "FL",
+        "zones": 2082,
+        "sizeMb": 5
+      },
+      {
+        "city": "San Francisco",
+        "state": "CA",
+        "zones": 1645,
+        "sizeMb": 8
+      },
+      {
+        "city": "Fort Lauderdale",
+        "state": "FL",
+        "zones": 739,
+        "sizeMb": 1
+      }
     ]
   },
   "recentActivity": [
-    { "date": "2026-02-17T01:20:00Z", "text": "Next 10 cities ranked for expansion (DC, Philly, Boston lead)", "type": "research" },
-    { "date": "2026-02-17T01:15:00Z", "text": "Zoning data coverage section added to dashboard", "type": "milestone" },
-    { "date": "2026-02-16T22:15:00Z", "text": "Pinterest launched: 2 pins published, 10 boards created, 12 queued", "type": "milestone" },
-    { "date": "2026-02-16T19:00:00Z", "text": "All 4 improvements tested & verified (PR #8)", "type": "milestone" },
-    { "date": "2026-02-16T18:30:00Z", "text": "PR #8 merged: OG tags, external image URLs, building names, bulk import", "type": "pr" },
-    { "date": "2026-02-16T17:00:00Z", "text": "PR #7 merged: Async analysis + admin building management", "type": "pr" },
-    { "date": "2026-02-16T16:30:00Z", "text": "All 14 NOLA buildings live with analysis (IDs 921-934)", "type": "milestone" },
-    { "date": "2026-02-16T16:00:00Z", "text": "Duplicate NOLA records cleaned up, SEO copy updated (evergreen, no hardcoded counts)", "type": "task" },
-    { "date": "2026-02-16T15:30:00Z", "text": "NOLA place page created with 14 buildings, SEO content, Reddit drafts, X thread draft", "type": "milestone" },
-    { "date": "2026-02-16T15:00:00Z", "text": "City research complete: NYC and New Orleans selected as next targets", "type": "research" },
-    { "date": "2026-02-16T14:00:00Z", "text": "Nathan shared Architecture Helper admin access with Atlas", "type": "milestone" }
+    {
+      "date": "2026-02-17T01:20:00Z",
+      "text": "Next 10 cities ranked for expansion (DC, Philly, Boston lead)",
+      "type": "research"
+    },
+    {
+      "date": "2026-02-17T01:15:00Z",
+      "text": "Zoning data coverage section added to dashboard",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-16T22:15:00Z",
+      "text": "Pinterest launched: 2 pins published, 10 boards created, 12 queued",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-16T19:00:00Z",
+      "text": "All 4 improvements tested & verified (PR #8)",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-16T18:30:00Z",
+      "text": "PR #8 merged: OG tags, external image URLs, building names, bulk import",
+      "type": "pr"
+    },
+    {
+      "date": "2026-02-16T17:00:00Z",
+      "text": "PR #7 merged: Async analysis + admin building management",
+      "type": "pr"
+    },
+    {
+      "date": "2026-02-16T16:30:00Z",
+      "text": "All 14 NOLA buildings live with analysis (IDs 921-934)",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-16T16:00:00Z",
+      "text": "Duplicate NOLA records cleaned up, SEO copy updated (evergreen, no hardcoded counts)",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-16T15:30:00Z",
+      "text": "NOLA place page created with 14 buildings, SEO content, Reddit drafts, X thread draft",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-16T15:00:00Z",
+      "text": "City research complete: NYC and New Orleans selected as next targets",
+      "type": "research"
+    },
+    {
+      "date": "2026-02-16T14:00:00Z",
+      "text": "Nathan shared Architecture Helper admin access with Atlas",
+      "type": "milestone"
+    }
   ],
   "pinterest": {
     "account": "@nathaninproduct",
     "totalPins": 2,
     "totalBoards": 10,
     "boards": {
-      "city": ["New Orleans Architecture", "San Francisco Architecture", "Chicago Architecture", "Denver Architecture"],
-      "style": ["Gothic Architecture", "Beaux-Arts Architecture", "Neoclassical Architecture", "Art Deco Buildings", "Victorian Architecture", "Baroque Architecture"]
+      "city": [
+        "New Orleans Architecture",
+        "San Francisco Architecture",
+        "Chicago Architecture",
+        "Denver Architecture"
+      ],
+      "style": [
+        "Gothic Architecture",
+        "Beaux-Arts Architecture",
+        "Neoclassical Architecture",
+        "Art Deco Buildings",
+        "Victorian Architecture",
+        "Baroque Architecture"
+      ]
     },
     "recentPins": [
       {
@@ -177,7 +336,11 @@
         "city": "New Orleans",
         "template": "v1",
         "created": "2026-02-16T22:10:00Z",
-        "metrics": {"impressions": 0, "saves": 0, "clicks": 0}
+        "metrics": {
+          "impressions": 0,
+          "saves": 0,
+          "clicks": 0
+        }
       },
       {
         "title": "Saenger Theatre | Art Deco Architecture in New Orleans",
@@ -187,7 +350,11 @@
         "city": "New Orleans",
         "template": "v1",
         "created": "2026-02-16T22:15:00Z",
-        "metrics": {"impressions": 0, "saves": 0, "clicks": 0}
+        "metrics": {
+          "impressions": 0,
+          "saves": 0,
+          "clicks": 0
+        }
       }
     ],
     "queue": 12,
