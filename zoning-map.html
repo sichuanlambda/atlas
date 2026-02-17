@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoning Data Explorer — Atlas</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Georgia', serif; background: #f4f1eb; color: #2c3e50; }
+    
+    #header {
+      background: #2c3e50;
+      color: #f4f1eb;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    #header h1 { font-size: 1.4em; font-weight: 400; letter-spacing: 1px; }
+    #header a { color: #a8c5d6; text-decoration: none; font-size: 0.85em; }
+    #header a:hover { color: #fff; }
+    
+    #controls {
+      background: #fff;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid #ddd;
+      flex-wrap: wrap;
+    }
+    #controls label { font-size: 0.9em; font-weight: 600; color: #555; }
+    #controls select {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9em;
+      background: #fff;
+      min-width: 200px;
+    }
+    #status {
+      font-size: 0.85em;
+      color: #888;
+      margin-left: auto;
+    }
+    #zone-info {
+      background: #2c3e50;
+      color: #f4f1eb;
+      padding: 8px 16px;
+      font-size: 0.9em;
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    #zone-info .zone-code {
+      background: rgba(255,255,255,0.15);
+      padding: 2px 10px;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 1.1em;
+      letter-spacing: 1px;
+    }
+    
+    #map { height: calc(100vh - 140px); width: 100%; }
+    
+    .legend {
+      background: white;
+      padding: 10px 14px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      max-height: 300px;
+      overflow-y: auto;
+      font-size: 0.8em;
+      line-height: 1.6;
+    }
+    .legend h4 { margin-bottom: 6px; font-size: 0.9em; color: #333; }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-color {
+      width: 16px; height: 12px; border-radius: 2px;
+      border: 1px solid rgba(0,0,0,0.2); flex-shrink: 0;
+    }
+    
+    .loading-overlay {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(244,241,235,0.9);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 1000; font-size: 1.2em; color: #555;
+    }
+    .loading-overlay.hidden { display: none; }
+
+    @media (max-width: 600px) {
+      #controls { padding: 8px 12px; }
+      #header h1 { font-size: 1.1em; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1>🗺️ Zoning Data Explorer</h1>
+    <a href="index.html">← Atlas Dashboard</a>
+  </div>
+  
+  <div id="controls">
+    <label for="city-select">City:</label>
+    <select id="city-select">
+      <option value="">Select a city…</option>
+    </select>
+    <span id="status"></span>
+  </div>
+  
+  <div id="zone-info">
+    <span>Click a zone on the map to see details</span>
+  </div>
+  
+  <div style="position: relative;">
+    <div id="loading" class="loading-overlay hidden">Loading zoning data…</div>
+    <div id="map"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // Color palette for zones — distinct, colorblind-friendly-ish
+    const COLORS = [
+      '#e6194b','#3cb44b','#ffe119','#4363d8','#f58231','#911eb4','#42d4f4',
+      '#f032e6','#bfef45','#fabed4','#469990','#dcbeff','#9A6324','#fffac8',
+      '#800000','#aaffc3','#808000','#ffd8b1','#000075','#a9a9a9','#e6beff',
+      '#1abc9c','#2ecc71','#3498db','#9b59b6','#e74c3c','#f39c12','#1f77b4',
+      '#ff7f0e','#2ca02c','#d62728','#9467bd','#8c564b','#e377c2','#7f7f7f',
+      '#bcbd22','#17becf','#aec7e8','#ffbb78','#98df8a','#ff9896'
+    ];
+
+    let map, currentLayer, legend, cities = [];
+
+    // Init map
+    map = L.map('map').setView([37.0, -95.7], 5);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap &copy; CARTO',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Load city list
+    fetch('zoning/cities.json')
+      .then(r => r.json())
+      .then(data => {
+        cities = data.sort((a, b) => a.name.localeCompare(b.name));
+        const select = document.getElementById('city-select');
+        cities.forEach(c => {
+          const opt = document.createElement('option');
+          opt.value = c.slug;
+          opt.textContent = `${c.name}, ${c.state} (${c.zones.toLocaleString()} zones)`;
+          select.appendChild(opt);
+        });
+      });
+
+    document.getElementById('city-select').addEventListener('change', function() {
+      const slug = this.value;
+      if (!slug) return;
+      loadCity(slug);
+    });
+
+    function loadCity(slug) {
+      const city = cities.find(c => c.slug === slug);
+      if (!city) return;
+
+      const loading = document.getElementById('loading');
+      const status = document.getElementById('status');
+      loading.classList.remove('hidden');
+      status.textContent = `Loading ${city.name}… (${(city.sizeKb/1024).toFixed(1)} MB)`;
+
+      // Clear previous
+      if (currentLayer) { map.removeLayer(currentLayer); }
+      if (legend) { map.removeControl(legend); }
+
+      fetch(`zoning/${slug}.geojson`)
+        .then(r => r.json())
+        .then(geojson => {
+          // Build zone→color map
+          const zoneCodes = [...new Set(geojson.features.map(f => f.properties.z || 'Unknown'))].sort();
+          const colorMap = {};
+          zoneCodes.forEach((code, i) => {
+            colorMap[code] = COLORS[i % COLORS.length];
+          });
+
+          currentLayer = L.geoJSON(geojson, {
+            style: function(feature) {
+              const zone = feature.properties.z || 'Unknown';
+              return {
+                fillColor: colorMap[zone],
+                fillOpacity: 0.55,
+                color: '#333',
+                weight: 0.5,
+                opacity: 0.6
+              };
+            },
+            onEachFeature: function(feature, layer) {
+              layer.on('click', function() {
+                const zone = feature.properties.z || 'Unknown';
+                document.getElementById('zone-info').innerHTML = 
+                  `<span class="zone-code">${zone}</span> <span>${city.name}, ${city.state}</span>`;
+              });
+              layer.on('mouseover', function() {
+                this.setStyle({ weight: 2, fillOpacity: 0.8 });
+              });
+              layer.on('mouseout', function() {
+                currentLayer.resetStyle(this);
+              });
+            }
+          }).addTo(map);
+
+          // Fly to city
+          map.flyTo(city.center, city.zones > 20000 ? 10 : 12, { duration: 1 });
+
+          // Legend
+          legend = L.control({ position: 'bottomright' });
+          legend.onAdd = function() {
+            const div = L.DomUtil.create('div', 'legend');
+            div.innerHTML = `<h4>${city.name} Zones (${zoneCodes.length})</h4>`;
+            // Show up to 30 in legend
+            const show = zoneCodes.slice(0, 30);
+            show.forEach(code => {
+              div.innerHTML += `<div class="legend-item"><span class="legend-color" style="background:${colorMap[code]}"></span>${code || '(empty)'}</div>`;
+            });
+            if (zoneCodes.length > 30) {
+              div.innerHTML += `<div style="color:#888;margin-top:4px">+${zoneCodes.length - 30} more…</div>`;
+            }
+            return div;
+          };
+          legend.addTo(map);
+
+          loading.classList.add('hidden');
+          status.textContent = `${city.name}: ${geojson.features.length.toLocaleString()} zones, ${zoneCodes.length} types`;
+        })
+        .catch(err => {
+          loading.classList.add('hidden');
+          status.textContent = `Error loading ${city.name}: ${err.message}`;
+        });
+    }
+
+    // Check URL hash for direct city link
+    if (window.location.hash) {
+      const slug = window.location.hash.slice(1);
+      document.getElementById('city-select').value = slug;
+      setTimeout(() => loadCity(slug), 500);
+    }
+  </script>
+</body>
+</html>

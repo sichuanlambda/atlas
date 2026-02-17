@@ -178,75 +178,86 @@
     "pinterestBoards": 10
   },
   "zoningCoverage": {
-    "totalCities": 10,
-    "totalZones": 119843,
-    "totalSizeMb": 566,
-    "states": [
-      "CA",
-      "FL",
-      "OK",
-      "TX"
-    ],
     "cities": [
       {
         "city": "Los Angeles",
         "state": "CA",
-        "zones": 58873,
-        "sizeMb": 378
+        "status": "downloaded",
+        "zoneCount": 58873,
+        "uniqueZoneCodes": 17,
+        "fileSizeMB": 377.9
       },
       {
         "city": "Austin",
         "state": "TX",
-        "zones": 22496,
-        "sizeMb": 72
-      },
-      {
-        "city": "Tampa",
-        "state": "FL",
-        "zones": 10813,
-        "sizeMb": 27
+        "status": "downloaded",
+        "zoneCount": 22496,
+        "uniqueZoneCodes": 45,
+        "fileSizeMB": 72.0
       },
       {
         "city": "Sacramento",
         "state": "CA",
-        "zones": 10930,
-        "sizeMb": 31
+        "status": "downloaded",
+        "zoneCount": 10930,
+        "uniqueZoneCodes": 33,
+        "fileSizeMB": 31.4
+      },
+      {
+        "city": "Tampa",
+        "state": "FL",
+        "status": "downloaded",
+        "zoneCount": 10813,
+        "uniqueZoneCodes": 8,
+        "fileSizeMB": 27.4
       },
       {
         "city": "Norman",
         "state": "OK",
-        "zones": 4446,
-        "sizeMb": 25
+        "status": "downloaded",
+        "zoneCount": 4446,
+        "uniqueZoneCodes": 29,
+        "fileSizeMB": 25.3
       },
       {
         "city": "Miami-Dade",
         "state": "FL",
-        "zones": 4011,
-        "sizeMb": 9
+        "status": "downloaded",
+        "zoneCount": 4011,
+        "uniqueZoneCodes": 50,
+        "fileSizeMB": 8.5
       },
       {
         "city": "Dallas",
         "state": "TX",
-        "zones": 3808,
-        "sizeMb": 9
+        "status": "downloaded",
+        "zoneCount": 3808,
+        "uniqueZoneCodes": 50,
+        "fileSizeMB": 9.4
       },
       {
         "city": "Orlando",
         "state": "FL",
-        "zones": 2082,
-        "sizeMb": 5
+        "status": "downloaded",
+        "zoneCount": 2082,
+        "uniqueZoneCodes": 324,
+        "fileSizeMB": 4.6
       },
       {
         "city": "San Francisco",
         "state": "CA",
-        "zones": 1645,
-        "sizeMb": 8
+        "status": "downloaded",
+        "zoneCount": 1645,
+        "uniqueZoneCodes": 116,
+        "fileSizeMB": 8.1
       },
       {
         "city": "Fort Lauderdale",
         "state": "FL",
-        "zones": 739,
-        "sizeMb": 1
+        "status": "downloaded",
+        "zoneCount": 739,
+        "uniqueZoneCodes": 2,
+        "fileSizeMB": 1.2
       }
     ]
   },

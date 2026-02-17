@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Fort Lauderdale",
+    "state": "FL",
+    "slug": "fort-lauderdale",
+    "zones": 739,
+    "uniqueCodes": 1,
+    "sizeKb": 331,
+    "center": [
+      26.14131023139645,
+      -80.1497144612699
+    ]
+  },
+  {
+    "name": "San Francisco",
+    "state": "CA",
+    "slug": "san-francisco",
+    "zones": 1645,
+    "uniqueCodes": 116,
+    "sizeKb": 899,
+    "center": [
+      37.770693532478546,
+      -122.435970442766
+    ]
+  },
+  {
+    "name": "Orlando",
+    "state": "FL",
+    "slug": "orlando",
+    "zones": 2082,
+    "uniqueCodes": 324,
+    "sizeKb": 977,
+    "center": [
+      28.4811818776513,
+      -81.3158378150837
+    ]
+  },
+  {
+    "name": "Dallas",
+    "state": "TX",
+    "slug": "dallas",
+    "zones": 3808,
+    "uniqueCodes": 60,
+    "sizeKb": 2089,
+    "center": [
+      32.8183832474968,
+      -96.7337235210239
+    ]
+  },
+  {
+    "name": "Miami-Dade",
+    "state": "FL",
+    "slug": "miami-dade",
+    "zones": 4011,
+    "uniqueCodes": 3962,
+    "sizeKb": 1824,
+    "center": [
+      25.6050790358735,
+      -80.39254327455795
+    ]
+  },
+  {
+    "name": "Norman",
+    "state": "OK",
+    "slug": "norman",
+    "zones": 4446,
+    "uniqueCodes": 29,
+    "sizeKb": 1540,
+    "center": [
+      35.24687908798205,
+      -97.36222047766105
+    ]
+  },
+  {
+    "name": "Tampa",
+    "state": "FL",
+    "slug": "tampa",
+    "zones": 10813,
+    "uniqueCodes": 96,
+    "sizeKb": 3805,
+    "center": [
+      27.8748964329096,
+      -82.40943369650259
+    ]
+  },
+  {
+    "name": "Sacramento",
+    "state": "CA",
+    "slug": "sacramento",
+    "zones": 10929,
+    "uniqueCodes": 33,
+    "sizeKb": 3120,
+    "center": [
+      38.561697118332,
+      -121.4616543835685
+    ]
+  },
+  {
+    "name": "Austin",
+    "state": "TX",
+    "slug": "austin",
+    "zones": 22492,
+    "uniqueCodes": 1,
+    "sizeKb": 6640,
+    "center": [
+      30.29608213139105,
+      -97.73296338282191
+    ]
+  },
+  {
+    "name": "Los Angeles",
+    "state": "CA",
+    "slug": "los-angeles",
+    "zones": 58873,
+    "uniqueCodes": 1,
+    "sizeKb": 14741,
+    "center": [
+      34.0183361989192,
+      -118.411874371278
+    ]
+  }
+]

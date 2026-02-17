@@ -252,7 +252,7 @@ function renderZoningCoverage(z) {
   const totalZones = cities.reduce((s, c) => s + (c.zoneCount || 0), 0);
 
   return `
-    <div class="section-title">🗺️ Zoning Data Coverage</div>
+    <div class="section-title">🗺️ Zoning Data Coverage <a href="zoning-map.html" style="font-size:0.7em;font-weight:normal;margin-left:12px;color:var(--accent,#4a90a4);">Open Map Explorer →</a></div>
     <div class="metrics">
       ${metric(downloaded + '/' + cities.length, 'Cities Downloaded')}
       ${metric(totalZones, 'Total Zones')}
