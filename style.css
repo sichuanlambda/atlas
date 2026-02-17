@@ -594,3 +594,185 @@ h1, h2, h3, .section-title {
 .btn-save:hover { opacity: 0.9; }
 .btn-clear { background: var(--card); color: var(--text-muted); border-color: var(--border); }
 .btn-clear:hover { background: var(--bg-alt); }
+
+/* === Nathan Action Section === */
+.nathan-action-section {
+  margin-bottom: 2rem;
+}
+.nathan-count {
+  font-size: 0.8rem;
+  background: var(--red-bg);
+  color: var(--red);
+  padding: 0.15rem 0.6rem;
+  border-radius: 10px;
+  margin-left: 0.5rem;
+  font-weight: 600;
+}
+.nathan-action-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--red);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  box-shadow: var(--shadow);
+}
+.nathan-action-card.priority-high { border-left-color: var(--red); }
+.nathan-action-card.priority-medium { border-left-color: var(--yellow); }
+.nathan-action-card.priority-low { border-left-color: var(--gray); }
+.nathan-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.nathan-card-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.blocked-reason {
+  font-size: 0.82rem;
+  color: var(--yellow);
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+.task-progress-text {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.nathan-steps {
+  background: var(--bg-alt);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+}
+.steps-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.nathan-steps ol {
+  margin: 0;
+  padding-left: 1.4rem;
+}
+.nathan-steps li {
+  font-size: 0.83rem;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+  line-height: 1.5;
+}
+.nathan-steps a {
+  color: var(--accent);
+  word-break: break-all;
+}
+
+/* === Task Board === */
+.task-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 0.5rem;
+}
+.task-filters {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.task-filter {
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--card);
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.15s;
+}
+.task-filter:hover { border-color: var(--accent); color: var(--accent); }
+.task-filter.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.task-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1.1rem;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.15s;
+}
+.task-card:hover { box-shadow: var(--shadow-hover); }
+.task-card.status-nathan { border-left: 3px solid var(--red); }
+.task-card.status-active { border-left: 3px solid var(--accent); }
+.task-card.status-pending { border-left: 3px solid var(--gray); }
+.task-card.status-done { border-left: 3px solid var(--green); opacity: 0.7; }
+.task-card-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.task-status-icon { font-size: 0.85rem; }
+.task-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+  flex: 1;
+}
+.priority-pill {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.priority-pill.high { background: var(--red-bg); color: var(--red); }
+.priority-pill.medium { background: var(--yellow-bg); color: var(--yellow); }
+.priority-pill.low { background: var(--gray-bg); color: var(--gray); }
+.task-card-meta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.task-project {
+  font-weight: 500;
+}
+.task-progress {
+  color: var(--accent);
+  font-weight: 500;
+}
+.task-dep {
+  font-style: italic;
+}
+.atlas-badge {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-size: 0.72rem;
+  background: var(--green-bg);
+  color: var(--green);
+  padding: 0.15rem 0.55rem;
+  border-radius: 10px;
+  font-weight: 500;
+}
+.task-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+  line-height: 1.45;
+}

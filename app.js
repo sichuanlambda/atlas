@@ -1,15 +1,17 @@
 const TYPE_ICONS = { pr: '🔀', milestone: '🏁', task: '📝', research: '🔍' };
 
 async function init() {
-  const [dataRes, manifestRes, heartbeatRes] = await Promise.all([
+  const [dataRes, manifestRes, heartbeatRes, tasksRes] = await Promise.all([
     fetch('data.json'),
     fetch('files/manifest.json'),
-    fetch('heartbeat.json?t=' + Date.now()).catch(() => null)
+    fetch('heartbeat.json?t=' + Date.now()).catch(() => null),
+    fetch('tasks.json?t=' + Date.now()).catch(() => null)
   ]);
   const d = await dataRes.json();
   const manifest = await manifestRes.json();
   const heartbeat = heartbeatRes && heartbeatRes.ok ? await heartbeatRes.json() : null;
-  document.getElementById('app').innerHTML = render(d, manifest, heartbeat);
+  const tasksData = tasksRes && tasksRes.ok ? await tasksRes.json() : null;
+  document.getElementById('app').innerHTML = render(d, manifest, heartbeat, tasksData);
 
   // Workstream expand/collapse
   document.querySelectorAll('.workstream').forEach(el => {
@@ -48,6 +50,9 @@ async function init() {
 
   // Heartbeat controls
   initHeartbeatControls();
+
+  // Task filters
+  initTaskFilters();
 }
 
 function showFileModal(name, content) {
@@ -193,6 +198,124 @@ function initHeartbeatControls() {
   });
 }
 
+// === Task Board ===
+
+const STATUS_CONFIG = {
+  'blocked_on_nathan': { icon: '🔴', label: 'Needs You', class: 'nathan', sort: 0 },
+  'in_progress':       { icon: '🔵', label: 'In Progress', class: 'active', sort: 1 },
+  'pending':           { icon: '⚪', label: 'Queued', class: 'pending', sort: 2 },
+  'completed':         { icon: '✅', label: 'Done', class: 'done', sort: 3 }
+};
+
+const PROJECT_LABELS = {
+  'architecture-helper': '🏛 Architecture Helper',
+  'cresoftware': '💼 CRE Directory',
+  'seo': '🔍 SEO',
+  'atlas-infra': '⚙️ Atlas Infra',
+  'pinterest': '📌 Pinterest'
+};
+
+function renderTasks(tasksData) {
+  if (!tasksData || !tasksData.tasks) return '';
+  const tasks = tasksData.tasks;
+  
+  // Split into Nathan's action items and Atlas's work
+  const nathanTasks = tasks.filter(t => t.status === 'blocked_on_nathan');
+  const activeTasks = tasks.filter(t => t.status === 'in_progress');
+  const pendingTasks = tasks.filter(t => t.status === 'pending');
+  const doneTasks = tasks.filter(t => t.status === 'completed');
+
+  const reviewed = tasksData.lastReviewed ? timeAgo(tasksData.lastReviewed) : 'never';
+
+  return `
+    ${nathanTasks.length ? renderNathanSection(nathanTasks) : ''}
+    
+    <div class="section-title">📋 Task Board <span class="task-meta">Last reviewed ${reviewed} · ${tasks.length} tasks</span></div>
+    
+    <div class="task-filters">
+      <button class="task-filter active" data-filter="all">All (${tasks.length})</button>
+      <button class="task-filter" data-filter="in_progress">Active (${activeTasks.length})</button>
+      <button class="task-filter" data-filter="pending">Queued (${pendingTasks.length})</button>
+      <button class="task-filter" data-filter="blocked_on_nathan">Needs You (${nathanTasks.length})</button>
+      <button class="task-filter" data-filter="completed">Done (${doneTasks.length})</button>
+    </div>
+
+    <div class="task-list" id="task-list">
+      ${tasks
+        .sort((a, b) => (STATUS_CONFIG[a.status]?.sort ?? 9) - (STATUS_CONFIG[b.status]?.sort ?? 9))
+        .map(renderTaskCard).join('')}
+    </div>
+  `;
+}
+
+function renderNathanSection(tasks) {
+  return `
+    <div class="nathan-action-section">
+      <div class="section-title">🎯 Needs Your Attention <span class="nathan-count">${tasks.length} item${tasks.length !== 1 ? 's' : ''}</span></div>
+      ${tasks.map(t => `
+        <div class="nathan-action-card priority-${t.priority}">
+          <div class="nathan-card-header">
+            <span class="nathan-card-title">${t.title}</span>
+            <span class="priority-pill ${t.priority}">${t.priority}</span>
+          </div>
+          ${t.blockedReason ? `<div class="blocked-reason">⏸ ${t.blockedReason}</div>` : ''}
+          ${t.progress ? `<div class="task-progress-text">${t.progress}</div>` : ''}
+          ${t.nathanSteps ? `
+            <div class="nathan-steps">
+              <div class="steps-label">Steps:</div>
+              <ol>
+                ${t.nathanSteps.map(step => {
+                  // Auto-linkify URLs
+                  const linked = step.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>');
+                  return `<li>${linked}</li>`;
+                }).join('')}
+              </ol>
+            </div>
+          ` : ''}
+          ${t.notes ? `<div class="task-note">${t.notes}</div>` : ''}
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderTaskCard(t) {
+  const sc = STATUS_CONFIG[t.status] || { icon: '❓', label: t.status, class: 'unknown' };
+  const project = PROJECT_LABELS[t.project] || t.project;
+  const deps = t.dependsOn ? `<span class="task-dep">⛓ Depends on: ${t.dependsOn.join(', ')}</span>` : '';
+  
+  return `
+    <div class="task-card status-${sc.class}" data-status="${t.status}">
+      <div class="task-card-top">
+        <span class="task-status-icon">${sc.icon}</span>
+        <span class="task-title">${t.title}</span>
+        <span class="priority-pill ${t.priority}">${t.priority}</span>
+      </div>
+      <div class="task-card-meta">
+        <span class="task-project">${project}</span>
+        ${t.progress ? `<span class="task-progress">${t.progress}</span>` : ''}
+        ${deps}
+        <span class="task-updated">Updated ${timeAgo(t.updated)}</span>
+      </div>
+      ${t.atlasCanDo ? '<span class="atlas-badge">🤖 Atlas can handle</span>' : ''}
+      ${t.notes ? `<div class="task-note">${t.notes}</div>` : ''}
+    </div>
+  `;
+}
+
+function initTaskFilters() {
+  document.querySelectorAll('.task-filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.task-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.task-card').forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.status === filter) ? '' : 'none';
+      });
+    });
+  });
+}
+
 function renderFileSection(manifest) {
   return manifest.folders.map(folder => {
     const fileCount = folder.files.length;
@@ -287,7 +410,7 @@ function renderPinterest(p) {
   `;
 }
 
-function render(d, manifest, heartbeat) {
+function render(d, manifest, heartbeat, tasksData) {
   const m = d.metrics;
   return `
     <div class="header">
@@ -308,6 +431,8 @@ function render(d, manifest, heartbeat) {
       ${metric(m.prsMerged, 'PRs Merged')}
       ${metric(m.totalUsers, 'Users')}
     </div>
+
+    ${renderTasks(tasksData)}
 
     <div class="section-title">📊 Workstreams</div>
     ${d.workstreams.map(w => `
