@@ -18,6 +18,9 @@ async function init() {
     el.addEventListener('click', () => el.querySelector('.ws-details')?.classList.toggle('open'));
   });
 
+  // Task card expand/collapse + messaging
+  initTaskCards();
+
   // Folder expand/collapse
   document.querySelectorAll('.folder-header').forEach(el => {
     el.addEventListener('click', () => {
@@ -215,11 +218,69 @@ const PROJECT_LABELS = {
   'pinterest': '📌 Pinterest'
 };
 
+function getTaskMessages(taskId) {
+  try {
+    const all = JSON.parse(localStorage.getItem('atlas_task_messages') || '{}');
+    return all[taskId] || [];
+  } catch { return []; }
+}
+
+function saveTaskMessage(taskId, message) {
+  const all = JSON.parse(localStorage.getItem('atlas_task_messages') || '{}');
+  if (!all[taskId]) all[taskId] = [];
+  all[taskId].push({ text: message, time: new Date().toISOString() });
+  localStorage.setItem('atlas_task_messages', JSON.stringify(all));
+}
+
+function initTaskCards() {
+  document.querySelectorAll('.task-card[data-task-id]').forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Don't toggle if clicking input/button
+      if (e.target.closest('.task-message-form') || e.target.closest('.task-messages')) return;
+      card.classList.toggle('expanded');
+    });
+  });
+
+  document.querySelectorAll('.task-send-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const taskId = btn.dataset.taskId;
+      const input = document.getElementById('msg-input-' + taskId);
+      const text = input.value.trim();
+      if (!text) return;
+      saveTaskMessage(taskId, text);
+      input.value = '';
+      // Re-render message list
+      const listEl = document.getElementById('msg-list-' + taskId);
+      const msgs = getTaskMessages(taskId);
+      listEl.innerHTML = msgs.map(m => `<div class="task-msg"><span class="task-msg-text">${m.text}</span><span class="task-msg-time">${timeAgo(m.time)}</span></div>`).join('');
+    });
+  });
+}
+
+function renderRunningTasks(tasks) {
+  const running = tasks.filter(t => t.running);
+  if (!running.length) return '';
+  return `
+    <div class="running-section">
+      <div class="section-title">🏃 Currently Running</div>
+      <div class="running-tasks">
+        ${running.map(t => `
+          <div class="running-task-card">
+            <div class="running-indicator"></div>
+            <span class="running-title">${t.title}</span>
+            <span class="running-progress">${t.progress || ''}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
 function renderTasks(tasksData) {
   if (!tasksData || !tasksData.tasks) return '';
   const tasks = tasksData.tasks;
   
-  // Split into Nathan's action items and Atlas's work
   const nathanTasks = tasks.filter(t => t.status === 'blocked_on_nathan');
   const activeTasks = tasks.filter(t => t.status === 'in_progress');
   const pendingTasks = tasks.filter(t => t.status === 'pending');
@@ -229,6 +290,7 @@ function renderTasks(tasksData) {
 
   return `
     ${nathanTasks.length ? renderNathanSection(nathanTasks) : ''}
+    ${renderRunningTasks(tasks)}
     
     <div class="section-title">📋 Task Board <span class="task-meta">Last reviewed ${reviewed} · ${tasks.length} tasks</span></div>
     
@@ -283,13 +345,17 @@ function renderTaskCard(t) {
   const sc = STATUS_CONFIG[t.status] || { icon: '❓', label: t.status, class: 'unknown' };
   const project = PROJECT_LABELS[t.project] || t.project;
   const deps = t.dependsOn ? `<span class="task-dep">⛓ Depends on: ${t.dependsOn.join(', ')}</span>` : '';
+  const msgs = getTaskMessages(t.id);
+  const runningClass = t.running ? ' task-running' : '';
   
   return `
-    <div class="task-card status-${sc.class}" data-status="${t.status}">
+    <div class="task-card status-${sc.class}${runningClass}" data-status="${t.status}" data-task-id="${t.id}">
       <div class="task-card-top">
+        ${t.running ? '<span class="running-spinner"></span>' : ''}
         <span class="task-status-icon">${sc.icon}</span>
         <span class="task-title">${t.title}</span>
         <span class="priority-pill ${t.priority}">${t.priority}</span>
+        <span class="task-expand-arrow">▸</span>
       </div>
       <div class="task-card-meta">
         <span class="task-project">${project}</span>
@@ -298,7 +364,16 @@ function renderTaskCard(t) {
         <span class="task-updated">Updated ${timeAgo(t.updated)}</span>
       </div>
       ${t.atlasCanDo ? '<span class="atlas-badge">🤖 Atlas can handle</span>' : ''}
-      ${t.notes ? `<div class="task-note">${t.notes}</div>` : ''}
+      <div class="task-expanded-content">
+        ${t.notes ? `<div class="task-note-full">${t.notes}</div>` : ''}
+        <div class="task-messages" id="msg-list-${t.id}">
+          ${msgs.map(m => `<div class="task-msg"><span class="task-msg-text">${m.text}</span><span class="task-msg-time">${timeAgo(m.time)}</span></div>`).join('')}
+        </div>
+        <div class="task-message-form">
+          <input type="text" id="msg-input-${t.id}" class="task-msg-input" placeholder="Add context or follow-up..." />
+          <button class="task-send-btn" data-task-id="${t.id}">Send to Atlas</button>
+        </div>
+      </div>
     </div>
   `;
 }
@@ -424,18 +499,11 @@ function render(d, manifest, heartbeat, tasksData) {
 
     ${renderHeartbeat(heartbeat)}
 
-    <div class="metrics">
-      ${metric(m.citiesLive, 'Cities Live')}
-      ${metric(m.totalBuildings, 'Buildings')}
-      ${metric(m.totalStyles, 'Styles')}
-      ${metric(m.prsMerged, 'PRs Merged')}
-      ${metric(m.totalUsers, 'Users')}
-    </div>
-
-    ${renderTasks(tasksData)}
-
     <div class="section-title">📊 Workstreams</div>
-    ${d.workstreams.map(w => `
+    ${[...d.workstreams].sort((a, b) => {
+      const order = { active: 0, 'in-progress': 1, waiting: 2, queued: 3, idea: 4, complete: 5 };
+      return (order[a.status] ?? 3) - (order[b.status] ?? 3);
+    }).map(w => `
       <div class="workstream status-${w.status}">
         <div class="ws-header">
           <span class="ws-name">${w.emoji} ${w.name}</span>
@@ -445,6 +513,16 @@ function render(d, manifest, heartbeat, tasksData) {
         <ul class="ws-details">${w.details.map(x => `<li>${x}</li>`).join('')}</ul>
       </div>
     `).join('')}
+
+    <div class="metrics">
+      ${metric(m.citiesLive, 'Cities Live')}
+      ${metric(m.totalBuildings, 'Buildings')}
+      ${metric(m.totalStyles, 'Styles')}
+      ${metric(m.prsMerged, 'PRs Merged')}
+      ${metric(m.totalUsers, 'Users')}
+    </div>
+
+    ${renderTasks(tasksData)}
 
     ${d.pinterest ? renderPinterest(d.pinterest) : ''}
 
