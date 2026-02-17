@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-17T17:26:00Z",
+  "lastReviewed": "2026-02-17T17:57:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -82,16 +82,16 @@
       "id": "philly-images",
       "title": "Download & prep Philadelphia building images",
       "project": "architecture-helper",
-      "status": "pending",
+      "status": "completed",
       "priority": "medium",
-      "progress": "Building list ready, images not downloaded",
+      "progress": "18/18 downloaded",
       "atlasCanDo": true,
       "running": false,
       "blockedReason": null,
       "nathanSteps": null,
       "created": "2026-02-17T16:15:00Z",
-      "updated": "2026-02-17T16:15:00Z",
-      "notes": "Building list in memory/philly-buildings-list.txt. Need to download from Wikipedia/Wikimedia with rate limiting."
+      "updated": "2026-02-17T17:57:00Z",
+      "notes": "All 18 Philadelphia building images downloaded to /tmp/philly_buildings/. Fixed 3 broken downloads (Eastern State Penitentiary, Comcast Technology Center, Wanamaker Building). All files validated >10KB."
     },
     {
       "id": "boston-images",
