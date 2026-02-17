@@ -41,7 +41,11 @@
       background: #fff;
     }
     #city-select { min-width: 220px; }
-    #zone-filter { min-width: 180px; }
+    #zone-filter { min-width: 200px; max-width: 260px; height: 32px; overflow-y: auto; }
+    #zone-filter:focus { height: 180px; position: absolute; z-index: 100; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    #zone-filter option { padding: 3px 8px; }
+    #zone-filter option:checked { background: #4363d8; color: white; }
+    .selected-tag { display: inline-block; background: #4363d8; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.75em; margin: 1px; }
     #zone-search { min-width: 160px; }
     .filter-group {
       display: flex;
@@ -155,12 +159,12 @@
     <div class="filter-divider"></div>
     
     <div class="filter-group filter-hidden" id="zone-filter-group">
-      <label for="zone-filter">Zone:</label>
-      <select id="zone-filter">
-        <option value="">All zones</option>
+      <label for="zone-filter">Zones:</label>
+      <select id="zone-filter" multiple size="1">
       </select>
       <input type="text" id="zone-search" placeholder="Search zones…" />
       <button id="clear-filter">Clear</button>
+      <span id="selected-zones" style="font-size:0.8em;color:#555;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></span>
     </div>
     
     <span id="status"></span>
@@ -221,10 +225,30 @@
       loadCity(slug);
     });
 
-    // Zone filter dropdown
+    // Zone filter dropdown (multi-select)
     document.getElementById('zone-filter').addEventListener('change', function() {
-      applyFilter(this.value);
+      const selected = Array.from(this.selectedOptions).map(o => o.value);
+      updateSelectedDisplay(selected);
+      if (selected.length === 0) {
+        applyFilter('');
+      } else if (selected.length === 1) {
+        applyFilter(selected[0]);
+      } else {
+        applyMultiFilter(selected, selected.join(', '));
+      }
     });
+
+    function updateSelectedDisplay(zones) {
+      const el = document.getElementById('selected-zones');
+      if (zones.length === 0) {
+        el.innerHTML = '';
+      } else if (zones.length <= 3) {
+        el.innerHTML = zones.map(z => `<span class="selected-tag">${z}</span>`).join('');
+      } else {
+        el.innerHTML = zones.slice(0,2).map(z => `<span class="selected-tag">${z}</span>`).join('') + 
+          `<span class="selected-tag">+${zones.length - 2} more</span>`;
+      }
+    }
 
     // Zone search — filters the dropdown options and also applies as text filter
     document.getElementById('zone-search').addEventListener('input', function() {
@@ -248,10 +272,10 @@
 
     // Clear button
     document.getElementById('clear-filter').addEventListener('click', function() {
-      document.getElementById('zone-filter').value = '';
+      const select = document.getElementById('zone-filter');
+      Array.from(select.options).forEach(opt => { opt.selected = false; opt.style.display = ''; });
       document.getElementById('zone-search').value = '';
-      // Reset dropdown option visibility
-      Array.from(document.getElementById('zone-filter').options).forEach(opt => opt.style.display = '');
+      document.getElementById('selected-zones').innerHTML = '';
       applyFilter('');
     });
 
@@ -310,8 +334,8 @@
 
     function populateZoneFilter(zoneCodes) {
       const select = document.getElementById('zone-filter');
-      // Clear existing options except first
-      select.innerHTML = '<option value="">All zones (' + zoneCodes.length + ')</option>';
+      // Clear existing options
+      select.innerHTML = '';
       
       // Count features per zone for the label
       const counts = {};
@@ -453,7 +477,11 @@
     function renderLegend(zoneCodes, singleFilter, multiFilter) {
       if (legend) { map.removeControl(legend); }
       
-      const matchSet = multiFilter ? new Set(multiFilter) : null;
+      // Also check the multi-select state
+      const selectEl = document.getElementById('zone-filter');
+      const selectedFromDropdown = selectEl ? Array.from(selectEl.selectedOptions).map(o => o.value) : [];
+      const matchSet = multiFilter ? new Set(multiFilter) : 
+                       (selectedFromDropdown.length > 1 ? new Set(selectedFromDropdown) : null);
       
       legend = L.control({ position: 'bottomright' });
       legend.onAdd = function() {
@@ -483,10 +511,22 @@
           item.style.opacity = isDimmed ? '0.4' : '1';
           item.innerHTML = `<span class="legend-color" style="background:${colorMap[code]}"></span>${code || '(empty)'}`;
           item.addEventListener('click', () => {
-            document.getElementById('zone-filter').value = code;
+            const select = document.getElementById('zone-filter');
+            const opt = Array.from(select.options).find(o => o.value === code);
+            if (opt) {
+              opt.selected = !opt.selected; // Toggle
+            }
+            const selected = Array.from(select.selectedOptions).map(o => o.value);
+            updateSelectedDisplay(selected);
             document.getElementById('zone-search').value = '';
-            Array.from(document.getElementById('zone-filter').options).forEach(opt => opt.style.display = '');
-            applyFilter(code);
+            Array.from(select.options).forEach(o => o.style.display = '');
+            if (selected.length === 0) {
+              applyFilter('');
+            } else if (selected.length === 1) {
+              applyFilter(selected[0]);
+            } else {
+              applyMultiFilter(selected, selected.join(', '));
+            }
           });
           div.appendChild(item);
         });
@@ -514,7 +554,10 @@
           if (zoneFilter) {
             // Apply filter after city loads
             setTimeout(() => {
-              document.getElementById('zone-filter').value = zoneFilter;
+              const select = document.getElementById('zone-filter');
+              const opt = Array.from(select.options).find(o => o.value === zoneFilter);
+              if (opt) opt.selected = true;
+              updateSelectedDisplay([zoneFilter]);
               applyFilter(zoneFilter);
             }, 1500);
           }
