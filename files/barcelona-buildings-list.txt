@@ -1,0 +1,21 @@
+# Barcelona Buildings List - Architecture Helper
+# 18 buildings covering Barcelona's architectural diversity
+
+1. Sagrada Família - Carrer de Mallorca 401, Barcelona - Art Nouveau/Gothic (Antoni Gaudí)
+2. Casa Batlló - Passeig de Gràcia 43, Barcelona - Art Nouveau/Modernisme (Antoni Gaudí)
+3. Casa Milà (La Pedrera) - Passeig de Gràcia 92, Barcelona - Art Nouveau/Modernisme (Antoni Gaudí)
+4. Park Güell Pavilions - Carrer d'Olot, Barcelona - Art Nouveau/Modernisme (Antoni Gaudí)
+5. Palau de la Música Catalana - Carrer Palau de la Música 4-6, Barcelona - Art Nouveau/Modernisme (Domènech i Montaner)
+6. Hospital de Sant Pau - Carrer de Sant Antoni Maria Claret 167, Barcelona - Art Nouveau/Modernisme (Domènech i Montaner)
+7. Barcelona Cathedral - Pla de la Seu, Barcelona - Gothic
+8. Santa Maria del Mar - Plaça de Santa Maria 1, Barcelona - Catalan Gothic
+9. Torre Agbar (Torre Glòries) - Avinguda Diagonal 211, Barcelona - High-tech/Neo-futurism (Jean Nouvel)
+10. Pavilion Mies van der Rohe - Avinguda de Francesc Ferrer i Guàrdia 7, Barcelona - International Style (Mies van der Rohe)
+11. Museu Nacional d'Art de Catalunya - Palau Nacional, Parc de Montjuïc, Barcelona - Neoclassical/Noucentisme
+12. Casa Amatller - Passeig de Gràcia 41, Barcelona - Art Nouveau/Neo-Gothic (Puig i Cadafalch)
+13. Arc de Triomf - Passeig de Lluís Companys, Barcelona - Neo-Mudéjar (Josep Vilaseca)
+14. Palau Güell - Carrer Nou de la Rambla 3-5, Barcelona - Art Nouveau/Modernisme (Antoni Gaudí)
+15. Mercat de la Boqueria - La Rambla 91, Barcelona - Art Nouveau/Iron architecture
+16. Torre de Collserola - Carretera de Vallvidrera al Tibidabo, Barcelona - High-tech (Norman Foster)
+17. Edifici Fòrum (Museu Blau) - Plaça Leonardo da Vinci 4-5, Barcelona - Deconstructivist (Herzog & de Meuron)
+18. W Barcelona Hotel - Plaça de la Rosa dels Vents 1, Barcelona - Contemporary (Ricardo Bofill)

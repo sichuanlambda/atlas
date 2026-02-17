@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-17T18:26:00Z",
+  "lastReviewed": "2026-02-17T18:56:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -112,16 +112,16 @@
       "id": "barcelona-images",
       "title": "Download & prep Barcelona building images",
       "project": "architecture-helper",
-      "status": "pending",
+      "status": "completed",
       "priority": "medium",
-      "progress": "Building list ready, images not downloaded",
+      "progress": "18/18 downloaded",
       "atlasCanDo": true,
       "running": false,
       "blockedReason": null,
       "nathanSteps": null,
       "created": "2026-02-17T16:15:00Z",
-      "updated": "2026-02-17T16:15:00Z",
-      "notes": "Building list in memory/barcelona-buildings-list.txt."
+      "updated": "2026-02-17T18:56:00Z",
+      "notes": "All 18 Barcelona building images downloaded to /tmp/barcelona_buildings/. Covers Sagrada Família, Casa Batlló, Casa Milà, Park Güell, Palau de la Música Catalana, Hospital de Sant Pau, Barcelona Cathedral, Santa Maria del Mar, Torre Agbar, Mies Pavilion, Palau Nacional, Casa Amatller, Arc de Triomf, Palau Güell, Mercat de la Boqueria, Torre de Collserola, Museu Blau, W Barcelona. Building list in files/barcelona-buildings-list.txt."
     },
     {
       "id": "cre-enrichment",
