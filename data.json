@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-02-16T22:20:00Z",
+  "lastUpdated": "2026-02-17T01:20:00Z",
   "status": "idle",
-  "currentWork": "Pinterest distribution launched",
+  "currentWork": "Next cities research complete, dashboard updated",
   "workstreams": [
     {
       "id": "nola-guide",
@@ -125,15 +125,31 @@
     }
   ],
   "metrics": {
-    "citiesLive": 6,
+    "citiesLive": 5,
     "citiesList": ["Denver", "Den Haag", "San Francisco", "Chicago", "New Orleans"],
+    "citiesInProgress": ["New York City"],
     "totalBuildings": 421,
     "visibleBuildings": 349,
     "totalStyles": 40,
     "prsMerged": 8,
-    "totalUsers": 333
+    "prsTotal": 9,
+    "prsPending": 1,
+    "totalUsers": 333,
+    "pinterestBoards": 10
+  },
+  "zoningCoverage": {
+    "lastUpdated": "2026-02-17T01:15:00Z",
+    "cities": [
+      {"city": "Denver", "state": "CO", "status": "not_started", "zoneCount": 0, "uniqueZoneCodes": 0, "fileSizeMB": 0},
+      {"city": "San Francisco", "state": "CA", "status": "not_started", "zoneCount": 0, "uniqueZoneCodes": 0, "fileSizeMB": 0},
+      {"city": "Chicago", "state": "IL", "status": "not_started", "zoneCount": 0, "uniqueZoneCodes": 0, "fileSizeMB": 0},
+      {"city": "New Orleans", "state": "LA", "status": "not_started", "zoneCount": 0, "uniqueZoneCodes": 0, "fileSizeMB": 0},
+      {"city": "New York City", "state": "NY", "status": "not_started", "zoneCount": 0, "uniqueZoneCodes": 0, "fileSizeMB": 0}
+    ]
   },
   "recentActivity": [
+    { "date": "2026-02-17T01:20:00Z", "text": "Next 10 cities ranked for expansion (DC, Philly, Boston lead)", "type": "research" },
+    { "date": "2026-02-17T01:15:00Z", "text": "Zoning data coverage section added to dashboard", "type": "milestone" },
     { "date": "2026-02-16T22:15:00Z", "text": "Pinterest launched: 2 pins published, 10 boards created, 12 queued", "type": "milestone" },
     { "date": "2026-02-16T19:00:00Z", "text": "All 4 improvements tested & verified (PR #8)", "type": "milestone" },
     { "date": "2026-02-16T18:30:00Z", "text": "PR #8 merged: OG tags, external image URLs, building names, bulk import", "type": "pr" },

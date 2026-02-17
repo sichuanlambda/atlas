@@ -192,6 +192,8 @@ function render(d, manifest) {
 
     ${d.pinterest ? renderPinterest(d.pinterest) : ''}
 
+    ${d.zoningCoverage ? renderZoningCoverage(d.zoningCoverage) : ''}
+
     <div class="section-title">📂 Shared Workspace</div>
     <div class="file-browser">
       ${renderFileSection(manifest)}
@@ -239,6 +241,36 @@ function render(d, manifest) {
         <div class="file-modal-body"></div>
       </div>
     </div>
+  `;
+}
+
+function renderZoningCoverage(z) {
+  const statusIcon = { downloaded: '✅', in_progress: '🔄', not_started: '⬜' };
+  const statusLabel = { downloaded: 'Downloaded', in_progress: 'In Progress', not_started: 'Not Started' };
+  const cities = z.cities || [];
+  const downloaded = cities.filter(c => c.status === 'downloaded').length;
+  const totalZones = cities.reduce((s, c) => s + (c.zoneCount || 0), 0);
+
+  return `
+    <div class="section-title">🗺️ Zoning Data Coverage</div>
+    <div class="metrics">
+      ${metric(downloaded + '/' + cities.length, 'Cities Downloaded')}
+      ${metric(totalZones, 'Total Zones')}
+    </div>
+    <table class="pins-table">
+      <thead><tr><th>City</th><th>State</th><th>Status</th><th>Zones</th><th>Unique Codes</th><th>Size (MB)</th></tr></thead>
+      <tbody>
+        ${cities.map(c => `<tr>
+          <td>${c.city}</td>
+          <td>${c.state}</td>
+          <td>${statusIcon[c.status] || '⬜'} ${statusLabel[c.status] || c.status}</td>
+          <td>${c.zoneCount || '—'}</td>
+          <td>${c.uniqueZoneCodes || '—'}</td>
+          <td>${c.fileSizeMB ? c.fileSizeMB.toFixed(1) : '—'}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+    ${cities.length === 0 ? '<div class="empty-folder">No zoning data collected yet</div>' : ''}
   `;
 }
 
