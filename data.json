@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-18T14:54:32Z",
+  "lastUpdated": "2026-02-18T14:56:15Z",
   "status": "idle",
   "currentWork": "Fixing building images, creating Place pages, writing vision docs",
   "workstreams": [
@@ -353,7 +353,11 @@
         "city": "New Orleans",
         "crossPosted": [],
         "created": "2026-02-16T22:10:00Z",
-        "metrics": {}
+        "metrics": {
+          "impressions": 10,
+          "saves": 0,
+          "clicks": 1
+        }
       },
       {
         "title": "Saenger Theatre | Art Deco Architecture in New Orleans",
@@ -363,7 +367,11 @@
         "city": "New Orleans",
         "crossPosted": [],
         "created": "2026-02-16T22:15:00Z",
-        "metrics": {}
+        "metrics": {
+          "impressions": 11,
+          "saves": 0,
+          "clicks": 2
+        }
       },
       {
         "title": "Pontalba Buildings | Victorian Architecture in New Orleans",
@@ -375,7 +383,11 @@
           "Victorian Architecture"
         ],
         "created": "2026-02-17T09:00:00Z",
-        "metrics": {}
+        "metrics": {
+          "impressions": 14,
+          "saves": 2,
+          "clicks": 1
+        }
       },
       {
         "title": "NOMA | Beaux-Arts Architecture in New Orleans",
@@ -387,7 +399,11 @@
           "Beaux-Arts Architecture"
         ],
         "created": "2026-02-17T13:00:00Z",
-        "metrics": {}
+        "metrics": {
+          "impressions": 9,
+          "saves": 1,
+          "clicks": 1
+        }
       },
       {
         "title": "Pitot House | Colonial Revival Architecture in New Orleans",
@@ -399,7 +415,11 @@
           "Victorian Architecture"
         ],
         "created": "2026-02-17T21:00:00Z",
-        "metrics": {}
+        "metrics": {
+          "impressions": 4,
+          "saves": 2,
+          "clicks": 0
+        }
       },
       {
         "title": "The Cabildo | Classical Roman Architecture in New Orleans",
@@ -411,7 +431,11 @@
           "Beaux-Arts Architecture"
         ],
         "created": "2026-02-18T09:00:00Z",
-        "metrics": {}
+        "metrics": {
+          "impressions": 3,
+          "saves": 1,
+          "clicks": 0
+        }
       },
       {
         "title": "Gallier Hall | Neoclassical Architecture in New Orleans",
@@ -423,7 +447,11 @@
           "Neoclassical Architecture"
         ],
         "created": "2026-02-18T14:18:00Z",
-        "metrics": {}
+        "metrics": {
+          "impressions": 1,
+          "saves": 1,
+          "clicks": 0
+        }
       }
     ],
     "queue": 7,
@@ -434,6 +462,12 @@
       "description": "{description}... Explore the full AI-powered architectural analysis. #{city} #{style} #ArchitectureLovers"
     },
     "nextReview": "2026-02-19T10:00:00Z",
-    "note": "Metrics require Pinterest API access (blocked_on_nathan). Manual check at pinterest.com/nathaninproduct/"
+    "note": "Metrics require Pinterest API access (blocked_on_nathan). Manual check at pinterest.com/nathaninproduct/",
+    "totalMetrics": {
+      "impressions": 52,
+      "saves": 7,
+      "clicks": 5,
+      "asOf": "2026-02-18T15:00:00Z"
+    }
   }
 }
