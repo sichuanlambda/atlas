@@ -537,7 +537,12 @@ function render(d, manifest, heartbeat, tasksData) {
       <div class="header-meta">
         <span class="status-dot ${d.status}"></span>
         <span>${d.currentWork}</span>
-        <span>Updated ${timeAgo(d.lastUpdated)}</span>
+      </div>
+      <div class="last-updated-bar">
+        <span class="lu-label">📅 Last Updated:</span>
+        <span class="lu-time">${new Date(d.lastUpdated).toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' })} (${timeAgo(d.lastUpdated)})</span>
+        ${heartbeat ? `<span class="lu-sep">|</span><span class="lu-heartbeat">💓 Heartbeat: ${timeAgo(heartbeat.lastHeartbeat)}</span>` : ''}
+        ${tasksData ? `<span class="lu-sep">|</span><span class="lu-tasks">📋 Tasks: ${tasksData.tasks.filter(t=>t.status!=='completed').length} active</span>` : ''}
       </div>
     </div>
 

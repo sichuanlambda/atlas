@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-02-17T21:00:00Z",
+  "lastUpdated": "2026-02-18T14:19:29Z",
   "status": "idle",
-  "currentWork": "Overnight batch complete \u2014 NYC guide live, zoning data for 10 cities acquired, next cities ranked",
+  "currentWork": "Fixing building images, creating Place pages, writing vision docs",
   "workstreams": [
     {
       "id": "nola-guide",
@@ -157,7 +157,7 @@
     }
   ],
   "metrics": {
-    "citiesLive": 6,
+    "citiesLive": 8,
     "citiesList": [
       "Denver",
       "Den Haag",
@@ -168,7 +168,7 @@
     "citiesInProgress": [
       "New York City"
     ],
-    "totalBuildings": 439,
+    "totalBuildings": 473,
     "visibleBuildings": 349,
     "totalStyles": 40,
     "prsMerged": 8,
@@ -264,7 +264,7 @@
   "recentActivity": [
     {
       "date": "2026-02-17T13:00:00Z",
-      "text": "Pinterest pin #4: NOMA (New Orleans Museum of Art) → New Orleans + Beaux-Arts boards",
+      "text": "Pinterest pin #4: NOMA (New Orleans Museum of Art) \u2192 New Orleans + Beaux-Arts boards",
       "type": "milestone"
     },
     {
@@ -390,7 +390,9 @@
         "title": "NOMA | Beaux-Arts Architecture in New Orleans",
         "url": "https://www.pinterest.com/pin/1143281055425863521",
         "board": "New Orleans Architecture",
-        "crossPosted": ["Beaux-Arts Architecture"],
+        "crossPosted": [
+          "Beaux-Arts Architecture"
+        ],
         "building": "NOMA",
         "city": "New Orleans",
         "template": "v1",

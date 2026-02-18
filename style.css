@@ -899,3 +899,23 @@ h1, h2, h3, .section-title {
   margin-top: 0.3rem;
   font-style: italic;
 }
+
+/* Last Updated Bar */
+.last-updated-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #aab;
+}
+.lu-label { font-weight: 600; color: #dde; }
+.lu-time { color: #8be; }
+.lu-sep { color: rgba(255,255,255,0.2); }
+.lu-heartbeat { color: #8e8; }
+.lu-tasks { color: #eb8; }
