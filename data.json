@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-18T18:07:33Z",
+  "lastUpdated": "2026-02-18T20:19:20Z",
   "status": "idle",
   "currentWork": "Fixing building images, creating Place pages, writing vision docs",
   "workstreams": [
@@ -456,7 +456,7 @@
         }
       }
     ],
-    "queue": 25,
+    "queue": 43,
     "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
     "currentTemplate": {
       "version": "v1",
@@ -464,12 +464,13 @@
       "description": "{description}... Explore the full AI-powered architectural analysis. #{city} #{style} #ArchitectureLovers"
     },
     "nextReview": "2026-02-19T10:00:00Z",
-    "note": "Queue loaded: 6 NOLA remaining + 17 NYC + 2 DC. NYC/DC boards created. Auto-queue rule: every new verified city gets queued.",
+    "note": "Queue: 6 NOLA + 17 NYC + 2 DC + 18 Boston = 43 total. At 4 pins/day = ~11 days of content.",
     "totalMetrics": {
       "impressions": 52,
       "saves": 7,
       "clicks": 5,
       "asOf": "2026-02-18T15:00:00Z"
     }
-  }
+  },
+  "cities": {}
 }
