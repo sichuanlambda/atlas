@@ -1,7 +1,6 @@
 {
-  "lastHeartbeat": "2026-02-18T03:56:00Z",
+  "lastHeartbeat": "2026-02-18T04:26:00Z",
   "status": "idle",
-  "lastAction": "Routine check — no messages, no sub-agents running. All high-priority tasks blocked on Nathan (browser relay). Low-priority pinterest-pins deferred (4 AM).",
-  "activeJobs": [],
-  "blockedSummary": "4 tasks blocked on browser relay, 1 on PR merge, 1 on GCP API, 1 on Hetzner token"
+  "lastAction": "Routine check — no messages, no sub-agents running. All high-priority atlas tasks blocked on browser relay. Only pending task is pinterest-pins (low priority, skipped at 4AM).",
+  "activeJobs": []
 }
