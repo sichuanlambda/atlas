@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-17T23:56:00Z",
+  "lastReviewed": "2026-02-18T00:26:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -144,7 +144,7 @@
       "running": false,
       "blockedReason": null,
       "nathanSteps": null,
-      "created": "2026-02-17T20:05:00Z",
+      "created": "2026-02-17T15:30:00Z",
       "updated": "2026-02-17T22:56:00Z",
       "notes": "Batch 1 complete. 57 products enriched overall. Two sub-agents ran successfully. Pushed to GitHub."
     },
@@ -184,16 +184,19 @@
       "id": "gsc-indexing-script",
       "title": "Build Google Search Console indexing script",
       "project": "seo",
-      "status": "in_progress",
+      "status": "blocked_on_nathan",
       "priority": "medium",
-      "progress": "Sub-agent building script",
-      "atlasCanDo": true,
-      "running": true,
-      "blockedReason": null,
-      "nathanSteps": null,
+      "progress": "Script built, API needs enabling",
+      "atlasCanDo": false,
+      "running": false,
+      "blockedReason": "Web Search Indexing API needs to be enabled in Google Cloud Console",
+      "nathanSteps": [
+        "Enable the Indexing API at: https://console.developers.google.com/apis/api/indexing.googleapis.com/overview?project=644007884476",
+        "Then re-run: node /home/openclaw/projects/atlas/scripts/gsc-indexing.js"
+      ],
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-17T20:05:00Z",
-      "notes": "Key at ~/.config/secrets/google-search-console.json. Both architecturehelper.com and cresoftware.tech have atlas-indexing as Owner. Build: (1) auth script using service account, (2) submit all style page URLs for indexing, (3) submit all city/place URLs, (4) generate and submit sitemaps, (5) set up as cron job."
+      "updated": "2026-02-18T00:26:00Z",
+      "notes": "Script at /home/openclaw/projects/atlas/scripts/gsc-indexing.js. Auth via service account works. 199 URLs found across both sites. All submissions failed because Indexing API not enabled in GCP project 644007884476."
     },
     {
       "id": "dc-missing-images",

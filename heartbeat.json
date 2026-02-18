@@ -1,6 +1,15 @@
 {
-  "lastHeartbeat": "2026-02-17T23:56:00Z",
-  "status": "ok",
-  "lastAction": "Spawned sub-agent atlas-gsc-indexing to build GSC indexing script",
-  "activeJobs": ["atlas-gsc-indexing"]
+  "lastHeartbeat": "2026-02-18T00:26:00Z",
+  "status": "idle",
+  "lastAction": "Updated gsc-indexing-script to blocked_on_nathan (API needs enabling in GCP). No new work to spawn — all actionable tasks blocked on browser relay or Nathan.",
+  "activeJobs": [],
+  "blockedItems": [
+    "pr18-perf: PR needs merge+deploy",
+    "philly-buildings: browser relay down",
+    "boston-buildings: browser relay down",
+    "barcelona-buildings: browser relay down",
+    "gsc-indexing-script: Indexing API not enabled in GCP",
+    "hetzner-api-token: needs credentials"
+  ],
+  "nextActionable": "pinterest-pins (low priority, can do without browser)"
 }
