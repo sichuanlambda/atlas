@@ -1,10 +1,7 @@
 {
-  "lastHeartbeat": "2026-02-18T05:56:00Z",
-  "status": "active",
-  "lastAction": "Spawned sub-agent atlas-pinterest-pins to generate Pinterest pin queue for all cities. High-priority tasks still blocked on Nathan (browser relay + PR merge).",
-  "activeJobs": ["atlas-pinterest-pins"],
-  "blockedSummary": {
-    "browserRelay": ["philly-buildings", "boston-buildings", "barcelona-buildings"],
-    "nathanAction": ["pr18-perf", "gsc-indexing-script", "hetzner-api-token"]
-  }
+  "lastHeartbeat": "2026-02-18T06:26:00Z",
+  "status": "idle",
+  "lastAction": "Marked pinterest-pins completed (115 pins across 8 cities). All actionable tasks blocked on browser relay or Nathan.",
+  "activeJobs": [],
+  "blockedSummary": "5 tasks blocked_on_nathan: PR #18 merge, philly/boston/barcelona buildings (browser relay), GSC indexing API, Hetzner token"
 }

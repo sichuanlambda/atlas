@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-18T05:56:00Z",
+  "lastReviewed": "2026-02-18T06:26:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -96,7 +96,7 @@
         "Or restart the browser relay extension"
       ],
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-18T05:26:00Z",
+      "updated": "2026-02-18T06:26:00Z",
       "notes": "2/18 buildings submitted (Independence Hall, City Hall). Sub-agents v2 and v3 both failed due to browser relay being disconnected. All 18 images ready in /tmp/openclaw/uploads/. Login as atlas@architecturehelper.com."
     },
     {
@@ -113,7 +113,7 @@
         "Fix browser relay (attach tab) so Atlas can submit buildings"
       ],
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-18T05:26:00Z",
+      "updated": "2026-02-18T06:26:00Z",
       "notes": "Images in /tmp/boston_buildings/. Copy to /tmp/openclaw/uploads/ before submitting. SEO copy in memory/boston-seo-copy.md. Use 60s delays between submissions. Create Place page after all buildings submitted."
     },
     {
@@ -130,7 +130,7 @@
         "Fix browser relay (attach tab) so Atlas can submit buildings"
       ],
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-18T05:26:00Z",
+      "updated": "2026-02-18T06:26:00Z",
       "notes": "Images in /tmp/barcelona_buildings/. Copy to /tmp/openclaw/uploads/ before submitting. SEO copy in memory/barcelona-seo-copy.md. Use 60s delays between submissions. Create Place page after all buildings submitted. First European city!"
     },
     {
@@ -297,16 +297,16 @@
       "id": "pinterest-pins",
       "title": "Queue Pinterest pins for all cities",
       "project": "architecture-helper",
-      "status": "in_progress",
+      "status": "completed",
       "priority": "low",
-      "progress": "Sub-agent spawned to generate pin queue JSON",
+      "progress": "115 pins queued across 8 cities",
       "atlasCanDo": true,
-      "running": true,
+      "running": false,
       "blockedReason": null,
       "nathanSteps": null,
       "created": "2026-02-17T16:15:00Z",
-      "updated": "2026-02-17T20:05:00Z",
-      "notes": "Existing cron handles 4x daily posting. Need to queue pins for all cities. Can prepare pin data (title, description, URL, board) in memory/pinterest-pins.json for the cron to consume."
+      "updated": "2026-02-18T06:26:00Z",
+      "notes": "115 pins generated in pinterest-pins-queue.json across Chicago, Den Haag, Denver, New Orleans, NYC, Philadelphia, San Francisco, Washington DC. Existing cron handles 4x daily posting."
     }
   ]
 }
