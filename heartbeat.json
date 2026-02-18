@@ -1,7 +1,12 @@
 {
-  "lastHeartbeat": "2026-02-18T06:26:00Z",
+  "lastHeartbeat": "2026-02-18T06:56:00Z",
   "status": "idle",
-  "lastAction": "Marked pinterest-pins completed (115 pins across 8 cities). All actionable tasks blocked on browser relay or Nathan.",
+  "lastAction": "No actionable tasks — all pending work blocked on Nathan (browser relay, PR merge, API enabling)",
   "activeJobs": [],
-  "blockedSummary": "5 tasks blocked_on_nathan: PR #18 merge, philly/boston/barcelona buildings (browser relay), GSC indexing API, Hetzner token"
+  "blockedSummary": {
+    "browserRelay": ["philly-buildings", "boston-buildings", "barcelona-buildings"],
+    "prMerge": ["pr18-perf"],
+    "apiEnable": ["gsc-indexing-script"],
+    "credentials": ["hetzner-api-token"]
+  }
 }
