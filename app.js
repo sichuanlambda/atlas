@@ -213,16 +213,16 @@ function renderProjectAH(el) {
         <div style="font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:8px">BOARDS</div>
         <div style="display:flex;gap:6px;flex-wrap:wrap">
           ${((p.boards||{}).city||[]).map(b => {
-            const slug = b.toLowerCase().replace(/\\s+/g,'-');
-            return \`<a href="https://pinterest.com/nathaninproduct/\${slug}" target="_blank" class="btn btn-ghost" style="font-size:11px;padding:4px 10px">🏙️ \${b}</a>\`;
+            const slug = b.toLowerCase().replace(/\s+/g,'-');
+            return '<a href="https://pinterest.com/nathaninproduct/' + slug + '" target="_blank" class="btn btn-ghost" style="font-size:11px;padding:4px 10px">\u{1F3D9}\uFE0F ' + b + '</a>';
           }).join('')}
           ${((p.boards||{}).style||[]).map(b => {
-            const slug = b.toLowerCase().replace(/\\s+/g,'-');
-            return \`<a href="https://pinterest.com/nathaninproduct/\${slug}" target="_blank" class="btn btn-ghost" style="font-size:11px;padding:4px 10px">🎨 \${b}</a>\`;
+            const slug = b.toLowerCase().replace(/\s+/g,'-');
+            return '<a href="https://pinterest.com/nathaninproduct/' + slug + '" target="_blank" class="btn btn-ghost" style="font-size:11px;padding:4px 10px">\u{1F3A8} ' + b + '</a>';
           }).join('')}
         </div>
       </div>
-      ${p.note ? \`<div style="font-size:12px;color:var(--text-dim);padding:8px 12px;background:rgba(255,255,255,0.03);border-radius:var(--radius)">\${p.note}</div>\` : ''}
+      ${p.note ? '<div style="font-size:12px;color:var(--text-dim);padding:8px 12px;background:rgba(255,255,255,0.03);border-radius:var(--radius)">' + p.note + '</div>' : ''}
     </div>
     <div class="card" style="margin-top:16px">
       <div class="card-header"><span class="card-title">Links</span></div>
