@@ -1,6 +1,6 @@
 {
-  "lastHeartbeat": "2026-02-18T02:56:00Z",
+  "lastHeartbeat": "2026-02-18T03:26:00Z",
   "status": "idle",
-  "lastAction": "Routine check — no actionable tasks. 5 tasks blocked on Nathan (browser relay, GSC API, Hetzner token). 1 low-priority pending (pinterest-pins). All else completed.",
+  "lastAction": "Routine check — no actionable tasks. 4 tasks blocked on Nathan (browser relay x3, GSC API). 1 low-priority pending (pinterest-pins). All else completed.",
   "activeJobs": []
 }
