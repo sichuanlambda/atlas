@@ -174,6 +174,7 @@ function renderProjects(el) {
 
 function renderProjectAH(el) {
   const m = DATA.metrics || {};
+  const p = DATA.pinterest || {};
   const live = m.citiesList || [];
   const pipeline = m.citiesInPipeline || [];
   el.innerHTML = `
@@ -198,12 +199,39 @@ function renderProjectAH(el) {
       </div>
     </div>
     <div class="card" style="margin-top:16px">
+      <div class="card-header">
+        <span class="card-title">📌 Pinterest Distribution</span>
+        <span class="card-subtitle">${p.totalPins || m.pinterestPins || 0} live · ${p.queue || m.pinterestQueue || 0} queued · ${p.schedule || '4x daily'}</span>
+      </div>
+      <div class="grid grid-4" style="margin-bottom:16px">
+        <div class="stat-card"><div class="stat-label">Pins Live</div><div class="stat-value">${p.totalPins || m.pinterestPins || 0}</div></div>
+        <div class="stat-card"><div class="stat-label">Queue</div><div class="stat-value">${p.queue || m.pinterestQueue || 0}</div><div class="stat-change positive">~${Math.ceil((p.queue || m.pinterestQueue || 0)/4)}d content</div></div>
+        <div class="stat-card"><div class="stat-label">Impressions</div><div class="stat-value">${(p.totalMetrics||{}).impressions || m.pinterestImpressions || 0}</div></div>
+        <div class="stat-card"><div class="stat-label">Saves</div><div class="stat-value">${(p.totalMetrics||{}).saves || m.pinterestSaves || 0}</div></div>
+      </div>
+      <div style="margin-bottom:12px">
+        <div style="font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:8px">BOARDS</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          ${((p.boards||{}).city||[]).map(b => {
+            const slug = b.toLowerCase().replace(/\\s+/g,'-');
+            return \`<a href="https://pinterest.com/nathaninproduct/\${slug}" target="_blank" class="btn btn-ghost" style="font-size:11px;padding:4px 10px">🏙️ \${b}</a>\`;
+          }).join('')}
+          ${((p.boards||{}).style||[]).map(b => {
+            const slug = b.toLowerCase().replace(/\\s+/g,'-');
+            return \`<a href="https://pinterest.com/nathaninproduct/\${slug}" target="_blank" class="btn btn-ghost" style="font-size:11px;padding:4px 10px">🎨 \${b}</a>\`;
+          }).join('')}
+        </div>
+      </div>
+      ${p.note ? \`<div style="font-size:12px;color:var(--text-dim);padding:8px 12px;background:rgba(255,255,255,0.03);border-radius:var(--radius)">\${p.note}</div>\` : ''}
+    </div>
+    <div class="card" style="margin-top:16px">
       <div class="card-header"><span class="card-title">Links</span></div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <a href="${AH_URL}" target="_blank" class="btn btn-ghost">🌐 Site</a>
         <a href="${AH_URL}/admin/building_analyses" target="_blank" class="btn btn-ghost">⚙️ Admin</a>
         <a href="${AH_URL}/building_library" target="_blank" class="btn btn-ghost">📚 Library</a>
         <a href="${AH_URL}/styles" target="_blank" class="btn btn-ghost">🎨 Styles</a>
+        <a href="https://pinterest.com/nathaninproduct" target="_blank" class="btn btn-ghost">📌 Pinterest</a>
         <a href="https://github.com/sichuanlambda/feedback-loop" target="_blank" class="btn btn-ghost">GitHub</a>
       </div>
     </div>`;
