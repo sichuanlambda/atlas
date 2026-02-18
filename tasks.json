@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-18T11:56:00Z",
+  "lastReviewed": "2026-02-18T14:22:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -34,7 +34,7 @@
     },
     {
       "id": "pr16-review",
-      "title": "PR #16 — Rich style pages",
+      "title": "PR #16 \u2014 Rich style pages",
       "project": "architecture-helper",
       "status": "completed",
       "priority": "high",
@@ -49,7 +49,7 @@
     },
     {
       "id": "pr18-perf",
-      "title": "Merge & deploy PR #18 — Performance & SEO fixes",
+      "title": "Merge & deploy PR #18 \u2014 Performance & SEO fixes",
       "project": "architecture-helper",
       "status": "blocked_on_nathan",
       "priority": "high",
@@ -79,7 +79,7 @@
       "nathanSteps": null,
       "created": "2026-02-17T16:15:00Z",
       "updated": "2026-02-17T20:56:00Z",
-      "notes": "Place created with SEO content. Shows 3/11 buildings linked — remaining DC buildings may need association via admin. Coordinates: 38.9072, -77.0369."
+      "notes": "Place created with SEO content. Shows 3/11 buildings linked \u2014 remaining DC buildings may need association via admin. Coordinates: 38.9072, -77.0369."
     },
     {
       "id": "philly-buildings",
@@ -90,7 +90,7 @@
       "progress": "2/18 submitted. Browser relay down.",
       "atlasCanDo": true,
       "running": false,
-      "blockedReason": "Chrome browser relay not connected — browser automation non-functional since Feb 17.",
+      "blockedReason": "Chrome browser relay not connected \u2014 browser automation non-functional since Feb 17.",
       "nathanSteps": [
         "Click the OpenClaw Browser Relay toolbar icon in Chrome to attach a tab",
         "Or restart the browser relay extension"
@@ -108,7 +108,7 @@
       "progress": "18 images downloaded, blocked on browser relay",
       "atlasCanDo": true,
       "running": false,
-      "blockedReason": "Browser relay down — same issue as philly-buildings",
+      "blockedReason": "Browser relay down \u2014 same issue as philly-buildings",
       "nathanSteps": [
         "Fix browser relay (attach tab) so Atlas can submit buildings"
       ],
@@ -125,7 +125,7 @@
       "progress": "18 images downloaded, blocked on browser relay",
       "atlasCanDo": true,
       "running": false,
-      "blockedReason": "Browser relay down — same issue as philly-buildings",
+      "blockedReason": "Browser relay down \u2014 same issue as philly-buildings",
       "nathanSteps": [
         "Fix browser relay (attach tab) so Atlas can submit buildings"
       ],
@@ -159,7 +159,9 @@
       "running": false,
       "blockedReason": null,
       "nathanSteps": null,
-      "dependsOn": ["cre-enrichment-batch1"],
+      "dependsOn": [
+        "cre-enrichment-batch1"
+      ],
       "created": "2026-02-17T20:05:00Z",
       "updated": "2026-02-17T23:26:00Z",
       "notes": "Products 81-130. 25 enriched successfully, 25 failed (blocked sites, non-CRE, unreachable). Committed and pushed."
@@ -175,10 +177,12 @@
       "running": false,
       "blockedReason": null,
       "nathanSteps": null,
-      "dependsOn": ["cre-enrichment-batch2"],
+      "dependsOn": [
+        "cre-enrichment-batch2"
+      ],
       "created": "2026-02-17T20:05:00Z",
       "updated": "2026-02-17T23:38:00Z",
-      "notes": "Products 131-174. 25 enriched, 5 failed (blocked sites), 14 not reached. All 3 batches complete — full directory enrichment done. Pushed to GitHub."
+      "notes": "Products 131-174. 25 enriched, 5 failed (blocked sites), 14 not reached. All 3 batches complete \u2014 full directory enrichment done. Pushed to GitHub."
     },
     {
       "id": "gsc-indexing-script",
@@ -277,21 +281,16 @@
       "id": "hetzner-api-token",
       "title": "Hetzner API token for dashboard",
       "project": "atlas-infra",
-      "status": "blocked_on_nathan",
+      "status": "completed",
       "priority": "low",
-      "progress": "Dashboard UI built",
+      "progress": "Token + server ID configured in dashboard",
       "atlasCanDo": false,
       "running": false,
-      "blockedReason": "Nathan needs to enter Hetzner credentials in the dashboard ⚙️",
-      "nathanSteps": [
-        "Go to https://console.hetzner.cloud → Security → API Tokens",
-        "Generate read+write token",
-        "Find server ID in Hetzner Console URL",
-        "Open Atlas dashboard → ⚙️ → paste token + server ID → Save"
-      ],
+      "blockedReason": null,
+      "nathanSteps": null,
       "created": "2026-02-17T16:15:00Z",
-      "updated": "2026-02-17T20:05:00Z",
-      "notes": "Low priority — nice to have for emergency restarts from dashboard."
+      "updated": "2026-02-18T14:30:00Z",
+      "notes": "Nathan added Hetzner API token and server ID. Reboot button needs testing (got network interface error - may need server ID fix)."
     },
     {
       "id": "pinterest-pins",
