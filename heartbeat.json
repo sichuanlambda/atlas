@@ -1,12 +1,6 @@
 {
-  "lastHeartbeat": "2026-02-18T06:56:00Z",
+  "lastHeartbeat": "2026-02-18T07:26:00Z",
   "status": "idle",
-  "lastAction": "No actionable tasks — all pending work blocked on Nathan (browser relay, PR merge, API enabling)",
-  "activeJobs": [],
-  "blockedSummary": {
-    "browserRelay": ["philly-buildings", "boston-buildings", "barcelona-buildings"],
-    "prMerge": ["pr18-perf"],
-    "apiEnable": ["gsc-indexing-script"],
-    "credentials": ["hetzner-api-token"]
-  }
+  "lastAction": "Heartbeat check — no actionable tasks. All browser tasks blocked (relay down). No messages.",
+  "activeJobs": []
 }
