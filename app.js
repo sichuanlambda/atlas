@@ -519,11 +519,11 @@ function renderPinterest(p) {
     <div class="boards-grid">
       <div class="board-group">
         <strong>🏙 City Boards (${p.boards.city.length})</strong>
-        <ul>${p.boards.city.map(b => `<li>${b}</li>`).join('')}</ul>
+        <ul>${p.boards.city.map(b => `<li><a href="https://www.pinterest.com/nathaninproduct/${b.toLowerCase().replace(/ /g, '-')}/" target="_blank">${b}</a></li>`).join('')}</ul>
       </div>
       <div class="board-group">
         <strong>🎨 Style Boards (${p.boards.style.length})</strong>
-        <ul>${p.boards.style.map(b => `<li>${b}</li>`).join('')}</ul>
+        <ul>${p.boards.style.map(b => `<li><a href="https://www.pinterest.com/nathaninproduct/${b.toLowerCase().replace(/ /g, '-')}/" target="_blank">${b}</a></li>`).join('')}</ul>
       </div>
     </div>
   `;
