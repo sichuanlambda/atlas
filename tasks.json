@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-18T05:26:00Z",
+  "lastReviewed": "2026-02-18T05:56:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -297,11 +297,11 @@
       "id": "pinterest-pins",
       "title": "Queue Pinterest pins for all cities",
       "project": "architecture-helper",
-      "status": "pending",
+      "status": "in_progress",
       "priority": "low",
-      "progress": "4 pins published, ~450 buildings to cover",
+      "progress": "Sub-agent spawned to generate pin queue JSON",
       "atlasCanDo": true,
-      "running": false,
+      "running": true,
       "blockedReason": null,
       "nathanSteps": null,
       "created": "2026-02-17T16:15:00Z",
