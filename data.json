@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-18T14:20:00Z",
+  "lastUpdated": "2026-02-18T14:54:32Z",
   "status": "idle",
   "currentWork": "Fixing building images, creating Place pages, writing vision docs",
   "workstreams": [
@@ -326,7 +326,7 @@
   ],
   "pinterest": {
     "account": "@nathaninproduct",
-    "totalPins": 4,
+    "totalPins": 7,
     "totalBoards": 10,
     "boards": {
       "city": [
@@ -351,13 +351,9 @@
         "board": "New Orleans Architecture",
         "building": "St. Louis Cathedral",
         "city": "New Orleans",
-        "template": "v1",
+        "crossPosted": [],
         "created": "2026-02-16T22:10:00Z",
-        "metrics": {
-          "impressions": 0,
-          "saves": 0,
-          "clicks": 0
-        }
+        "metrics": {}
       },
       {
         "title": "Saenger Theatre | Art Deco Architecture in New Orleans",
@@ -365,13 +361,9 @@
         "board": "New Orleans Architecture",
         "building": "Saenger Theatre",
         "city": "New Orleans",
-        "template": "v1",
+        "crossPosted": [],
         "created": "2026-02-16T22:15:00Z",
-        "metrics": {
-          "impressions": 0,
-          "saves": 0,
-          "clicks": 0
-        }
+        "metrics": {}
       },
       {
         "title": "Pontalba Buildings | Victorian Architecture in New Orleans",
@@ -379,39 +371,69 @@
         "board": "New Orleans Architecture",
         "building": "Pontalba Buildings",
         "city": "New Orleans",
-        "template": "v1",
+        "crossPosted": [
+          "Victorian Architecture"
+        ],
         "created": "2026-02-17T09:00:00Z",
-        "metrics": {
-          "impressions": 0,
-          "saves": 0,
-          "clicks": 0
-        }
+        "metrics": {}
       },
       {
         "title": "NOMA | Beaux-Arts Architecture in New Orleans",
         "url": "https://www.pinterest.com/pin/1143281055425863521",
         "board": "New Orleans Architecture",
+        "building": "NOMA",
+        "city": "New Orleans",
         "crossPosted": [
           "Beaux-Arts Architecture"
         ],
-        "building": "NOMA",
-        "city": "New Orleans",
-        "template": "v1",
         "created": "2026-02-17T13:00:00Z",
-        "metrics": {
-          "impressions": 0,
-          "saves": 0,
-          "clicks": 0
-        }
+        "metrics": {}
+      },
+      {
+        "title": "Pitot House | Colonial Revival Architecture in New Orleans",
+        "url": "https://www.pinterest.com/pin/1143281055425889730",
+        "board": "New Orleans Architecture",
+        "building": "Pitot House",
+        "city": "New Orleans",
+        "crossPosted": [
+          "Victorian Architecture"
+        ],
+        "created": "2026-02-17T21:00:00Z",
+        "metrics": {}
+      },
+      {
+        "title": "The Cabildo | Classical Roman Architecture in New Orleans",
+        "url": "https://www.pinterest.com/pin/1143281055425917613",
+        "board": "New Orleans Architecture",
+        "building": "The Cabildo",
+        "city": "New Orleans",
+        "crossPosted": [
+          "Beaux-Arts Architecture"
+        ],
+        "created": "2026-02-18T09:00:00Z",
+        "metrics": {}
+      },
+      {
+        "title": "Gallier Hall | Neoclassical Architecture in New Orleans",
+        "url": "https://www.pinterest.com/pin/1143281055425929915",
+        "board": "New Orleans Architecture",
+        "building": "Gallier Hall",
+        "city": "New Orleans",
+        "crossPosted": [
+          "Neoclassical Architecture"
+        ],
+        "created": "2026-02-18T14:18:00Z",
+        "metrics": {}
       }
     ],
-    "queue": 10,
+    "queue": 7,
     "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
     "currentTemplate": {
       "version": "v1",
       "title": "{building_name} | {primary_style} Architecture in {city}",
       "description": "{description}... Explore the full AI-powered architectural analysis. #{city} #{style} #ArchitectureLovers"
     },
-    "nextReview": "2026-02-19T10:00:00Z"
+    "nextReview": "2026-02-19T10:00:00Z",
+    "note": "Metrics require Pinterest API access (blocked_on_nathan). Manual check at pinterest.com/nathaninproduct/"
   }
 }

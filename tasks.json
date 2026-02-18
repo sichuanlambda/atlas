@@ -51,20 +51,16 @@
       "id": "pr18-perf",
       "title": "Merge & deploy PR #18 \u2014 Performance & SEO fixes",
       "project": "architecture-helper",
-      "status": "blocked_on_nathan",
+      "status": "completed",
       "priority": "high",
-      "progress": "PR ready for review",
+      "progress": "Merged & deployed",
       "atlasCanDo": false,
       "running": false,
-      "blockedReason": "Needs merge + deploy",
-      "nathanSteps": [
-        "Review PR: https://github.com/sichuanlambda/feedback-loop/pull/18",
-        "Merge on GitHub",
-        "git pull origin main && git push heroku main"
-      ],
+      "blockedReason": null,
+      "nathanSteps": null,
       "created": "2026-02-17T19:30:00Z",
-      "updated": "2026-02-17T20:05:00Z",
-      "notes": "Fixes LCP from 28s to ~3-5s (pagination), adds meta descriptions, OG tags, cache headers, lang attr. Based on PageSpeed Insights report."
+      "updated": "2026-02-18T14:40:00Z",
+      "notes": "PR #18 merged & deployed. Pagination, meta descriptions, OG tags, cache headers, lang attr, canonical URLs all live."
     },
     {
       "id": "dc-place-page",
@@ -85,50 +81,43 @@
       "id": "philly-buildings",
       "title": "Submit Philadelphia buildings + create Place page",
       "project": "architecture-helper",
-      "status": "blocked_on_nathan",
+      "status": "in_progress",
       "priority": "high",
-      "progress": "2/18 submitted. Browser relay down.",
+      "progress": "Resubmitting with Wikimedia image URLs (sub-agent running)",
       "atlasCanDo": true,
-      "running": false,
-      "blockedReason": "Chrome browser relay not connected \u2014 browser automation non-functional since Feb 17.",
-      "nathanSteps": [
-        "Click the OpenClaw Browser Relay toolbar icon in Chrome to attach a tab",
-        "Or restart the browser relay extension"
-      ],
+      "running": true,
+      "blockedReason": null,
+      "nathanSteps": null,
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-18T11:56:00Z",
+      "updated": "2026-02-18T14:45:00Z",
       "notes": "2/18 buildings submitted (Independence Hall, City Hall). Sub-agents v2 and v3 both failed due to browser relay being disconnected. All 18 images ready in /tmp/openclaw/uploads/. Login as atlas@architecturehelper.com."
     },
     {
       "id": "boston-buildings",
       "title": "Submit Boston buildings + create Place page",
       "project": "architecture-helper",
-      "status": "blocked_on_nathan",
+      "status": "in_progress",
       "priority": "high",
-      "progress": "18 images downloaded, blocked on browser relay",
+      "progress": "Resubmitting with Wikimedia image URLs (sub-agent running)",
       "atlasCanDo": true,
-      "running": false,
-      "blockedReason": "Browser relay down \u2014 same issue as philly-buildings",
-      "nathanSteps": [
-        "Fix browser relay (attach tab) so Atlas can submit buildings"
-      ],
+      "running": true,
+      "blockedReason": null,
+      "nathanSteps": null,
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-18T11:56:00Z",
+      "updated": "2026-02-18T14:45:00Z",
       "notes": "Images in /tmp/boston_buildings/. Copy to /tmp/openclaw/uploads/ before submitting. SEO copy in memory/boston-seo-copy.md. Use 60s delays between submissions. Create Place page after all buildings submitted."
     },
     {
       "id": "barcelona-buildings",
       "title": "Submit Barcelona buildings + create Place page",
       "project": "architecture-helper",
-      "status": "blocked_on_nathan",
+      "status": "pending",
       "priority": "high",
-      "progress": "18 images downloaded, blocked on browser relay",
+      "progress": "18 images downloaded, waiting for Philly/Boston to complete",
       "atlasCanDo": true,
       "running": false,
-      "blockedReason": "Browser relay down \u2014 same issue as philly-buildings",
-      "nathanSteps": [
-        "Fix browser relay (attach tab) so Atlas can submit buildings"
-      ],
+      "blockedReason": null,
+      "nathanSteps": null,
       "created": "2026-02-17T20:05:00Z",
       "updated": "2026-02-18T11:56:00Z",
       "notes": "Images in /tmp/barcelona_buildings/. Copy to /tmp/openclaw/uploads/ before submitting. SEO copy in memory/barcelona-seo-copy.md. Use 60s delays between submissions. Create Place page after all buildings submitted. First European city!"
@@ -195,8 +184,10 @@
       "running": false,
       "blockedReason": "Web Search Indexing API needs to be enabled in Google Cloud Console",
       "nathanSteps": [
-        "Enable the Indexing API at: https://console.developers.google.com/apis/api/indexing.googleapis.com/overview?project=644007884476",
-        "Then re-run: node /home/openclaw/projects/atlas/scripts/gsc-indexing.js"
+        "Go to console.cloud.google.com",
+        "Select project stoked-virtue-413221",
+        "APIs & Services \u2192 Enable APIs",
+        "Search \"Web Search Indexing API\" \u2192 Enable"
       ],
       "created": "2026-02-17T20:05:00Z",
       "updated": "2026-02-18T00:26:00Z",
