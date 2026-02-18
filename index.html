@@ -3,11 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atlas Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Atlas — Control Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
 </head>
 <body>
-  <div class="container" id="app">Loading…</div>
+  <div id="app">
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">🏛️ Atlas</div>
+        <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+      </div>
+      <div class="sidebar-nav">
+        <a href="#/" class="nav-item" data-page="overview">
+          <span class="nav-icon">📊</span><span class="nav-label">Overview</span>
+        </a>
+        <a href="#/projects" class="nav-item" data-page="projects">
+          <span class="nav-icon">📁</span><span class="nav-label">Projects</span>
+        </a>
+        <a href="#/tasks" class="nav-item" data-page="tasks">
+          <span class="nav-icon">✅</span><span class="nav-label">Tasks</span>
+        </a>
+        <a href="#/notes" class="nav-item" data-page="notes">
+          <span class="nav-icon">📝</span><span class="nav-label">Notes</span>
+        </a>
+        <a href="#/flows" class="nav-item" data-page="flows">
+          <span class="nav-icon">⚙️</span><span class="nav-label">Flows</span>
+        </a>
+        <a href="#/metrics" class="nav-item" data-page="metrics">
+          <span class="nav-icon">📈</span><span class="nav-label">Metrics</span>
+        </a>
+      </div>
+      <div class="sidebar-footer">
+        <div class="status-indicator" id="status-dot"></div>
+        <span class="status-text" id="status-text">Loading...</span>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main id="main" class="main-content">
+      <header class="topbar">
+        <button id="mobile-menu" class="mobile-menu-btn">☰</button>
+        <h1 id="page-title" class="page-title">Overview</h1>
+        <div class="topbar-right">
+          <span id="last-updated" class="last-updated"></span>
+        </div>
+      </header>
+      <div id="content" class="content-area">
+        <!-- Dynamic content rendered here -->
+      </div>
+    </main>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>
