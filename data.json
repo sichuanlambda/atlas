@@ -1,470 +1,121 @@
 {
-  "lastUpdated": "2026-02-18T20:19:20Z",
-  "status": "idle",
-  "currentWork": "Fixing building images, creating Place pages, writing vision docs",
-  "workstreams": [
-    {
-      "id": "nola-guide",
-      "name": "New Orleans City Guide",
-      "status": "complete",
-      "emoji": "\u2705",
-      "summary": "14 buildings live with full GPT analysis, SEO copy, and marketing drafts",
-      "lastUpdate": "2026-02-16",
-      "details": [
-        "14 buildings submitted with Wikipedia images (IDs 921-934)",
-        "SEO-optimized place page content live",
-        "Reddit drafts ready (r/NewOrleans, r/architecture, r/ArchitecturePorn)",
-        "X thread draft ready"
-      ]
-    },
-    {
-      "id": "prs",
-      "name": "Architecture Helper PRs",
-      "status": "complete",
-      "emoji": "\u2705",
-      "summary": "8 PRs merged & deployed",
-      "lastUpdate": "2026-02-16",
-      "details": [
-        "PR #1: Fix 4 crash bugs, clean up nav",
-        "PR #2: Pagination + lazy loading",
-        "PR #3: City guide seeding infrastructure",
-        "PR #4: Style normalization (~150 variants \u2192 ~40 canonical)",
-        "PR #5: Style normalization rake task",
-        "PR #6: Building count fix, Select All, multi-style cards",
-        "PR #7: Async GPT analysis (fixes R12 timeouts) + admin building management",
-        "PR #8: OG meta tags, external image URLs, building names, bulk import"
-      ]
-    },
-    {
-      "id": "nyc-guide",
-      "name": "NYC City Guide",
-      "status": "complete",
-      "emoji": "\u2705",
-      "summary": "18 buildings live with full GPT analysis and SEO copy",
-      "lastUpdate": "2026-02-17",
-      "details": [
-        "18 buildings submitted (IDs 935-952)",
-        "Empire State, Chrysler, Flatiron, Grand Central, Guggenheim, One WTC, and more",
-        "Styles: Art Deco, Beaux-Arts, Gothic Revival, International, Postmodern, Neo-Futurism",
-        "Place page live and featured at /places/new-york-city",
-        "Used bulk import API for speed"
-      ]
-    },
-    {
-      "id": "pinterest",
-      "name": "Pinterest Distribution",
-      "status": "active",
-      "emoji": "\ud83d\udccc",
-      "summary": "Account live, 8 pins published, 10 boards created, 6 pins queued",
-      "lastUpdate": "2026-02-18",
-      "details": [
-        "Pinterest Business account set up (@nathaninproduct)",
-        "10 boards created: 4 city + 6 style",
-        "8 pins published (St. Louis Cathedral, Saenger Theatre, Pontalba Buildings, NOMA, Pitot House, The Cabildo, Gallier Hall, Hotel Monteleone)",
-        "6 pins remaining in queue",
-        "Schedule: 4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
-        "Template v1 active with SEO-optimized title/description format",
-        "Cross-posting to style boards (Beaux-Arts, Victorian, Neoclassical)"
-      ]
-    },
-    {
-      "id": "programmatic-seo",
-      "name": "Programmatic SEO Pages",
-      "status": "idea",
-      "emoji": "\ud83d\udca1",
-      "summary": "Auto-generate style-by-city and style overview pages to 10x SEO surface area",
-      "lastUpdate": "2026-02-16",
-      "details": [
-        "Target queries: '[style] architecture in [city]', '[style] buildings examples'",
-        "Data already exists \u2014 just needs page generation",
-        "Could add hundreds of indexable pages with zero manual content"
-      ]
-    },
-    {
-      "id": "zoning-data",
-      "name": "Zoning Data Acquisition",
-      "status": "active",
-      "emoji": "\ud83d\uddfa\ufe0f",
-      "summary": "10 cities acquired \u2014 120K+ zones, ~566 MB across TX, CA, FL, OK",
-      "lastUpdate": "2026-02-17",
-      "details": [
-        "Pipeline built: acquire.py with pagination, batch mode, point-in-polygon testing",
-        "CA: Los Angeles (58K zones), Sacramento (11K), San Francisco (1.6K)",
-        "TX: Austin (22K zones), Dallas (3.8K)",
-        "FL: Tampa (11K zones), Miami-Dade (4K), Orlando (2K), Fort Lauderdale (739)",
-        "OK: Norman (4.4K zones) \u2014 proof of concept",
-        "Not available: Houston (no zoning), San Antonio (too large), Fort Worth/San Diego/San Jose/Jacksonville (no public service)"
-      ]
-    },
-    {
-      "id": "next-cities",
-      "name": "Next Cities Pipeline",
-      "status": "queued",
-      "emoji": "\ud83d\udccb",
-      "summary": "Wave 1: Washington DC, Philadelphia, Boston",
-      "lastUpdate": "2026-02-17",
-      "details": [
-        "Wave 1 (next): Washington DC, Philadelphia, Boston",
-        "Wave 2: Los Angeles, Detroit, Savannah",
-        "Wave 3: Miami, Charleston, Pittsburgh, Nashville",
-        "Philadelphia identified as sweet spot \u2014 rich architecture, underserved SEO"
-      ]
-    }
-  ],
+  "lastUpdated": "2026-02-18T22:10:00Z",
+  "status": "active",
+  "currentWork": "Image migration to S3, Atlas Control Center build, city guide expansion",
+
+  "todaySummary": {
+    "date": "2026-02-18",
+    "headline": "Boston & Philly live. Control Center built. 43 pins queued.",
+    "sections": [
+      {
+        "title": "🏗️ Boston City Guide",
+        "items": [
+          "18 buildings submitted (#1012-1029) via automated Playwright script",
+          "All geocoded with addresses, Place page created with editorial content",
+          "Buildings: Trinity Church, BPL, Faneuil Hall, State House, Custom House Tower, John Hancock, MIT Stata Center, and 11 more",
+          "Images pending S3 migration (Wikimedia rate-limited)"
+        ]
+      },
+      {
+        "title": "🏛️ Philadelphia Fixed",
+        "items": [
+          "18 buildings (#993-1011) resubmitted by overnight sub-agent with Wikimedia images",
+          "All made visible, verified working (PSFS Building confirmed with full analysis)",
+          "Images partially migrated — some still need S3 upload"
+        ]
+      },
+      {
+        "title": "📌 Pinterest Pipeline",
+        "items": [
+          "Added 17 NYC + 2 DC + 18 Boston buildings to queue (43 total)",
+          "Created NYC, DC, Boston boards — cron auto-creates new boards",
+          "9 pins published total, ~11 days of queued content"
+        ]
+      },
+      {
+        "title": "🖼️ Image Infrastructure (PR #19)",
+        "items": [
+          "Root cause: Wikimedia blocks hotlinking + rate-limits bulk downloads",
+          "Fix: External URLs now download to S3 on submission",
+          "3 rake tasks written: migrate_external, fix_broken_images, reanalyze_missing",
+          "NYC + DC images migrated ✅ — Philly/Boston blocked by 429s, needs AWS creds or cooldown"
+        ]
+      },
+      {
+        "title": "🖥️ Control Center v1",
+        "items": [
+          "Full SPA rebuild: dark theme, sidebar, 7 pages",
+          "Projects, Tasks, Notes viewer, Flows, Metrics",
+          "Memory files mirrored for browsing"
+        ]
+      }
+    ]
+  },
+
   "waitingOnNathan": [
     {
-      "item": "Post NOLA Reddit drafts",
-      "context": "Drafts ready in workspace. Best posted Tue-Thu 10am-12pm CT for r/NewOrleans",
-      "priority": "medium",
-      "added": "2026-02-16"
+      "item": "Share AWS credentials for S3 image upload",
+      "context": "30 building images downloaded on VPS, need AWS access key + secret to upload to architecture-explorer S3 bucket. Unblocks all Philly + Boston images.",
+      "priority": "high",
+      "added": "2026-02-18"
     },
     {
-      "item": "Post X thread about NOLA",
-      "context": "7-tweet thread draft ready. Nathan already posted the OpenClaw overview tweet.",
+      "item": "Enable GSC Web Search Indexing API",
+      "context": "Google Cloud Console → project stoked-virtue-413221 → enable 'Web Search Indexing API'. Unblocks auto-indexing of 199 URLs.",
+      "priority": "high",
+      "added": "2026-02-17"
+    },
+    {
+      "item": "Deploy latest code & run fix_broken_images",
+      "context": "git pull && git push heroku main && heroku run rake images:fix_broken_images (after Wikimedia cooldown or AWS creds provided)",
+      "priority": "high",
+      "added": "2026-02-18"
+    },
+    {
+      "item": "Review vision docs",
+      "context": "memory/vision-architecture-helper.md and memory/vision-cresoftware.md — roadmap, GTM, feature plans",
+      "priority": "medium",
+      "added": "2026-02-18"
+    },
+    {
+      "item": "Post NOLA Reddit drafts",
+      "context": "Best posted Tue-Thu 10am-12pm CT for r/NewOrleans",
       "priority": "low",
       "added": "2026-02-16"
     }
   ],
-  "ideas": [
-    {
-      "title": "Pinterest automated distribution",
-      "description": "Batch-create pins for all 400+ buildings. Board per city + board per style.",
-      "impact": "high",
-      "effort": "medium"
-    },
-    {
-      "title": "Programmatic SEO pages",
-      "description": "Auto-generate '[style] in [city]' pages from existing data. Hundreds of new indexable URLs.",
-      "impact": "high",
-      "effort": "medium"
-    },
-    {
-      "title": "Backlink outreach",
-      "description": "Find architecture bloggers and city tourism sites. Draft outreach emails.",
-      "impact": "medium",
-      "effort": "low"
-    },
-    {
-      "title": "Google Web Stories",
-      "description": "'5 Hidden Gems in [City]' visual stories for Google Discover traffic.",
-      "impact": "medium",
-      "effort": "medium"
-    },
-    {
-      "title": "Fix Stripe checkout flow",
-      "description": "StripeController doesn't exist yet. Needs proper checkout integration.",
-      "impact": "low",
-      "effort": "medium"
-    }
-  ],
+
   "metrics": {
-    "citiesLive": 8,
-    "citiesList": [
-      "Denver",
-      "Den Haag",
-      "San Francisco",
-      "Chicago",
-      "New Orleans"
-    ],
-    "citiesInProgress": [
-      "New York City"
-    ],
-    "totalBuildings": 473,
-    "visibleBuildings": 349,
-    "totalStyles": 40,
-    "prsMerged": 8,
-    "prsTotal": 9,
-    "prsPending": 1,
-    "totalUsers": 333,
-    "pinterestBoards": 10
+    "citiesLive": 10,
+    "citiesList": ["Denver", "Den Haag", "San Francisco", "Chicago", "New Orleans", "New York City", "Washington DC", "Philadelphia", "Boston", "Amsterdam"],
+    "citiesInPipeline": ["Barcelona", "Bruges", "Edinburgh", "Kraków", "Tirana", "Istanbul", "Rome"],
+    "totalBuildings": 530,
+    "visibleBuildings": 420,
+    "totalStyles": 30,
+    "prsMerged": 19,
+    "totalUsers": 334,
+    "pinterestPins": 9,
+    "pinterestQueue": 43,
+    "pinterestBoards": 13,
+    "pinterestImpressions": 52,
+    "pinterestSaves": 7,
+    "pinterestClicks": 5,
+    "creProducts": 174,
+    "creCategories": 14,
+    "zoningCities": 10,
+    "zoningZones": 120000
   },
-  "zoningCoverage": {
-    "cities": [
-      {
-        "city": "Los Angeles",
-        "state": "CA",
-        "status": "downloaded",
-        "zoneCount": 58873,
-        "uniqueZoneCodes": 17,
-        "fileSizeMB": 377.9
-      },
-      {
-        "city": "Austin",
-        "state": "TX",
-        "status": "downloaded",
-        "zoneCount": 22496,
-        "uniqueZoneCodes": 45,
-        "fileSizeMB": 72.0
-      },
-      {
-        "city": "Sacramento",
-        "state": "CA",
-        "status": "downloaded",
-        "zoneCount": 10930,
-        "uniqueZoneCodes": 33,
-        "fileSizeMB": 31.4
-      },
-      {
-        "city": "Tampa",
-        "state": "FL",
-        "status": "downloaded",
-        "zoneCount": 10813,
-        "uniqueZoneCodes": 8,
-        "fileSizeMB": 27.4
-      },
-      {
-        "city": "Norman",
-        "state": "OK",
-        "status": "downloaded",
-        "zoneCount": 4446,
-        "uniqueZoneCodes": 29,
-        "fileSizeMB": 25.3
-      },
-      {
-        "city": "Miami-Dade",
-        "state": "FL",
-        "status": "downloaded",
-        "zoneCount": 4011,
-        "uniqueZoneCodes": 50,
-        "fileSizeMB": 8.5
-      },
-      {
-        "city": "Dallas",
-        "state": "TX",
-        "status": "downloaded",
-        "zoneCount": 3808,
-        "uniqueZoneCodes": 50,
-        "fileSizeMB": 9.4
-      },
-      {
-        "city": "Orlando",
-        "state": "FL",
-        "status": "downloaded",
-        "zoneCount": 2082,
-        "uniqueZoneCodes": 324,
-        "fileSizeMB": 4.6
-      },
-      {
-        "city": "San Francisco",
-        "state": "CA",
-        "status": "downloaded",
-        "zoneCount": 1645,
-        "uniqueZoneCodes": 116,
-        "fileSizeMB": 8.1
-      },
-      {
-        "city": "Fort Lauderdale",
-        "state": "FL",
-        "status": "downloaded",
-        "zoneCount": 739,
-        "uniqueZoneCodes": 2,
-        "fileSizeMB": 1.2
-      }
-    ]
-  },
-  "recentActivity": [
-    {
-      "date": "2026-02-17T13:00:00Z",
-      "text": "Pinterest pin #4: NOMA (New Orleans Museum of Art) \u2192 New Orleans + Beaux-Arts boards",
-      "type": "milestone"
-    },
-    {
-      "date": "2026-02-17T01:20:00Z",
-      "text": "Next 10 cities ranked for expansion (DC, Philly, Boston lead)",
-      "type": "research"
-    },
-    {
-      "date": "2026-02-17T01:15:00Z",
-      "text": "Zoning data coverage section added to dashboard",
-      "type": "milestone"
-    },
-    {
-      "date": "2026-02-16T22:15:00Z",
-      "text": "Pinterest launched: 2 pins published, 10 boards created, 12 queued",
-      "type": "milestone"
-    },
-    {
-      "date": "2026-02-16T19:00:00Z",
-      "text": "All 4 improvements tested & verified (PR #8)",
-      "type": "milestone"
-    },
-    {
-      "date": "2026-02-16T18:30:00Z",
-      "text": "PR #8 merged: OG tags, external image URLs, building names, bulk import",
-      "type": "pr"
-    },
-    {
-      "date": "2026-02-16T17:00:00Z",
-      "text": "PR #7 merged: Async analysis + admin building management",
-      "type": "pr"
-    },
-    {
-      "date": "2026-02-16T16:30:00Z",
-      "text": "All 14 NOLA buildings live with analysis (IDs 921-934)",
-      "type": "milestone"
-    },
-    {
-      "date": "2026-02-16T16:00:00Z",
-      "text": "Duplicate NOLA records cleaned up, SEO copy updated (evergreen, no hardcoded counts)",
-      "type": "task"
-    },
-    {
-      "date": "2026-02-16T15:30:00Z",
-      "text": "NOLA place page created with 14 buildings, SEO content, Reddit drafts, X thread draft",
-      "type": "milestone"
-    },
-    {
-      "date": "2026-02-16T15:00:00Z",
-      "text": "City research complete: NYC and New Orleans selected as next targets",
-      "type": "research"
-    },
-    {
-      "date": "2026-02-16T14:00:00Z",
-      "text": "Nathan shared Architecture Helper admin access with Atlas",
-      "type": "milestone"
-    }
-  ],
+
   "pinterest": {
     "account": "@nathaninproduct",
-    "totalPins": 8,
-    "totalBoards": 10,
-    "boards": {
-      "city": [
-        "New Orleans Architecture",
-        "San Francisco Architecture",
-        "Chicago Architecture",
-        "Denver Architecture",
-        "NYC Architecture",
-        "Washington DC Architecture"
-      ],
-      "style": [
-        "Gothic Architecture",
-        "Beaux-Arts Architecture",
-        "Neoclassical Architecture",
-        "Art Deco Buildings",
-        "Victorian Architecture",
-        "Baroque Architecture"
-      ]
-    },
-    "recentPins": [
-      {
-        "title": "St. Louis Cathedral | New Orleans Architecture Guide",
-        "url": "https://www.pinterest.com/pin/1143281055425831346",
-        "board": "New Orleans Architecture",
-        "building": "St. Louis Cathedral",
-        "city": "New Orleans",
-        "crossPosted": [],
-        "created": "2026-02-16T22:10:00Z",
-        "metrics": {
-          "impressions": 10,
-          "saves": 0,
-          "clicks": 1
-        }
-      },
-      {
-        "title": "Saenger Theatre | Art Deco Architecture in New Orleans",
-        "url": "https://www.pinterest.com/pin/1143281055425831772",
-        "board": "New Orleans Architecture",
-        "building": "Saenger Theatre",
-        "city": "New Orleans",
-        "crossPosted": [],
-        "created": "2026-02-16T22:15:00Z",
-        "metrics": {
-          "impressions": 11,
-          "saves": 0,
-          "clicks": 2
-        }
-      },
-      {
-        "title": "Pontalba Buildings | Victorian Architecture in New Orleans",
-        "url": "https://www.pinterest.com/pin/1143281055425855370",
-        "board": "New Orleans Architecture",
-        "building": "Pontalba Buildings",
-        "city": "New Orleans",
-        "crossPosted": [
-          "Victorian Architecture"
-        ],
-        "created": "2026-02-17T09:00:00Z",
-        "metrics": {
-          "impressions": 14,
-          "saves": 2,
-          "clicks": 1
-        }
-      },
-      {
-        "title": "NOMA | Beaux-Arts Architecture in New Orleans",
-        "url": "https://www.pinterest.com/pin/1143281055425863521",
-        "board": "New Orleans Architecture",
-        "building": "NOMA",
-        "city": "New Orleans",
-        "crossPosted": [
-          "Beaux-Arts Architecture"
-        ],
-        "created": "2026-02-17T13:00:00Z",
-        "metrics": {
-          "impressions": 9,
-          "saves": 1,
-          "clicks": 1
-        }
-      },
-      {
-        "title": "Pitot House | Colonial Revival Architecture in New Orleans",
-        "url": "https://www.pinterest.com/pin/1143281055425889730",
-        "board": "New Orleans Architecture",
-        "building": "Pitot House",
-        "city": "New Orleans",
-        "crossPosted": [
-          "Victorian Architecture"
-        ],
-        "created": "2026-02-17T21:00:00Z",
-        "metrics": {
-          "impressions": 4,
-          "saves": 2,
-          "clicks": 0
-        }
-      },
-      {
-        "title": "The Cabildo | Classical Roman Architecture in New Orleans",
-        "url": "https://www.pinterest.com/pin/1143281055425917613",
-        "board": "New Orleans Architecture",
-        "building": "The Cabildo",
-        "city": "New Orleans",
-        "crossPosted": [
-          "Beaux-Arts Architecture"
-        ],
-        "created": "2026-02-18T09:00:00Z",
-        "metrics": {
-          "impressions": 3,
-          "saves": 1,
-          "clicks": 0
-        }
-      },
-      {
-        "title": "Gallier Hall | Neoclassical Architecture in New Orleans",
-        "url": "https://www.pinterest.com/pin/1143281055425929915",
-        "board": "New Orleans Architecture",
-        "building": "Gallier Hall",
-        "city": "New Orleans",
-        "crossPosted": [
-          "Neoclassical Architecture"
-        ],
-        "created": "2026-02-18T14:18:00Z",
-        "metrics": {
-          "impressions": 1,
-          "saves": 1,
-          "clicks": 0
-        }
-      }
-    ],
+    "totalPins": 9,
     "queue": 43,
-    "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
-    "currentTemplate": {
-      "version": "v1",
-      "title": "{building_name} | {primary_style} Architecture in {city}",
-      "description": "{description}... Explore the full AI-powered architectural analysis. #{city} #{style} #ArchitectureLovers"
+    "boards": {
+      "city": ["New Orleans Architecture", "San Francisco Architecture", "Chicago Architecture", "Denver Architecture", "NYC Architecture", "Washington DC Architecture", "Boston Architecture"],
+      "style": ["Gothic Architecture", "Beaux-Arts Architecture", "Neoclassical Architecture", "Art Deco Buildings", "Victorian Architecture", "Baroque Architecture"]
     },
-    "nextReview": "2026-02-19T10:00:00Z",
-    "note": "Queue: 6 NOLA + 17 NYC + 2 DC + 18 Boston = 43 total. At 4 pins/day = ~11 days of content.",
+    "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
+    "note": "43 queued: 6 NOLA + 17 NYC + 2 DC + 18 Boston. ~11 days of content at 4/day.",
     "totalMetrics": {
       "impressions": 52,
       "saves": 7,
@@ -472,5 +123,17 @@
       "asOf": "2026-02-18T15:00:00Z"
     }
   },
-  "cities": {}
+
+  "recentActivity": [
+    {"date": "2026-02-18T22:00:00Z", "text": "Control Center v1 shipped — full SPA with 7 pages", "type": "milestone"},
+    {"date": "2026-02-18T20:30:00Z", "text": "All 18 Boston buildings geocoded and Place page created", "type": "milestone"},
+    {"date": "2026-02-18T20:15:00Z", "text": "Boston buildings 1012-1029 submitted via Playwright automation", "type": "milestone"},
+    {"date": "2026-02-18T19:30:00Z", "text": "Pinterest queue loaded: 43 pins (NYC + DC + Boston)", "type": "task"},
+    {"date": "2026-02-18T19:15:00Z", "text": "Philly 18 buildings made visible — sub-agent resubmission confirmed working", "type": "milestone"},
+    {"date": "2026-02-18T18:30:00Z", "text": "PR #19 merged: external images → S3 on submission", "type": "pr"},
+    {"date": "2026-02-18T17:00:00Z", "text": "NYC + DC images migrated to S3 ✅", "type": "task"},
+    {"date": "2026-02-18T16:00:00Z", "text": "6 runbooks created for repeatable processes", "type": "task"},
+    {"date": "2026-02-18T14:00:00Z", "text": "PR #18 deployed: pagination, meta tags, cache headers, canonicals", "type": "pr"},
+    {"date": "2026-02-18T12:00:00Z", "text": "SSL fixed on cresoftware.tech", "type": "task"}
+  ]
 }
