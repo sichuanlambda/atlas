@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastReviewed": "2026-02-19T03:56:00Z",
+  "lastReviewed": "2026-02-19T04:26:00Z",
   "tasks": [
     {
       "id": "dc-buildings",
@@ -34,7 +34,7 @@
     },
     {
       "id": "pr16-review",
-      "title": "PR #16 \u2014 Rich style pages",
+      "title": "PR #16 — Rich style pages",
       "project": "architecture-helper",
       "status": "completed",
       "priority": "high",
@@ -49,7 +49,7 @@
     },
     {
       "id": "pr18-perf",
-      "title": "Merge & deploy PR #18 \u2014 Performance & SEO fixes",
+      "title": "Merge & deploy PR #18 — Performance & SEO fixes",
       "project": "architecture-helper",
       "status": "completed",
       "priority": "high",
@@ -75,36 +75,40 @@
       "nathanSteps": null,
       "created": "2026-02-17T16:15:00Z",
       "updated": "2026-02-17T20:56:00Z",
-      "notes": "Place created with SEO content. Shows 3/11 buildings linked \u2014 remaining DC buildings may need association via admin. Coordinates: 38.9072, -77.0369."
+      "notes": "Place created with SEO content. Shows 3/11 buildings linked — remaining DC buildings may need association via admin. Coordinates: 38.9072, -77.0369."
     },
     {
       "id": "philly-buildings",
       "title": "Submit Philadelphia buildings + create Place page",
       "project": "architecture-helper",
-      "status": "in_progress",
+      "status": "blocked_on_nathan",
       "priority": "high",
-      "progress": "Resubmitting with Wikimedia image URLs (sub-agent running)",
+      "progress": "2/18 buildings submitted, browser relay disconnected",
       "atlasCanDo": true,
-      "running": true,
-      "blockedReason": null,
-      "nathanSteps": null,
+      "running": false,
+      "blockedReason": "Browser relay is disconnected — cannot submit buildings via browser automation",
+      "nathanSteps": [
+        "Attach browser relay tab (click OpenClaw Browser Relay toolbar icon in Chrome) so Atlas can submit remaining 16 buildings"
+      ],
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-18T14:45:00Z",
+      "updated": "2026-02-19T04:26:00Z",
       "notes": "2/18 buildings submitted (Independence Hall, City Hall). Sub-agents v2 and v3 both failed due to browser relay being disconnected. All 18 images ready in /tmp/openclaw/uploads/. Login as atlas@architecturehelper.com."
     },
     {
       "id": "boston-buildings",
       "title": "Submit Boston buildings + create Place page",
       "project": "architecture-helper",
-      "status": "in_progress",
+      "status": "blocked_on_nathan",
       "priority": "high",
-      "progress": "Resubmitting with Wikimedia image URLs (sub-agent running)",
+      "progress": "0/18 submitted, browser relay disconnected",
       "atlasCanDo": true,
-      "running": true,
-      "blockedReason": null,
-      "nathanSteps": null,
+      "running": false,
+      "blockedReason": "Browser relay is disconnected — cannot submit buildings via browser automation",
+      "nathanSteps": [
+        "Attach browser relay tab (click OpenClaw Browser Relay toolbar icon in Chrome) so Atlas can submit Boston buildings"
+      ],
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-18T14:45:00Z",
+      "updated": "2026-02-19T04:26:00Z",
       "notes": "Images in /tmp/boston_buildings/. Copy to /tmp/openclaw/uploads/ before submitting. SEO copy in memory/boston-seo-copy.md. Use 60s delays between submissions. Create Place page after all buildings submitted."
     },
     {
@@ -119,8 +123,8 @@
       "blockedReason": null,
       "nathanSteps": null,
       "created": "2026-02-17T20:05:00Z",
-      "updated": "2026-02-18T11:56:00Z",
-      "notes": "Images in /tmp/barcelona_buildings/. Copy to /tmp/openclaw/uploads/ before submitting. SEO copy in memory/barcelona-seo-copy.md. Use 60s delays between submissions. Create Place page after all buildings submitted. First European city!"
+      "updated": "2026-02-19T04:26:00Z",
+      "notes": "Images in /tmp/barcelona_buildings/. Also blocked on browser relay. Depends on Philly/Boston completing first."
     },
     {
       "id": "cre-enrichment-batch1",
@@ -148,9 +152,7 @@
       "running": false,
       "blockedReason": null,
       "nathanSteps": null,
-      "dependsOn": [
-        "cre-enrichment-batch1"
-      ],
+      "dependsOn": ["cre-enrichment-batch1"],
       "created": "2026-02-17T20:05:00Z",
       "updated": "2026-02-17T23:26:00Z",
       "notes": "Products 81-130. 25 enriched successfully, 25 failed (blocked sites, non-CRE, unreachable). Committed and pushed."
@@ -166,12 +168,10 @@
       "running": false,
       "blockedReason": null,
       "nathanSteps": null,
-      "dependsOn": [
-        "cre-enrichment-batch2"
-      ],
+      "dependsOn": ["cre-enrichment-batch2"],
       "created": "2026-02-17T20:05:00Z",
       "updated": "2026-02-17T23:38:00Z",
-      "notes": "Products 131-174. 25 enriched, 5 failed (blocked sites), 14 not reached. All 3 batches complete \u2014 full directory enrichment done. Pushed to GitHub."
+      "notes": "Products 131-174. 25 enriched, 5 failed (blocked sites), 14 not reached. All 3 batches complete — full directory enrichment done. Pushed to GitHub."
     },
     {
       "id": "gsc-indexing-script",
@@ -186,8 +186,8 @@
       "nathanSteps": [
         "Go to console.cloud.google.com",
         "Select project stoked-virtue-413221",
-        "APIs & Services \u2192 Enable APIs",
-        "Search \"Web Search Indexing API\" \u2192 Enable"
+        "APIs & Services → Enable APIs",
+        "Search \"Web Search Indexing API\" → Enable"
       ],
       "created": "2026-02-17T20:05:00Z",
       "updated": "2026-02-18T00:26:00Z",

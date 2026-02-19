@@ -1,6 +1,12 @@
 {
-  "lastHeartbeat": "2026-02-19T03:56:00Z",
+  "lastHeartbeat": "2026-02-19T04:26:00Z",
   "status": "idle",
-  "lastAction": "No actionable tasks \u2014 all unblocked tasks completed, browser relay still down for philly/boston/barcelona submissions",
-  "activeJobs": []
+  "lastAction": "Updated philly-buildings and boston-buildings to blocked_on_nathan (browser relay disconnected, no active sub-agents)",
+  "activeJobs": [],
+  "blockedItems": [
+    "philly-buildings: browser relay disconnected",
+    "boston-buildings: browser relay disconnected",
+    "barcelona-buildings: depends on philly/boston + browser relay",
+    "gsc-indexing-script: Web Search Indexing API needs enabling in GCP"
+  ]
 }
