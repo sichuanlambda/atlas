@@ -86,12 +86,18 @@ function renderOverview(el) {
           <span class="card-title">⏳ Waiting on Nathan</span>
         </div>
         <div class="task-list">
-          ${(DATA.waitingOnNathan || []).map(w => `
-            <div class="task-item">
-              <span class="badge badge-${w.priority === 'high' ? 'danger' : w.priority === 'medium' ? 'warning' : 'info'}">${w.priority}</span>
-              <div style="flex:1">
-                <div style="font-weight:500">${w.item}</div>
-                <div style="font-size:11px;color:var(--text-dim);margin-top:2px">${w.context}</div>
+          ${(DATA.waitingOnNathan || []).map((w, i) => `
+            <div class="task-item waiting-item" style="cursor:pointer;flex-direction:column;align-items:stretch" onclick="toggleWaiting(${i})">
+              <div style="display:flex;align-items:center;gap:8px">
+                <span class="badge badge-${w.priority === 'high' ? 'danger' : w.priority === 'medium' ? 'warning' : 'info'}">${w.priority}</span>
+                <div style="flex:1;font-weight:500">${w.item}</div>
+                <span style="color:var(--text-dim);font-size:14px" id="waiting-chevron-${i}">▸</span>
+              </div>
+              <div id="waiting-detail-${i}" style="display:none;margin-top:10px;padding:10px 12px;background:var(--bg);border-radius:var(--radius);font-size:12px;line-height:1.6">
+                <div style="color:var(--text-muted);margin-bottom:8px">${w.context}</div>
+                ${w.steps ? '<div style="margin-bottom:8px"><strong>Steps:</strong></div><ol style="margin:0;padding-left:18px;color:var(--text)">' + w.steps.map(s => '<li style="margin-bottom:4px">' + s + '</li>').join('') + '</ol>' : ''}
+                ${w.links ? '<div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">' + w.links.map(l => '<a href="' + l.url + '" target="_blank" class="btn btn-ghost" style="font-size:11px;padding:4px 10px">' + l.label + '</a>').join('') + '</div>' : ''}
+                ${w.added ? '<div style="margin-top:8px;font-size:11px;color:var(--text-dim)">Added: ' + w.added + '</div>' : ''}
               </div>
             </div>
           `).join('')}
@@ -291,21 +297,30 @@ function taskItem(t) {
 }
 
 // === NOTES ===
+let NOTE_EDIT_MODE = false;
+let NOTE_EDIT_SHA = null;
+
 async function renderNotes(el) {
   const noteFiles = [
     { path: 'memory/MEMORY.md', name: 'MEMORY.md', icon: '🧠' },
+    { path: 'memory/nathan-morning-briefing.md', name: 'Morning Briefing', icon: '☀️' },
+    { path: 'memory/marketing-framework.md', name: 'Marketing Framework', icon: '📣' },
+    { path: 'memory/marketing-plotzy-actions.md', name: 'Marketing: Plotzy', icon: '📍' },
+    { path: 'memory/marketing-ah-actions.md', name: 'Marketing: AH', icon: '🏛️' },
+    { path: 'memory/marketing-cre-actions.md', name: 'Marketing: CRE', icon: '🏢' },
+    { path: 'memory/2026-02-19.md', name: '2026-02-19', icon: '📅' },
     { path: 'memory/2026-02-18.md', name: '2026-02-18', icon: '📅' },
     { path: 'memory/vision-architecture-helper.md', name: 'Vision: AH', icon: '🔭' },
     { path: 'memory/vision-cresoftware.md', name: 'Vision: CRE', icon: '🔭' },
+    { path: 'memory/product-bookclub.md', name: 'Product: Book Club', icon: '📚' },
     { path: 'memory/next-cities-ranking.md', name: 'Next Cities', icon: '🏙️' },
     { path: 'memory/runbooks/building-submission.md', name: 'RB: Building Submit', icon: '📋' },
     { path: 'memory/runbooks/pinterest-pin-creation.md', name: 'RB: Pinterest', icon: '📋' },
     { path: 'memory/runbooks/city-guide-pipeline.md', name: 'RB: City Pipeline', icon: '📋' },
-    { path: 'memory/runbooks/dashboard-updates.md', name: 'RB: Dashboard', icon: '📋' },
-    { path: 'memory/runbooks/browser-automation.md', name: 'RB: Browser', icon: '📋' },
     { path: 'memory/runbooks/cre-product-enrichment.md', name: 'RB: CRE Enrichment', icon: '📋' },
   ];
   const selected = el._selectedNote || noteFiles[0].path;
+  NOTE_EDIT_MODE = false;
   el.innerHTML = `
     <div class="split-panel">
       <div class="split-left">
@@ -316,7 +331,18 @@ async function renderNotes(el) {
             <span>${f.icon}</span><span>${f.name}</span>
           </div>`).join('')}</div>
       </div>
-      <div class="split-right"><div class="note-content" id="note-display">Loading...</div></div>
+      <div class="split-right" style="display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <span style="font-size:13px;color:var(--text-muted)" id="note-filename">${selected.split('/').pop()}</span>
+          <div style="display:flex;gap:6px">
+            <button class="btn btn-ghost" style="font-size:12px;padding:4px 10px" onclick="toggleNoteEdit()" id="note-edit-btn">✏️ Edit</button>
+            <button class="btn btn-primary" style="font-size:12px;padding:4px 10px;display:none" onclick="saveNote()" id="note-save-btn">💾 Save</button>
+            <button class="btn btn-ghost" style="font-size:12px;padding:4px 10px;display:none" onclick="cancelNoteEdit()" id="note-cancel-btn">Cancel</button>
+          </div>
+        </div>
+        <div class="note-content" id="note-display" style="flex:1;overflow-y:auto">Loading...</div>
+        <textarea id="note-editor" style="display:none;flex:1;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:var(--radius);padding:12px;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:13px;line-height:1.6;resize:none;outline:none"></textarea>
+      </div>
     </div>`;
   loadNote(selected);
 }
@@ -324,13 +350,103 @@ async function renderNotes(el) {
 async function loadNote(path) {
   const display = document.getElementById('note-display');
   if (!display) return;
-  if (NOTES_CACHE[path]) { display.textContent = NOTES_CACHE[path]; return; }
-  display.textContent = 'Loading...';
+  display.innerHTML = '<div style="color:var(--text-dim)">Loading...</div>';
   try {
-    const res = await fetch(`https://raw.githubusercontent.com/${REPO}/main/${path}?` + Date.now());
-    if (res.ok) { const text = await res.text(); NOTES_CACHE[path] = text; display.textContent = text; }
-    else display.textContent = 'File not available (HTTP ' + res.status + ')';
-  } catch (e) { display.textContent = 'Failed to load: ' + e.message; }
+    const res = await fetch('https://raw.githubusercontent.com/' + REPO + '/main/' + path + '?' + Date.now());
+    if (res.ok) {
+      const text = await res.text();
+      NOTES_CACHE[path] = text;
+      display.innerHTML = renderMarkdown(text);
+    } else {
+      display.innerHTML = '<div style="color:var(--text-dim)">File not available (HTTP ' + res.status + ')</div>';
+    }
+  } catch (e) {
+    display.innerHTML = '<div style="color:var(--text-dim)">Failed to load: ' + e.message + '</div>';
+  }
+}
+
+function toggleNoteEdit() {
+  const el = document.getElementById('content');
+  const path = el._selectedNote || 'memory/MEMORY.md';
+  const display = document.getElementById('note-display');
+  const editor = document.getElementById('note-editor');
+  const editBtn = document.getElementById('note-edit-btn');
+  const saveBtn = document.getElementById('note-save-btn');
+  const cancelBtn = document.getElementById('note-cancel-btn');
+  
+  NOTE_EDIT_MODE = true;
+  editor.value = NOTES_CACHE[path] || '';
+  display.style.display = 'none';
+  editor.style.display = 'block';
+  editBtn.style.display = 'none';
+  saveBtn.style.display = 'inline-flex';
+  cancelBtn.style.display = 'inline-flex';
+  editor.focus();
+}
+
+function cancelNoteEdit() {
+  const display = document.getElementById('note-display');
+  const editor = document.getElementById('note-editor');
+  const editBtn = document.getElementById('note-edit-btn');
+  const saveBtn = document.getElementById('note-save-btn');
+  const cancelBtn = document.getElementById('note-cancel-btn');
+  
+  NOTE_EDIT_MODE = false;
+  display.style.display = 'block';
+  editor.style.display = 'none';
+  editBtn.style.display = 'inline-flex';
+  saveBtn.style.display = 'none';
+  cancelBtn.style.display = 'none';
+}
+
+async function saveNote() {
+  const el = document.getElementById('content');
+  const path = el._selectedNote || 'memory/MEMORY.md';
+  const editor = document.getElementById('note-editor');
+  const saveBtn = document.getElementById('note-save-btn');
+  const token = localStorage.getItem('atlas_github_token');
+  
+  if (!token) {
+    const t = prompt('Enter your GitHub personal access token (repo scope) to save files:');
+    if (!t) return;
+    localStorage.setItem('atlas_github_token', t);
+    return saveNote();
+  }
+  
+  saveBtn.textContent = '⏳ Saving...';
+  
+  try {
+    // Get current file SHA
+    const metaRes = await fetch('https://api.github.com/repos/' + REPO + '/contents/' + path, {
+      headers: { 'Authorization': 'token ' + token }
+    });
+    const meta = await metaRes.json();
+    const sha = meta.sha;
+    
+    // Update file
+    const content = btoa(unescape(encodeURIComponent(editor.value)));
+    const putRes = await fetch('https://api.github.com/repos/' + REPO + '/contents/' + path, {
+      method: 'PUT',
+      headers: { 'Authorization': 'token ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'Nathan edit: ' + path.split('/').pop(), content: content, sha: sha })
+    });
+    
+    if (putRes.ok) {
+      NOTES_CACHE[path] = editor.value;
+      const display = document.getElementById('note-display');
+      display.innerHTML = renderMarkdown(editor.value);
+      cancelNoteEdit();
+      saveBtn.textContent = '✅ Saved!';
+      setTimeout(() => { saveBtn.textContent = '💾 Save'; }, 2000);
+    } else {
+      const err = await putRes.json();
+      alert('Save failed: ' + (err.message || putRes.status));
+      saveBtn.textContent = '💾 Save';
+    }
+  } catch (e) {
+    alert('Save failed: ' + e.message);
+    saveBtn.textContent = '💾 Save';
+  }
 }
 
 // === FLOWS ===
@@ -575,6 +691,57 @@ async function writeMessageForAtlas(chatId, text) {
 function saveChats() {
   localStorage.setItem('atlas_chats', JSON.stringify(CHATS));
   localStorage.setItem('atlas_active_chat', ACTIVE_CHAT);
+}
+
+// === WAITING ITEM EXPAND ===
+function toggleWaiting(i) {
+  const detail = document.getElementById('waiting-detail-' + i);
+  const chevron = document.getElementById('waiting-chevron-' + i);
+  if (!detail) return;
+  const open = detail.style.display !== 'none';
+  detail.style.display = open ? 'none' : 'block';
+  chevron.textContent = open ? '▸' : '▾';
+}
+
+// === MARKDOWN RENDERER ===
+function renderMarkdown(text) {
+  if (!text) return '';
+  let html = text
+    // Code blocks
+    .replace(/```(\w*)\n([\s\S]*?)```/g, '<pre style="background:var(--bg);padding:12px;border-radius:var(--radius);overflow-x:auto;font-size:12px;margin:12px 0"><code>$2</code></pre>')
+    // Inline code
+    .replace(/`([^`]+)`/g, '<code style="background:var(--bg);padding:2px 6px;border-radius:4px;font-size:12px">$1</code>')
+    // Headers
+    .replace(/^#### (.+)$/gm, '<h4 style="font-size:14px;font-weight:600;margin:16px 0 8px;color:var(--text)">$1</h4>')
+    .replace(/^### (.+)$/gm, '<h3 style="font-size:15px;font-weight:600;margin:20px 0 8px;color:var(--text)">$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2 style="font-size:17px;font-weight:700;margin:24px 0 10px;color:var(--text)">$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1 style="font-size:20px;font-weight:700;margin:24px 0 12px;color:var(--text)">$1</h1>')
+    // Bold and italic
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    // Links
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" style="color:var(--accent)">$1</a>')
+    // Horizontal rule
+    .replace(/^---$/gm, '<hr style="border:none;border-top:1px solid var(--border);margin:16px 0">')
+    // Unordered lists
+    .replace(/^- (.+)$/gm, '<li style="margin:4px 0;list-style:disc;margin-left:20px">$1</li>')
+    // Ordered lists
+    .replace(/^\d+\. (.+)$/gm, '<li style="margin:4px 0;list-style:decimal;margin-left:20px">$1</li>')
+    // Tables (basic)
+    .replace(/^\|(.+)\|$/gm, (match, content) => {
+      const cells = content.split('|').map(c => c.trim());
+      if (cells.every(c => /^[-:]+$/.test(c))) return '';
+      return '<tr>' + cells.map(c => '<td style="padding:6px 10px;border-bottom:1px solid var(--border)">' + c + '</td>').join('') + '</tr>';
+    })
+    // Paragraphs
+    .replace(/\n\n/g, '</p><p style="margin:8px 0;line-height:1.6">')
+    // Line breaks
+    .replace(/\n/g, '<br>');
+  
+  // Wrap tables
+  html = html.replace(/(<tr>[\s\S]*?<\/tr>)/g, '<table style="width:100%;border-collapse:collapse;font-size:13px;margin:12px 0">$1</table>');
+  
+  return '<div style="line-height:1.6;color:var(--text)">' + html + '</div>';
 }
 
 // === UTILITIES ===

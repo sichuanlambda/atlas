@@ -2,25 +2,24 @@
   "lastUpdated": "2026-02-19T09:04:00Z",
   "status": "active",
   "currentWork": "Dashboard refresh. Overnight: PR #20 (image perf), morning briefing, CRE expansion (35 new products found), building image fixes sourced",
-
   "todaySummary": {
     "date": "2026-02-19",
     "headline": "Overnight work: image performance PR, strategic briefing for Nathan, CRE expansion (+35 products found), 7 broken images sourced",
     "sections": [
       {
-        "title": "🌙 Overnight Progress",
+        "title": "\ud83c\udf19 Overnight Progress",
         "items": [
           "PR #20 created: thumbnail system + lazy loading (estimated 90% page weight reduction)",
           "Morning briefing written: 5 strategic docs (CRE SaaS, skills ranking, dashboard ideas, money-making)",
           "All 7 remaining broken building images sourced from Wikimedia Commons",
-          "fix_batch rake task added — one command fixes all 7",
-          "CRE expansion research complete — 35 new products identified (memory/cre-expansion-report.md)",
+          "fix_batch rake task added \u2014 one command fixes all 7",
+          "CRE expansion research complete \u2014 35 new products identified (memory/cre-expansion-report.md)",
           "Hourly status cron reduced to 4x daily (was burning tokens overnight)",
           "6 runbooks created for repeatable tasks (memory/runbooks/)"
         ]
       },
       {
-        "title": "📊 Current State",
+        "title": "\ud83d\udcca Current State",
         "items": [
           "9 cities live (Denver, Den Haag, SF, Chicago, NOLA, NYC, DC, Philly, Boston)",
           "~500+ buildings, 25/33 images fixed to S3 (7 more ready in fix_batch)",
@@ -29,7 +28,7 @@
         ]
       },
       {
-        "title": "📋 Nathan's Morning Todo",
+        "title": "\ud83d\udccb Nathan's Morning Todo",
         "items": [
           "Read morning briefing in Notes tab (or memory/nathan-morning-briefing.md)",
           "Merge PR #20, deploy, run: rake images:fix_batch + generate_thumbnails + reanalyze_missing",
@@ -39,44 +38,118 @@
       }
     ]
   },
-
   "waitingOnNathan": [
     {
       "item": "Merge PR #20 + deploy + run 3 rake tasks",
-      "context": "PR #20: image thumbnails + lazy loading + fix_batch. After merge: git push heroku main, then rake images:fix_batch, images:generate_thumbnails, images:reanalyze_missing",
+      "context": "Image thumbnails + lazy loading + fix last 7 broken building images. Estimated 90% page weight reduction on Place pages.",
       "priority": "high",
-      "added": "2026-02-19"
+      "added": "2026-02-19",
+      "steps": [
+        "git pull origin main",
+        "git push heroku main",
+        "heroku run rake images:fix_batch",
+        "heroku run rake images:generate_thumbnails",
+        "heroku run rake images:reanalyze_missing"
+      ],
+      "links": [
+        {
+          "label": "PR #20",
+          "url": "https://github.com/sichuanlambda/feedback-loop/pull/20"
+        },
+        {
+          "label": "Boston Place",
+          "url": "https://app.architecturehelper.com/places/boston"
+        },
+        {
+          "label": "Philly Place",
+          "url": "https://app.architecturehelper.com/places/philadelphia"
+        }
+      ]
     },
     {
       "item": "Read morning briefing & respond",
-      "context": "5 strategic docs in Notes tab: CRE SaaS plan, skills ranking, dashboard ideas, engagement, money-making. Need your direction on priorities.",
+      "context": "5 strategic docs covering: CRE OpenClaw SaaS plan, skills/integrations ranking, dashboard ideas, engagement loop, direct money-making ideas. Need your direction on priorities.",
       "priority": "high",
-      "added": "2026-02-19"
+      "added": "2026-02-19",
+      "links": [
+        {
+          "label": "\ud83d\udcc4 Read Briefing",
+          "url": "https://sichuanlambda.github.io/atlas/#/notes"
+        }
+      ]
+    },
+    {
+      "item": "Install Heroku CLI on VPS",
+      "context": "One-time setup. Lets Atlas deploy code and run rake tasks autonomously. Biggest single unlock for autonomous operation.",
+      "priority": "high",
+      "added": "2026-02-19",
+      "steps": [
+        "SSH into VPS: ssh openclaw@your-vps-ip",
+        "curl https://cli-assets.heroku.com/install.sh | sh",
+        "heroku login -i (enter nathaninproduct@gmail.com + password)"
+      ]
     },
     {
       "item": "Enable GSC Web Search Indexing API",
-      "context": "Google Cloud Console → project stoked-virtue-413221 → enable 'Web Search Indexing API'. Unblocks auto-indexing of 199 URLs.",
-      "priority": "high",
-      "added": "2026-02-17"
-    },
-    {
-      "item": "Install Heroku CLI on VPS (one-time)",
-      "context": "curl https://cli-assets.heroku.com/install.sh | sh && heroku login -i. Lets Atlas deploy and run rake tasks autonomously forever.",
+      "context": "Google Cloud Console project stoked-virtue-413221. Unblocks auto-indexing of 199 URLs across AH and CRE.",
       "priority": "medium",
-      "added": "2026-02-19"
+      "added": "2026-02-17",
+      "steps": [
+        "Go to console.cloud.google.com",
+        "Select project stoked-virtue-413221",
+        "APIs & Services \u2192 Library",
+        "Search 'Web Search Indexing API' \u2192 Enable"
+      ],
+      "links": [
+        {
+          "label": "Google Cloud Console",
+          "url": "https://console.cloud.google.com/apis/library?project=stoked-virtue-413221"
+        }
+      ]
     },
     {
       "item": "Review vision docs",
-      "context": "memory/vision-architecture-helper.md and memory/vision-cresoftware.md",
+      "context": "Roadmap and GTM plans for Architecture Helper and CRE Software.",
       "priority": "low",
-      "added": "2026-02-18"
+      "added": "2026-02-18",
+      "links": [
+        {
+          "label": "\ud83d\udcc4 Vision: AH",
+          "url": "https://sichuanlambda.github.io/atlas/#/notes"
+        },
+        {
+          "label": "\ud83d\udcc4 Vision: CRE",
+          "url": "https://sichuanlambda.github.io/atlas/#/notes"
+        }
+      ]
     }
   ],
-
   "metrics": {
     "citiesLive": 9,
-    "citiesList": ["Denver", "Den Haag", "San Francisco", "Chicago", "New Orleans", "New York City", "Washington DC", "Philadelphia", "Boston"],
-    "citiesInPipeline": ["Barcelona", "Bruges", "Edinburgh", "Kraków", "Tirana", "Istanbul", "Rome", "Detroit", "Savannah", "Los Angeles", "Miami"],
+    "citiesList": [
+      "Denver",
+      "Den Haag",
+      "San Francisco",
+      "Chicago",
+      "New Orleans",
+      "New York City",
+      "Washington DC",
+      "Philadelphia",
+      "Boston"
+    ],
+    "citiesInPipeline": [
+      "Barcelona",
+      "Bruges",
+      "Edinburgh",
+      "Krak\u00f3w",
+      "Tirana",
+      "Istanbul",
+      "Rome",
+      "Detroit",
+      "Savannah",
+      "Los Angeles",
+      "Miami"
+    ],
     "totalBuildings": 500,
     "totalStyles": 30,
     "prsMerged": 19,
@@ -93,14 +166,28 @@
     "zoningCities": 10,
     "zoningZones": 120000
   },
-
   "pinterest": {
     "account": "@nathaninproduct",
     "totalPins": 10,
     "queue": 41,
     "boards": {
-      "city": ["New Orleans Architecture", "San Francisco Architecture", "Chicago Architecture", "Denver Architecture", "NYC Architecture", "Washington DC Architecture", "Boston Architecture"],
-      "style": ["Gothic Architecture", "Beaux-Arts Architecture", "Neoclassical Architecture", "Art Deco Buildings", "Victorian Architecture", "Baroque Architecture"]
+      "city": [
+        "New Orleans Architecture",
+        "San Francisco Architecture",
+        "Chicago Architecture",
+        "Denver Architecture",
+        "NYC Architecture",
+        "Washington DC Architecture",
+        "Boston Architecture"
+      ],
+      "style": [
+        "Gothic Architecture",
+        "Beaux-Arts Architecture",
+        "Neoclassical Architecture",
+        "Art Deco Buildings",
+        "Victorian Architecture",
+        "Baroque Architecture"
+      ]
     },
     "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
     "note": "41 queued pins. ~10 days of content at 4/day. Last posted 2026-02-19 09:00 UTC.",
@@ -112,19 +199,66 @@
       "asOf": "2026-02-19T10:00:00Z"
     }
   },
-
   "recentActivity": [
-    {"date": "2026-02-19T10:00:00Z", "text": "Pinterest performance review #1: 107 impressions, 10 saves, 6 clicks across 10 pins (3 days). Top: Pontalba Buildings (28 imp, 2 saves)", "type": "milestone"},
-    {"date": "2026-02-19T09:04:00Z", "text": "Dashboard refresh — Pinterest pin #10 posted (09:00 UTC)", "type": "task"},
-    {"date": "2026-02-19T06:02:00Z", "text": "Dashboard full refresh — synced 3 new memory files to atlas repo", "type": "task"},
-    {"date": "2026-02-19T03:30:00Z", "text": "CRE expansion research complete: 35 new products identified", "type": "milestone"},
-    {"date": "2026-02-19T03:15:00Z", "text": "Morning briefing complete: 5 strategic docs for Nathan", "type": "milestone"},
-    {"date": "2026-02-19T02:45:00Z", "text": "All 7 remaining broken images sourced, fix_batch rake task added to PR #20", "type": "task"},
-    {"date": "2026-02-19T02:30:00Z", "text": "PR #20: Image performance — thumbnails, lazy loading, fix tasks", "type": "pr"},
-    {"date": "2026-02-18T22:30:00Z", "text": "Nathan ran fix_broken_images: 25/33 fixed to S3", "type": "milestone"},
-    {"date": "2026-02-18T22:00:00Z", "text": "Control Center v2 shipped — daily summary, chat, metrics", "type": "milestone"},
-    {"date": "2026-02-18T20:30:00Z", "text": "All 18 Boston buildings geocoded and Place page created", "type": "milestone"},
-    {"date": "2026-02-18T20:15:00Z", "text": "Boston buildings 1012-1029 submitted via Playwright automation", "type": "milestone"},
-    {"date": "2026-02-18T19:15:00Z", "text": "Philly 18 buildings made visible — resubmission confirmed", "type": "milestone"}
+    {
+      "date": "2026-02-19T10:00:00Z",
+      "text": "Pinterest performance review #1: 107 impressions, 10 saves, 6 clicks across 10 pins (3 days). Top: Pontalba Buildings (28 imp, 2 saves)",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-19T09:04:00Z",
+      "text": "Dashboard refresh \u2014 Pinterest pin #10 posted (09:00 UTC)",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-19T06:02:00Z",
+      "text": "Dashboard full refresh \u2014 synced 3 new memory files to atlas repo",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-19T03:30:00Z",
+      "text": "CRE expansion research complete: 35 new products identified",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-19T03:15:00Z",
+      "text": "Morning briefing complete: 5 strategic docs for Nathan",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-19T02:45:00Z",
+      "text": "All 7 remaining broken images sourced, fix_batch rake task added to PR #20",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-19T02:30:00Z",
+      "text": "PR #20: Image performance \u2014 thumbnails, lazy loading, fix tasks",
+      "type": "pr"
+    },
+    {
+      "date": "2026-02-18T22:30:00Z",
+      "text": "Nathan ran fix_broken_images: 25/33 fixed to S3",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-18T22:00:00Z",
+      "text": "Control Center v2 shipped \u2014 daily summary, chat, metrics",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-18T20:30:00Z",
+      "text": "All 18 Boston buildings geocoded and Place page created",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-18T20:15:00Z",
+      "text": "Boston buildings 1012-1029 submitted via Playwright automation",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-18T19:15:00Z",
+      "text": "Philly 18 buildings made visible \u2014 resubmission confirmed",
+      "type": "milestone"
+    }
   ]
 }
