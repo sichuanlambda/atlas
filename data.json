@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-02-19T03:30:00Z",
+  "lastUpdated": "2026-02-19T06:02:00Z",
   "status": "active",
-  "currentWork": "Overnight: PR #20 (image perf), morning briefing written, CRE expansion research, building image fixes",
+  "currentWork": "Dashboard refresh. Overnight: PR #20 (image perf), morning briefing, CRE expansion (35 new products found), building image fixes sourced",
 
   "todaySummary": {
     "date": "2026-02-19",
-    "headline": "Overnight work: image performance PR, strategic briefing for Nathan, CRE product expansion, 7 broken images sourced",
+    "headline": "Overnight work: image performance PR, strategic briefing for Nathan, CRE expansion (+35 products found), 7 broken images sourced",
     "sections": [
       {
         "title": "🌙 Overnight Progress",
@@ -14,8 +14,9 @@
           "Morning briefing written: 5 strategic docs (CRE SaaS, skills ranking, dashboard ideas, money-making)",
           "All 7 remaining broken building images sourced from Wikimedia Commons",
           "fix_batch rake task added — one command fixes all 7",
-          "CRE expansion research underway — finding 30-50 new products",
-          "Hourly status cron reduced to 4x daily (was burning tokens overnight)"
+          "CRE expansion research complete — 35 new products identified (memory/cre-expansion-report.md)",
+          "Hourly status cron reduced to 4x daily (was burning tokens overnight)",
+          "6 runbooks created for repeatable tasks (memory/runbooks/)"
         ]
       },
       {
@@ -23,8 +24,8 @@
         "items": [
           "9 cities live (Denver, Den Haag, SF, Chicago, NOLA, NYC, DC, Philly, Boston)",
           "~500+ buildings, 25/33 images fixed to S3 (7 more ready in fix_batch)",
-          "Pinterest: 9 pins published, 42 in queue (~10 days content)",
-          "CRE Software: 174 products, expansion research in progress"
+          "Pinterest: 9 pins published, 42 in queue (~10 days content at 4/day)",
+          "CRE Software: 174 products live + 35 new identified = 209 total pipeline"
         ]
       },
       {
@@ -87,6 +88,7 @@
     "pinterestSaves": 7,
     "pinterestClicks": 5,
     "creProducts": 174,
+    "creProductsPipeline": 35,
     "creCategories": 14,
     "zoningCities": 10,
     "zoningZones": 120000
@@ -101,7 +103,7 @@
       "style": ["Gothic Architecture", "Beaux-Arts Architecture", "Neoclassical Architecture", "Art Deco Buildings", "Victorian Architecture", "Baroque Architecture"]
     },
     "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
-    "note": "42 queued pins. ~10 days of content at 4/day.",
+    "note": "42 queued pins. ~10 days of content at 4/day. Last posted 2026-02-18 21:00 UTC.",
     "totalMetrics": {
       "impressions": 52,
       "saves": 7,
@@ -111,9 +113,9 @@
   },
 
   "recentActivity": [
-    {"date": "2026-02-19T03:30:00Z", "text": "Dashboard updated with overnight progress", "type": "task"},
-    {"date": "2026-02-19T03:15:00Z", "text": "CRE expansion research sub-agent running — finding 30-50 new products", "type": "task"},
-    {"date": "2026-02-19T03:00:00Z", "text": "Morning briefing complete: 5 strategic docs for Nathan", "type": "milestone"},
+    {"date": "2026-02-19T06:02:00Z", "text": "Dashboard full refresh — synced 3 new memory files to atlas repo", "type": "task"},
+    {"date": "2026-02-19T03:30:00Z", "text": "CRE expansion research complete: 35 new products identified", "type": "milestone"},
+    {"date": "2026-02-19T03:15:00Z", "text": "Morning briefing complete: 5 strategic docs for Nathan", "type": "milestone"},
     {"date": "2026-02-19T02:45:00Z", "text": "All 7 remaining broken images sourced, fix_batch rake task added to PR #20", "type": "task"},
     {"date": "2026-02-19T02:30:00Z", "text": "PR #20: Image performance — thumbnails, lazy loading, fix tasks", "type": "pr"},
     {"date": "2026-02-18T22:30:00Z", "text": "Nathan ran fix_broken_images: 25/33 fixed to S3", "type": "milestone"},

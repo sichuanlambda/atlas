@@ -145,3 +145,23 @@
 - What "buying time" looks like concretely
 - Plotzy pricing, stage, traction — pending research
 - Nathan offered to share financial position — advised broad strokes only (runway, income coverage) not exact numbers for security reasons
+
+## Morning Briefing (Feb 19, 2026)
+- Strategic memo at memory/nathan-morning-briefing.md covering 5 topics Nathan requested
+- CRE OpenClaw SaaS plan: $99-799/mo tiers, 1-click deploy template, Plotzy zoning data as moat
+- Top 3 integrations: Heroku CLI (#1), Email (#2), Google Search Console (#3)
+- Dashboard killer feature: Decision Queue with one-tap approve/reject
+- Money-making Tier 1 (do now): Zoning Data API + DFY reports + SEO affiliate = $3-15K/mo
+- Nathan's core focus is Plotzy — everything else is proving ground
+
+## PR #20: Image Performance
+- Thumbnail system: Ruby helper + JS thumbUrl() + generate_thumbnails rake task
+- fix_batch task: fixes last 7 broken images (hardcoded Wikimedia URLs)
+- Expected ~90% page weight reduction on Place pages
+- Nathan needs to merge, deploy, run 3 rake tasks
+
+## Overnight Patterns (Feb 19)
+- Hourly status cron was wasteful overnight — reduced to 4x daily
+- Sub-agents work well for research/writing tasks (briefing done in 2 min)
+- Wikimedia Commons API needs User-Agent header or returns 403 from VPS
+- Building count corrected to ~500 across 9 cities (Den Haag is the 9th, was miscounted)
