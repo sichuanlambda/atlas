@@ -23,7 +23,7 @@
         "title": "📊 Current State",
         "items": [
           "9 cities live, ~502 buildings (2 new today)",
-          "Pinterest: 10 pins, 90 in queue (~22 days content) — 107 impressions, 10 saves (9.3% save rate)",
+          "Pinterest: 11 pins, 89 in queue (~22 days content) — 107 impressions, 10 saves (9.3% save rate)",
           "CRE: 208 products, 65 enriched, 142 being enriched by Scout",
           "Heroku: fully autonomous deploys + rake tasks",
           "Thumbnails: generation started but incomplete — helper disabled, returns originals for now"
@@ -76,8 +76,8 @@
     "totalStyles": 30,
     "prsMerged": 19,
     "totalUsers": 334,
-    "pinterestPins": 10,
-    "pinterestQueue": 90,
+    "pinterestPins": 11,
+    "pinterestQueue": 89,
     "pinterestBoards": 13,
     "pinterestImpressions": 107,
     "pinterestSaves": 10,
@@ -93,7 +93,7 @@
 
   "pinterest": {
     "account": "@nathaninproduct",
-    "totalPins": 10,
+    "totalPins": 11,
     "queue": 90,
     "boards": {
       "city": ["New Orleans Architecture", "San Francisco Architecture", "Chicago Architecture", "Denver Architecture", "NYC Architecture", "Washington DC Architecture", "Boston Architecture"],
