@@ -22,6 +22,7 @@ const routes = {
   '/flows': { title: 'Flows', render: renderFlows },
   '/metrics': { title: 'Metrics', render: renderMetrics },
   '/chat': { title: 'Chat', render: renderChat },
+  '/agents': { title: 'Agents', render: renderAgents },
 };
 
 function navigate() {
@@ -390,6 +391,92 @@ function renderMetrics(el) {
       <div class="stat-card"><div class="stat-label">Pipeline</div><div class="stat-value">DC, Philly, Boston</div></div>
     </div>
   `;
+}
+
+// === AGENTS ORG CHART ===
+function renderAgents(el) {
+  const agents = DATA.agents || {
+    leader: { name: 'Nathan', role: 'Founder & CEO', status: 'active', color: '#f59e0b' },
+    orchestrator: { name: 'Atlas', role: 'Orchestrator', status: 'active', color: '#06b6d4' },
+    teams: [
+      {
+        name: 'Research',
+        icon: '🔍',
+        agents: [
+          { name: 'Scout', role: 'CRE Product Research', status: 'idle', lastRun: 'Enriched 65 products' },
+          { name: 'Cartographer', role: 'City Research', status: 'idle', lastRun: 'Ranked 14 cities' },
+        ]
+      },
+      {
+        name: 'Operations',
+        icon: '⚙️',
+        agents: [
+          { name: 'Mason', role: 'Building Submission', status: 'blocked', lastRun: 'Boston 18/18 submitted' },
+          { name: 'Curator', role: 'Image Pipeline', status: 'idle', lastRun: 'Fixed 25 images to S3' },
+          { name: 'Herald', role: 'Pinterest Distribution', status: 'active', lastRun: 'Pin #10 posted' },
+        ]
+      },
+      {
+        name: 'Content',
+        icon: '✍️',
+        agents: [
+          { name: 'Scribe', role: 'Editorial & SEO Copy', status: 'idle', lastRun: 'Boston Place page' },
+          { name: 'Strategist', role: 'Vision & Planning', status: 'idle', lastRun: 'Morning briefing (5 docs)' },
+        ]
+      },
+      {
+        name: 'Technical',
+        icon: '🔧',
+        agents: [
+          { name: 'Forge', role: 'PRs & Code', status: 'idle', lastRun: 'PR #20 (thumbnails)' },
+          { name: 'Indexer', role: 'SEO & Search Console', status: 'blocked', lastRun: 'Waiting on API key' },
+        ]
+      }
+    ]
+  };
+
+  const statusDot = (s) => {
+    const colors = { active: '#22c55e', idle: '#6b7280', blocked: '#ef4444', running: '#f59e0b' };
+    return '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:' + (colors[s]||colors.idle) + ';margin-right:6px"></span>';
+  };
+
+  const agentCard = (a, accent) => {
+    const border = accent || (a.status === 'active' ? '#22c55e' : a.status === 'blocked' ? '#ef4444' : 'var(--border)');
+    return '<div class="agent-card" style="border:2px solid ' + border + ';border-radius:12px;padding:16px 20px;text-align:center;min-width:140px;background:var(--surface)">'
+      + statusDot(a.status)
+      + '<div style="font-weight:700;font-size:15px;margin-top:8px">' + a.name + '</div>'
+      + '<div style="font-size:12px;color:var(--text-muted);margin-top:2px">' + a.role + '</div>'
+      + (a.lastRun ? '<div style="font-size:11px;color:var(--text-dim);margin-top:8px;font-style:italic">' + a.lastRun + '</div>' : '')
+      + '</div>';
+  };
+
+  const connector = '<div style="display:flex;justify-content:center"><div style="width:2px;height:32px;background:var(--border)"></div></div>';
+
+  let teamsHTML = agents.teams.map(team => {
+    const cards = team.agents.map(a => agentCard(a)).join('');
+    return '<div class="agent-team">'
+      + '<div style="font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;text-align:center">'
+      + team.icon + ' ' + team.name + '</div>'
+      + '<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">' + cards + '</div>'
+      + '</div>';
+  }).join('');
+
+  el.innerHTML = '<div class="org-chart">'
+    + '<div style="display:flex;justify-content:center">' + agentCard(agents.leader, agents.leader.color) + '</div>'
+    + connector
+    + '<div style="display:flex;justify-content:center">' + agentCard(agents.orchestrator, agents.orchestrator.color) + '</div>'
+    + connector
+    + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:8px">' + teamsHTML + '</div>'
+    + '</div>'
+    + '<div class="card" style="margin-top:24px">'
+    + '<div class="card-header"><span class="card-title">Agent Legend</span></div>'
+    + '<div style="display:flex;gap:20px;flex-wrap:wrap;padding:4px 0">'
+    + '<span>' + statusDot('active') + 'Active</span>'
+    + '<span>' + statusDot('running') + 'Running</span>'
+    + '<span>' + statusDot('idle') + 'Idle</span>'
+    + '<span>' + statusDot('blocked') + 'Blocked</span>'
+    + '</div>'
+    + '</div>';
 }
 
 // === CHAT ===
