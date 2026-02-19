@@ -1,38 +1,39 @@
 {
-  "lastUpdated": "2026-02-19T00:02:00Z",
+  "lastUpdated": "2026-02-19T03:30:00Z",
   "status": "active",
-  "currentWork": "Image S3 migration (blocked on AWS creds), Pinterest auto-posting, city guide expansion pipeline",
+  "currentWork": "Overnight: PR #20 (image perf), morning briefing written, CRE expansion research, building image fixes",
 
   "todaySummary": {
     "date": "2026-02-19",
-    "headline": "Overnight: Pinterest cron posting. 8 cities live, 42 pins queued. Waiting on AWS creds for image fix.",
+    "headline": "Overnight work: image performance PR, strategic briefing for Nathan, CRE product expansion, 7 broken images sourced",
     "sections": [
       {
-        "title": "📊 Status at Midnight",
+        "title": "🌙 Overnight Progress",
         "items": [
-          "8 cities live: Denver, Den Haag, SF, Chicago, NOLA, NYC, DC, Philly, Boston (MEMORY.md says 8, correcting from 10)",
-          "~473 buildings across all cities",
+          "PR #20 created: thumbnail system + lazy loading (estimated 90% page weight reduction)",
+          "Morning briefing written: 5 strategic docs (CRE SaaS, skills ranking, dashboard ideas, money-making)",
+          "All 7 remaining broken building images sourced from Wikimedia Commons",
+          "fix_batch rake task added — one command fixes all 7",
+          "CRE expansion research underway — finding 30-50 new products",
+          "Hourly status cron reduced to 4x daily (was burning tokens overnight)"
+        ]
+      },
+      {
+        "title": "📊 Current State",
+        "items": [
+          "9 cities live (Denver, Den Haag, SF, Chicago, NOLA, NYC, DC, Philly, Boston)",
+          "~500+ buildings, 25/33 images fixed to S3 (7 more ready in fix_batch)",
           "Pinterest: 9 pins published, 42 in queue (~10 days content)",
-          "CRE Software: 174 products enriched, SSL working"
+          "CRE Software: 174 products, expansion research in progress"
         ]
       },
       {
-        "title": "🔒 Blocked Items",
+        "title": "📋 Nathan's Morning Todo",
         "items": [
-          "30 building images downloaded on VPS but can't upload to S3 without AWS credentials",
-          "Philly + Boston images still showing broken on site (Wikimedia hotlink blocking)",
-          "Google Search Indexing API needs enabling in Cloud Console"
-        ]
-      },
-      {
-        "title": "✅ Yesterday's Wins (Feb 18)",
-        "items": [
-          "Boston city guide: 18 buildings submitted + geocoded + Place page created",
-          "Philadelphia: 18 buildings resubmitted with proper images, all visible",
-          "PR #19: external images auto-download to S3 on submission",
-          "Control Center v1 shipped (dark SPA, 7 pages)",
-          "6 runbooks created for repeatable processes",
-          "NYC + DC images migrated to S3"
+          "Read morning briefing in Notes tab (or memory/nathan-morning-briefing.md)",
+          "Merge PR #20, deploy, run: rake images:fix_batch + generate_thumbnails + reanalyze_missing",
+          "Enable Google Search Indexing API in Cloud Console",
+          "Respond to 5 strategic questions in briefing"
         ]
       }
     ]
@@ -40,10 +41,16 @@
 
   "waitingOnNathan": [
     {
-      "item": "Share AWS credentials for S3 image upload",
-      "context": "30 building images downloaded on VPS, need AWS access key + secret to upload to architecture-explorer S3 bucket. Unblocks all Philly + Boston images.",
+      "item": "Merge PR #20 + deploy + run 3 rake tasks",
+      "context": "PR #20: image thumbnails + lazy loading + fix_batch. After merge: git push heroku main, then rake images:fix_batch, images:generate_thumbnails, images:reanalyze_missing",
       "priority": "high",
-      "added": "2026-02-18"
+      "added": "2026-02-19"
+    },
+    {
+      "item": "Read morning briefing & respond",
+      "context": "5 strategic docs in Notes tab: CRE SaaS plan, skills ranking, dashboard ideas, engagement, money-making. Need your direction on priorities.",
+      "priority": "high",
+      "added": "2026-02-19"
     },
     {
       "item": "Enable GSC Web Search Indexing API",
@@ -52,30 +59,24 @@
       "added": "2026-02-17"
     },
     {
-      "item": "Deploy latest code & run fix_broken_images",
-      "context": "git pull && git push heroku main && heroku run rake images:fix_broken_images (after AWS creds provided)",
-      "priority": "high",
-      "added": "2026-02-18"
+      "item": "Install Heroku CLI on VPS (one-time)",
+      "context": "curl https://cli-assets.heroku.com/install.sh | sh && heroku login -i. Lets Atlas deploy and run rake tasks autonomously forever.",
+      "priority": "medium",
+      "added": "2026-02-19"
     },
     {
       "item": "Review vision docs",
-      "context": "memory/vision-architecture-helper.md and memory/vision-cresoftware.md — roadmap, GTM, feature plans",
-      "priority": "medium",
-      "added": "2026-02-18"
-    },
-    {
-      "item": "Post NOLA Reddit drafts",
-      "context": "Best posted Tue-Thu 10am-12pm CT for r/NewOrleans. Drafts in memory/nola-reddit-drafts.md",
+      "context": "memory/vision-architecture-helper.md and memory/vision-cresoftware.md",
       "priority": "low",
-      "added": "2026-02-16"
+      "added": "2026-02-18"
     }
   ],
 
   "metrics": {
-    "citiesLive": 8,
+    "citiesLive": 9,
     "citiesList": ["Denver", "Den Haag", "San Francisco", "Chicago", "New Orleans", "New York City", "Washington DC", "Philadelphia", "Boston"],
     "citiesInPipeline": ["Barcelona", "Bruges", "Edinburgh", "Kraków", "Tirana", "Istanbul", "Rome", "Detroit", "Savannah", "Los Angeles", "Miami"],
-    "totalBuildings": 473,
+    "totalBuildings": 500,
     "totalStyles": 30,
     "prsMerged": 19,
     "totalUsers": 334,
@@ -110,15 +111,15 @@
   },
 
   "recentActivity": [
-    {"date": "2026-02-19T00:02:00Z", "text": "Dashboard refresh: corrected city count to 8 (was 10), synced 64 memory files to atlas repo", "type": "task"},
-    {"date": "2026-02-18T22:00:00Z", "text": "Control Center v1 shipped — full SPA with 7 pages", "type": "milestone"},
+    {"date": "2026-02-19T03:30:00Z", "text": "Dashboard updated with overnight progress", "type": "task"},
+    {"date": "2026-02-19T03:15:00Z", "text": "CRE expansion research sub-agent running — finding 30-50 new products", "type": "task"},
+    {"date": "2026-02-19T03:00:00Z", "text": "Morning briefing complete: 5 strategic docs for Nathan", "type": "milestone"},
+    {"date": "2026-02-19T02:45:00Z", "text": "All 7 remaining broken images sourced, fix_batch rake task added to PR #20", "type": "task"},
+    {"date": "2026-02-19T02:30:00Z", "text": "PR #20: Image performance — thumbnails, lazy loading, fix tasks", "type": "pr"},
+    {"date": "2026-02-18T22:30:00Z", "text": "Nathan ran fix_broken_images: 25/33 fixed to S3", "type": "milestone"},
+    {"date": "2026-02-18T22:00:00Z", "text": "Control Center v2 shipped — daily summary, chat, metrics", "type": "milestone"},
     {"date": "2026-02-18T20:30:00Z", "text": "All 18 Boston buildings geocoded and Place page created", "type": "milestone"},
     {"date": "2026-02-18T20:15:00Z", "text": "Boston buildings 1012-1029 submitted via Playwright automation", "type": "milestone"},
-    {"date": "2026-02-18T19:30:00Z", "text": "Pinterest queue loaded: 43 pins (NYC + DC + Boston)", "type": "task"},
-    {"date": "2026-02-18T19:15:00Z", "text": "Philly 18 buildings made visible — sub-agent resubmission confirmed", "type": "milestone"},
-    {"date": "2026-02-18T18:30:00Z", "text": "PR #19 merged: external images → S3 on submission", "type": "pr"},
-    {"date": "2026-02-18T17:00:00Z", "text": "NYC + DC images migrated to S3 ✅", "type": "task"},
-    {"date": "2026-02-18T16:00:00Z", "text": "6 runbooks created for repeatable processes", "type": "task"},
-    {"date": "2026-02-18T14:00:00Z", "text": "PR #18 deployed: pagination, meta tags, cache headers, canonicals", "type": "pr"}
+    {"date": "2026-02-18T19:15:00Z", "text": "Philly 18 buildings made visible — resubmission confirmed", "type": "milestone"}
   ]
 }
