@@ -1,0 +1,7 @@
+# Tirana Architecture: Balkan Identity Through Ottoman Heritage and Socialist Modernism
+
+Tirana's architectural landscape reflects Albania's complex history, where Ottoman mosques, Italian colonial buildings, Socialist Realist monuments, and contemporary developments create a fascinating urban tapestry unique in the Balkans. The city's architecture tells the story of political transitions and cultural evolution across centuries.
+
+The historic center preserves important Ottoman architectural elements, including religious buildings and traditional urban fabric, while the 20th century brought Italian-influenced neoclassical structures during the interwar period. The Socialist era introduced distinctive modernist buildings and urban planning concepts that still define much of Tirana's character today. Recent decades have seen ambitious contemporary architecture and urban renewal projects that seek to establish a modern Albanian architectural identity while respecting historical layers.
+
+Tirana's ongoing architectural transformation demonstrates how post-socialist cities can reinvent themselves through bold design and urban planning initiatives. The juxtaposition of ancient mosques with colorful modernist facades and gleaming contemporary towers creates an architectural dialogue that reflects Albania's journey from isolation to European integration, making Tirana a compelling study in urban resilience and architectural adaptation.

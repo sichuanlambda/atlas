@@ -1,0 +1,476 @@
+{
+  "pins": [
+    {
+      "id": "1143281055425831346",
+      "url": "https://www.pinterest.com/pin/1143281055425831346",
+      "building_id": 928,
+      "building_name": "St. Louis Cathedral",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "styles": [
+        "Gothic",
+        "Classical Roman",
+        "Baroque",
+        "Neoclassical"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/928",
+      "title": "St. Louis Cathedral | New Orleans Architecture Guide",
+      "template": "v1",
+      "created": "2026-02-16T22:10:00Z",
+      "metrics": {}
+    },
+    {
+      "id": "1143281055425831772",
+      "url": "https://www.pinterest.com/pin/1143281055425831772",
+      "building_id": 924,
+      "building_name": "Saenger Theatre",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "styles": [
+        "Art Deco",
+        "Classical Greek",
+        "Romanesque",
+        "Baroque",
+        "Neoclassical"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/924",
+      "title": "Saenger Theatre | Art Deco Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-16T22:15:00Z",
+      "metrics": {}
+    },
+    {
+      "id": "1143281055425855370",
+      "url": "https://www.pinterest.com/pin/1143281055425855370",
+      "building_id": 930,
+      "building_name": "Pontalba Buildings",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": [
+        "Victorian Architecture"
+      ],
+      "styles": [
+        "Victorian",
+        "Italianate",
+        "Beaux-Arts"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/930",
+      "title": "Pontalba Buildings | Victorian Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-17T09:00:00Z",
+      "metrics": {}
+    },
+    {
+      "id": "1143281055425863521",
+      "url": "https://www.pinterest.com/pin/1143281055425863521",
+      "building_id": 927,
+      "building_name": "NOMA",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": [
+        "Beaux-Arts Architecture"
+      ],
+      "styles": [
+        "Beaux-Arts",
+        "Neoclassical",
+        "Art Deco",
+        "Gothic Revival"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/927",
+      "title": "NOMA | Beaux-Arts Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-17T13:00:00Z",
+      "metrics": {}
+    },
+    {
+      "id": "1143281055425889730",
+      "url": "https://www.pinterest.com/pin/1143281055425889730",
+      "building_id": 922,
+      "building_name": "Pitot House",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": [
+        "Victorian Architecture"
+      ],
+      "styles": [
+        "Colonial Revival",
+        "Victorian",
+        "Gothic Revival"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/922",
+      "title": "Pitot House | Colonial Revival Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-17T21:00:00Z",
+      "metrics": {}
+    },
+    {
+      "id": "1143281055425917613",
+      "url": "https://www.pinterest.com/pin/1143281055425917613",
+      "building_id": 929,
+      "building_name": "The Cabildo",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": [
+        "Beaux-Arts Architecture"
+      ],
+      "styles": [
+        "Classical Roman",
+        "Beaux-Arts",
+        "Victorian"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/929",
+      "title": "The Cabildo | Classical Roman Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-18T09:00:00Z",
+      "metrics": {}
+    },
+    {
+      "id": "1143281055425929915",
+      "url": "https://www.pinterest.com/pin/1143281055425929915",
+      "building_id": 933,
+      "building_name": "Gallier Hall",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": [
+        "Neoclassical Architecture"
+      ],
+      "styles": [
+        "Neoclassical",
+        "Classical Greek",
+        "Beaux-Arts"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/933",
+      "title": "Gallier Hall | Neoclassical Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-18T14:18:00Z",
+      "metrics": {}
+    },
+    {
+      "id": "1143281055425940564",
+      "url": "https://www.pinterest.com/pin/1143281055425940564",
+      "building_id": 931,
+      "building_name": "Hotel Monteleone",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": [
+        "Victorian Architecture"
+      ],
+      "styles": [
+        "Victorian",
+        "Renaissance",
+        "Beaux-Arts",
+        "Art Nouveau",
+        "Gothic Revival"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/931",
+      "title": "Hotel Monteleone | Victorian Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-18T17:30:00Z",
+      "metrics": {}
+    },
+    {
+      "id": "1143281055425951605",
+      "url": "https://www.pinterest.com/pin/1143281055425951605",
+      "building_id": 925,
+      "building_name": "Shotgun House",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": ["Victorian Architecture"],
+      "styles": ["Victorian", "Colonial Revival", "Art Deco", "Modernism"],
+      "link": "https://app.architecturehelper.com/architecture_explorer/925",
+      "title": "Shotgun House | Victorian Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-18T21:00:00Z",
+      "metrics": {}
+    }
+  ],
+  "boards": [
+    {
+      "name": "New Orleans Architecture",
+      "type": "city"
+    },
+    {
+      "name": "San Francisco Architecture",
+      "type": "city"
+    },
+    {
+      "name": "Chicago Architecture",
+      "type": "city"
+    },
+    {
+      "name": "Denver Architecture",
+      "type": "city"
+    },
+    {
+      "name": "Gothic Architecture",
+      "type": "style"
+    },
+    {
+      "name": "Beaux-Arts Architecture",
+      "type": "style"
+    },
+    {
+      "name": "Neoclassical Architecture",
+      "type": "style"
+    },
+    {
+      "name": "Art Deco Buildings",
+      "type": "style"
+    },
+    {
+      "name": "Victorian Architecture",
+      "type": "style"
+    },
+    {
+      "name": "Baroque Architecture",
+      "type": "style"
+    },
+    {
+      "name": "NYC Architecture",
+      "type": "city"
+    },
+    {
+      "name": "Washington DC Architecture",
+      "type": "city"
+    },
+    {
+      "name": "Boston Architecture",
+      "type": "city"
+    }
+  ],
+  "templates": {
+    "v1": {
+      "title": "{building_name} | {primary_style} Architecture in {city}",
+      "description": "{building_description} Explore the full AI-powered architectural analysis. #{city_hashtag} #{style_hashtag} #ArchitectureLovers #HistoricBuildings",
+      "active": true,
+      "performance": {
+        "impressions": 0,
+        "saves": 0,
+        "clicks": 0
+      }
+    }
+  },
+  "queue": [
+    {
+      "building_id": 921,
+      "city": "New Orleans",
+      "name": "McGehee School"
+    },
+    {
+      "building_id": 926,
+      "city": "New Orleans",
+      "name": "Contemporary Arts Center"
+    },
+    {
+      "building_id": 934,
+      "city": "New Orleans",
+      "name": "Longue Vue House"
+    },
+    {
+      "building_id": 932,
+      "city": "New Orleans",
+      "name": "Preservation Hall"
+    },
+    {
+      "building_id": 923,
+      "city": "New Orleans",
+      "name": "Old U.S. Mint"
+    },
+    {
+      "building_id": 935,
+      "city": "New York City",
+      "name": "Empire State Building"
+    },
+    {
+      "building_id": 936,
+      "city": "New York City",
+      "name": "Chrysler Building"
+    },
+    {
+      "building_id": 937,
+      "city": "New York City",
+      "name": "Flatiron Building"
+    },
+    {
+      "building_id": 938,
+      "city": "New York City",
+      "name": "Grand Central Terminal"
+    },
+    {
+      "building_id": 939,
+      "city": "New York City",
+      "name": "Woolworth Building"
+    },
+    {
+      "building_id": 940,
+      "city": "New York City",
+      "name": "One World Trade Center"
+    },
+    {
+      "building_id": 941,
+      "city": "New York City",
+      "name": "Solomon R. Guggenheim Museum"
+    },
+    {
+      "building_id": 942,
+      "city": "New York City",
+      "name": "Lever House"
+    },
+    {
+      "building_id": 943,
+      "city": "New York City",
+      "name": "Seagram Building"
+    },
+    {
+      "building_id": 944,
+      "city": "New York City",
+      "name": "St. Patrick's Cathedral"
+    },
+    {
+      "building_id": 945,
+      "city": "New York City",
+      "name": "30 Rockefeller Plaza"
+    },
+    {
+      "building_id": 946,
+      "city": "New York City",
+      "name": "MetLife Building"
+    },
+    {
+      "building_id": 947,
+      "city": "New York City",
+      "name": "Hearst Tower"
+    },
+    {
+      "building_id": 949,
+      "city": "New York City",
+      "name": "Brooklyn Bridge"
+    },
+    {
+      "building_id": 950,
+      "city": "New York City",
+      "name": "New York Public Library"
+    },
+    {
+      "building_id": 951,
+      "city": "New York City",
+      "name": "The Dakota"
+    },
+    {
+      "building_id": 952,
+      "city": "New York City",
+      "name": "Citigroup Center"
+    },
+    {
+      "building_id": 954,
+      "city": "Washington DC",
+      "name": "United States Capitol"
+    },
+    {
+      "building_id": 955,
+      "city": "Washington DC",
+      "name": "Kreeger Museum"
+    },
+    {
+      "building_id": 1012,
+      "city": "Boston",
+      "name": "Trinity Church"
+    },
+    {
+      "building_id": 1013,
+      "city": "Boston",
+      "name": "Boston Public Library"
+    },
+    {
+      "building_id": 1014,
+      "city": "Boston",
+      "name": "Faneuil Hall"
+    },
+    {
+      "building_id": 1015,
+      "city": "Boston",
+      "name": "Massachusetts State House"
+    },
+    {
+      "building_id": 1016,
+      "city": "Boston",
+      "name": "Old South Meeting House"
+    },
+    {
+      "building_id": 1017,
+      "city": "Boston",
+      "name": "Old North Church"
+    },
+    {
+      "building_id": 1018,
+      "city": "Boston",
+      "name": "Park Street Church"
+    },
+    {
+      "building_id": 1019,
+      "city": "Boston",
+      "name": "Custom House Tower"
+    },
+    {
+      "building_id": 1020,
+      "city": "Boston",
+      "name": "John Hancock Tower"
+    },
+    {
+      "building_id": 1021,
+      "city": "Boston",
+      "name": "Prudential Tower"
+    },
+    {
+      "building_id": 1022,
+      "city": "Boston",
+      "name": "Boston City Hall"
+    },
+    {
+      "building_id": 1023,
+      "city": "Boston",
+      "name": "Isabella Stewart Gardner Museum"
+    },
+    {
+      "building_id": 1024,
+      "city": "Boston",
+      "name": "MIT Stata Center"
+    },
+    {
+      "building_id": 1025,
+      "city": "Boston",
+      "name": "MIT Chapel"
+    },
+    {
+      "building_id": 1026,
+      "city": "Boston",
+      "name": "Harvard Memorial Hall"
+    },
+    {
+      "building_id": 1027,
+      "city": "Boston",
+      "name": "King's Chapel"
+    },
+    {
+      "building_id": 1028,
+      "city": "Boston",
+      "name": "Ames Building"
+    },
+    {
+      "building_id": 1029,
+      "city": "Boston",
+      "name": "Christian Science Center"
+    }
+  ],
+  "schedule": {
+    "pins_per_day": 4,
+    "times_utc": [
+      "09:00",
+      "13:00",
+      "17:00",
+      "21:00"
+    ]
+  },
+  "lastPosted": "2026-02-18T21:00:00Z",
+  "totalPinsCreated": 9
+}

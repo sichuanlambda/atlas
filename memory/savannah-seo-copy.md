@@ -1,0 +1,7 @@
+# Savannah Architecture: Antebellum Grandeur and Historic Preservation in the American South
+
+Savannah's architectural heritage represents one of America's finest examples of historic urban preservation, where antebellum mansions, Victorian houses, and historic churches create an exceptional streetscape organized around the nation's largest Historic Landmark District. The city's architectural character reflects the prosperity and cultural sophistication of 18th and 19th-century Southern society.
+
+The city's distinctive architecture encompasses Georgian Colonial, Federal, Greek Revival, Gothic Revival, and Victorian styles, all arranged within James Oglethorpe's original city plan of squares and broad avenues. Savannah's residential architecture showcases the evolution of Southern domestic design, from elegant townhouses to grand mansions with their characteristic verandas and gardens. The preservation movement that began in the 1950s has maintained the architectural integrity of entire neighborhoods while adapting historic buildings for contemporary use.
+
+Savannah's architectural landscape demonstrates the successful balance between historic preservation and modern urban life, with careful restoration projects, adaptive reuse of historic buildings, and sensitive new construction that respects the established urban fabric. This commitment to architectural heritage, combined with the unique urban planning legacy of the colonial period, makes Savannah a premier example of American historic preservation and Southern architectural tradition.

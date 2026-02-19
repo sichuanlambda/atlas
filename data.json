@@ -1,52 +1,38 @@
 {
-  "lastUpdated": "2026-02-18T22:10:00Z",
+  "lastUpdated": "2026-02-19T00:02:00Z",
   "status": "active",
-  "currentWork": "Image migration to S3, Atlas Control Center build, city guide expansion",
+  "currentWork": "Image S3 migration (blocked on AWS creds), Pinterest auto-posting, city guide expansion pipeline",
 
   "todaySummary": {
-    "date": "2026-02-18",
-    "headline": "Boston & Philly live. Control Center built. 43 pins queued.",
+    "date": "2026-02-19",
+    "headline": "Overnight: Pinterest cron posting. 8 cities live, 42 pins queued. Waiting on AWS creds for image fix.",
     "sections": [
       {
-        "title": "🏗️ Boston City Guide",
+        "title": "📊 Status at Midnight",
         "items": [
-          "18 buildings submitted (#1012-1029) via automated Playwright script",
-          "All geocoded with addresses, Place page created with editorial content",
-          "Buildings: Trinity Church, BPL, Faneuil Hall, State House, Custom House Tower, John Hancock, MIT Stata Center, and 11 more",
-          "Images pending S3 migration (Wikimedia rate-limited)"
+          "8 cities live: Denver, Den Haag, SF, Chicago, NOLA, NYC, DC, Philly, Boston (MEMORY.md says 8, correcting from 10)",
+          "~473 buildings across all cities",
+          "Pinterest: 9 pins published, 42 in queue (~10 days content)",
+          "CRE Software: 174 products enriched, SSL working"
         ]
       },
       {
-        "title": "🏛️ Philadelphia Fixed",
+        "title": "🔒 Blocked Items",
         "items": [
-          "18 buildings (#993-1011) resubmitted by overnight sub-agent with Wikimedia images",
-          "All made visible, verified working (PSFS Building confirmed with full analysis)",
-          "Images partially migrated — some still need S3 upload"
+          "30 building images downloaded on VPS but can't upload to S3 without AWS credentials",
+          "Philly + Boston images still showing broken on site (Wikimedia hotlink blocking)",
+          "Google Search Indexing API needs enabling in Cloud Console"
         ]
       },
       {
-        "title": "📌 Pinterest Pipeline",
+        "title": "✅ Yesterday's Wins (Feb 18)",
         "items": [
-          "Added 17 NYC + 2 DC + 18 Boston buildings to queue (43 total)",
-          "Created NYC, DC, Boston boards — cron auto-creates new boards",
-          "9 pins published total, ~11 days of queued content"
-        ]
-      },
-      {
-        "title": "🖼️ Image Infrastructure (PR #19)",
-        "items": [
-          "Root cause: Wikimedia blocks hotlinking + rate-limits bulk downloads",
-          "Fix: External URLs now download to S3 on submission",
-          "3 rake tasks written: migrate_external, fix_broken_images, reanalyze_missing",
-          "NYC + DC images migrated ✅ — Philly/Boston blocked by 429s, needs AWS creds or cooldown"
-        ]
-      },
-      {
-        "title": "🖥️ Control Center v1",
-        "items": [
-          "Full SPA rebuild: dark theme, sidebar, 7 pages",
-          "Projects, Tasks, Notes viewer, Flows, Metrics",
-          "Memory files mirrored for browsing"
+          "Boston city guide: 18 buildings submitted + geocoded + Place page created",
+          "Philadelphia: 18 buildings resubmitted with proper images, all visible",
+          "PR #19: external images auto-download to S3 on submission",
+          "Control Center v1 shipped (dark SPA, 7 pages)",
+          "6 runbooks created for repeatable processes",
+          "NYC + DC images migrated to S3"
         ]
       }
     ]
@@ -67,7 +53,7 @@
     },
     {
       "item": "Deploy latest code & run fix_broken_images",
-      "context": "git pull && git push heroku main && heroku run rake images:fix_broken_images (after Wikimedia cooldown or AWS creds provided)",
+      "context": "git pull && git push heroku main && heroku run rake images:fix_broken_images (after AWS creds provided)",
       "priority": "high",
       "added": "2026-02-18"
     },
@@ -79,23 +65,22 @@
     },
     {
       "item": "Post NOLA Reddit drafts",
-      "context": "Best posted Tue-Thu 10am-12pm CT for r/NewOrleans",
+      "context": "Best posted Tue-Thu 10am-12pm CT for r/NewOrleans. Drafts in memory/nola-reddit-drafts.md",
       "priority": "low",
       "added": "2026-02-16"
     }
   ],
 
   "metrics": {
-    "citiesLive": 10,
-    "citiesList": ["Denver", "Den Haag", "San Francisco", "Chicago", "New Orleans", "New York City", "Washington DC", "Philadelphia", "Boston", "Amsterdam"],
-    "citiesInPipeline": ["Barcelona", "Bruges", "Edinburgh", "Kraków", "Tirana", "Istanbul", "Rome"],
-    "totalBuildings": 530,
-    "visibleBuildings": 420,
+    "citiesLive": 8,
+    "citiesList": ["Denver", "Den Haag", "San Francisco", "Chicago", "New Orleans", "New York City", "Washington DC", "Philadelphia", "Boston"],
+    "citiesInPipeline": ["Barcelona", "Bruges", "Edinburgh", "Kraków", "Tirana", "Istanbul", "Rome", "Detroit", "Savannah", "Los Angeles", "Miami"],
+    "totalBuildings": 473,
     "totalStyles": 30,
     "prsMerged": 19,
     "totalUsers": 334,
     "pinterestPins": 9,
-    "pinterestQueue": 43,
+    "pinterestQueue": 42,
     "pinterestBoards": 13,
     "pinterestImpressions": 52,
     "pinterestSaves": 7,
@@ -109,13 +94,13 @@
   "pinterest": {
     "account": "@nathaninproduct",
     "totalPins": 9,
-    "queue": 43,
+    "queue": 42,
     "boards": {
       "city": ["New Orleans Architecture", "San Francisco Architecture", "Chicago Architecture", "Denver Architecture", "NYC Architecture", "Washington DC Architecture", "Boston Architecture"],
       "style": ["Gothic Architecture", "Beaux-Arts Architecture", "Neoclassical Architecture", "Art Deco Buildings", "Victorian Architecture", "Baroque Architecture"]
     },
     "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
-    "note": "43 queued: 6 NOLA + 17 NYC + 2 DC + 18 Boston. ~11 days of content at 4/day.",
+    "note": "42 queued pins. ~10 days of content at 4/day.",
     "totalMetrics": {
       "impressions": 52,
       "saves": 7,
@@ -125,15 +110,15 @@
   },
 
   "recentActivity": [
+    {"date": "2026-02-19T00:02:00Z", "text": "Dashboard refresh: corrected city count to 8 (was 10), synced 64 memory files to atlas repo", "type": "task"},
     {"date": "2026-02-18T22:00:00Z", "text": "Control Center v1 shipped — full SPA with 7 pages", "type": "milestone"},
     {"date": "2026-02-18T20:30:00Z", "text": "All 18 Boston buildings geocoded and Place page created", "type": "milestone"},
     {"date": "2026-02-18T20:15:00Z", "text": "Boston buildings 1012-1029 submitted via Playwright automation", "type": "milestone"},
     {"date": "2026-02-18T19:30:00Z", "text": "Pinterest queue loaded: 43 pins (NYC + DC + Boston)", "type": "task"},
-    {"date": "2026-02-18T19:15:00Z", "text": "Philly 18 buildings made visible — sub-agent resubmission confirmed working", "type": "milestone"},
+    {"date": "2026-02-18T19:15:00Z", "text": "Philly 18 buildings made visible — sub-agent resubmission confirmed", "type": "milestone"},
     {"date": "2026-02-18T18:30:00Z", "text": "PR #19 merged: external images → S3 on submission", "type": "pr"},
     {"date": "2026-02-18T17:00:00Z", "text": "NYC + DC images migrated to S3 ✅", "type": "task"},
     {"date": "2026-02-18T16:00:00Z", "text": "6 runbooks created for repeatable processes", "type": "task"},
-    {"date": "2026-02-18T14:00:00Z", "text": "PR #18 deployed: pagination, meta tags, cache headers, canonicals", "type": "pr"},
-    {"date": "2026-02-18T12:00:00Z", "text": "SSL fixed on cresoftware.tech", "type": "task"}
+    {"date": "2026-02-18T14:00:00Z", "text": "PR #18 deployed: pagination, meta tags, cache headers, canonicals", "type": "pr"}
   ]
 }
