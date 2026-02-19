@@ -165,3 +165,28 @@
 - Sub-agents work well for research/writing tasks (briefing done in 2 min)
 - Wikimedia Commons API needs User-Agent header or returns 403 from VPS
 - Building count corrected to ~500 across 9 cities (Den Haag is the 9th, was miscounted)
+
+## Heroku CLI Access (Feb 19, 2026)
+- Heroku CLI installed on VPS: /usr/local/bin/heroku v10.17.0
+- API key at ~/.config/secrets/heroku.env
+- Remote: `https://heroku:$HEROKU_API_KEY@git.heroku.com/boiling-atoll-02251.git`
+- Atlas can now deploy and run rake tasks autonomously — full pipeline unblocked
+- S3 bucket blocks ACLs — never use `acl: "public-read"` in upload calls
+
+## Building Submission from X Posts / Photos
+- Nathan sends photo or X link → Atlas identifies, finds address, submits
+- X blocks web_fetch — use browser tool to extract from DOM
+- External image URL field must be injected into form via JS (not in DOM by default)
+- Buildings #1030 (Armour-Stiner Octagon House) and #1031 (Schwerin Castle) added this way
+
+## CRE Software Directory — Current State (Feb 19)
+- 208 total products (174 original + 34 new)
+- 66 with real features, 142 still need enrichment
+- Scout sub-agent pattern: read agents/scout.md first, commit in batches of 10
+- Search fixed, new logo, quick filters, comparison badges live
+
+## Thumbnail System — Paused
+- Helper created but disabled — returns original URLs for now
+- Rake task exists but only processed 64/409 before session timeout
+- onerror fallback unreliable with lazy loading + S3 403s
+- Re-enable after full thumbnail generation completes
