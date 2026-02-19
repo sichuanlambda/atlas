@@ -800,22 +800,22 @@ function renderContent(el) {
   const readyCount = q.filter(i => i.status === 'ready').length;
   const draftCount = q.filter(i => i.status === 'draft').length;
   const postedCount = q.filter(i => i.status === 'posted').length;
-  html += \`<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
     <div style="font-size:32px;font-weight:700;color:#3b82f6;">\${readyCount}</div>
     <div style="color:#9ca3af;font-size:13px;">Ready for Nathan</div>
-  </div>\`;
-  html += \`<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
+  </div>`;
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
     <div style="font-size:32px;font-weight:700;color:#6b7280;">\${draftCount}</div>
     <div style="color:#9ca3af;font-size:13px;">Drafts</div>
-  </div>\`;
-  html += \`<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
+  </div>`;
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
     <div style="font-size:32px;font-weight:700;color:#10b981;">\${pinQueue}</div>
     <div style="color:#9ca3af;font-size:13px;">Pinterest Queued</div>
-  </div>\`;
-  html += \`<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
+  </div>`;
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
     <div style="font-size:32px;font-weight:700;color:#f59e0b;">\${postedCount + pinPublished}</div>
     <div style="color:#9ca3af;font-size:13px;">Total Posted</div>
-  </div>\`;
+  </div>`;
   html += '</div>';
 
   // Account sections
@@ -826,36 +826,36 @@ function renderContent(el) {
       ? '<span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:8px;font-size:11px;margin-left:8px;">AUTO</span>'
       : '<span style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:8px;font-size:11px;margin-left:8px;">NATHAN</span>';
 
-    html += \`<div style="background:#1a1a2e;border-radius:12px;padding:24px;margin-bottom:20px;">
+    html += `<div style="background:#1a1a2e;border-radius:12px;padding:24px;margin-bottom:20px;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
         <span style="font-size:20px;">\${icon}</span>
         <h3 style="margin:0;font-size:18px;">\${acct.name}</h3>
         \${autoTag}
       </div>
-      <div style="color:#6b7280;font-size:12px;margin-bottom:16px;font-style:italic;">Voice: \${acct.voice.substring(0, 100)}...</div>\`;
+      <div style="color:#6b7280;font-size:12px;margin-bottom:16px;font-style:italic;">Voice: \${acct.voice.substring(0, 100)}...</div>`;
 
     if (acct.platform === 'pinterest') {
-      html += \`<div style="color:#9ca3af;">
+      html += `<div style="color:#9ca3af;">
         <strong>\${pinQueue}</strong> pins queued (auto-posting 4x daily) &middot;
         <strong>\${pinPublished}</strong> published
-      </div>\`;
+      </div>`;
     } else if (items.length === 0) {
       html += '<div style="color:#6b7280;padding:12px 0;">No content queued yet</div>';
     } else {
       items.forEach(item => {
         const color = statusColors[item.status] || '#6b7280';
         const label = statusLabels[item.status] || item.status;
-        html += \`<div style="border:1px solid #2a2a3e;border-radius:8px;padding:16px;margin-bottom:12px;">
+        html += `<div style="border:1px solid #2a2a3e;border-radius:8px;padding:16px;margin-bottom:12px;">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
             <span style="color:\${color};font-size:13px;font-weight:600;">\${label}</span>
             <span style="color:#6b7280;font-size:12px;">\${item.created}</span>
           </div>
-          <div style="background:#0f0f1a;border-radius:6px;padding:12px;font-size:14px;line-height:1.6;white-space:pre-wrap;color:#e5e7eb;">\${item.content}</div>\`;
+          <div style="background:#0f0f1a;border-radius:6px;padding:12px;font-size:14px;line-height:1.6;white-space:pre-wrap;color:#e5e7eb;">\${item.content}</div>`;
         if (item.notes) {
-          html += \`<div style="margin-top:8px;color:#6b7280;font-size:12px;">💡 \${item.notes}</div>\`;
+          html += `<div style="margin-top:8px;color:#6b7280;font-size:12px;">💡 \${item.notes}</div>`;
         }
         if (item.feedback) {
-          html += \`<div style="margin-top:8px;padding:8px;background:#1e3a2e;border-radius:6px;color:#86efac;font-size:13px;">📣 Nathan: \${item.feedback}</div>\`;
+          html += `<div style="margin-top:8px;padding:8px;background:#1e3a2e;border-radius:6px;color:#86efac;font-size:13px;">📣 Nathan: \${item.feedback}</div>`;
         }
         html += '</div>';
       });
@@ -864,28 +864,28 @@ function renderContent(el) {
   });
 
   // Analytics section
-  html += \`<div style="background:#1a1a2e;border-radius:12px;padding:24px;margin-bottom:20px;">
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:24px;margin-bottom:20px;">
     <h3 style="margin:0 0 12px;">📊 Analytics & Learnings</h3>
     <p style="color:#9ca3af;font-size:14px;">Send Atlas screenshots of post analytics — he'll track engagement metrics and use them to improve future content.</p>
-    <p style="color:#6b7280;font-size:13px;">Learnings so far:</p>\`;
+    <p style="color:#6b7280;font-size:13px;">Learnings so far:</p>`;
   if (learnings.length === 0) {
     html += '<div style="color:#4b5563;font-size:13px;padding:8px 0;">No learnings yet — post some content and share results!</div>';
   } else {
     learnings.forEach(l => {
-      html += \`<div style="padding:6px 0;color:#d1d5db;font-size:13px;">• \${l}</div>\`;
+      html += `<div style="padding:6px 0;color:#d1d5db;font-size:13px;">• \${l}</div>`;
     });
   }
   html += '</div>';
 
   // How it works
-  html += \`<div style="background:#1a1a2e;border-radius:12px;padding:24px;">
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:24px;">
     <h3 style="margin:0 0 12px;">🔄 How This Works</h3>
     <div style="color:#9ca3af;font-size:14px;line-height:1.8;">
       <strong>Pinterest</strong> → Atlas auto-posts 4x daily. No action needed.<br>
       <strong>X Posts</strong> → Atlas drafts content → Nathan reviews here → Posts manually → Shares analytics screenshot → Atlas learns & improves.<br><br>
       <strong>Feedback loop:</strong> Tell Atlas "I changed the wording to X" or "this one got 50 likes" — he'll update the queue and adjust future content.
     </div>
-  </div>\`;
+  </div>`;
 
   html += '</div>';
   el.innerHTML = html;
