@@ -1,0 +1,18 @@
+[
+  {"name": "Sagrada Família", "address": "Carrer de Mallorca 401, 08013 Barcelona, Spain", "style": "Art Nouveau / Gaudí", "year": "1882-present", "query": "Sagrada Familia Barcelona exterior"},
+  {"name": "Casa Batlló", "address": "Passeig de Gràcia 43, 08007 Barcelona, Spain", "style": "Art Nouveau / Gaudí", "year": "1877 (remodeled 1904-1906)", "query": "Casa Batlló Barcelona facade"},
+  {"name": "Casa Milà (La Pedrera)", "address": "Passeig de Gràcia 92, 08008 Barcelona, Spain", "style": "Art Nouveau / Gaudí", "year": "1906-1912", "query": "Casa Milà La Pedrera Barcelona"},
+  {"name": "Park Güell", "address": "Carrer d'Olot, 08024 Barcelona, Spain", "style": "Art Nouveau / Gaudí", "year": "1900-1914", "query": "Park Güell Barcelona entrance"},
+  {"name": "Palau Güell", "address": "Carrer Nou de la Rambla 3-5, 08001 Barcelona, Spain", "style": "Art Nouveau / Gaudí", "year": "1886-1890", "query": "Palau Güell Barcelona facade"},
+  {"name": "Barcelona Cathedral", "address": "Pla de la Seu, 08002 Barcelona, Spain", "style": "Gothic", "year": "1298-1448", "query": "Barcelona Cathedral Gothic facade"},
+  {"name": "Santa Maria del Mar", "address": "Plaça de Santa Maria 1, 08003 Barcelona, Spain", "style": "Catalan Gothic", "year": "1329-1383", "query": "Santa Maria del Mar Barcelona exterior"},
+  {"name": "Palau de la Música Catalana", "address": "Carrer Palau de la Música 4-6, 08003 Barcelona, Spain", "style": "Catalan Modernisme", "year": "1905-1908", "query": "Palau de la Música Catalana Barcelona exterior"},
+  {"name": "Hospital de Sant Pau", "address": "Carrer de Sant Antoni Maria Claret 167, 08025 Barcelona, Spain", "style": "Catalan Modernisme", "year": "1901-1930", "query": "Hospital de Sant Pau Barcelona"},
+  {"name": "Torre Glòries", "address": "Avinguda Diagonal 211, 08018 Barcelona, Spain", "style": "High-tech / Contemporary", "year": "1999-2005", "query": "Torre Glòries Torre Agbar Barcelona"},
+  {"name": "W Barcelona Hotel", "address": "Plaça de la Rosa dels Vents 1, 08039 Barcelona, Spain", "style": "Contemporary", "year": "2009", "query": "W Barcelona Hotel sail building"},
+  {"name": "MACBA", "address": "Plaça dels Àngels 1, 08001 Barcelona, Spain", "style": "Contemporary / Rationalist", "year": "1995", "query": "MACBA Barcelona museum building exterior"},
+  {"name": "Plaça Reial", "address": "Plaça Reial, 08002 Barcelona, Spain", "style": "Neoclassical", "year": "1848-1859", "query": "Plaça Reial Barcelona square"},
+  {"name": "La Boqueria Market", "address": "La Rambla 91, 08001 Barcelona, Spain", "style": "Iron and Glass / Art Nouveau", "year": "1840 (current structure 1914)", "query": "La Boqueria market Barcelona entrance"},
+  {"name": "Casa Amatller", "address": "Passeig de Gràcia 41, 08007 Barcelona, Spain", "style": "Catalan Modernisme / Neo-Gothic", "year": "1898-1900", "query": "Casa Amatller Barcelona facade"},
+  {"name": "Arc de Triomf", "address": "Passeig de Lluís Companys, 08003 Barcelona, Spain", "style": "Neo-Mudéjar", "year": "1888", "query": "Arc de Triomf Barcelona"}
+]
