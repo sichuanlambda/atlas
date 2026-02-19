@@ -84,9 +84,9 @@
     "pinterestPins": 10,
     "pinterestQueue": 41,
     "pinterestBoards": 13,
-    "pinterestImpressions": 52,
-    "pinterestSaves": 7,
-    "pinterestClicks": 5,
+    "pinterestImpressions": 107,
+    "pinterestSaves": 10,
+    "pinterestClicks": 6,
     "creProducts": 174,
     "creProductsPipeline": 35,
     "creCategories": 14,
@@ -105,14 +105,16 @@
     "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
     "note": "41 queued pins. ~10 days of content at 4/day. Last posted 2026-02-19 09:00 UTC.",
     "totalMetrics": {
-      "impressions": 52,
-      "saves": 7,
-      "clicks": 5,
-      "asOf": "2026-02-18T15:00:00Z"
+      "impressions": 107,
+      "saves": 10,
+      "clicks": 6,
+      "outboundClicks": 1,
+      "asOf": "2026-02-19T10:00:00Z"
     }
   },
 
   "recentActivity": [
+    {"date": "2026-02-19T10:00:00Z", "text": "Pinterest performance review #1: 107 impressions, 10 saves, 6 clicks across 10 pins (3 days). Top: Pontalba Buildings (28 imp, 2 saves)", "type": "milestone"},
     {"date": "2026-02-19T09:04:00Z", "text": "Dashboard refresh — Pinterest pin #10 posted (09:00 UTC)", "type": "task"},
     {"date": "2026-02-19T06:02:00Z", "text": "Dashboard full refresh — synced 3 new memory files to atlas repo", "type": "task"},
     {"date": "2026-02-19T03:30:00Z", "text": "CRE expansion research complete: 35 new products identified", "type": "milestone"},
