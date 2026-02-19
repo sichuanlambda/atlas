@@ -24,7 +24,7 @@
         "items": [
           "9 cities live (Denver, Den Haag, SF, Chicago, NOLA, NYC, DC, Philly, Boston)",
           "~500+ buildings, 25/33 images fixed to S3 (7 more ready in fix_batch)",
-          "Pinterest: 9 pins published, 42 in queue (~10 days content at 4/day)",
+          "Pinterest: 10 pins published, 41 in queue (~10 days content at 4/day)",
           "CRE Software: 174 products live + 35 new identified = 209 total pipeline"
         ]
       },
@@ -81,8 +81,8 @@
     "totalStyles": 30,
     "prsMerged": 19,
     "totalUsers": 334,
-    "pinterestPins": 9,
-    "pinterestQueue": 42,
+    "pinterestPins": 10,
+    "pinterestQueue": 41,
     "pinterestBoards": 13,
     "pinterestImpressions": 52,
     "pinterestSaves": 7,
@@ -96,14 +96,14 @@
 
   "pinterest": {
     "account": "@nathaninproduct",
-    "totalPins": 9,
-    "queue": 42,
+    "totalPins": 10,
+    "queue": 41,
     "boards": {
       "city": ["New Orleans Architecture", "San Francisco Architecture", "Chicago Architecture", "Denver Architecture", "NYC Architecture", "Washington DC Architecture", "Boston Architecture"],
       "style": ["Gothic Architecture", "Beaux-Arts Architecture", "Neoclassical Architecture", "Art Deco Buildings", "Victorian Architecture", "Baroque Architecture"]
     },
     "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
-    "note": "42 queued pins. ~10 days of content at 4/day. Last posted 2026-02-18 21:00 UTC.",
+    "note": "41 queued pins. ~10 days of content at 4/day. Last posted 2026-02-19 09:00 UTC.",
     "totalMetrics": {
       "impressions": 52,
       "saves": 7,
