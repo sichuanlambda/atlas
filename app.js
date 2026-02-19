@@ -6,6 +6,7 @@ const CRE_URL = 'https://cresoftware.tech';
 let DATA = {};
 let TASKS = [];
 let PINS = {};
+let CONTENT_Q = {};
 let NOTES_CACHE = {};
 let CHATS = JSON.parse(localStorage.getItem('atlas_chats') || '{}');
 let ACTIVE_CHAT = localStorage.getItem('atlas_active_chat') || null;
@@ -23,6 +24,7 @@ const routes = {
   '/metrics': { title: 'Metrics', render: renderMetrics },
   '/chat': { title: 'Chat', render: renderChat },
   '/agents': { title: 'Agents', render: renderAgents },
+  '/content': { title: 'Content Queue', render: renderContent },
 };
 
 function navigate() {
@@ -39,14 +41,16 @@ function navigate() {
 // === DATA LOADING ===
 async function loadData() {
   try {
-    const [dataRes, tasksRes, pinsRes] = await Promise.all([
+    const [dataRes, tasksRes, pinsRes, contentRes] = await Promise.all([
       fetch('data.json?' + Date.now()),
       fetch('tasks.json?' + Date.now()),
       fetch('memory/pinterest-pins.json?' + Date.now()).catch(() => null),
+      fetch('content-queue.json?' + Date.now()).catch(() => null),
     ]);
     DATA = await dataRes.json();
     TASKS = (await tasksRes.json()).tasks || [];
     if (pinsRes && pinsRes.ok) PINS = await pinsRes.json();
+    if (contentRes && contentRes.ok) CONTENT_Q = await contentRes.json();
   } catch (e) { console.error('Data load error:', e); }
   updateStatus();
 }
@@ -756,6 +760,135 @@ function timeAgo(date) {
 function formatTime(dateStr) {
   const d = new Date(dateStr);
   return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+// === CONTENT QUEUE ===
+function renderContent(el) {
+  const q = CONTENT_Q.queue || [];
+  const accounts = CONTENT_Q.accounts || {};
+  const analytics = CONTENT_Q.analytics || [];
+  const learnings = CONTENT_Q.learnings || [];
+
+  // Group by account
+  const byAccount = {};
+  q.forEach(item => {
+    if (!byAccount[item.account]) byAccount[item.account] = [];
+    byAccount[item.account].push(item);
+  });
+
+  // Pinterest stats
+  const pinQueue = (PINS.queue || []).length;
+  const pinPublished = (PINS.published || []).length;
+
+  const statusColors = {
+    draft: '#6b7280',
+    ready: '#3b82f6',
+    posted: '#10b981',
+    rejected: '#ef4444'
+  };
+  const statusLabels = {
+    draft: '📝 Draft',
+    ready: '🟢 Ready to Post',
+    posted: '✅ Posted',
+    rejected: '❌ Rejected'
+  };
+
+  let html = '<div style="max-width:900px;margin:0 auto;">';
+
+  // Summary cards
+  html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px;">';
+  const readyCount = q.filter(i => i.status === 'ready').length;
+  const draftCount = q.filter(i => i.status === 'draft').length;
+  const postedCount = q.filter(i => i.status === 'posted').length;
+  html += \`<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
+    <div style="font-size:32px;font-weight:700;color:#3b82f6;">\${readyCount}</div>
+    <div style="color:#9ca3af;font-size:13px;">Ready for Nathan</div>
+  </div>\`;
+  html += \`<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
+    <div style="font-size:32px;font-weight:700;color:#6b7280;">\${draftCount}</div>
+    <div style="color:#9ca3af;font-size:13px;">Drafts</div>
+  </div>\`;
+  html += \`<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
+    <div style="font-size:32px;font-weight:700;color:#10b981;">\${pinQueue}</div>
+    <div style="color:#9ca3af;font-size:13px;">Pinterest Queued</div>
+  </div>\`;
+  html += \`<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
+    <div style="font-size:32px;font-weight:700;color:#f59e0b;">\${postedCount + pinPublished}</div>
+    <div style="color:#9ca3af;font-size:13px;">Total Posted</div>
+  </div>\`;
+  html += '</div>';
+
+  // Account sections
+  Object.entries(accounts).forEach(([key, acct]) => {
+    const items = byAccount[key] || [];
+    const icon = acct.platform === 'pinterest' ? '📌' : '𝕏';
+    const autoTag = acct.auto_post
+      ? '<span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:8px;font-size:11px;margin-left:8px;">AUTO</span>'
+      : '<span style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:8px;font-size:11px;margin-left:8px;">NATHAN</span>';
+
+    html += \`<div style="background:#1a1a2e;border-radius:12px;padding:24px;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+        <span style="font-size:20px;">\${icon}</span>
+        <h3 style="margin:0;font-size:18px;">\${acct.name}</h3>
+        \${autoTag}
+      </div>
+      <div style="color:#6b7280;font-size:12px;margin-bottom:16px;font-style:italic;">Voice: \${acct.voice.substring(0, 100)}...</div>\`;
+
+    if (acct.platform === 'pinterest') {
+      html += \`<div style="color:#9ca3af;">
+        <strong>\${pinQueue}</strong> pins queued (auto-posting 4x daily) &middot;
+        <strong>\${pinPublished}</strong> published
+      </div>\`;
+    } else if (items.length === 0) {
+      html += '<div style="color:#6b7280;padding:12px 0;">No content queued yet</div>';
+    } else {
+      items.forEach(item => {
+        const color = statusColors[item.status] || '#6b7280';
+        const label = statusLabels[item.status] || item.status;
+        html += \`<div style="border:1px solid #2a2a3e;border-radius:8px;padding:16px;margin-bottom:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <span style="color:\${color};font-size:13px;font-weight:600;">\${label}</span>
+            <span style="color:#6b7280;font-size:12px;">\${item.created}</span>
+          </div>
+          <div style="background:#0f0f1a;border-radius:6px;padding:12px;font-size:14px;line-height:1.6;white-space:pre-wrap;color:#e5e7eb;">\${item.content}</div>\`;
+        if (item.notes) {
+          html += \`<div style="margin-top:8px;color:#6b7280;font-size:12px;">💡 \${item.notes}</div>\`;
+        }
+        if (item.feedback) {
+          html += \`<div style="margin-top:8px;padding:8px;background:#1e3a2e;border-radius:6px;color:#86efac;font-size:13px;">📣 Nathan: \${item.feedback}</div>\`;
+        }
+        html += '</div>';
+      });
+    }
+    html += '</div>';
+  });
+
+  // Analytics section
+  html += \`<div style="background:#1a1a2e;border-radius:12px;padding:24px;margin-bottom:20px;">
+    <h3 style="margin:0 0 12px;">📊 Analytics & Learnings</h3>
+    <p style="color:#9ca3af;font-size:14px;">Send Atlas screenshots of post analytics — he'll track engagement metrics and use them to improve future content.</p>
+    <p style="color:#6b7280;font-size:13px;">Learnings so far:</p>\`;
+  if (learnings.length === 0) {
+    html += '<div style="color:#4b5563;font-size:13px;padding:8px 0;">No learnings yet — post some content and share results!</div>';
+  } else {
+    learnings.forEach(l => {
+      html += \`<div style="padding:6px 0;color:#d1d5db;font-size:13px;">• \${l}</div>\`;
+    });
+  }
+  html += '</div>';
+
+  // How it works
+  html += \`<div style="background:#1a1a2e;border-radius:12px;padding:24px;">
+    <h3 style="margin:0 0 12px;">🔄 How This Works</h3>
+    <div style="color:#9ca3af;font-size:14px;line-height:1.8;">
+      <strong>Pinterest</strong> → Atlas auto-posts 4x daily. No action needed.<br>
+      <strong>X Posts</strong> → Atlas drafts content → Nathan reviews here → Posts manually → Shares analytics screenshot → Atlas learns & improves.<br><br>
+      <strong>Feedback loop:</strong> Tell Atlas "I changed the wording to X" or "this one got 50 likes" — he'll update the queue and adjust future content.
+    </div>
+  </div>\`;
+
+  html += '</div>';
+  el.innerHTML = html;
 }
 
 // === MOBILE MENU ===

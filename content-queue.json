@@ -1,0 +1,109 @@
+{
+  "accounts": {
+    "ah_x": {
+      "name": "@architectrHelpr",
+      "platform": "x",
+      "voice": "Informative, visual-first. Short punchy captions. Architecture facts, building spotlights, style deep-dives. Hashtags: #architecture #design #cityname. No personal stories.",
+      "auto_post": false,
+      "owner": "nathan"
+    },
+    "nathan_x": {
+      "name": "@nathansrobinson",
+      "platform": "x",
+      "voice": "Direct, conversational, no em dashes. Personal story first, insight second. Builder perspective. References real struggles. Thinks in market dynamics. Longer posts OK when story warrants it.",
+      "auto_post": false,
+      "owner": "nathan"
+    },
+    "ah_pinterest": {
+      "name": "@nathaninproduct",
+      "platform": "pinterest",
+      "voice": "Template: {building_name} | {style} Architecture in {city}. Clean, SEO-optimized descriptions.",
+      "auto_post": true,
+      "owner": "atlas"
+    },
+    "plotzy_x": {
+      "name": "@plotzyai",
+      "platform": "x",
+      "voice": "Professional but accessible. CRE industry insights, zoning data tidbits, product updates. Thought leadership without jargon.",
+      "auto_post": false,
+      "owner": "nathan"
+    }
+  },
+  "queue": [
+    {
+      "id": "x-ah-001",
+      "account": "ah_x",
+      "status": "ready",
+      "created": "2026-02-19",
+      "content": "Schwerin Castle in Germany is often called 'the Neuschwanstein of the North' — and it's the seat of Mecklenburg-Vorpommern's state parliament.\n\nRomanticism meets Gothic Revival meets Neo-Renaissance. All on an island in a lake.\n\nExplore it: https://app.architecturehelper.com/architecture_explorer/1031\n\n#architecture #schwerin #castle #germany",
+      "type": "single",
+      "building_id": 1031,
+      "notes": "",
+      "feedback": ""
+    },
+    {
+      "id": "x-ah-002",
+      "account": "ah_x",
+      "status": "ready",
+      "created": "2026-02-19",
+      "content": "The Armour-Stiner Octagon House in Irvington, NY is the only known fully domed octagonal residence in the world.\n\nBuilt 1859-1872. Victorian, Gothic Revival, Second Empire — all in one building.\n\nhttps://app.architecturehelper.com/architecture_explorer/1030\n\n#architecture #victorian #octagonhouse #newyork",
+      "type": "single",
+      "building_id": 1030,
+      "notes": "",
+      "feedback": ""
+    },
+    {
+      "id": "x-ah-003",
+      "account": "ah_x",
+      "status": "ready",
+      "created": "2026-02-19",
+      "content": "We just added 18 buildings in Boston to Architecture Helper 🏛️\n\nFrom Trinity Church (1877) to MIT's Stata Center (2004) — 127 years of architectural evolution in one city.\n\nExplore Boston: https://app.architecturehelper.com/places/boston\n\n#boston #architecture #cityguide",
+      "type": "single",
+      "notes": "",
+      "feedback": ""
+    },
+    {
+      "id": "x-ah-004",
+      "account": "ah_x",
+      "status": "ready",
+      "created": "2026-02-19",
+      "content": "Philadelphia's PSFS Building (1932) was the first International Style skyscraper in the United States.\n\nArt Deco meets Modernism. Still one of the most striking buildings on Market Street.\n\nhttps://app.architecturehelper.com/architecture_explorer/1008\n\n#philadelphia #artdeco #modernism #architecture",
+      "type": "single",
+      "building_id": 1008,
+      "notes": "",
+      "feedback": ""
+    },
+    {
+      "id": "x-ah-005",
+      "account": "ah_x",
+      "status": "ready",
+      "created": "2026-02-19",
+      "content": "Architecture Helper now covers 9 cities across the US & Europe:\n\n🇺🇸 Denver, SF, Chicago, New Orleans, NYC, DC, Philadelphia, Boston\n🇳🇱 Den Haag\n\n500+ buildings. Free to explore.\n\nhttps://app.architecturehelper.com\n\n#architecture #buildings #travel",
+      "type": "single",
+      "notes": "",
+      "feedback": ""
+    },
+    {
+      "id": "x-nathan-001",
+      "account": "nathan_x",
+      "status": "draft",
+      "created": "2026-02-19",
+      "content": "I built an AI that's autonomously adding cities to my architecture side project.\n\nIt researches buildings, sources CC-licensed images, submits them, writes the analysis, creates city guide pages, and queues Pinterest pins.\n\nNo human in the loop. 9 cities live. Barcelona next.\n\nThe stack: Rails app on Heroku + OpenClaw AI agent + Wikimedia Commons API + GPT-4 for analysis + Pinterest for distribution.\n\nThe interesting part isn't the tech — it's that the AI makes judgment calls. Which buildings represent a city's architectural identity? What images are good enough? When to use Gothic vs Neo-Gothic as the style label?\n\nThese are taste decisions, not engineering decisions. And it's getting better at them.",
+      "type": "thread_single",
+      "notes": "For Nathan's personal page. Builder/maker angle. Could be a thread if he wants to expand.",
+      "feedback": ""
+    },
+    {
+      "id": "x-nathan-002",
+      "account": "nathan_x",
+      "status": "draft",
+      "created": "2026-02-19",
+      "content": "Side project update: Architecture Helper now has 500+ buildings across 9 cities.\n\nStarted as a weekend hack. Now an AI agent runs it almost entirely on its own — adding cities, fixing images, posting to Pinterest, writing SEO content.\n\nMost interesting thing I've learned: the AI is better at the repetitive taste-based work than I expected, but worse at anything requiring real-world context (like knowing that Wikimedia Commons sometimes returns book covers instead of building photos).\n\nThe gap isn't intelligence. It's experience.",
+      "type": "single",
+      "notes": "Shorter version of the maker story. Good standalone post.",
+      "feedback": ""
+    }
+  ],
+  "analytics": [],
+  "learnings": []
+}
