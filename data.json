@@ -1,34 +1,34 @@
 {
-  "lastUpdated": "2026-02-20T15:02:00Z",
+  "lastUpdated": "2026-02-20T18:02:00Z",
   "status": "active",
-  "currentWork": "Feb 20 \u2014 Explosive day. 61 new buildings (Barcelona 15, Edinburgh 13, Bruges 16, Krak\u00f3w 17, + 2 one-offs). 13 cities with Place pages. Typefully API integrated. 18 social drafts created. Direct DB pipeline is a game-changer.",
+  "currentWork": "Feb 20 afternoon — CRE buyer’s guides approved & being generated (13 guides), PR #21 Place page improvements, Typefully content strategy refined, humanizer skill installed. 1105 buildings, 13 cities.",
   "todaySummary": {
     "date": "2026-02-20",
-    "headline": "61 buildings submitted, 4 new cities live (Barcelona/Edinburgh/Bruges/Krak\u00f3w), Typefully API integrated, direct DB pipeline 30x faster",
+    "headline": "61 buildings, 4 new cities, Typefully API, CRE buyer’s guides approved, PR #21, humanizer skill, 264 pSEO URLs targeted",
     "sections": [
       {
-        "title": "\ud83d\udd25 Direct DB Pipeline",
+        "title": "🔥 Direct DB Pipeline",
         "items": [
           "Eliminated Playwright browser entirely for building submissions",
-          "heroku run rails runner with heredoc \u2192 direct DB + S3 + GPT in seconds",
+          "heroku run rails runner with heredoc → direct DB + S3 + GPT in seconds",
           "9 buildings in 30 seconds (was ~90s/building with browser)",
           "Scales to 600+ buildings per run",
-          "S3 direct upload from VPS via boto3 (new pattern for Nathan\u2019s photos)"
+          "S3 direct upload from VPS via boto3 (new pattern for Nathan’s photos)"
         ]
       },
       {
-        "title": "\ud83c\udfdb\ufe0f 4 New Cities Live",
+        "title": "🏛️ 4 New Cities Live",
         "items": [
           "Barcelona: 15 buildings (IDs 1034-1057)",
           "Edinburgh: 13 buildings (IDs 1058-1070)",
           "Bruges: 16 buildings (IDs 1071-1086)",
-          "Krak\u00f3w: 17 buildings (IDs 1087-1103)",
+          "Kraków: 17 buildings (IDs 1087-1103)",
           "All Place pages created with 8,000-10,000 char editorial content",
           "visible_in_library bug fixed (77 buildings had nil value)"
         ]
       },
       {
-        "title": "\ud83d\udcf1 Typefully API + Social",
+        "title": "📱 Typefully API + Social",
         "items": [
           "API integrated: 4 accounts (@ArchitectrHelpr, @CRESoftware, @NathanSRobinson, @PlotzyAI)",
           "Auto-post: AH + CRE. Drafts-only: Nathan + Plotzy",
@@ -39,7 +39,7 @@
         ]
       },
       {
-        "title": "\ud83d\udccc Also",
+        "title": "📌 Also",
         "items": [
           "Nordiska Museet (#1104, Stockholm) + Hervormde Gemeente Zierikzee (#1105) submitted",
           "Pinterest pin #14 posted (Old U.S. Mint, wraps NOLA queue)",
@@ -48,39 +48,57 @@
         ]
       },
       {
-        "title": "\ud83d\udccb Nathan\u2019s Todo",
+        "title": "📋 Nathan’s Todo",
         "items": [
+          "Merge PR #21 (Place page sticky sidebar)",
           "Enable Google Search Indexing API in Cloud Console",
-          "Review marketing action plans (memory/marketing-*.md)",
-          "Review morning briefing & strategic questions"
+          "Dashboard requests: usage costs, filesystem viz, content board view"
+        ]
+      },
+      {
+        "title": "📚 CRE pSEO (afternoon)",
+        "items": [
+          "Buyer’s guide template approved by Nathan — 13 remaining guides being generated",
+          "Format: TL;DR, comparison table, 5-7 product reviews, pros/cons, FAQ",
+          "Total pSEO target: 14 guides + 42 comparisons + 208 products = 264 rankable URLs",
+          "Category carousel added to CRE homepage",
+          "Sub-agents: scribe-cre-guides (13 guides), scout-cre-enrichment (49 thin products)"
+        ]
+      },
+      {
+        "title": "🏗️ Architecture Helper",
+        "items": [
+          "PR #21: Place page map above tour, sticky sidebar, mobile sticky bar — waiting merge",
+          "Humanizer skill installed for better social copy",
+          "X link strategy: 40% no link, 20% dot notation, 20% reply, 20% direct"
         ]
       }
     ]
   },
   "waitingOnNathan": [
     {
+      "item": "Merge PR #21 (Place page sticky sidebar)",
+      "context": "github.com/sichuanlambda/feedback-loop/pull/21 — map above tour buttons, sticky sidebar, mobile sticky bar",
+      "priority": "high",
+      "added": "2026-02-20"
+    },
+    {
       "item": "Enable GSC Web Search Indexing API",
-      "context": "Google Cloud Console \u2192 project stoked-virtue-413221 \u2192 enable \"Web Search Indexing API\". Unblocks auto-indexing.",
+      "context": "Google Cloud Console → project stoked-virtue-413221 → enable \"Web Search Indexing API\".",
       "priority": "high",
       "added": "2026-02-17"
     },
     {
-      "item": "Read morning briefing & respond to strategic questions",
-      "context": "5 strategic docs: CRE SaaS plan, skills ranking, dashboard ideas, engagement, money-making.",
+      "item": "Dashboard enhancements",
+      "context": "Requested: usage costs/model tracking, file system visualization, content page as board/grid view",
       "priority": "medium",
-      "added": "2026-02-19"
+      "added": "2026-02-20"
     },
     {
       "item": "Review marketing action plans",
       "context": "memory/marketing-plotzy-actions.md, marketing-ah-actions.md, marketing-cre-actions.md",
-      "priority": "medium",
-      "added": "2026-02-19"
-    },
-    {
-      "item": "Review vision docs",
-      "context": "memory/vision-architecture-helper.md and memory/vision-cresoftware.md",
       "priority": "low",
-      "added": "2026-02-18"
+      "added": "2026-02-19"
     }
   ],
   "metrics": {
@@ -98,7 +116,7 @@
       "Barcelona",
       "Edinburgh",
       "Bruges",
-      "Krak\u00f3w"
+      "Kraków"
     ],
     "citiesInPipeline": [
       "Tirana",
@@ -113,8 +131,8 @@
     "totalStyles": 30,
     "prsMerged": 19,
     "totalUsers": 334,
-    "pinterestPins": 14,
-    "pinterestQueue": 86,
+    "pinterestPins": 15,
+    "pinterestQueue": 85,
     "pinterestBoards": 13,
     "pinterestImpressions": 107,
     "pinterestSaves": 10,
@@ -145,7 +163,7 @@
         "Edinburgh Architecture",
         "Barcelona Architecture",
         "Bruges Architecture",
-        "Krak\u00f3w Architecture"
+        "Kraków Architecture"
       ],
       "style": [
         "Gothic Architecture",
@@ -157,7 +175,7 @@
       ]
     },
     "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
-    "note": "85 queued pins. ~21 days of content at 4/day. Last posted 2026-02-20 17:00 UTC. First NYC pin!",
+    "note": "85 queued pins. ~21 days at 4/day. First NYC pin posted (Empire State Building).",
     "totalMetrics": {
       "impressions": 107,
       "saves": 10,
@@ -169,8 +187,33 @@
   },
   "recentActivity": [
     {
-      "date": "2026-02-20T15:02:00Z",
-      "text": "Dashboard refresh \u2014 full day recap: 61 buildings, 4 cities, Typefully",
+      "date": "2026-02-20T18:02:00Z",
+      "text": "Dashboard refresh — afternoon: CRE guides, PR #21, humanizer",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-20T17:00:00Z",
+      "text": "Pinterest pin #15: Empire State Building (NYC) — first NYC pin",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-20T15:30:00Z",
+      "text": "CRE homepage category carousel + sub-agents: guides + enrichment + underwriting skill",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-20T15:20:00Z",
+      "text": "PR #21: Place page sticky sidebar + map improvements",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-20T15:13:00Z",
+      "text": "CRE buyer’s guide template approved — 13 guides being generated (264 pSEO URLs)",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-20T13:00:00Z",
+      "text": "Humanizer skill installed — kills AI vocabulary in social copy",
       "type": "task"
     },
     {
@@ -180,12 +223,12 @@
     },
     {
       "date": "2026-02-20T13:00:00Z",
-      "text": "Pinterest pin #14: Old U.S. Mint (NOLA) \u2014 wraps NOLA queue",
+      "text": "Pinterest pin #14: Old U.S. Mint (NOLA) — wraps NOLA queue",
       "type": "task"
     },
     {
       "date": "2026-02-20T12:30:00Z",
-      "text": "Dashboard Content Hub v2 \u2014 Typefully integration, tweet previews",
+      "text": "Dashboard Content Hub v2 — Typefully integration, tweet previews",
       "type": "milestone"
     },
     {
@@ -195,22 +238,22 @@
     },
     {
       "date": "2026-02-20T11:45:00Z",
-      "text": "Place page content: 4 cities with 8K-10K char editorial (Barcelona/Edinburgh/Bruges/Krak\u00f3w)",
+      "text": "Place page content: 4 cities with 8K-10K char editorial (Barcelona/Edinburgh/Bruges/Kraków)",
       "type": "milestone"
     },
     {
       "date": "2026-02-20T11:40:00Z",
-      "text": "Bug fix: 77 buildings visible_in_library was nil \u2014 fixed",
+      "text": "Bug fix: 77 buildings visible_in_library was nil — fixed",
       "type": "task"
     },
     {
       "date": "2026-02-20T11:30:00Z",
-      "text": "3-city blitz: Edinburgh (13) + Bruges (16) + Krak\u00f3w (17) = 46 buildings in 30 min",
+      "text": "3-city blitz: Edinburgh (13) + Bruges (16) + Kraków (17) = 46 buildings in 30 min",
       "type": "milestone"
     },
     {
       "date": "2026-02-20T10:40:00Z",
-      "text": "BREAKTHROUGH: Direct DB pipeline \u2014 9 Barcelona buildings in 30 seconds",
+      "text": "BREAKTHROUGH: Direct DB pipeline — 9 Barcelona buildings in 30 seconds",
       "type": "milestone"
     },
     {
@@ -220,7 +263,7 @@
     },
     {
       "date": "2026-02-20T09:44:00Z",
-      "text": "Dashboard content page fixed \u2014 escaped template literals, v8 cache bust",
+      "text": "Dashboard content page fixed — escaped template literals, v8 cache bust",
       "type": "task"
     },
     {
@@ -235,18 +278,13 @@
     },
     {
       "date": "2026-02-19T21:00:00Z",
-      "text": "Pinterest pin #12 posted \u2014 4/4 daily pins complete",
+      "text": "Pinterest pin #12 posted — 4/4 daily pins complete",
       "type": "task"
     },
     {
       "date": "2026-02-19T18:00:00Z",
       "text": "Boston: 12 wrong images replaced + Place hero fixed",
       "type": "milestone"
-    },
-    {
-      "date": "2026-02-19T15:00:00Z",
-      "text": "Pinterest queue expanded to 90 pins",
-      "type": "task"
     }
   ],
   "projectLatest": {
@@ -261,7 +299,7 @@
         },
         {
           "type": "builds",
-          "text": "4 new European cities launched: Barcelona (15), Edinburgh (13), Bruges (16), Krak\u00f3w (17)",
+          "text": "4 new European cities launched: Barcelona (15), Edinburgh (13), Bruges (16), Kraków (17)",
           "date": "2026-02-20"
         },
         {
@@ -392,7 +430,7 @@
         },
         {
           "type": "idea",
-          "text": "Potential killer feature: enter address \u2192 instant zone + ordinance meaning"
+          "text": "Potential killer feature: enter address → instant zone + ordinance meaning"
         },
         {
           "type": "stats",
