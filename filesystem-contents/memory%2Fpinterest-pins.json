@@ -1,0 +1,1239 @@
+{
+  "pins": [
+    {
+      "id": "1143281055425831346",
+      "url": "https://www.pinterest.com/pin/1143281055425831346",
+      "building_id": 928,
+      "building_name": "St. Louis Cathedral",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "styles": [
+        "Gothic",
+        "Classical Roman",
+        "Baroque",
+        "Neoclassical"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/928",
+      "title": "St. Louis Cathedral | New Orleans Architecture Guide",
+      "template": "v1",
+      "created": "2026-02-16T22:10:00Z",
+      "metrics": {
+        "impressions": 14,
+        "pin_clicks": 1,
+        "saves": 0,
+        "outbound_clicks": 0,
+        "last_checked": "2026-02-19T10:00:00Z"
+      }
+    },
+    {
+      "id": "1143281055425831772",
+      "url": "https://www.pinterest.com/pin/1143281055425831772",
+      "building_id": 924,
+      "building_name": "Saenger Theatre",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "styles": [
+        "Art Deco",
+        "Classical Greek",
+        "Romanesque",
+        "Baroque",
+        "Neoclassical"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/924",
+      "title": "Saenger Theatre | Art Deco Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-16T22:15:00Z",
+      "metrics": {
+        "impressions": 16,
+        "pin_clicks": 2,
+        "saves": 0,
+        "outbound_clicks": 0,
+        "last_checked": "2026-02-19T10:00:00Z"
+      }
+    },
+    {
+      "id": "1143281055425855370",
+      "url": "https://www.pinterest.com/pin/1143281055425855370",
+      "building_id": 930,
+      "building_name": "Pontalba Buildings",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": [
+        "Victorian Architecture"
+      ],
+      "styles": [
+        "Victorian",
+        "Italianate",
+        "Beaux-Arts"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/930",
+      "title": "Pontalba Buildings | Victorian Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-17T09:00:00Z",
+      "metrics": {
+        "impressions": 28,
+        "pin_clicks": 2,
+        "saves": 2,
+        "outbound_clicks": 0,
+        "last_checked": "2026-02-19T10:00:00Z"
+      }
+    },
+    {
+      "id": "1143281055425863521",
+      "url": "https://www.pinterest.com/pin/1143281055425863521",
+      "building_id": 927,
+      "building_name": "NOMA",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": [
+        "Beaux-Arts Architecture"
+      ],
+      "styles": [
+        "Beaux-Arts",
+        "Neoclassical",
+        "Art Deco",
+        "Gothic Revival"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/927",
+      "title": "NOMA | Beaux-Arts Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-17T13:00:00Z",
+      "metrics": {
+        "impressions": 15,
+        "pin_clicks": 1,
+        "saves": 1,
+        "outbound_clicks": 1,
+        "last_checked": "2026-02-19T10:00:00Z"
+      }
+    },
+    {
+      "id": "1143281055425889730",
+      "url": "https://www.pinterest.com/pin/1143281055425889730",
+      "building_id": 922,
+      "building_name": "Pitot House",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": [
+        "Victorian Architecture"
+      ],
+      "styles": [
+        "Colonial Revival",
+        "Victorian",
+        "Gothic Revival"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/922",
+      "title": "Pitot House | Colonial Revival Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-17T21:00:00Z",
+      "metrics": {
+        "impressions": 10,
+        "pin_clicks": 0,
+        "saves": 2,
+        "outbound_clicks": 0,
+        "last_checked": "2026-02-19T10:00:00Z"
+      }
+    },
+    {
+      "id": "1143281055425917613",
+      "url": "https://www.pinterest.com/pin/1143281055425917613",
+      "building_id": 929,
+      "building_name": "The Cabildo",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": [
+        "Beaux-Arts Architecture"
+      ],
+      "styles": [
+        "Classical Roman",
+        "Beaux-Arts",
+        "Victorian"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/929",
+      "title": "The Cabildo | Classical Roman Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-18T09:00:00Z",
+      "metrics": {
+        "impressions": 11,
+        "pin_clicks": 0,
+        "saves": 1,
+        "outbound_clicks": 0,
+        "last_checked": "2026-02-19T10:00:00Z"
+      }
+    },
+    {
+      "id": "1143281055425929915",
+      "url": "https://www.pinterest.com/pin/1143281055425929915",
+      "building_id": 933,
+      "building_name": "Gallier Hall",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": [
+        "Neoclassical Architecture"
+      ],
+      "styles": [
+        "Neoclassical",
+        "Classical Greek",
+        "Beaux-Arts"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/933",
+      "title": "Gallier Hall | Neoclassical Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-18T14:18:00Z",
+      "metrics": {
+        "impressions": 8,
+        "pin_clicks": 0,
+        "saves": 1,
+        "outbound_clicks": 0,
+        "last_checked": "2026-02-19T10:00:00Z"
+      }
+    },
+    {
+      "id": "1143281055425940564",
+      "url": "https://www.pinterest.com/pin/1143281055425940564",
+      "building_id": 931,
+      "building_name": "Hotel Monteleone",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": [
+        "Victorian Architecture"
+      ],
+      "styles": [
+        "Victorian",
+        "Renaissance",
+        "Beaux-Arts",
+        "Art Nouveau",
+        "Gothic Revival"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/931",
+      "title": "Hotel Monteleone | Victorian Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-18T17:30:00Z",
+      "metrics": {
+        "impressions": 4,
+        "pin_clicks": 0,
+        "saves": 1,
+        "outbound_clicks": 0,
+        "last_checked": "2026-02-19T10:00:00Z"
+      }
+    },
+    {
+      "id": "1143281055425951605",
+      "url": "https://www.pinterest.com/pin/1143281055425951605",
+      "building_id": 925,
+      "building_name": "Shotgun House",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": [
+        "Victorian Architecture"
+      ],
+      "styles": [
+        "Victorian",
+        "Colonial Revival",
+        "Art Deco",
+        "Modernism"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/925",
+      "title": "Shotgun House | Victorian Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-18T21:00:00Z",
+      "metrics": {
+        "impressions": 1,
+        "pin_clicks": 0,
+        "saves": 1,
+        "outbound_clicks": 0,
+        "last_checked": "2026-02-19T10:00:00Z"
+      }
+    },
+    {
+      "id": "1143281055425978739",
+      "url": "https://www.pinterest.com/pin/1143281055425978739",
+      "building_id": 921,
+      "building_name": "McGehee School",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": [
+        "Neoclassical Architecture"
+      ],
+      "styles": [
+        "Neoclassical",
+        "Art Deco",
+        "Colonial Revival",
+        "Victorian"
+      ],
+      "link": "https://app.architecturehelper.com/architecture_explorer/921",
+      "title": "McGehee School | Neoclassical Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-19T09:00:00Z",
+      "metrics": {
+        "impressions": 0,
+        "pin_clicks": 0,
+        "saves": 1,
+        "outbound_clicks": 0,
+        "last_checked": "2026-02-19T10:00:00Z"
+      }
+    },
+    {
+      "id": "1143281055425998524",
+      "url": "https://www.pinterest.com/pin/1143281055425998524",
+      "building_id": 926,
+      "building_name": "Contemporary Arts Center",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": ["Gothic Architecture"],
+      "styles": ["Gothic Revival", "Romanesque", "Victorian", "Beaux-Arts", "Chicago School"],
+      "link": "https://app.architecturehelper.com/architecture_explorer/926",
+      "title": "Contemporary Arts Center | Gothic Revival Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-19T17:00:00Z",
+      "metrics": {}
+    },
+    {
+      "id": "1143281055426011080",
+      "url": "https://www.pinterest.com/pin/1143281055426011080",
+      "building_id": 934,
+      "building_name": "Longue Vue House",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": ["Neoclassical Architecture"],
+      "styles": ["Classical Greek", "Colonial Revival", "Modern Movement"],
+      "link": "https://app.architecturehelper.com/architecture_explorer/934",
+      "title": "Longue Vue House | Classical Greek Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-19T21:00:00Z",
+      "metrics": {}
+    },
+    {
+      "id": "1143281055426039381",
+      "url": "https://www.pinterest.com/pin/1143281055426039381",
+      "building_id": 932,
+      "building_name": "Preservation Hall",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": ["Victorian Architecture"],
+      "styles": ["Victorian", "Spanish Colonial Revival", "Gothic Revival"],
+      "link": "https://app.architecturehelper.com/architecture_explorer/932",
+      "title": "Preservation Hall | Victorian Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-20T09:00:00Z",
+      "metrics": {}
+    },
+    {
+      "id": "1143281055426047751",
+      "url": "https://www.pinterest.com/pin/1143281055426047751",
+      "building_id": 923,
+      "building_name": "Old U.S. Mint",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": ["Neoclassical Architecture"],
+      "styles": ["Classical Roman", "Neoclassical", "Victorian"],
+      "link": "https://app.architecturehelper.com/architecture_explorer/923",
+      "title": "Old U.S. Mint | Classical Roman Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-20T13:00:00Z",
+      "metrics": {}
+    }
+  ],
+  "boards": [
+    {
+      "name": "New Orleans Architecture",
+      "type": "city"
+    },
+    {
+      "name": "San Francisco Architecture",
+      "type": "city"
+    },
+    {
+      "name": "Chicago Architecture",
+      "type": "city"
+    },
+    {
+      "name": "Denver Architecture",
+      "type": "city"
+    },
+    {
+      "name": "Gothic Architecture",
+      "type": "style"
+    },
+    {
+      "name": "Beaux-Arts Architecture",
+      "type": "style"
+    },
+    {
+      "name": "Neoclassical Architecture",
+      "type": "style"
+    },
+    {
+      "name": "Art Deco Buildings",
+      "type": "style"
+    },
+    {
+      "name": "Victorian Architecture",
+      "type": "style"
+    },
+    {
+      "name": "Baroque Architecture",
+      "type": "style"
+    },
+    {
+      "name": "NYC Architecture",
+      "type": "city"
+    },
+    {
+      "name": "Washington DC Architecture",
+      "type": "city"
+    },
+    {
+      "name": "Boston Architecture",
+      "type": "city"
+    }
+  ],
+  "templates": {
+    "v1": {
+      "title": "{building_name} | {primary_style} Architecture in {city}",
+      "description": "{building_description} Explore the full AI-powered architectural analysis. #{city_hashtag} #{style_hashtag} #ArchitectureLovers #HistoricBuildings",
+      "active": true,
+      "performance": {
+        "impressions": 107,
+        "saves": 10,
+        "clicks": 6,
+        "outbound_clicks": 1,
+        "as_of": "2026-02-19T10:00:00Z"
+      }
+    }
+  },
+  "queue": [
+    {
+      "building_id": 935,
+      "city": "New York City",
+      "name": "Empire State Building"
+    },
+    {
+      "building_id": 936,
+      "city": "New York City",
+      "name": "Chrysler Building"
+    },
+    {
+      "building_id": 937,
+      "city": "New York City",
+      "name": "Flatiron Building"
+    },
+    {
+      "building_id": 938,
+      "city": "New York City",
+      "name": "Grand Central Terminal"
+    },
+    {
+      "building_id": 939,
+      "city": "New York City",
+      "name": "Woolworth Building"
+    },
+    {
+      "building_id": 940,
+      "city": "New York City",
+      "name": "One World Trade Center"
+    },
+    {
+      "building_id": 941,
+      "city": "New York City",
+      "name": "Solomon R. Guggenheim Museum"
+    },
+    {
+      "building_id": 942,
+      "city": "New York City",
+      "name": "Lever House"
+    },
+    {
+      "building_id": 943,
+      "city": "New York City",
+      "name": "Seagram Building"
+    },
+    {
+      "building_id": 944,
+      "city": "New York City",
+      "name": "St. Patrick's Cathedral"
+    },
+    {
+      "building_id": 945,
+      "city": "New York City",
+      "name": "30 Rockefeller Plaza"
+    },
+    {
+      "building_id": 946,
+      "city": "New York City",
+      "name": "MetLife Building"
+    },
+    {
+      "building_id": 947,
+      "city": "New York City",
+      "name": "Hearst Tower"
+    },
+    {
+      "building_id": 949,
+      "city": "New York City",
+      "name": "Brooklyn Bridge"
+    },
+    {
+      "building_id": 950,
+      "city": "New York City",
+      "name": "New York Public Library"
+    },
+    {
+      "building_id": 951,
+      "city": "New York City",
+      "name": "The Dakota"
+    },
+    {
+      "building_id": 952,
+      "city": "New York City",
+      "name": "Citigroup Center"
+    },
+    {
+      "building_id": 954,
+      "city": "Washington DC",
+      "name": "United States Capitol"
+    },
+    {
+      "building_id": 955,
+      "city": "Washington DC",
+      "name": "Kreeger Museum"
+    },
+    {
+      "building_id": 1012,
+      "city": "Boston",
+      "name": "Trinity Church"
+    },
+    {
+      "building_id": 1013,
+      "city": "Boston",
+      "name": "Boston Public Library"
+    },
+    {
+      "building_id": 1014,
+      "city": "Boston",
+      "name": "Faneuil Hall"
+    },
+    {
+      "building_id": 1015,
+      "city": "Boston",
+      "name": "Massachusetts State House"
+    },
+    {
+      "building_id": 1016,
+      "city": "Boston",
+      "name": "Old South Meeting House"
+    },
+    {
+      "building_id": 1017,
+      "city": "Boston",
+      "name": "Old North Church"
+    },
+    {
+      "building_id": 1018,
+      "city": "Boston",
+      "name": "Park Street Church"
+    },
+    {
+      "building_id": 1019,
+      "city": "Boston",
+      "name": "Custom House Tower"
+    },
+    {
+      "building_id": 1020,
+      "city": "Boston",
+      "name": "John Hancock Tower"
+    },
+    {
+      "building_id": 1021,
+      "city": "Boston",
+      "name": "Prudential Tower"
+    },
+    {
+      "building_id": 1022,
+      "city": "Boston",
+      "name": "Boston City Hall"
+    },
+    {
+      "building_id": 1023,
+      "city": "Boston",
+      "name": "Isabella Stewart Gardner Museum"
+    },
+    {
+      "building_id": 1024,
+      "city": "Boston",
+      "name": "MIT Stata Center"
+    },
+    {
+      "building_id": 1025,
+      "city": "Boston",
+      "name": "MIT Chapel"
+    },
+    {
+      "building_id": 1026,
+      "city": "Boston",
+      "name": "Harvard Memorial Hall"
+    },
+    {
+      "building_id": 1027,
+      "city": "Boston",
+      "name": "King's Chapel"
+    },
+    {
+      "building_id": 1028,
+      "city": "Boston",
+      "name": "Ames Building"
+    },
+    {
+      "building_id": 1029,
+      "city": "Boston",
+      "name": "Christian Science Center"
+    },
+    {
+      "building_id": 868,
+      "building_name": "Transamerica Pyramid",
+      "city": "San Francisco",
+      "primary_style": "Modernism",
+      "url": "https://app.architecturehelper.com/architecture_explorer/868",
+      "title": "Transamerica Pyramid | Modernism Architecture in San Francisco",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 869,
+      "building_name": "Painted Ladies",
+      "city": "San Francisco",
+      "primary_style": "Victorian",
+      "url": "https://app.architecturehelper.com/architecture_explorer/869",
+      "title": "Painted Ladies | Victorian Architecture in San Francisco",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 870,
+      "building_name": "SFMOMA",
+      "city": "San Francisco",
+      "primary_style": "Modernism",
+      "url": "https://app.architecturehelper.com/architecture_explorer/870",
+      "title": "SFMOMA | Modernism Architecture in San Francisco",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 871,
+      "building_name": "Ferry Building",
+      "city": "San Francisco",
+      "primary_style": "Beaux-Arts",
+      "url": "https://app.architecturehelper.com/architecture_explorer/871",
+      "title": "Ferry Building | Beaux-Arts Architecture in San Francisco",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 872,
+      "building_name": "Salesforce Tower",
+      "city": "San Francisco",
+      "primary_style": "Modernism",
+      "url": "https://app.architecturehelper.com/architecture_explorer/872",
+      "title": "Salesforce Tower | Modernism Architecture in San Francisco",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 873,
+      "building_name": "Coit Tower",
+      "city": "San Francisco",
+      "primary_style": "Art Deco",
+      "url": "https://app.architecturehelper.com/architecture_explorer/873",
+      "title": "Coit Tower | Art Deco Architecture in San Francisco",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 874,
+      "building_name": "Palace of Fine Arts",
+      "city": "San Francisco",
+      "primary_style": "Neoclassical",
+      "url": "https://app.architecturehelper.com/architecture_explorer/874",
+      "title": "Palace of Fine Arts | Neoclassical Architecture in San Francisco",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 875,
+      "building_name": "San Francisco City Hall",
+      "city": "San Francisco",
+      "primary_style": "Beaux-Arts",
+      "url": "https://app.architecturehelper.com/architecture_explorer/875",
+      "title": "San Francisco City Hall | Beaux-Arts Architecture in San Francisco",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 876,
+      "building_name": "Willis Tower",
+      "city": "Chicago",
+      "primary_style": "Modernism",
+      "url": "https://app.architecturehelper.com/architecture_explorer/876",
+      "title": "Willis Tower | Modernism Architecture in Chicago",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 877,
+      "building_name": "860-880 Lake Shore Drive",
+      "city": "Chicago",
+      "primary_style": "Modernism",
+      "url": "https://app.architecturehelper.com/architecture_explorer/877",
+      "title": "860-880 Lake Shore Drive | Modernism Architecture in Chicago",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 878,
+      "building_name": "Art Institute of Chicago",
+      "city": "Chicago",
+      "primary_style": "Beaux-Arts",
+      "url": "https://app.architecturehelper.com/architecture_explorer/878",
+      "title": "Art Institute of Chicago | Beaux-Arts Architecture in Chicago",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 879,
+      "building_name": "John Hancock Center",
+      "city": "Chicago",
+      "primary_style": "Modernism",
+      "url": "https://app.architecturehelper.com/architecture_explorer/879",
+      "title": "John Hancock Center | Modernism Architecture in Chicago",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 880,
+      "building_name": "Rookery Building",
+      "city": "Chicago",
+      "primary_style": "Romanesque",
+      "url": "https://app.architecturehelper.com/architecture_explorer/880",
+      "title": "Rookery Building | Romanesque Architecture in Chicago",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 881,
+      "building_name": "Wrigley Building",
+      "city": "Chicago",
+      "primary_style": "Beaux-Arts",
+      "url": "https://app.architecturehelper.com/architecture_explorer/881",
+      "title": "Wrigley Building | Beaux-Arts Architecture in Chicago",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 882,
+      "building_name": "Marina City",
+      "city": "Chicago",
+      "primary_style": "Modernism",
+      "url": "https://app.architecturehelper.com/architecture_explorer/882",
+      "title": "Marina City | Modernism Architecture in Chicago",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 883,
+      "building_name": "Aqua Tower",
+      "city": "Chicago",
+      "primary_style": "Contemporary",
+      "url": "https://app.architecturehelper.com/architecture_explorer/883",
+      "title": "Aqua Tower | Contemporary Architecture in Chicago",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 884,
+      "building_name": "Chicago Cultural Center",
+      "city": "Chicago",
+      "primary_style": "Beaux-Arts",
+      "url": "https://app.architecturehelper.com/architecture_explorer/884",
+      "title": "Chicago Cultural Center | Beaux-Arts Architecture in Chicago",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 921,
+      "building_name": "McGehee School",
+      "city": "New Orleans",
+      "primary_style": "Neoclassical",
+      "url": "https://app.architecturehelper.com/architecture_explorer/921",
+      "title": "McGehee School | Neoclassical Architecture in New Orleans",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 922,
+      "building_name": "Pitot House",
+      "city": "New Orleans",
+      "primary_style": "Colonial",
+      "url": "https://app.architecturehelper.com/architecture_explorer/922",
+      "title": "Pitot House | Colonial Architecture in New Orleans",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 924,
+      "building_name": "Maison Blanche Building",
+      "city": "New Orleans",
+      "primary_style": "Neoclassical",
+      "url": "https://app.architecturehelper.com/architecture_explorer/924",
+      "title": "Maison Blanche Building | Neoclassical Architecture in New Orleans",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 925,
+      "building_name": "Pontalba Buildings",
+      "city": "New Orleans",
+      "primary_style": "Victorian",
+      "url": "https://app.architecturehelper.com/architecture_explorer/925",
+      "title": "Pontalba Buildings | Victorian Architecture in New Orleans",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 927,
+      "building_name": "Audubon Park Clubhouse",
+      "city": "New Orleans",
+      "primary_style": "Neoclassical",
+      "url": "https://app.architecturehelper.com/architecture_explorer/927",
+      "title": "Audubon Park Clubhouse | Neoclassical Architecture in New Orleans",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 928,
+      "building_name": "St. Louis Cathedral",
+      "city": "New Orleans",
+      "primary_style": "Gothic",
+      "url": "https://app.architecturehelper.com/architecture_explorer/928",
+      "title": "St. Louis Cathedral | Gothic Architecture in New Orleans",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 929,
+      "building_name": "Cabildo",
+      "city": "New Orleans",
+      "primary_style": "Colonial",
+      "url": "https://app.architecturehelper.com/architecture_explorer/929",
+      "title": "Cabildo | Colonial Architecture in New Orleans",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 930,
+      "building_name": "Presbyt\u00e8re",
+      "city": "New Orleans",
+      "primary_style": "Colonial",
+      "url": "https://app.architecturehelper.com/architecture_explorer/930",
+      "title": "Presbyt\u00e8re | Colonial Architecture in New Orleans",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 931,
+      "building_name": "Court of Two Sisters",
+      "city": "New Orleans",
+      "primary_style": "Victorian",
+      "url": "https://app.architecturehelper.com/architecture_explorer/931",
+      "title": "Court of Two Sisters | Victorian Architecture in New Orleans",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 933,
+      "building_name": "Gallier Hall",
+      "city": "New Orleans",
+      "primary_style": "Greek Revival",
+      "url": "https://app.architecturehelper.com/architecture_explorer/933",
+      "title": "Gallier Hall | Greek Revival Architecture in New Orleans",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 948,
+      "building_name": "TWA Flight Center",
+      "city": "New York City",
+      "primary_style": "Modernism",
+      "url": "https://app.architecturehelper.com/architecture_explorer/948",
+      "title": "TWA Flight Center | Modernism Architecture in New York City",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 956,
+      "building_name": "Dulles Airport",
+      "city": "Washington DC",
+      "primary_style": "Modernism",
+      "url": "https://app.architecturehelper.com/architecture_explorer/956",
+      "title": "Dulles Airport | Modernism Architecture in Washington DC",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 993,
+      "building_name": "Eastern State Penitentiary",
+      "city": "Philadelphia",
+      "primary_style": "Gothic Revival",
+      "url": "https://app.architecturehelper.com/architecture_explorer/993",
+      "title": "Eastern State Penitentiary | Gothic Revival Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 994,
+      "building_name": "Kimmel Center",
+      "city": "Philadelphia",
+      "primary_style": "Modernism",
+      "url": "https://app.architecturehelper.com/architecture_explorer/994",
+      "title": "Kimmel Center | Modernism Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 995,
+      "building_name": "Comcast Technology Center",
+      "city": "Philadelphia",
+      "primary_style": "Modernism",
+      "url": "https://app.architecturehelper.com/architecture_explorer/995",
+      "title": "Comcast Technology Center | Modernism Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 996,
+      "building_name": "One Liberty Place",
+      "city": "Philadelphia",
+      "primary_style": "Postmodern",
+      "url": "https://app.architecturehelper.com/architecture_explorer/996",
+      "title": "One Liberty Place | Postmodern Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 997,
+      "building_name": "Academy of Music",
+      "city": "Philadelphia",
+      "primary_style": "Victorian",
+      "url": "https://app.architecturehelper.com/architecture_explorer/997",
+      "title": "Academy of Music | Victorian Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 998,
+      "building_name": "Free Library of Philadelphia",
+      "city": "Philadelphia",
+      "primary_style": "Beaux-Arts",
+      "url": "https://app.architecturehelper.com/architecture_explorer/998",
+      "title": "Free Library of Philadelphia | Beaux-Arts Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 999,
+      "building_name": "Wanamaker Building",
+      "city": "Philadelphia",
+      "primary_style": "Beaux-Arts",
+      "url": "https://app.architecturehelper.com/architecture_explorer/999",
+      "title": "Wanamaker Building | Beaux-Arts Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 1000,
+      "building_name": "Barnes Foundation",
+      "city": "Philadelphia",
+      "primary_style": "Modernism",
+      "url": "https://app.architecturehelper.com/architecture_explorer/1000",
+      "title": "Barnes Foundation | Modernism Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 1001,
+      "building_name": "Cathedral Basilica",
+      "city": "Philadelphia",
+      "primary_style": "Neoclassical",
+      "url": "https://app.architecturehelper.com/architecture_explorer/1001",
+      "title": "Cathedral Basilica | Neoclassical Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 1002,
+      "building_name": "Elfreth's Alley",
+      "city": "Philadelphia",
+      "primary_style": "Colonial",
+      "url": "https://app.architecturehelper.com/architecture_explorer/1002",
+      "title": "Elfreth's Alley | Colonial Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 1003,
+      "building_name": "Betsy Ross House",
+      "city": "Philadelphia",
+      "primary_style": "Colonial",
+      "url": "https://app.architecturehelper.com/architecture_explorer/1003",
+      "title": "Betsy Ross House | Colonial Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 1004,
+      "building_name": "Christ Church",
+      "city": "Philadelphia",
+      "primary_style": "Georgian",
+      "url": "https://app.architecturehelper.com/architecture_explorer/1004",
+      "title": "Christ Church | Georgian Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 1005,
+      "building_name": "Franklin Institute",
+      "city": "Philadelphia",
+      "primary_style": "Neoclassical",
+      "url": "https://app.architecturehelper.com/architecture_explorer/1005",
+      "title": "Franklin Institute | Neoclassical Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 1006,
+      "building_name": "Independence Hall",
+      "city": "Philadelphia",
+      "primary_style": "Georgian",
+      "url": "https://app.architecturehelper.com/architecture_explorer/1006",
+      "title": "Independence Hall | Georgian Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 1007,
+      "building_name": "Philadelphia City Hall",
+      "city": "Philadelphia",
+      "primary_style": "Second Empire",
+      "url": "https://app.architecturehelper.com/architecture_explorer/1007",
+      "title": "Philadelphia City Hall | Second Empire Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 1008,
+      "building_name": "PSFS Building",
+      "city": "Philadelphia",
+      "primary_style": "Art Deco",
+      "url": "https://app.architecturehelper.com/architecture_explorer/1008",
+      "title": "PSFS Building | Art Deco Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 1009,
+      "building_name": "30th Street Station",
+      "city": "Philadelphia",
+      "primary_style": "Beaux-Arts",
+      "url": "https://app.architecturehelper.com/architecture_explorer/1009",
+      "title": "30th Street Station | Beaux-Arts Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 1010,
+      "building_name": "Philadelphia Museum of Art",
+      "city": "Philadelphia",
+      "primary_style": "Neoclassical",
+      "url": "https://app.architecturehelper.com/architecture_explorer/1010",
+      "title": "Philadelphia Museum of Art | Neoclassical Architecture in Philadelphia",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 1030,
+      "building_name": "Armour-Stiner Octagon House",
+      "city": "Irvington NY",
+      "primary_style": "Victorian",
+      "url": "https://app.architecturehelper.com/architecture_explorer/1030",
+      "title": "Armour-Stiner Octagon House | Victorian Architecture in Irvington NY",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    },
+    {
+      "building_id": 1031,
+      "building_name": "Schwerin Castle",
+      "city": "Schwerin Germany",
+      "primary_style": "Romanticism",
+      "url": "https://app.architecturehelper.com/architecture_explorer/1031",
+      "title": "Schwerin Castle | Romanticism Architecture in Schwerin Germany",
+      "boards": [
+        "city",
+        "style"
+      ],
+      "status": "queued"
+    }
+  ],
+  "schedule": {
+    "pins_per_day": 4,
+    "times_utc": [
+      "09:00",
+      "13:00",
+      "17:00",
+      "21:00"
+    ]
+  },
+  "lastPosted": "2026-02-20T13:00:00Z",
+  "totalPinsCreated": 14
+}

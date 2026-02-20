@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Hospital de Sant Pau",
+    "city": "Barcelona",
+    "address": "Carrer de Sant Antoni Maria Claret, 167, Barcelona, Spain",
+    "latitude": 41.4114,
+    "longitude": 2.1747,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Hospital_de_la_Santa_Creu_i_Sant_Pau_%28Barcelona%29_-_1.jpg/1280px-Hospital_de_la_Santa_Creu_i_Sant_Pau_%28Barcelona%29_-_1.jpg"
+  },
+  {
+    "name": "Palau de la M\u00fasica Catalana",
+    "city": "Barcelona",
+    "address": "Carrer de Palau de la M\u00fasica, 4-6, Barcelona, Spain",
+    "latitude": 41.3875,
+    "longitude": 2.1753,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Palau_de_la_M%C3%BAsica_Catalana_-_Fa%C3%A7ana.jpg/1280px-Palau_de_la_M%C3%BAsica_Catalana_-_Fa%C3%A7ana.jpg"
+  },
+  {
+    "name": "Torre Gl\u00f2ries",
+    "city": "Barcelona",
+    "address": "Avinguda Diagonal, 211, Barcelona, Spain",
+    "latitude": 41.4036,
+    "longitude": 2.1894,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Torre_Gl\u00f2ries%2C_Barcelona%2C_Spain_-_Jan_2007.jpg/800px-Torre_Gl\u00f2ries%2C_Barcelona%2C_Spain_-_Jan_2007.jpg"
+  },
+  {
+    "name": "Casa Vicens",
+    "city": "Barcelona",
+    "address": "Carrer de les Carolines, 18-24, Barcelona, Spain",
+    "latitude": 41.4036,
+    "longitude": 2.1509,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Casa_Vicens_%28Barcelona%29_-_3.jpg/800px-Casa_Vicens_%28Barcelona%29_-_3.jpg"
+  },
+  {
+    "name": "Casa Amatller",
+    "city": "Barcelona",
+    "address": "Passeig de Gr\u00e0cia, 41, Barcelona, Spain",
+    "latitude": 41.3916,
+    "longitude": 2.165,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Casa_Amatller_Barcelona.jpg/800px-Casa_Amatller_Barcelona.jpg"
+  },
+  {
+    "name": "Casa Lle\u00f3 Morera",
+    "city": "Barcelona",
+    "address": "Passeig de Gr\u00e0cia, 35, Barcelona, Spain",
+    "latitude": 41.3912,
+    "longitude": 2.1648,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Casa_Lle%C3%B3_Morera_%282%29.jpg/800px-Casa_Lle%C3%B3_Morera_%282%29.jpg"
+  },
+  {
+    "name": "Santa Maria del Mar",
+    "city": "Barcelona",
+    "address": "Pla\u00e7a de Santa Maria, 1, Barcelona, Spain",
+    "latitude": 41.3836,
+    "longitude": 2.1816,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Facade_-_Santa_Maria_del_Mar_-_Barcelona_2014_%28crop%29.jpg/800px-Facade_-_Santa_Maria_del_Mar_-_Barcelona_2014_%28crop%29.jpg"
+  },
+  {
+    "name": "Arc de Triomf",
+    "city": "Barcelona",
+    "address": "Passeig de Llu\u00eds Companys, Barcelona, Spain",
+    "latitude": 41.391,
+    "longitude": 2.1807,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Arc_de_Triomf_Barcelona.jpg/1280px-Arc_de_Triomf_Barcelona.jpg"
+  },
+  {
+    "name": "Torre Bellesguard",
+    "city": "Barcelona",
+    "address": "Carrer de Bellesguard, 20, Barcelona, Spain",
+    "latitude": 41.4108,
+    "longitude": 2.131,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Bellesguard_-_panoramio.jpg/800px-Bellesguard_-_panoramio.jpg"
+  },
+  {
+    "name": "Mercat de la Boqueria",
+    "city": "Barcelona",
+    "address": "La Rambla, 91, Barcelona, Spain",
+    "latitude": 41.3816,
+    "longitude": 2.1719,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Mercat_de_la_Boqueria_entrance.jpg/1280px-Mercat_de_la_Boqueria_entrance.jpg"
+  }
+]

@@ -1,0 +1,7 @@
+# Kraków Architecture: A Millennium of Polish Architectural Heritage
+
+Kraków presents one of Central Europe's finest architectural ensembles, where Gothic churches, Renaissance palaces, and Baroque monuments create an extraordinary urban panorama that spans over 1,000 years of Polish history. The city's architectural treasures reflect its former status as the royal capital and its enduring role as a cultural center.
+
+The medieval Old Town, anchored by one of Europe's largest market squares, showcases the evolution of Polish architecture from Gothic brick churches to Renaissance cloth halls and elegant burgher houses. Wawel Hill's royal castle and cathedral complex demonstrates how successive dynasties shaped Polish architectural identity, while the historic Jewish quarter of Kazimierz reveals the multicultural architectural heritage that once flourished here. Contemporary additions, including modern museums and cultural centers, show how Kraków continues to build upon its architectural legacy.
+
+The relationship between sacred and secular architecture defines much of Kraków's urban character, with church spires punctuating the skyline while palaces and public buildings create dignified streetscapes. This architectural dialogue between religious and civic structures, combined with careful preservation efforts, makes Kraków an essential destination for understanding the development of Central European architecture and urban planning.

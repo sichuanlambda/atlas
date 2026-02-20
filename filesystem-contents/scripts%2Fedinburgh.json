@@ -1,0 +1,130 @@
+[
+  {
+    "name": "Edinburgh Castle",
+    "city": "Edinburgh",
+    "address": "Castlehill, Edinburgh EH1 2NG, United Kingdom",
+    "latitude": 55.9486,
+    "longitude": -3.1999,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Three_buildings_in_Edinburgh_by_William_Henry_Playfair.jpg/1280px-Three_buildings_in_Edinburgh_by_William_Henry_Playfair.jpg"
+  },
+  {
+    "name": "St Giles' Cathedral",
+    "city": "Edinburgh",
+    "address": "High Street, Edinburgh EH1 1RE, United Kingdom",
+    "latitude": 55.9494,
+    "longitude": -3.1905,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/St_Giles%27Cathedral_Edinburgh.jpg/1280px-St_Giles%27Cathedral_Edinburgh.jpg"
+  },
+  {
+    "name": "Scott Monument",
+    "city": "Edinburgh",
+    "address": "East Princes Street Gardens, Edinburgh EH2 2EJ, United Kingdom",
+    "latitude": 55.9524,
+    "longitude": -3.1934,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Three_buildings_in_Edinburgh_by_William_Henry_Playfair.jpg/1280px-Three_buildings_in_Edinburgh_by_William_Henry_Playfair.jpg"
+  },
+  {
+    "name": "Palace of Holyroodhouse",
+    "city": "Edinburgh",
+    "address": "Canongate, Edinburgh EH8 8DX, United Kingdom",
+    "latitude": 55.9527,
+    "longitude": -3.1718,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Queen%27s_Gallery_-_Edinburgh.jpg/1280px-Queen%27s_Gallery_-_Edinburgh.jpg"
+  },
+  {
+    "name": "Scottish National Gallery",
+    "city": "Edinburgh",
+    "address": "The Mound, Edinburgh EH2 2EL, United Kingdom",
+    "latitude": 55.9509,
+    "longitude": -3.1957,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Edinburgh_-_Scottish_National_Gallery_-_20140421185719.jpg/1280px-Edinburgh_-_Scottish_National_Gallery_-_20140421185719.jpg"
+  },
+  {
+    "name": "Balmoral Hotel",
+    "city": "Edinburgh",
+    "address": "1 Princes Street, Edinburgh EH2 2EQ, United Kingdom",
+    "latitude": 55.953,
+    "longitude": -3.1884,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/00_103_0323_Edinburgh%2C_Schottland.jpg/1280px-00_103_0323_Edinburgh%2C_Schottland.jpg"
+  },
+  {
+    "name": "McEwan Hall",
+    "city": "Edinburgh",
+    "address": "Teviot Place, Edinburgh EH1 1NE, United Kingdom",
+    "latitude": 55.9462,
+    "longitude": -3.1917,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/DSCN4533_McEwan_Hall.jpg/1280px-DSCN4533_McEwan_Hall.jpg"
+  },
+  {
+    "name": "National Museum of Scotland",
+    "city": "Edinburgh",
+    "address": "Chambers Street, Edinburgh EH1 1JF, United Kingdom",
+    "latitude": 55.9469,
+    "longitude": -3.1893,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/The_impressive_Scottish_National_Portrait_Gallery_-_geograph.org.uk_-_1301308.jpg"
+  },
+  {
+    "name": "St Mary's Cathedral, Edinburgh",
+    "city": "Edinburgh",
+    "address": "Palmerston Place, Edinburgh EH12 5AW, United Kingdom",
+    "latitude": 55.9483,
+    "longitude": -3.2149,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/56/St_Mary%27s_Catholic_Cathedral%2C_Edinburgh_-_geograph.org.uk_-_2050036.jpg"
+  },
+  {
+    "name": "General Register House",
+    "city": "Edinburgh",
+    "address": "2 Princes Street, Edinburgh EH1 3YY, United Kingdom",
+    "latitude": 55.9536,
+    "longitude": -3.1887,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Duke_of_Wellington_and_General_Register_House_-_01.jpg/1280px-Duke_of_Wellington_and_General_Register_House_-_01.jpg"
+  },
+  {
+    "name": "Royal Scottish Academy",
+    "city": "Edinburgh",
+    "address": "The Mound, Edinburgh EH2 2EL, United Kingdom",
+    "latitude": 55.9517,
+    "longitude": -3.196,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Edinburgh_from_the_castle%2C_Scotland_LOC_3449527773.jpg"
+  },
+  {
+    "name": "Greyfriars Kirk",
+    "city": "Edinburgh",
+    "address": "Greyfriars Place, Edinburgh EH1 2QQ, United Kingdom",
+    "latitude": 55.947,
+    "longitude": -3.1912,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Edinburgh_-_Greyfriars_Kirk_-_20140421183347.jpg/1280px-Edinburgh_-_Greyfriars_Kirk_-_20140421183347.jpg"
+  },
+  {
+    "name": "Scottish Parliament Building",
+    "city": "Edinburgh",
+    "address": "Horse Wynd, Edinburgh EH99 1SP, United Kingdom",
+    "latitude": 55.9516,
+    "longitude": -3.1745,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Scottish_Parliament_Building_-_geograph.org.uk_-_6971992.jpg"
+  },
+  {
+    "name": "Jenners Building",
+    "city": "Edinburgh",
+    "address": "47 Princes Street, Edinburgh EH2 2DG, United Kingdom",
+    "latitude": 55.9534,
+    "longitude": -3.1933,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/The_Jenners_building%2C_Edinburgh_%2842069013002%29.jpg/1280px-The_Jenners_building%2C_Edinburgh_%2842069013002%29.jpg"
+  },
+  {
+    "name": "St Andrew's House",
+    "city": "Edinburgh",
+    "address": "Regent Road, Edinburgh EH1 3DG, United Kingdom",
+    "latitude": 55.9543,
+    "longitude": -3.1829,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/St_Andrew%27s_First_Aid_-_geograph.org.uk_-_1181593.jpg"
+  },
+  {
+    "name": "Usher Hall",
+    "city": "Edinburgh",
+    "address": "Lothian Road, Edinburgh EH1 2EA, United Kingdom",
+    "latitude": 55.9473,
+    "longitude": -3.2046,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Edinburgh_Usher_hall-20110902-RM-124837.jpg/1280px-Edinburgh_Usher_hall-20110902-RM-124837.jpg"
+  }
+]

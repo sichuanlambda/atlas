@@ -978,118 +978,164 @@ function renderUsage(el) {
 }
 
 // === FILE SYSTEM ===
+function fsSection(id, icon, title, count, content, startOpen) {
+  const open = startOpen ? 'true' : 'false';
+  return `<div style="background:#1a1a2e;border-radius:12px;margin-bottom:20px;overflow:hidden;">
+    <div onclick="toggleFsSection('${id}')" style="padding:20px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;">
+      <h3 style="margin:0;font-size:15px;color:#fff;">${icon} ${title}${count != null ? ' (' + count + ')' : ''}</h3>
+      <span id="${id}-arrow" style="color:#6b7280;font-size:18px;transition:transform 0.2s;transform:rotate(${startOpen ? '180' : '0'}deg);">▼</span>
+    </div>
+    <div id="${id}-body" style="padding:0 20px 20px;display:${startOpen ? 'block' : 'none'};">${content}</div>
+  </div>`;
+}
+
+window.toggleFsSection = function(id) {
+  const body = document.getElementById(id + '-body');
+  const arrow = document.getElementById(id + '-arrow');
+  if (!body) return;
+  const isOpen = body.style.display !== 'none';
+  body.style.display = isOpen ? 'none' : 'block';
+  arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+};
+
+window.viewFile = function(name, path) {
+  const modal = document.getElementById('fs-file-modal');
+  const title = document.getElementById('fs-file-title');
+  const content = document.getElementById('fs-file-content');
+  if (!modal) return;
+  title.textContent = name;
+  content.textContent = 'Loading...';
+  modal.style.display = 'flex';
+  // Try to load from filesystem-contents if available, otherwise show path
+  const fullPath = path || name;
+  fetch('filesystem-contents/' + encodeURIComponent(fullPath) + '?' + Date.now())
+    .then(r => r.ok ? r.text() : Promise.reject())
+    .then(text => { content.textContent = text; })
+    .catch(() => { content.textContent = '(File contents not available. Path: ' + fullPath + ')'; });
+};
+
+window.closeFsModal = function() {
+  const modal = document.getElementById('fs-file-modal');
+  if (modal) modal.style.display = 'none';
+};
+
+function fsFileItem(name, desc, path) {
+  const p = path || name;
+  return `<div onclick="viewFile('${name.replace(/'/g,"\\'")}','${p.replace(/'/g,"\\'")}')" style="background:#0d1117;border-radius:8px;padding:12px;border:1px solid #2a2a3e;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#3b82f6'" onmouseout="this.style.borderColor='#2a2a3e'">
+    <div style="font-size:13px;font-weight:600;color:#e5e7eb;">📄 ${name}</div>
+    ${desc ? `<div style="font-size:11px;color:#6b7280;margin-top:4px;">${desc}</div>` : ''}
+  </div>`;
+}
+
 function renderFilesystem(el) {
   const fs = FS_DATA;
   if (!fs.workspace) { el.innerHTML = '<p style="color:#6b7280;">Loading filesystem data...</p>'; return; }
 
   let html = '<div style="max-width:900px;margin:0 auto;">';
 
-  // System files
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-bottom:20px;">
-    <h3 style="margin:0 0 16px;font-size:15px;color:#fff;">🏛️ Core System Files</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;">`;
-  (fs.workspace || []).forEach(f => {
-    html += `<div style="background:#0d1117;border-radius:8px;padding:12px;border:1px solid #2a2a3e;">
-      <div style="font-size:13px;font-weight:600;color:#e5e7eb;">📄 ${f.name}</div>
-      <div style="font-size:11px;color:#6b7280;margin-top:4px;">${f.desc || ''}</div>
-    </div>`;
-  });
-  html += '</div></div>';
+  // Modal for file viewing
+  html += `<div id="fs-file-modal" onclick="if(event.target===this)closeFsModal()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;padding:20px;">
+    <div style="background:#0d1117;border:1px solid #2a2a3e;border-radius:12px;max-width:800px;width:100%;max-height:80vh;display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #2a2a3e;">
+        <h3 id="fs-file-title" style="margin:0;font-size:14px;color:#e5e7eb;">File</h3>
+        <button onclick="closeFsModal()" style="background:none;border:none;color:#6b7280;font-size:20px;cursor:pointer;padding:0 4px;">✕</button>
+      </div>
+      <pre id="fs-file-content" style="margin:0;padding:20px;overflow:auto;flex:1;font-size:12px;color:#d1d5db;line-height:1.6;white-space:pre-wrap;word-break:break-word;"></pre>
+    </div>
+  </div>`;
+
+  // Core System Files — open by default
+  let coreHtml = '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;">';
+  (fs.workspace || []).forEach(f => { coreHtml += fsFileItem(f.name, f.desc, 'workspace/' + f.name); });
+  coreHtml += '</div>';
+  html += fsSection('fs-core', '🏛️', 'Core System Files', (fs.workspace||[]).length, coreHtml, true);
 
   // Skills
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-bottom:20px;">
-    <h3 style="margin:0 0 4px;font-size:15px;color:#fff;">🧩 Skills (${fs.skills_ready}/${fs.skills_count})</h3>
-    <p style="color:#6b7280;font-size:12px;margin:0 0 16px;">Installed OpenClaw skills</p>
-    <div style="display:flex;flex-wrap:wrap;gap:6px;">`;
   const activeSkills = ['humanizer', 'blogwatcher', 'coding-agent', 'healthcheck', 'skill-creator', 'tmux', 'weather', 'underwriting'];
+  let skillsHtml = '<p style="color:#6b7280;font-size:12px;margin:0 0 12px;">Installed OpenClaw skills</p><div style="display:flex;flex-wrap:wrap;gap:6px;">';
   (fs.skills || []).forEach(s => {
     const isActive = activeSkills.includes(s.name);
     const bg = isActive ? '#1e3a5e' : '#0d1117';
     const border = isActive ? '#3b82f6' : '#2a2a3e';
     const color = isActive ? '#60a5fa' : '#6b7280';
-    html += `<span style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px 10px;font-size:12px;color:${color};">${s.name}</span>`;
+    skillsHtml += `<span style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px 10px;font-size:12px;color:${color};cursor:pointer;" onclick="viewFile('${s.name}/SKILL.md','skills/${s.name}/SKILL.md')">${s.name}</span>`;
   });
-  html += '</div></div>';
+  skillsHtml += '</div>';
+  html += fsSection('fs-skills', '🧩', 'Skills', `${fs.skills_ready}/${fs.skills_count}`, skillsHtml, false);
 
   // Agent configs
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-bottom:20px;">
-    <h3 style="margin:0 0 16px;font-size:15px;color:#fff;">🤖 Agent Configs</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;">`;
+  let agentHtml = '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;">';
   (fs.agent_configs || []).forEach(f => {
     const icon = f.name === 'mason.md' ? '🧱' : f.name === 'scout.md' ? '🔍' : f.name === 'scribe.md' ? '✍️' : '📄';
-    html += `<div style="background:#0d1117;border-radius:8px;padding:12px;border:1px solid #2a2a3e;">
+    agentHtml += `<div onclick="viewFile('${f.name.replace(/'/g,"\\'")}','agents/${f.name}')" style="background:#0d1117;border-radius:8px;padding:12px;border:1px solid #2a2a3e;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#3b82f6'" onmouseout="this.style.borderColor='#2a2a3e'">
       <div style="font-size:13px;font-weight:600;color:#e5e7eb;">${icon} ${f.name}</div>
     </div>`;
   });
-  html += '</div></div>';
+  agentHtml += '</div>';
+  html += fsSection('fs-agents', '🤖', 'Agent Configs', (fs.agent_configs||[]).length, agentHtml, false);
 
   // Memory files
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-bottom:20px;">
-    <h3 style="margin:0 0 4px;font-size:15px;color:#fff;">🧠 Memory Files (${(fs.memory_files || []).length})</h3>
-    <p style="color:#6b7280;font-size:12px;margin:0 0 16px;">Daily logs, research, reports, and tracking data</p>
-    <div style="max-height:400px;overflow-y:auto;">`;
-
-  // Group memory files by type
   const memFiles = fs.memory_files || [];
   const dailyLogs = memFiles.filter(f => f.name && f.name.match(/^\d{4}-\d{2}-\d{2}/));
   const reports = memFiles.filter(f => f.name && !f.name.match(/^\d{4}-\d{2}-\d{2}/) && f.type === 'file');
   const dirs = memFiles.filter(f => f.type === 'dir');
 
+  let memHtml = '<p style="color:#6b7280;font-size:12px;margin:0 0 12px;">Daily logs, research, reports, and tracking data</p><div style="max-height:400px;overflow-y:auto;">';
+
   if (dailyLogs.length) {
-    html += '<div style="margin-bottom:12px;"><div style="font-size:12px;font-weight:600;color:#9ca3af;margin-bottom:6px;">📅 Daily Logs</div>';
+    memHtml += '<div style="margin-bottom:12px;"><div style="font-size:12px;font-weight:600;color:#9ca3af;margin-bottom:6px;">📅 Daily Logs</div>';
     dailyLogs.slice(-7).reverse().forEach(f => {
       const sizeKB = f.size ? (f.size / 1024).toFixed(1) + 'KB' : '';
-      html += `<div style="padding:4px 8px;font-size:12px;color:#d1d5db;display:flex;justify-content:space-between;">
+      memHtml += `<div onclick="viewFile('${f.name}','memory/${f.name}')" style="padding:4px 8px;font-size:12px;color:#d1d5db;display:flex;justify-content:space-between;cursor:pointer;border-radius:4px;transition:background 0.15s;" onmouseover="this.style.background='#1e1e3e'" onmouseout="this.style.background='none'">
         <span>📝 ${f.name}</span><span style="color:#6b7280;">${sizeKB}</span></div>`;
     });
-    html += '</div>';
+    memHtml += '</div>';
   }
 
   if (dirs.length) {
     dirs.forEach(d => {
-      html += `<div style="margin-bottom:12px;"><div style="font-size:12px;font-weight:600;color:#9ca3af;margin-bottom:6px;">📁 ${d.name}/ (${d.count} files)</div>`;
+      memHtml += `<div style="margin-bottom:12px;"><div style="font-size:12px;font-weight:600;color:#9ca3af;margin-bottom:6px;">📁 ${d.name}/ (${d.count} files)</div>`;
       (d.children || []).slice(0, 10).forEach(f => {
-        html += `<div style="padding:4px 8px 4px 16px;font-size:12px;color:#d1d5db;">📄 ${f.name}</div>`;
+        memHtml += `<div onclick="viewFile('${f.name}','memory/${d.name}/${f.name}')" style="padding:4px 8px 4px 16px;font-size:12px;color:#d1d5db;cursor:pointer;border-radius:4px;transition:background 0.15s;" onmouseover="this.style.background='#1e1e3e'" onmouseout="this.style.background='none'">📄 ${f.name}</div>`;
       });
-      html += '</div>';
+      memHtml += '</div>';
     });
   }
 
   if (reports.length) {
-    html += '<div style="margin-bottom:12px;"><div style="font-size:12px;font-weight:600;color:#9ca3af;margin-bottom:6px;">📊 Reports & Research</div>';
+    memHtml += '<div style="margin-bottom:12px;"><div style="font-size:12px;font-weight:600;color:#9ca3af;margin-bottom:6px;">📊 Reports & Research</div>';
     reports.forEach(f => {
       const sizeKB = f.size ? (f.size / 1024).toFixed(1) + 'KB' : '';
-      html += `<div style="padding:4px 8px;font-size:12px;color:#d1d5db;display:flex;justify-content:space-between;">
+      memHtml += `<div onclick="viewFile('${f.name}','memory/${f.name}')" style="padding:4px 8px;font-size:12px;color:#d1d5db;display:flex;justify-content:space-between;cursor:pointer;border-radius:4px;transition:background 0.15s;" onmouseover="this.style.background='#1e1e3e'" onmouseout="this.style.background='none'">
         <span>📄 ${f.name}</span><span style="color:#6b7280;">${sizeKB}</span></div>`;
     });
-    html += '</div>';
+    memHtml += '</div>';
   }
 
-  html += '</div></div>';
+  memHtml += '</div>';
+  html += fsSection('fs-memory', '🧠', 'Memory Files', memFiles.length, memHtml, false);
 
   // Runbooks
   if (fs.runbooks?.length) {
-    html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-bottom:20px;">
-      <h3 style="margin:0 0 16px;font-size:15px;color:#fff;">📋 Runbooks (${fs.runbooks.length})</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;">`;
+    let rbHtml = '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;">';
     fs.runbooks.forEach(f => {
-      html += `<div style="background:#0d1117;border-radius:8px;padding:12px;border:1px solid #2a2a3e;">
+      rbHtml += `<div onclick="viewFile('${f.name}','memory/runbooks/${f.name}')" style="background:#0d1117;border-radius:8px;padding:12px;border:1px solid #2a2a3e;cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#3b82f6'" onmouseout="this.style.borderColor='#2a2a3e'">
         <div style="font-size:13px;font-weight:600;color:#e5e7eb;">📋 ${f.name}</div>
       </div>`;
     });
-    html += '</div></div>';
+    rbHtml += '</div>';
+    html += fsSection('fs-runbooks', '📋', 'Runbooks', fs.runbooks.length, rbHtml, false);
   }
 
   // Scripts
   if (fs.scripts?.length) {
-    html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;">
-      <h3 style="margin:0 0 16px;font-size:15px;color:#fff;">⚡ Scripts (${fs.scripts.length})</h3>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;">`;
+    let scHtml = '<div style="display:flex;flex-wrap:wrap;gap:6px;">';
     fs.scripts.forEach(f => {
       const color = f.ext === '.py' ? '#3572A5' : f.ext === '.sh' ? '#89e051' : f.ext === '.rb' ? '#CC342D' : '#6b7280';
-      html += `<span style="background:#0d1117;border:1px solid #2a2a3e;border-radius:6px;padding:4px 10px;font-size:12px;color:${color};">${f.name}</span>`;
+      scHtml += `<span onclick="viewFile('${f.name}','scripts/${f.name}')" style="background:#0d1117;border:1px solid #2a2a3e;border-radius:6px;padding:4px 10px;font-size:12px;color:${color};cursor:pointer;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#3b82f6'" onmouseout="this.style.borderColor='#2a2a3e'">${f.name}</span>`;
     });
-    html += '</div></div>';
+    scHtml += '</div>';
+    html += fsSection('fs-scripts', '⚡', 'Scripts', fs.scripts.length, scHtml, false);
   }
 
   html += '</div>';

@@ -1,0 +1,130 @@
+[
+  {
+    "name": "Belfry of Bruges",
+    "city": "Bruges",
+    "address": "Markt 7, 8000 Brugge, Belgium",
+    "latitude": 51.2082,
+    "longitude": 3.2247,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Bruges_Belgium_Belfry-01.jpg/1280px-Bruges_Belgium_Belfry-01.jpg"
+  },
+  {
+    "name": "Church of Our Lady Bruges",
+    "city": "Bruges",
+    "address": "Mariastraat, 8000 Brugge, Belgium",
+    "latitude": 51.2042,
+    "longitude": 3.2245,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/1009_Church_of_Our_Lady_%28Bruges%2C_Belgium%29_Photo_by_Giles_Laurent.jpg/1280px-1009_Church_of_Our_Lady_%28Bruges%2C_Belgium%29_Photo_by_Giles_Laurent.jpg"
+  },
+  {
+    "name": "Basilica of the Holy Blood",
+    "city": "Bruges",
+    "address": "Burg 13, 8000 Brugge, Belgium",
+    "latitude": 51.2083,
+    "longitude": 3.227,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Brugge_Burg_Heilig_Bloed-basiliek_-_236373_-_onroerenderfgoed.jpg"
+  },
+  {
+    "name": "Bruges City Hall",
+    "city": "Bruges",
+    "address": "Burg 12, 8000 Brugge, Belgium",
+    "latitude": 51.2085,
+    "longitude": 3.2265,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Bruges_Belgium_Town-hall-of-Brugge-01.jpg/1280px-Bruges_Belgium_Town-hall-of-Brugge-01.jpg"
+  },
+  {
+    "name": "Provinciaal Hof",
+    "city": "Bruges",
+    "address": "Markt 3, 8000 Brugge, Belgium",
+    "latitude": 51.2088,
+    "longitude": 3.224,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Belgium-5940_-_Provincial_Court_%2813746435813%29.jpg/1280px-Belgium-5940_-_Provincial_Court_%2813746435813%29.jpg"
+  },
+  {
+    "name": "Sint-Salvatorskathedraal",
+    "city": "Bruges",
+    "address": "Sint-Salvatorskoorstraat 8, 8000 Brugge, Belgium",
+    "latitude": 51.2062,
+    "longitude": 3.2218,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Brugge_Sint-Salvatorskerkhof_zonder_nummer_-_174722_-_onroerenderfgoed.jpg"
+  },
+  {
+    "name": "Gruuthusemuseum",
+    "city": "Bruges",
+    "address": "Dijver 17C, 8000 Brugge, Belgium",
+    "latitude": 51.2044,
+    "longitude": 3.2258,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Gruuthusemuseum%2C_Brugge_1.jpg/1280px-Gruuthusemuseum%2C_Brugge_1.jpg"
+  },
+  {
+    "name": "Jan Van Eyckplein Tolhuis",
+    "city": "Bruges",
+    "address": "Jan van Eyckplein, 8000 Brugge, Belgium",
+    "latitude": 51.212,
+    "longitude": 3.2265,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Brugge_Spiegelrei_R03.jpg/1280px-Brugge_Spiegelrei_R03.jpg"
+  },
+  {
+    "name": "Concertgebouw Brugge",
+    "city": "Bruges",
+    "address": "'t Zand 34, 8000 Brugge, Belgium",
+    "latitude": 51.2046,
+    "longitude": 3.2162,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Bruges_Belgium_Concert-Hall-01.jpg/1280px-Bruges_Belgium_Concert-Hall-01.jpg"
+  },
+  {
+    "name": "Sint-Jakobskerk",
+    "city": "Bruges",
+    "address": "Sint-Jakobsplein, 8000 Brugge, Belgium",
+    "latitude": 51.2107,
+    "longitude": 3.2222,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/42/BlondeelComeDamien.jpg"
+  },
+  {
+    "name": "Hof Bladelin",
+    "city": "Bruges",
+    "address": "Naaldenstraat 19, 8000 Brugge, Belgium",
+    "latitude": 51.2098,
+    "longitude": 3.2255,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Brugge_Hof_Bladelin_Beeldnis.JPG"
+  },
+  {
+    "name": "Jeruzalemkerk",
+    "city": "Bruges",
+    "address": "Peperstraat 3, 8000 Brugge, Belgium",
+    "latitude": 51.2127,
+    "longitude": 3.231,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/de/Brugge_Peperstraat_1-3_-_115572_-_onroerenderfgoed.jpg"
+  },
+  {
+    "name": "Brugse Vrije",
+    "city": "Bruges",
+    "address": "Burg 11A, 8000 Brugge, Belgium",
+    "latitude": 51.2084,
+    "longitude": 3.2275,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Archway_of_the_Brugse_Vrije%2C_Bruges%2C_Belgium.jpg/1280px-Archway_of_the_Brugse_Vrije%2C_Bruges%2C_Belgium.jpg"
+  },
+  {
+    "name": "Poortersloge",
+    "city": "Bruges",
+    "address": "Academiestraat 14, 8000 Brugge, Belgium",
+    "latitude": 51.2112,
+    "longitude": 3.2268,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Brugge_Academiestraat_18_-_114990_-_onroerenderfgoed.jpg"
+  },
+  {
+    "name": "Sint-Annakerk",
+    "city": "Bruges",
+    "address": "Sint-Annaplein, 8000 Brugge, Belgium",
+    "latitude": 51.2118,
+    "longitude": 3.232,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Brugge_Sint-Annaplein_zonder_nummer_Sint-Annakerk_-_115792_-_onroerenderfgoed.jpg"
+  },
+  {
+    "name": "Onze-Lieve-Vrouw ter Potterie",
+    "city": "Bruges",
+    "address": "Potterierei 79B, 8000 Brugge, Belgium",
+    "latitude": 51.2168,
+    "longitude": 3.2337,
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Onze-Lieve-Vrouw-ter-Potterie.jpg/1280px-Onze-Lieve-Vrouw-ter-Potterie.jpg"
+  }
+]

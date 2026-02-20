@@ -1,0 +1,31 @@
+{
+  "api_key_file": "~/.config/secrets/typefully.env",
+  "social_sets": {
+    "architecture_helper": {
+      "id": 207404,
+      "username": "ArchitectrHelpr",
+      "platforms": ["x"],
+      "auto_post": true
+    },
+    "cre_software": {
+      "id": 207403,
+      "username": "CRESoftware",
+      "platforms": ["x"],
+      "auto_post": true
+    },
+    "nathan_personal": {
+      "id": 205514,
+      "username": "NathanSRobinson",
+      "platforms": ["x", "linkedin"],
+      "auto_post": false,
+      "note": "Nathan stays in the loop - drafts only, he reviews before posting"
+    },
+    "plotzy": {
+      "id": 205524,
+      "username": "PlotzyAI",
+      "platforms": ["x"],
+      "auto_post": false,
+      "note": "Not hooked up yet"
+    }
+  }
+}
