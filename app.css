@@ -167,11 +167,14 @@ body {
 .content-area {
   flex: 1;
   overflow-y: auto;
-  padding: 24px 48px;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
+  padding: 32px 80px;
   box-sizing: border-box;
+}
+
+.content-area > * {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* === CARDS === */
