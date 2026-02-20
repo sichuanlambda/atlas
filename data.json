@@ -131,8 +131,8 @@
   },
   "pinterest": {
     "account": "@nathaninproduct",
-    "totalPins": 14,
-    "queue": 86,
+    "totalPins": 15,
+    "queue": 85,
     "boards": {
       "city": [
         "New Orleans Architecture",
@@ -157,7 +157,7 @@
       ]
     },
     "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
-    "note": "86 queued pins. ~21 days at 4/day. Pin #14 wraps NOLA. Next: NYC pins.",
+    "note": "85 queued pins. ~21 days of content at 4/day. Last posted 2026-02-20 17:00 UTC. First NYC pin!",
     "totalMetrics": {
       "impressions": 107,
       "saves": 10,
