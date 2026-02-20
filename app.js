@@ -9,6 +9,7 @@ let PINS = {};
 let CONTENT_Q = {};
 let USAGE_DATA = {};
 let FS_DATA = {};
+let COST_DATA = {};
 let NOTES_CACHE = {};
 let CHATS = JSON.parse(localStorage.getItem('atlas_chats') || '{}');
 let ACTIVE_CHAT = localStorage.getItem('atlas_active_chat') || null;
@@ -26,6 +27,8 @@ const routes = {
   '/metrics': { title: 'Metrics', render: renderMetrics },
   '/chat': { title: 'Chat', render: renderChat },
   '/agents': { title: 'Agents', render: renderAgents },
+  '/analytics': { title: 'Analytics', render: renderAnalytics },
+  '/cron': { title: 'Agents & Cron', render: renderCron },
   '/content': { title: 'Content Hub', render: renderContent },
   '/usage': { title: 'Usage & Costs', render: renderUsage },
   '/filesystem': { title: 'File System', render: renderFilesystem },
@@ -45,13 +48,14 @@ function navigate() {
 // === DATA LOADING ===
 async function loadData() {
   try {
-    const [dataRes, tasksRes, pinsRes, contentRes, usageRes, fsRes] = await Promise.all([
+    const [dataRes, tasksRes, pinsRes, contentRes, usageRes, fsRes, costRes] = await Promise.all([
       fetch('data.json?' + Date.now()),
       fetch('tasks.json?' + Date.now()),
       fetch('memory/pinterest-pins.json?' + Date.now()).catch(() => null),
       fetch('content-queue.json?' + Date.now()).catch(() => null),
       fetch('usage-data.json?' + Date.now()).catch(() => null),
       fetch('filesystem-data.json?' + Date.now()).catch(() => null),
+      fetch('cost-data.json?' + Date.now()).catch(() => null),
     ]);
     DATA = await dataRes.json();
     TASKS = (await tasksRes.json()).tasks || [];
@@ -59,6 +63,7 @@ async function loadData() {
     if (contentRes && contentRes.ok) CONTENT_Q = await contentRes.json();
     if (usageRes && usageRes.ok) USAGE_DATA = await usageRes.json();
     if (fsRes && fsRes.ok) FS_DATA = await fsRes.json();
+    if (costRes && costRes.ok) COST_DATA = await costRes.json();
   } catch (e) { console.error('Data load error:', e); }
   updateStatus();
 }
@@ -90,6 +95,38 @@ function renderOverview(el) {
       <div class="stat-card"><div class="stat-label">Buildings</div><div class="stat-value">${m.totalBuildings || 0}</div></div>
       <div class="stat-card"><div class="stat-label">Pinterest Pins</div><div class="stat-value">${m.pinterestPins || 0}</div><div class="stat-change positive">+${m.pinterestQueue || 0} queued</div></div>
       <div class="stat-card"><div class="stat-label">Tasks</div><div class="stat-value">${done}/${TASKS.length}</div><div class="stat-change">${active} active · ${blocked} blocked</div></div>
+    </div>
+
+    <div class="grid grid-4" style="margin-bottom:24px">
+      <div class="stat-card">
+        <div class="stat-label">Cost Today</div>
+        <div class="stat-value" style="color:#ef4444;">$${(() => {
+          if (!COST_DATA.daily || !COST_DATA.daily[0]) return '0.00';
+          const today = COST_DATA.daily[0];
+          return Object.values(today.models).reduce((sum, m) => sum + m.cost_usd, 0).toFixed(2);
+        })()}</div>
+        <div class="stat-change"><a href="#/analytics" style="color:#3b82f6;text-decoration:none;">View Analytics →</a></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Active Agents</div>
+        <div class="stat-value" style="color:#22c55e;">${COST_DATA.agents ? COST_DATA.agents.length : 0}</div>
+        <div class="stat-change"><a href="#/cron" style="color:#3b82f6;text-decoration:none;">Manage →</a></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Cron Jobs</div>
+        <div class="stat-value">${COST_DATA.cron_jobs ? COST_DATA.cron_jobs.filter(j => j.status === 'active').length : 0}/${COST_DATA.cron_jobs ? COST_DATA.cron_jobs.length : 0}</div>
+        <div class="stat-change">Active/Total</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Monthly Est.</div>
+        <div class="stat-value" style="color:#8b5cf6;">$${(() => {
+          if (!COST_DATA.daily || COST_DATA.daily.length === 0) return '0';
+          const avgDaily = COST_DATA.daily.slice(0, 7).reduce((sum, day) => 
+            sum + Object.values(day.models).reduce((s, m) => s + m.cost_usd, 0), 0) / Math.min(7, COST_DATA.daily.length);
+          return (avgDaily * 30).toFixed(0);
+        })()}</div>
+        <div class="stat-change">7-day avg</div>
+      </div>
     </div>
 
     <div class="grid grid-2">
@@ -255,6 +292,30 @@ function renderProjectAH(el) {
           <span class="task-name">${c}</span><span class="badge badge-warning">Queued</span></div>`).join('')}</div>
       </div>
     </div>
+    
+    <div class="card" style="margin-top:16px">
+      <div class="card-header">
+        <span class="card-title">🤖 Involved Agents & Models</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;padding:4px 0;">
+        ${(() => {
+          if (!COST_DATA.agents) return '<span style="color:#6b7280;font-size:12px;">Loading agent data...</span>';
+          const relevantAgents = COST_DATA.agents.filter(a => 
+            a.id === 'sub_building' || a.id === 'cron_pinterest' || a.id === 'cron_content' || a.id === 'main'
+          );
+          return relevantAgents.map(agent => {
+            const model = COST_DATA.models[agent.model];
+            if (!model) return '';
+            return '<div style="display:flex;align-items:center;gap:8px;background:#0d1117;border-radius:8px;padding:8px 12px;border:1px solid #2a2a3e;">' +
+              '<span style="background:' + model.color + '22;color:' + model.color + ';padding:2px 6px;border-radius:4px;font-size:10px;font-weight:600;">' + model.label.split(' ')[1] + '</span>' +
+              '<span style="color:#e5e7eb;font-size:12px;font-weight:500;">' + agent.name + '</span>' +
+              '<div style="color:#9ca3af;font-size:11px;">' + agent.description + '</div>' +
+            '</div>';
+          }).join('');
+        })()}
+      </div>
+    </div>
+    
     <div class="card" style="margin-top:16px">
       <div class="card-header">
         <span class="card-title">📌 Pinterest Distribution</span>
@@ -516,7 +577,7 @@ function renderFlows(el) {
     <div class="grid grid-2">${flows.map(f => `
       <div class="flow-card">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-          <span class="flow-name">${f.name}</span><span class="badge badge-success">${f.status}</span>
+          <a href="#/cron" class="flow-name" style="color:#3b82f6;text-decoration:none;font-weight:600;">${f.name}</a><span class="badge badge-success">${f.status}</span>
         </div>
         <div class="flow-schedule">⏰ ${f.schedule}</div>
         <div class="flow-meta"><span>ID: ${f.id}</span><span>·</span><span>${f.desc}</span></div>
@@ -1179,6 +1240,261 @@ function renderFilesystem(el) {
     scHtml += '</div>';
     html += fsSection('fs-scripts', '⚡', 'Scripts', fs.scripts.length, scHtml, false);
   }
+
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+// === ANALYTICS PAGE ===
+function renderAnalytics(el) {
+  if (!COST_DATA.daily || COST_DATA.daily.length === 0) {
+    el.innerHTML = '<p style="color:#6b7280;">Loading analytics data...</p>';
+    return;
+  }
+
+  // Calculate totals and summary data
+  const today = COST_DATA.daily[0];
+  const last7Days = COST_DATA.daily.slice(0, Math.min(7, COST_DATA.daily.length));
+  const last30Days = COST_DATA.daily.slice(0, Math.min(30, COST_DATA.daily.length));
+
+  const todayCost = Object.values(today.models).reduce((sum, m) => sum + m.cost_usd, 0);
+  const week7Cost = last7Days.reduce((sum, day) => sum + Object.values(day.models).reduce((s, m) => s + m.cost_usd, 0), 0);
+  const month30Cost = last30Days.reduce((sum, day) => sum + Object.values(day.models).reduce((s, m) => s + m.cost_usd, 0), 0);
+  const projectedMonthlyCost = (month30Cost / last30Days.length) * 30;
+
+  // Model breakdown for today
+  const modelTotals = {};
+  Object.entries(today.models).forEach(([model, data]) => {
+    modelTotals[model] = data.cost_usd;
+  });
+
+  let html = '<div style="max-width:1200px;margin:0 auto;">';
+
+  // Cost summary cards
+  html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px;">';
+  html += `<div class="stat-card">
+    <div class="stat-label">Today's Cost</div>
+    <div class="stat-value" style="color:#ef4444;">$${todayCost.toFixed(2)}</div>
+  </div>`;
+  html += `<div class="stat-card">
+    <div class="stat-label">7-Day Cost</div>
+    <div class="stat-value" style="color:#f59e0b;">$${week7Cost.toFixed(2)}</div>
+  </div>`;
+  html += `<div class="stat-card">
+    <div class="stat-label">30-Day Cost</div>
+    <div class="stat-value" style="color:#8b5cf6;">$${month30Cost.toFixed(2)}</div>
+  </div>`;
+  html += `<div class="stat-card">
+    <div class="stat-label">Projected Monthly</div>
+    <div class="stat-value" style="color:#3b82f6;">$${projectedMonthlyCost.toFixed(0)}</div>
+  </div>`;
+  html += '</div>';
+
+  // Cost over time chart (bar chart)
+  html += '<div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;margin-bottom:32px;">';
+  html += '<div style="background:#1a1a2e;border-radius:12px;padding:24px;">';
+  html += '<h3 style="margin:0 0 16px;font-size:16px;color:#fff;">Cost Over Time (Last 7 Days)</h3>';
+
+  // Bar chart using CSS grid
+  const maxDailyCost = Math.max(...last7Days.map(day => Object.values(day.models).reduce((s, m) => s + m.cost_usd, 0)));
+  html += '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;height:200px;align-items:end;margin-bottom:16px;">';
+
+  last7Days.reverse().forEach(day => {
+    const dayTotal = Object.values(day.models).reduce((s, m) => s + m.cost_usd, 0);
+    const heightPct = (dayTotal / maxDailyCost) * 100;
+    
+    // Stacked bar
+    const opusHeight = (day.models.opus.cost_usd / dayTotal) * heightPct;
+    const sonnetHeight = (day.models.sonnet.cost_usd / dayTotal) * heightPct;
+    const haikuHeight = (day.models.haiku.cost_usd / dayTotal) * heightPct;
+
+    html += '<div style="display:flex;flex-direction:column;justify-content:end;height:100%;text-align:center;">';
+    html += `<div style="background:#10b981;height:${haikuHeight}%;border-radius:4px 4px 0 0;margin-bottom:1px;" title="Haiku: $${day.models.haiku.cost_usd.toFixed(2)}"></div>`;
+    html += `<div style="background:#3b82f6;height:${sonnetHeight}%;margin-bottom:1px;" title="Sonnet: $${day.models.sonnet.cost_usd.toFixed(2)}"></div>`;
+    html += `<div style="background:#f59e0b;height:${opusHeight}%;border-radius:0 0 4px 4px;" title="Opus: $${day.models.opus.cost_usd.toFixed(2)}"></div>`;
+    html += `<div style="font-size:10px;color:#9ca3af;margin-top:8px;">${day.date.slice(-2)}</div>`;
+    html += '</div>';
+  });
+  html += '</div>';
+
+  // Legend
+  html += '<div style="display:flex;justify-content:center;gap:16px;font-size:12px;">';
+  html += '<span style="color:#f59e0b;"><span style="display:inline-block;width:12px;height:12px;background:#f59e0b;border-radius:2px;margin-right:4px;"></span>Opus</span>';
+  html += '<span style="color:#3b82f6;"><span style="display:inline-block;width:12px;height:12px;background:#3b82f6;border-radius:2px;margin-right:4px;"></span>Sonnet</span>';
+  html += '<span style="color:#10b981;"><span style="display:inline-block;width:12px;height:12px;background:#10b981;border-radius:2px;margin-right:4px;"></span>Haiku</span>';
+  html += '</div>';
+  html += '</div>';
+
+  // Model breakdown donut chart
+  const totalCost = Object.values(modelTotals).reduce((s, c) => s + c, 0);
+  const opusPct = (modelTotals.opus / totalCost) * 100;
+  const sonnetPct = (modelTotals.sonnet / totalCost) * 100;
+  const haikuPct = (modelTotals.haiku / totalCost) * 100;
+
+  html += '<div style="background:#1a1a2e;border-radius:12px;padding:24px;">';
+  html += '<h3 style="margin:0 0 16px;font-size:16px;color:#fff;">Today\'s Model Breakdown</h3>';
+  html += '<div style="display:flex;flex-direction:column;align-items:center;gap:16px;">';
+
+  // CSS donut chart
+  html += `<div style="width:120px;height:120px;border-radius:50%;background:conic-gradient(#f59e0b ${opusPct}%, #3b82f6 0 ${opusPct + sonnetPct}%, #10b981 0);position:relative;">`;
+  html += '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;background:#1a1a2e;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#fff;">$' + todayCost.toFixed(0) + '</div>';
+  html += '</div>';
+
+  // Legend
+  html += '<div style="display:flex;flex-direction:column;gap:8px;font-size:12px;">';
+  html += `<div style="display:flex;align-items:center;gap:8px;"><span style="display:inline-block;width:12px;height:12px;background:#f59e0b;border-radius:2px;"></span><span style="color:#e5e7eb;">Opus ${opusPct.toFixed(0)}% ($${modelTotals.opus.toFixed(2)})</span></div>`;
+  html += `<div style="display:flex;align-items:center;gap:8px;"><span style="display:inline-block;width:12px;height:12px;background:#3b82f6;border-radius:2px;"></span><span style="color:#e5e7eb;">Sonnet ${sonnetPct.toFixed(0)}% ($${modelTotals.sonnet.toFixed(2)})</span></div>`;
+  html += `<div style="display:flex;align-items:center;gap:8px;"><span style="display:inline-block;width:12px;height:12px;background:#10b981;border-radius:2px;"></span><span style="color:#e5e7eb;">Haiku ${haikuPct.toFixed(0)}% ($${modelTotals.haiku.toFixed(2)})</span></div>`;
+  html += '</div>';
+  html += '</div>';
+  html += '</div>';
+  html += '</div>';
+
+  // Agent activity table
+  html += '<div style="background:#1a1a2e;border-radius:12px;padding:24px;margin-bottom:24px;">';
+  html += '<h3 style="margin:0 0 16px;font-size:16px;color:#fff;">Agent Activity</h3>';
+  html += '<div style="overflow-x:auto;">';
+  html += '<table style="width:100%;border-collapse:collapse;font-size:13px;">';
+  html += '<thead><tr style="border-bottom:2px solid #2a2a3e;">';
+  html += '<th style="text-align:left;padding:12px 8px;color:#9ca3af;">Agent</th>';
+  html += '<th style="text-align:center;padding:12px 8px;color:#9ca3af;">Model</th>';
+  html += '<th style="text-align:center;padding:12px 8px;color:#9ca3af;">Status</th>';
+  html += '<th style="text-align:right;padding:12px 8px;color:#9ca3af;">Est. Cost Today</th>';
+  html += '</tr></thead><tbody>';
+
+  COST_DATA.agents.forEach(agent => {
+    const model = COST_DATA.models[agent.model];
+    const activityData = today.by_activity[agent.id] || {cost_usd: 0};
+    const status = agent.id.startsWith('cron') ? 'scheduled' : 'active';
+    const statusColor = status === 'active' ? '#22c55e' : '#f59e0b';
+    
+    html += '<tr style="border-bottom:1px solid #2a2a3e;">';
+    html += `<td style="padding:8px;color:#e5e7eb;">
+      <div style="font-weight:500;">${agent.name}</div>
+      <div style="font-size:11px;color:#9ca3af;">${agent.description}</div>
+    </td>`;
+    html += `<td style="padding:8px;text-align:center;">
+      <span style="background:${model.color}22;color:${model.color};padding:4px 8px;border-radius:4px;font-size:11px;font-weight:600;">${model.label.split(' ')[1]}</span>
+    </td>`;
+    html += `<td style="padding:8px;text-align:center;">
+      <span style="color:${statusColor};">●</span> ${status}
+    </td>`;
+    html += `<td style="padding:8px;text-align:right;color:#e5e7eb;font-weight:500;">$${activityData.cost_usd.toFixed(2)}</td>`;
+    html += '</tr>';
+  });
+
+  html += '</tbody></table>';
+  html += '</div>';
+  html += '</div>';
+
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+// === CRON JOBS PAGE ===
+function renderCron(el) {
+  if (!COST_DATA.cron_jobs || COST_DATA.cron_jobs.length === 0) {
+    el.innerHTML = '<p style="color:#6b7280;">Loading cron jobs data...</p>';
+    return;
+  }
+
+  const activeJobs = COST_DATA.cron_jobs.filter(job => job.status === 'active');
+  const disabledJobs = COST_DATA.cron_jobs.filter(job => job.status === 'disabled');
+
+  let html = '<div style="max-width:1000px;margin:0 auto;">';
+
+  // Summary
+  html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-bottom:32px;">';
+  html += `<div class="stat-card">
+    <div class="stat-label">Total Jobs</div>
+    <div class="stat-value">${COST_DATA.cron_jobs.length}</div>
+  </div>`;
+  html += `<div class="stat-card">
+    <div class="stat-label">Active</div>
+    <div class="stat-value" style="color:#22c55e;">${activeJobs.length}</div>
+  </div>`;
+  html += `<div class="stat-card">
+    <div class="stat-label">Disabled</div>
+    <div class="stat-value" style="color:#6b7280;">${disabledJobs.length}</div>
+  </div>`;
+  html += `<div class="stat-card">
+    <div class="stat-label">Active Agents</div>
+    <div class="stat-value" style="color:#3b82f6;">${COST_DATA.agents.length}</div>
+  </div>`;
+  html += '</div>';
+
+  // Active jobs
+  html += '<div style="background:#1a1a2e;border-radius:12px;padding:24px;margin-bottom:24px;">';
+  html += '<h3 style="margin:0 0 20px;font-size:16px;color:#fff;">🟢 Active Cron Jobs</h3>';
+  
+  if (activeJobs.length === 0) {
+    html += '<p style="color:#6b7280;text-align:center;padding:20px;">No active cron jobs</p>';
+  } else {
+    html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;">';
+    activeJobs.forEach(job => {
+      const model = COST_DATA.models[job.model];
+      const lastRun = job.last_run ? new Date(job.last_run).toLocaleString() : 'Never';
+      
+      html += `<div style="background:#0d1117;border:2px solid #22c55e;border-radius:12px;padding:16px;cursor:pointer;transition:transform 0.2s;position:relative;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">`;
+      html += `<div style="position:absolute;top:8px;right:8px;width:8px;height:8px;background:#22c55e;border-radius:50%;"></div>`;
+      html += `<div style="font-size:14px;font-weight:600;color:#e5e7eb;margin-bottom:8px;">${job.name}</div>`;
+      html += `<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">`;
+      html += `<span style="background:${model.color}22;color:${model.color};padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;">${model.label.split(' ')[1]}</span>`;
+      html += `<span style="color:#9ca3af;font-size:12px;">${job.schedule}</span>`;
+      html += `</div>`;
+      html += `<div style="color:#9ca3af;font-size:11px;">Last run: ${lastRun}</div>`;
+      html += `</div>`;
+    });
+    html += '</div>';
+  }
+  html += '</div>';
+
+  // Disabled jobs
+  if (disabledJobs.length > 0) {
+    html += '<div style="background:#1a1a2e;border-radius:12px;padding:24px;margin-bottom:24px;">';
+    html += '<h3 style="margin:0 0 20px;font-size:16px;color:#fff;">⚫ Disabled Cron Jobs</h3>';
+    html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;">';
+    disabledJobs.forEach(job => {
+      const model = COST_DATA.models[job.model];
+      const lastRun = job.last_run ? new Date(job.last_run).toLocaleString() : 'Never';
+      
+      html += `<div style="background:#0d1117;border:2px solid #6b7280;border-radius:12px;padding:16px;cursor:pointer;opacity:0.7;position:relative;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.7'">`;
+      html += `<div style="position:absolute;top:8px;right:8px;width:8px;height:8px;background:#6b7280;border-radius:50%;"></div>`;
+      html += `<div style="font-size:14px;font-weight:600;color:#e5e7eb;margin-bottom:8px;">${job.name}</div>`;
+      html += `<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">`;
+      html += `<span style="background:${model.color}22;color:${model.color};padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;">${model.label.split(' ')[1]}</span>`;
+      html += `<span style="color:#9ca3af;font-size:12px;">${job.schedule}</span>`;
+      html += `</div>`;
+      html += `<div style="color:#9ca3af;font-size:11px;">Last run: ${lastRun}</div>`;
+      html += `</div>`;
+    });
+    html += '</div>';
+    html += '</div>';
+  }
+
+  // All agents overview
+  html += '<div style="background:#1a1a2e;border-radius:12px;padding:24px;">';
+  html += '<h3 style="margin:0 0 20px;font-size:16px;color:#fff;">🤖 All Agents</h3>';
+  html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;">';
+  
+  COST_DATA.agents.forEach(agent => {
+    const model = COST_DATA.models[agent.model];
+    const isCron = agent.id.startsWith('cron');
+    const border = isCron ? '#f59e0b' : '#3b82f6';
+    const icon = isCron ? '⚙️' : '🤖';
+    
+    html += `<div style="background:#0d1117;border-left:4px solid ${border};border-radius:8px;padding:14px;">`;
+    html += `<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">`;
+    html += `<span>${icon}</span>`;
+    html += `<span style="font-size:13px;font-weight:600;color:#e5e7eb;">${agent.name}</span>`;
+    html += `</div>`;
+    html += `<div style="font-size:11px;color:#9ca3af;margin-bottom:8px;">${agent.description}</div>`;
+    html += `<span style="background:${model.color}22;color:${model.color};padding:2px 6px;border-radius:4px;font-size:10px;font-weight:600;">${model.label}</span>`;
+    html += `</div>`;
+  });
+  
+  html += '</div>';
+  html += '</div>';
 
   html += '</div>';
   el.innerHTML = html;
