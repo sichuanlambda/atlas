@@ -191,6 +191,44 @@ function renderProjects(el) {
   `;
 }
 
+function renderLatestSection(projectKey) {
+  const latest = (DATA.projectLatest || {})[projectKey];
+  if (!latest || !latest.items?.length) return '';
+  const typeStyles = {
+    milestone: { icon: '🏆', color: '#f59e0b', label: 'Milestone' },
+    builds: { icon: '🔨', color: '#3b82f6', label: 'Shipped' },
+    fix: { icon: '🔧', color: '#10b981', label: 'Fix' },
+    content: { icon: '✍️', color: '#8b5cf6', label: 'Content' },
+    automation: { icon: '⚡', color: '#06b6d4', label: 'Automation' },
+    pending: { icon: '⏳', color: '#f97316', label: 'Pending' },
+    decision: { icon: '🎯', color: '#ec4899', label: 'Decision' },
+    learning: { icon: '💡', color: '#eab308', label: 'Learning' },
+    idea: { icon: '💭', color: '#a78bfa', label: 'Idea' },
+    stats: { icon: '📊', color: '#6b7280', label: 'Stats' }
+  };
+  const rows = latest.items.map(item => {
+    const s = typeStyles[item.type] || typeStyles.stats;
+    const dateTag = item.date ? `<span style="color:var(--text-dim);font-size:11px;margin-left:auto;white-space:nowrap;">${item.date}</span>` : '';
+    return `<div style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+      <span style="font-size:14px;flex-shrink:0;margin-top:1px;">${s.icon}</span>
+      <div style="flex:1;min-width:0;">
+        <span style="display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:${s.color};background:${s.color}18;padding:2px 6px;border-radius:4px;margin-bottom:4px;">${s.label}</span>
+        <div style="font-size:13px;color:var(--text);line-height:1.5;">${item.text}</div>
+      </div>
+      ${dateTag}
+    </div>`;
+  }).join('');
+  const updatedStr = latest.updated ? new Date(latest.updated).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
+  return `<div class="card" style="margin-top:16px;">
+    <div class="card-header">
+      <span class="card-title">🔄 Latest Activity</span>
+      <span class="card-subtitle">Updated ${updatedStr}</span>
+    </div>
+    ${latest.summary ? `<div style="font-size:14px;color:var(--text);padding:0 0 12px;line-height:1.6;font-weight:500;">${latest.summary}</div>` : ''}
+    <div>${rows}</div>
+  </div>`;
+}
+
 function renderProjectAH(el) {
   const m = DATA.metrics || {};
   const p = DATA.pinterest || {};
@@ -243,6 +281,7 @@ function renderProjectAH(el) {
       </div>
       ${p.note ? '<div style="font-size:12px;color:var(--text-dim);padding:8px 12px;background:rgba(255,255,255,0.03);border-radius:var(--radius)">' + p.note + '</div>' : ''}
     </div>
+    ${renderLatestSection('architecture-helper')}
     <div class="card" style="margin-top:16px">
       <div class="card-header"><span class="card-title">Links</span></div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
@@ -265,7 +304,8 @@ function renderProjectCRE(el) {
       <div class="stat-card"><div class="stat-label">Enriched</div><div class="stat-value">100%</div></div>
       <div class="stat-card"><div class="stat-label">SSL</div><div class="stat-value" style="color:var(--success)">✓</div></div>
     </div>
-    <div class="card"><div class="card-header"><span class="card-title">Links</span></div>
+    ${renderLatestSection('cre-software')}
+    <div class="card" style="margin-top:16px"><div class="card-header"><span class="card-title">Links</span></div>
       <div style="display:flex;gap:8px"><a href="${CRE_URL}" target="_blank" class="btn btn-ghost">🌐 Site</a>
       <a href="https://github.com/sichuanlambda/cre-directory" target="_blank" class="btn btn-ghost">GitHub</a></div></div>`;
 }
@@ -279,7 +319,8 @@ function renderProjectPlotzy(el) {
       <div class="stat-card"><div class="stat-label">Total Zones</div><div class="stat-value">${((m.zoningZones||0)/1000).toFixed(0)}K</div></div>
       <div class="stat-card"><div class="stat-label">Data Size</div><div class="stat-value">566MB</div></div>
       <div class="stat-card"><div class="stat-label">Stage</div><div class="stat-value" style="font-size:16px">Research</div></div>
-    </div>`;
+    </div>
+    ${renderLatestSection('plotzy')}`;
 }
 
 // === TASKS ===
