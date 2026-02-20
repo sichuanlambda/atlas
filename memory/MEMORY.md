@@ -190,3 +190,28 @@
 - Rake task exists but only processed 64/409 before session timeout
 - onerror fallback unreliable with lazy loading + S3 403s
 - Re-enable after full thumbnail generation completes
+
+## Content Queue System (Feb 19, 2026)
+- Atlas Control Center page: sichuanlambda.github.io/atlas/#/content
+- Data: /home/openclaw/projects/atlas/content-queue.json
+- Accounts: @architectrHelpr (X, manual), @nathansrobinson (X, manual), @plotzyai (X, future), Pinterest (auto)
+- Voice profiles per account — different tone for each
+- Workflow: Atlas drafts → Nathan reviews → posts manually → shares analytics → Atlas learns
+- Nathan can screenshot X analytics → Atlas tracks engagement and improves content
+
+## X/Twitter Access (Feb 19, 2026)
+- @architectrHelpr creds at ~/.config/secrets/x-architecturehelper.env
+- Email: cdnathan.robinson@gmail.com
+- Headless browser login blocked by X anti-bot — need API access
+- Free tier: 1,500 tweets/mo at developer.x.com — Nathan to apply
+
+## Image Validation Rule (Feb 19 — learned from Boston/Philly)
+- Wikimedia Commons search returns documents, book covers, plaques — NOT just building photos
+- MUST vision-validate all images before submitting to AH
+- Updated runbook: memory/runbooks/building-submission.md
+- Skip filenames with: .pdf, .tif, plan, diagram, plaque, marker, painting, interior
+
+## Pinterest Queue Status (Feb 19)
+- 90 pins total queue, 12 published
+- All cities covered: SF, Chicago, NOLA, NYC, DC, Philly, Boston, standalone
+- ~22 days of content at 4 pins/day

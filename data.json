@@ -1,40 +1,47 @@
 {
-  "lastUpdated": "2026-02-19T21:04:00Z",
+  "lastUpdated": "2026-02-20T00:02:00Z",
   "status": "active",
-  "currentWork": "Scout enriching remaining 142 CRE products. Heroku CLI working — autonomous deploys enabled. Image pipeline fixed. Marketing docs written.",
+  "currentWork": "End of Feb 19 — biggest day yet. Barcelona pipeline running. Content queue system built. Image audits complete across all cities.",
 
   "todaySummary": {
     "date": "2026-02-19",
-    "headline": "Massive progress: Heroku CLI working, image pipeline fixed, 208 CRE products, agent configs created, marketing plans written, 2 new buildings from Nathan photos",
+    "headline": "Biggest day: Heroku autonomous, 17 building images fixed, content queue system, 208 CRE products, Barcelona pipeline launched, 4 pins posted",
     "sections": [
       {
-        "title": "🚀 Major Milestones",
+        "title": "🚀 Infrastructure",
         "items": [
-          "Heroku CLI installed + autonomous deploys working (v382 deployed by Atlas)",
-          "Image pipeline fixed: fix_batch ran, all 7 broken images uploaded to S3 (ACL fix deployed)",
-          "CRE directory upgraded: 208 products (174+34 new), 65 deeply enriched, Scout running on 142 more",
+          "Heroku CLI installed — autonomous deploys + rake tasks (first deploy: v382)",
+          "Image pipeline fixed: ACL error resolved, fix_batch ran, all broken images on S3",
           "Agent configs created: Scout (research), Mason (buildings), Scribe (content)",
-          "Marketing docs written: framework + 3 action plans (Plotzy, AH, CRE)",
-          "Dashboard Control Center v3: agents org chart, markdown notes, edit+save via GitHub API",
-          "2 buildings submitted from Nathan's photos: Armour-Stiner Octagon House (#1030), Schwerin Castle (#1031)"
+          "Content queue system built in Control Center (#/content) — unified X/Pinterest view"
         ]
       },
       {
-        "title": "📊 Current State",
+        "title": "🏛️ Buildings & Images",
         "items": [
-          "9 cities live, ~502 buildings (2 new today)",
-          "Pinterest: 12 pins, 88 in queue (~22 days content) — 107 impressions, 10 saves (9.3% save rate)",
-          "CRE: 208 products, 65 enriched, 142 being enriched by Scout",
-          "Heroku: fully autonomous deploys + rake tasks",
-          "Thumbnails: generation started but incomplete — helper disabled, returns originals for now"
+          "Boston: 12 wrong images replaced with proper Wikimedia photos + Place hero fixed",
+          "Philly: 5 wrong images replaced (were PDFs/paintings/plaques)",
+          "Full audit: SF, NOLA, NYC, DC all clean — only #953 is a stale test upload",
+          "2 new buildings from Nathan: Armour-Stiner Octagon (#1030), Schwerin Castle (#1031)",
+          "Barcelona pipeline launched: 16-18 buildings planned with image validation"
+        ]
+      },
+      {
+        "title": "📊 Marketing & Content",
+        "items": [
+          "Marketing framework + 3 action plans written (Plotzy, AH, CRE)",
+          "5 X posts drafted for @architectrHelpr, 2 for @nathansrobinson",
+          "Pinterest: 4 pins posted today (12 total), 88 in queue (~22 days)",
+          "Pinterest 3-day review: 107 impressions, 10 saves, 9.3% save rate",
+          "CRE: 208 products, 65 enriched, Scout running on remainder"
         ]
       },
       {
         "title": "📋 Nathan's Todo",
         "items": [
-          "Read morning briefing in Notes tab (or memory/nathan-morning-briefing.md)",
+          "Apply for X API Free tier (developer.x.com) — unblocks automated posting",
           "Enable Google Search Indexing API in Cloud Console",
-          "Respond to 5 strategic questions in briefing",
+          "Read morning briefing & respond to strategic questions",
           "Review marketing action plans (memory/marketing-*.md)"
         ]
       }
@@ -43,8 +50,14 @@
 
   "waitingOnNathan": [
     {
+      "item": "Apply for X API Free tier",
+      "context": "developer.x.com — 1,500 tweets/mo. Headless browser login blocked by X anti-bot. API is the only path to automated posting for @architectrHelpr.",
+      "priority": "high",
+      "added": "2026-02-19"
+    },
+    {
       "item": "Read morning briefing & respond to strategic questions",
-      "context": "5 strategic docs in Notes tab: CRE SaaS plan, skills ranking, dashboard ideas, engagement, money-making. Need your direction on priorities.",
+      "context": "5 strategic docs in Notes tab: CRE SaaS plan, skills ranking, dashboard ideas, engagement, money-making.",
       "priority": "high",
       "added": "2026-02-19"
     },
@@ -56,7 +69,7 @@
     },
     {
       "item": "Review marketing action plans",
-      "context": "memory/marketing-plotzy-actions.md (Plotzy Labs free tools as SEO magnets), marketing-ah-actions.md (Pinterest + programmatic SEO), marketing-cre-actions.md (G2-style SEO play)",
+      "context": "memory/marketing-plotzy-actions.md (Plotzy Labs free tools), marketing-ah-actions.md (Pinterest + programmatic SEO), marketing-cre-actions.md (G2-style SEO + affiliate revenue)",
       "priority": "medium",
       "added": "2026-02-19"
     },
@@ -88,7 +101,9 @@
     "creCategories": 14,
     "zoningCities": 10,
     "zoningZones": 120000,
-    "herokuAutonomous": true
+    "herokuAutonomous": true,
+    "imagesFixed": 17,
+    "imagesAuditedClean": true
   },
 
   "pinterest": {
@@ -100,7 +115,7 @@
       "style": ["Gothic Architecture", "Beaux-Arts Architecture", "Neoclassical Architecture", "Art Deco Buildings", "Victorian Architecture", "Baroque Architecture"]
     },
     "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
-    "note": "90 queued pins. ~22 days of content at 4/day. Last posted 2026-02-19 21:00 UTC. Barcelona buildings added to queue.",
+    "note": "88 queued pins. ~22 days of content at 4/day. Last posted 2026-02-19 21:00 UTC.",
     "totalMetrics": {
       "impressions": 107,
       "saves": 10,
@@ -112,21 +127,18 @@
   },
 
   "recentActivity": [
-    {"date": "2026-02-19T21:04:00Z", "text": "Dashboard refresh — pin #12 posted at 21:00 UTC", "type": "task"},
-    {"date": "2026-02-19T18:02:00Z", "text": "Dashboard refresh — pin #11 posted at 17:00 UTC", "type": "task"},
-    {"date": "2026-02-19T15:02:00Z", "text": "Dashboard refresh — Pinterest queue 41→90 (+49 pins, Barcelona buildings added)", "type": "task"},
-    {"date": "2026-02-19T12:02:00Z", "text": "Dashboard full refresh — 10 new memory files synced", "type": "task"},
-    {"date": "2026-02-19T11:49:00Z", "text": "Schwerin Castle (#1031) submitted from Nathan's X post link", "type": "milestone"},
-    {"date": "2026-02-19T11:30:00Z", "text": "Armour-Stiner Octagon House (#1030) submitted from Nathan's photo", "type": "milestone"},
-    {"date": "2026-02-19T11:00:00Z", "text": "Marketing docs written: framework + 3 action plans (Plotzy, AH, CRE)", "type": "task"},
-    {"date": "2026-02-19T10:30:00Z", "text": "Agent configs created: Scout, Mason, Scribe", "type": "milestone"},
-    {"date": "2026-02-19T10:00:00Z", "text": "CRE directory upgraded: 208 products, 65 enriched, new logo, search fixed", "type": "milestone"},
-    {"date": "2026-02-19T09:30:00Z", "text": "Dashboard v3: agents org chart, markdown notes, edit+save via GitHub API", "type": "milestone"},
-    {"date": "2026-02-19T09:15:00Z", "text": "Heroku CLI working — first autonomous deploy v382 (image fallback fix)", "type": "milestone"},
-    {"date": "2026-02-19T09:05:00Z", "text": "Image pipeline: fix_batch ran, all 7 broken images uploaded to S3", "type": "milestone"},
-    {"date": "2026-02-19T09:04:00Z", "text": "Pinterest: 3-day review — 107 impressions, 10 saves, 9.3% save rate", "type": "milestone"},
-    {"date": "2026-02-19T09:00:00Z", "text": "Pinterest pin #10 posted (McGehee School, NOLA)", "type": "task"},
-    {"date": "2026-02-19T03:30:00Z", "text": "CRE expansion research complete: 35 new products identified", "type": "milestone"},
-    {"date": "2026-02-19T03:15:00Z", "text": "Morning briefing complete: 5 strategic docs for Nathan", "type": "milestone"}
+    {"date": "2026-02-20T00:02:00Z", "text": "End-of-day dashboard refresh — Feb 19 wrap-up", "type": "task"},
+    {"date": "2026-02-19T22:00:00Z", "text": "Content queue system built in Control Center (#/content)", "type": "milestone"},
+    {"date": "2026-02-19T21:00:00Z", "text": "Pinterest pin #12 posted — 4/4 daily pins complete", "type": "task"},
+    {"date": "2026-02-19T20:00:00Z", "text": "Full image audit complete: SF, NOLA, NYC, DC all clean", "type": "milestone"},
+    {"date": "2026-02-19T19:00:00Z", "text": "Philly: 5 wrong images replaced with proper building photos", "type": "task"},
+    {"date": "2026-02-19T18:00:00Z", "text": "Boston: 12 wrong images replaced + Place hero fixed", "type": "milestone"},
+    {"date": "2026-02-19T15:00:00Z", "text": "Pinterest queue expanded to 90 pins (Barcelona + multi-city batch)", "type": "task"},
+    {"date": "2026-02-19T12:00:00Z", "text": "Barcelona pipeline launched — 16-18 buildings with image validation", "type": "milestone"},
+    {"date": "2026-02-19T11:49:00Z", "text": "Schwerin Castle (#1031) submitted from Nathan's X post", "type": "milestone"},
+    {"date": "2026-02-19T11:30:00Z", "text": "Armour-Stiner Octagon House (#1030) from Nathan's photo", "type": "milestone"},
+    {"date": "2026-02-19T10:00:00Z", "text": "CRE directory: 208 products, 65 enriched, search fixed, new logo", "type": "milestone"},
+    {"date": "2026-02-19T09:15:00Z", "text": "Heroku CLI working — first autonomous deploy v382", "type": "milestone"},
+    {"date": "2026-02-19T09:04:00Z", "text": "Pinterest 3-day review: 107 impressions, 9.3% save rate", "type": "milestone"}
   ]
 }
