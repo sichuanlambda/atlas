@@ -1,33 +1,32 @@
 {
   "lastUpdated": "2026-02-20T06:02:00Z",
   "status": "active",
-  "currentWork": "Feb 20 morning — quiet overnight. All systems nominal. Pinterest queue stocked (88 pins, ~22 days). Waiting on Nathan for X API, GSC indexing, and strategic review.",
-
+  "currentWork": "Feb 20 morning \u2014 quiet overnight. All systems nominal. Pinterest queue stocked (88 pins, ~22 days). Waiting on Nathan for X API, GSC indexing, and strategic review.",
   "todaySummary": {
     "date": "2026-02-19",
     "headline": "Biggest day: Heroku autonomous, 17 building images fixed, content queue system, 208 CRE products, Barcelona pipeline launched, 4 pins posted",
     "sections": [
       {
-        "title": "🚀 Infrastructure",
+        "title": "\ud83d\ude80 Infrastructure",
         "items": [
-          "Heroku CLI installed — autonomous deploys + rake tasks (first deploy: v382)",
+          "Heroku CLI installed \u2014 autonomous deploys + rake tasks (first deploy: v382)",
           "Image pipeline fixed: ACL error resolved, fix_batch ran, all broken images on S3",
           "Agent configs created: Scout (research), Mason (buildings), Scribe (content)",
-          "Content queue system built in Control Center (#/content) — unified X/Pinterest view"
+          "Content queue system built in Control Center (#/content) \u2014 unified X/Pinterest view"
         ]
       },
       {
-        "title": "🏛️ Buildings & Images",
+        "title": "\ud83c\udfdb\ufe0f Buildings & Images",
         "items": [
           "Boston: 12 wrong images replaced with proper Wikimedia photos + Place hero fixed",
           "Philly: 5 wrong images replaced (were PDFs/paintings/plaques)",
-          "Full audit: SF, NOLA, NYC, DC all clean — only #953 is a stale test upload",
+          "Full audit: SF, NOLA, NYC, DC all clean \u2014 only #953 is a stale test upload",
           "2 new buildings from Nathan: Armour-Stiner Octagon (#1030), Schwerin Castle (#1031)",
           "Barcelona pipeline launched: 16-18 buildings planned with image validation"
         ]
       },
       {
-        "title": "📊 Marketing & Content",
+        "title": "\ud83d\udcca Marketing & Content",
         "items": [
           "Marketing framework + 3 action plans written (Plotzy, AH, CRE)",
           "5 X posts drafted for @architectrHelpr, 2 for @nathansrobinson",
@@ -37,9 +36,9 @@
         ]
       },
       {
-        "title": "📋 Nathan's Todo",
+        "title": "\ud83d\udccb Nathan's Todo",
         "items": [
-          "Apply for X API Free tier (developer.x.com) — unblocks automated posting",
+          "Apply for X API Free tier (developer.x.com) \u2014 unblocks automated posting",
           "Enable Google Search Indexing API in Cloud Console",
           "Read morning briefing & respond to strategic questions",
           "Review marketing action plans (memory/marketing-*.md)"
@@ -47,11 +46,10 @@
       }
     ]
   },
-
   "waitingOnNathan": [
     {
       "item": "Apply for X API Free tier",
-      "context": "developer.x.com — 1,500 tweets/mo. Headless browser login blocked by X anti-bot. API is the only path to automated posting for @architectrHelpr.",
+      "context": "developer.x.com \u2014 1,500 tweets/mo. Headless browser login blocked by X anti-bot. API is the only path to automated posting for @architectrHelpr.",
       "priority": "high",
       "added": "2026-02-19"
     },
@@ -63,7 +61,7 @@
     },
     {
       "item": "Enable GSC Web Search Indexing API",
-      "context": "Google Cloud Console → project stoked-virtue-413221 → enable 'Web Search Indexing API'. Unblocks auto-indexing of 199 URLs.",
+      "context": "Google Cloud Console \u2192 project stoked-virtue-413221 \u2192 enable 'Web Search Indexing API'. Unblocks auto-indexing of 199 URLs.",
       "priority": "high",
       "added": "2026-02-17"
     },
@@ -80,11 +78,32 @@
       "added": "2026-02-18"
     }
   ],
-
   "metrics": {
     "citiesLive": 9,
-    "citiesList": ["Denver", "Den Haag", "San Francisco", "Chicago", "New Orleans", "New York City", "Washington DC", "Philadelphia", "Boston"],
-    "citiesInPipeline": ["Barcelona", "Bruges", "Edinburgh", "Kraków", "Tirana", "Istanbul", "Rome", "Detroit", "Savannah", "Los Angeles", "Miami"],
+    "citiesList": [
+      "Denver",
+      "Den Haag",
+      "San Francisco",
+      "Chicago",
+      "New Orleans",
+      "New York City",
+      "Washington DC",
+      "Philadelphia",
+      "Boston"
+    ],
+    "citiesInPipeline": [
+      "Barcelona",
+      "Bruges",
+      "Edinburgh",
+      "Krak\u00f3w",
+      "Tirana",
+      "Istanbul",
+      "Rome",
+      "Detroit",
+      "Savannah",
+      "Los Angeles",
+      "Miami"
+    ],
     "totalBuildings": 502,
     "totalStyles": 30,
     "prsMerged": 19,
@@ -105,17 +124,31 @@
     "imagesFixed": 17,
     "imagesAuditedClean": true
   },
-
   "pinterest": {
     "account": "@nathaninproduct",
-    "totalPins": 12,
-    "queue": 88,
+    "totalPins": 13,
+    "queue": 87,
     "boards": {
-      "city": ["New Orleans Architecture", "San Francisco Architecture", "Chicago Architecture", "Denver Architecture", "NYC Architecture", "Washington DC Architecture", "Boston Architecture"],
-      "style": ["Gothic Architecture", "Beaux-Arts Architecture", "Neoclassical Architecture", "Art Deco Buildings", "Victorian Architecture", "Baroque Architecture"]
+      "city": [
+        "New Orleans Architecture",
+        "San Francisco Architecture",
+        "Chicago Architecture",
+        "Denver Architecture",
+        "NYC Architecture",
+        "Washington DC Architecture",
+        "Boston Architecture"
+      ],
+      "style": [
+        "Gothic Architecture",
+        "Beaux-Arts Architecture",
+        "Neoclassical Architecture",
+        "Art Deco Buildings",
+        "Victorian Architecture",
+        "Baroque Architecture"
+      ]
     },
     "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
-    "note": "88 queued pins. ~22 days of content at 4/day. Last posted 2026-02-19 21:00 UTC.",
+    "note": "87 queued pins. ~22 days of content at 4/day. Last posted 2026-02-20 09:00 UTC.",
     "totalMetrics": {
       "impressions": 107,
       "saves": 10,
@@ -125,21 +158,76 @@
       "asOf": "2026-02-19T09:00:00Z"
     }
   },
-
   "recentActivity": [
-    {"date": "2026-02-20T06:02:00Z", "text": "Morning dashboard refresh — quiet overnight, all systems nominal", "type": "task"},
-    {"date": "2026-02-20T00:02:00Z", "text": "End-of-day dashboard refresh — Feb 19 wrap-up", "type": "task"},
-    {"date": "2026-02-19T22:00:00Z", "text": "Content queue system built in Control Center (#/content)", "type": "milestone"},
-    {"date": "2026-02-19T21:00:00Z", "text": "Pinterest pin #12 posted — 4/4 daily pins complete", "type": "task"},
-    {"date": "2026-02-19T20:00:00Z", "text": "Full image audit complete: SF, NOLA, NYC, DC all clean", "type": "milestone"},
-    {"date": "2026-02-19T19:00:00Z", "text": "Philly: 5 wrong images replaced with proper building photos", "type": "task"},
-    {"date": "2026-02-19T18:00:00Z", "text": "Boston: 12 wrong images replaced + Place hero fixed", "type": "milestone"},
-    {"date": "2026-02-19T15:00:00Z", "text": "Pinterest queue expanded to 90 pins (Barcelona + multi-city batch)", "type": "task"},
-    {"date": "2026-02-19T12:00:00Z", "text": "Barcelona pipeline launched — 16-18 buildings with image validation", "type": "milestone"},
-    {"date": "2026-02-19T11:49:00Z", "text": "Schwerin Castle (#1031) submitted from Nathan's X post", "type": "milestone"},
-    {"date": "2026-02-19T11:30:00Z", "text": "Armour-Stiner Octagon House (#1030) from Nathan's photo", "type": "milestone"},
-    {"date": "2026-02-19T10:00:00Z", "text": "CRE directory: 208 products, 65 enriched, search fixed, new logo", "type": "milestone"},
-    {"date": "2026-02-19T09:15:00Z", "text": "Heroku CLI working — first autonomous deploy v382", "type": "milestone"},
-    {"date": "2026-02-19T09:04:00Z", "text": "Pinterest 3-day review: 107 impressions, 9.3% save rate", "type": "milestone"}
+    {
+      "date": "2026-02-20T06:02:00Z",
+      "text": "Morning dashboard refresh \u2014 quiet overnight, all systems nominal",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-20T00:02:00Z",
+      "text": "End-of-day dashboard refresh \u2014 Feb 19 wrap-up",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-19T22:00:00Z",
+      "text": "Content queue system built in Control Center (#/content)",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-19T21:00:00Z",
+      "text": "Pinterest pin #12 posted \u2014 4/4 daily pins complete",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-19T20:00:00Z",
+      "text": "Full image audit complete: SF, NOLA, NYC, DC all clean",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-19T19:00:00Z",
+      "text": "Philly: 5 wrong images replaced with proper building photos",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-19T18:00:00Z",
+      "text": "Boston: 12 wrong images replaced + Place hero fixed",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-19T15:00:00Z",
+      "text": "Pinterest queue expanded to 90 pins (Barcelona + multi-city batch)",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-19T12:00:00Z",
+      "text": "Barcelona pipeline launched \u2014 16-18 buildings with image validation",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-19T11:49:00Z",
+      "text": "Schwerin Castle (#1031) submitted from Nathan's X post",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-19T11:30:00Z",
+      "text": "Armour-Stiner Octagon House (#1030) from Nathan's photo",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-19T10:00:00Z",
+      "text": "CRE directory: 208 products, 65 enriched, search fixed, new logo",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-19T09:15:00Z",
+      "text": "Heroku CLI working \u2014 first autonomous deploy v382",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-19T09:04:00Z",
+      "text": "Pinterest 3-day review: 107 impressions, 9.3% save rate",
+      "type": "milestone"
+    }
   ]
 }
