@@ -252,7 +252,7 @@
   "projectLatest": {
     "architecture-helper": {
       "updated": "2026-02-20T16:00:00Z",
-      "summary": "Massive velocity day. Direct DB pipeline eliminated Playwright \u2014 30x faster building submissions.",
+      "summary": "Massive velocity day. Direct DB pipeline eliminated Playwright - 30x faster building submissions.",
       "items": [
         {
           "type": "milestone",
@@ -266,17 +266,17 @@
         },
         {
           "type": "fix",
-          "text": "visible_in_library bug fixed \u2014 77 buildings were hidden on Place pages",
+          "text": "visible_in_library bug fixed - 77 buildings were hidden on Place pages",
           "date": "2026-02-20"
         },
         {
           "type": "content",
-          "text": "Typefully integration live \u2014 18 drafts created, Barcelona thread already published",
+          "text": "Typefully integration live - 18 drafts created, Barcelona thread already published",
           "date": "2026-02-20"
         },
         {
           "type": "content",
-          "text": "Daily content cron running (14:00 UTC) \u2014 auto-generates AH + CRE posts",
+          "text": "Daily content cron running (14:00 UTC) - auto-generates AH + CRE posts",
           "date": "2026-02-20"
         },
         {
@@ -289,16 +289,21 @@
         },
         {
           "type": "automation",
-          "text": "Pinterest auto-posting 4x daily \u2014 88 pins in queue (~22 days of content)",
+          "text": "Pinterest auto-posting 4x daily - 88 pins in queue (~22 days of content)",
           "date": "2026-02-20"
         },
         {
           "type": "learning",
-          "text": "Must always set visible_in_library: true explicitly \u2014 save!(validate: false) skips defaults"
+          "text": "Must always set visible_in_library: true explicitly - save!(validate: false) skips defaults"
         },
         {
           "type": "learning",
-          "text": "X algorithm penalizes external links \u2014 rotate: 40% no link, 20% dot notation, 20% reply, 20% direct"
+          "text": "X algorithm penalizes external links - rotate: 40% no link, 20% dot notation, 20% reply, 20% direct"
+        },
+        {
+          "type": "automation",
+          "text": "Performance review cron runs every 3 days - checks Pinterest saves/clicks and X engagement, then adapts future content tone, format, and timing based on what performs",
+          "date": "2026-02-20"
         },
         {
           "type": "stats",
@@ -312,7 +317,7 @@
       "items": [
         {
           "type": "milestone",
-          "text": "Buyer's guide template approved \u2014 sub-agent writing all 13 category guides",
+          "text": "Buyer's guide template approved - sub-agent writing all 13 category guides",
           "date": "2026-02-20"
         },
         {
@@ -371,7 +376,7 @@
         },
         {
           "type": "pending",
-          "text": "Nathan offered financial position context \u2014 advised broad strokes only for security"
+          "text": "Nathan offered financial position context - advised broad strokes only for security"
         },
         {
           "type": "decision",
