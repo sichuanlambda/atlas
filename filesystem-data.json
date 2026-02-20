@@ -1,0 +1,929 @@
+{
+  "updated": "2026-02-20T16:10:00Z",
+  "workspace": [
+    {
+      "name": "SOUL.md",
+      "type": "file",
+      "desc": "Atlas identity & personality"
+    },
+    {
+      "name": "USER.md",
+      "type": "file",
+      "desc": "Nathan's profile & preferences"
+    },
+    {
+      "name": "IDENTITY.md",
+      "type": "file",
+      "desc": "Atlas name, emoji, avatar"
+    },
+    {
+      "name": "AGENTS.md",
+      "type": "file",
+      "desc": "Operating instructions"
+    },
+    {
+      "name": "MEMORY.md",
+      "type": "file",
+      "desc": "Long-term curated memory"
+    },
+    {
+      "name": "HEARTBEAT.md",
+      "type": "file",
+      "desc": "Periodic check config"
+    },
+    {
+      "name": "TOOLS.md",
+      "type": "file",
+      "desc": "Local tool notes"
+    }
+  ],
+  "memory_files": [
+    {
+      "name": "2025-02-17.md",
+      "type": "file",
+      "size": 572,
+      "ext": ".md"
+    },
+    {
+      "name": "2025-07-17.md",
+      "type": "file",
+      "size": 2245,
+      "ext": ".md"
+    },
+    {
+      "name": "2026-02-16.md",
+      "type": "file",
+      "size": 7908,
+      "ext": ".md"
+    },
+    {
+      "name": "2026-02-17.md",
+      "type": "file",
+      "size": 5154,
+      "ext": ".md"
+    },
+    {
+      "name": "2026-02-18.md",
+      "type": "file",
+      "size": 11179,
+      "ext": ".md"
+    },
+    {
+      "name": "2026-02-19.md",
+      "type": "file",
+      "size": 10141,
+      "ext": ".md"
+    },
+    {
+      "name": "2026-02-20.md",
+      "type": "file",
+      "size": 11999,
+      "ext": ".md"
+    },
+    {
+      "name": "4-city-pipeline-summary.md",
+      "type": "file",
+      "size": 6987,
+      "ext": ".md"
+    },
+    {
+      "name": "barcelona-buildings.json",
+      "type": "file",
+      "size": 3091,
+      "ext": ".json"
+    },
+    {
+      "name": "barcelona-pipeline-report.md",
+      "type": "file",
+      "size": 6128,
+      "ext": ".md"
+    },
+    {
+      "name": "barcelona-seo-copy.md",
+      "type": "file",
+      "size": 2760,
+      "ext": ".md"
+    },
+    {
+      "name": "boston-pipeline-report.md",
+      "type": "file",
+      "size": 6171,
+      "ext": ".md"
+    },
+    {
+      "name": "boston-seo-copy.md",
+      "type": "file",
+      "size": 2545,
+      "ext": ".md"
+    },
+    {
+      "name": "bruges-pipeline-report.md",
+      "type": "file",
+      "size": 2157,
+      "ext": ".md"
+    },
+    {
+      "name": "bruges-seo-copy.md",
+      "type": "file",
+      "size": 1414,
+      "ext": ".md"
+    },
+    {
+      "name": "building-image-fixes.md",
+      "type": "file",
+      "size": 2189,
+      "ext": ".md"
+    },
+    {
+      "name": "city-expansion-wave2.md",
+      "type": "file",
+      "size": 1720,
+      "ext": ".md"
+    },
+    {
+      "name": "city-guide-pipeline.md",
+      "type": "file",
+      "size": 2973,
+      "ext": ".md"
+    },
+    {
+      "name": "city-research-2025-07-18.md",
+      "type": "file",
+      "size": 16681,
+      "ext": ".md"
+    },
+    {
+      "name": "content-posted.json",
+      "type": "file",
+      "size": 583,
+      "ext": ".json"
+    },
+    {
+      "name": "content-system.md",
+      "type": "file",
+      "size": 2506,
+      "ext": ".md"
+    },
+    {
+      "name": "cre-directory-report.md",
+      "type": "file",
+      "size": 1367,
+      "ext": ".md"
+    },
+    {
+      "name": "cre-enriched-products.json",
+      "type": "file",
+      "size": 220751,
+      "ext": ".json"
+    },
+    {
+      "name": "cre-enrichment-report.md",
+      "type": "file",
+      "size": 3283,
+      "ext": ".md"
+    },
+    {
+      "name": "cre-expansion-report.md",
+      "type": "file",
+      "size": 4538,
+      "ext": ".md"
+    },
+    {
+      "name": "cre-new-products-enriched.json",
+      "type": "file",
+      "size": 188448,
+      "ext": ".json"
+    },
+    {
+      "name": "cre-new-products.json",
+      "type": "file",
+      "size": 87830,
+      "ext": ".json"
+    },
+    {
+      "name": "cresoftware-old-content.md",
+      "type": "file",
+      "size": 1403,
+      "ext": ".md"
+    },
+    {
+      "name": "dashboard-zoning-update.md",
+      "type": "file",
+      "size": 1216,
+      "ext": ".md"
+    },
+    {
+      "name": "dc-pipeline-report.md",
+      "type": "file",
+      "size": 4798,
+      "ext": ".md"
+    },
+    {
+      "name": "dc-seo-copy.md",
+      "type": "file",
+      "size": 2148,
+      "ext": ".md"
+    },
+    {
+      "name": "detroit-seo-copy.md",
+      "type": "file",
+      "size": 1548,
+      "ext": ".md"
+    },
+    {
+      "name": "edinburgh-pipeline-report.md",
+      "type": "file",
+      "size": 2621,
+      "ext": ".md"
+    },
+    {
+      "name": "edinburgh-seo-copy.md",
+      "type": "file",
+      "size": 1385,
+      "ext": ".md"
+    },
+    {
+      "name": "istanbul-pipeline-report.md",
+      "type": "file",
+      "size": 2459,
+      "ext": ".md"
+    },
+    {
+      "name": "istanbul-seo-copy.md",
+      "type": "file",
+      "size": 1505,
+      "ext": ".md"
+    },
+    {
+      "name": "krakow-pipeline-report.md",
+      "type": "file",
+      "size": 2426,
+      "ext": ".md"
+    },
+    {
+      "name": "krakow-seo-copy.md",
+      "type": "file",
+      "size": 1459,
+      "ext": ".md"
+    },
+    {
+      "name": "la-seo-copy.md",
+      "type": "file",
+      "size": 1560,
+      "ext": ".md"
+    },
+    {
+      "name": "marketing-ah-actions.md",
+      "type": "file",
+      "size": 2785,
+      "ext": ".md"
+    },
+    {
+      "name": "marketing-cre-actions.md",
+      "type": "file",
+      "size": 2927,
+      "ext": ".md"
+    },
+    {
+      "name": "marketing-framework.md",
+      "type": "file",
+      "size": 4808,
+      "ext": ".md"
+    },
+    {
+      "name": "marketing-plotzy-actions.md",
+      "type": "file",
+      "size": 2996,
+      "ext": ".md"
+    },
+    {
+      "name": "miami-pipeline-report.md",
+      "type": "file",
+      "size": 2706,
+      "ext": ".md"
+    },
+    {
+      "name": "miami-seo-copy.md",
+      "type": "file",
+      "size": 1494,
+      "ext": ".md"
+    },
+    {
+      "name": "nathan-morning-briefing.md",
+      "type": "file",
+      "size": 15039,
+      "ext": ".md"
+    },
+    {
+      "name": "next-cities-ranking.md",
+      "type": "file",
+      "size": 4527,
+      "ext": ".md"
+    },
+    {
+      "name": "nola-fix-2-report.md",
+      "type": "file",
+      "size": 3273,
+      "ext": ".md"
+    },
+    {
+      "name": "nola-fix-report.md",
+      "type": "file",
+      "size": 4430,
+      "ext": ".md"
+    },
+    {
+      "name": "nola-image-attribution.md",
+      "type": "file",
+      "size": 1457,
+      "ext": ".md"
+    },
+    {
+      "name": "nola-pipeline-report.md",
+      "type": "file",
+      "size": 6204,
+      "ext": ".md"
+    },
+    {
+      "name": "nola-reddit-drafts.md",
+      "type": "file",
+      "size": 4799,
+      "ext": ".md"
+    },
+    {
+      "name": "nola-seo-copy-updated.md",
+      "type": "file",
+      "size": 9337,
+      "ext": ".md"
+    },
+    {
+      "name": "nola-seo-copy-v2.md",
+      "type": "file",
+      "size": 6080,
+      "ext": ".md"
+    },
+    {
+      "name": "nola-seo-copy.md",
+      "type": "file",
+      "size": 9337,
+      "ext": ".md"
+    },
+    {
+      "name": "nola-twitter-draft.md",
+      "type": "file",
+      "size": 2107,
+      "ext": ".md"
+    },
+    {
+      "name": "nyc-pipeline-report.md",
+      "type": "file",
+      "size": 3437,
+      "ext": ".md"
+    },
+    {
+      "name": "nyc-seo-copy.md",
+      "type": "file",
+      "size": 773,
+      "ext": ".md"
+    },
+    {
+      "name": "overnight-tasks.md",
+      "type": "file",
+      "size": 1138,
+      "ext": ".md"
+    },
+    {
+      "name": "philly-pipeline-report.md",
+      "type": "file",
+      "size": 5500,
+      "ext": ".md"
+    },
+    {
+      "name": "philly-seo-copy.md",
+      "type": "file",
+      "size": 2372,
+      "ext": ".md"
+    },
+    {
+      "name": "pinterest-performance.md",
+      "type": "file",
+      "size": 2980,
+      "ext": ".md"
+    },
+    {
+      "name": "pinterest-pins.json",
+      "type": "file",
+      "size": 35105,
+      "ext": ".json"
+    },
+    {
+      "name": "pipeline-summary-report.md",
+      "type": "file",
+      "size": 4528,
+      "ext": ".md"
+    },
+    {
+      "name": "pr-async-admin-report.md",
+      "type": "file",
+      "size": 2050,
+      "ext": ".md"
+    },
+    {
+      "name": "pr-improvements-report.md",
+      "type": "file",
+      "size": 2274,
+      "ext": ".md"
+    },
+    {
+      "name": "product-bookclub.md",
+      "type": "file",
+      "size": 2603,
+      "ext": ".md"
+    },
+    {
+      "name": "research-architecturehelper-2025-07-17.md",
+      "type": "file",
+      "size": 17887,
+      "ext": ".md"
+    },
+    {
+      "name": "research-plotzy-2025-07-17.md",
+      "type": "file",
+      "size": 11725,
+      "ext": ".md"
+    },
+    {
+      "name": "rome-pipeline-report.md",
+      "type": "file",
+      "size": 2846,
+      "ext": ".md"
+    },
+    {
+      "name": "rome-seo-copy.md",
+      "type": "file",
+      "size": 1547,
+      "ext": ".md"
+    },
+    {
+      "name": "runbooks",
+      "type": "dir",
+      "children": [
+        {
+          "name": "README.md",
+          "type": "file",
+          "size": 932,
+          "ext": ".md"
+        },
+        {
+          "name": "browser-automation.md",
+          "type": "file",
+          "size": 2675,
+          "ext": ".md"
+        },
+        {
+          "name": "building-submission.md",
+          "type": "file",
+          "size": 4693,
+          "ext": ".md"
+        },
+        {
+          "name": "city-guide-pipeline.md",
+          "type": "file",
+          "size": 4240,
+          "ext": ".md"
+        },
+        {
+          "name": "cre-product-enrichment.md",
+          "type": "file",
+          "size": 3177,
+          "ext": ".md"
+        },
+        {
+          "name": "dashboard-updates.md",
+          "type": "file",
+          "size": 2216,
+          "ext": ".md"
+        },
+        {
+          "name": "pinterest-pin-creation.md",
+          "type": "file",
+          "size": 3337,
+          "ext": ".md"
+        }
+      ],
+      "count": 7
+    },
+    {
+      "name": "savannah-seo-copy.md",
+      "type": "file",
+      "size": 1562,
+      "ext": ".md"
+    },
+    {
+      "name": "social-style-guides.md",
+      "type": "file",
+      "size": 7314,
+      "ext": ".md"
+    },
+    {
+      "name": "tirana-seo-copy.md",
+      "type": "file",
+      "size": 1449,
+      "ext": ".md"
+    },
+    {
+      "name": "typefully-config.json",
+      "type": "file",
+      "size": 748,
+      "ext": ".json"
+    },
+    {
+      "name": "vision-architecture-helper.md",
+      "type": "file",
+      "size": 10009,
+      "ext": ".md"
+    },
+    {
+      "name": "vision-cresoftware.md",
+      "type": "file",
+      "size": 10506,
+      "ext": ".md"
+    },
+    {
+      "name": "zoning-acquisition-report.md",
+      "type": "file",
+      "size": 4445,
+      "ext": ".md"
+    }
+  ],
+  "runbooks": [
+    {
+      "name": "README.md",
+      "type": "file",
+      "size": 932,
+      "ext": ".md"
+    },
+    {
+      "name": "browser-automation.md",
+      "type": "file",
+      "size": 2675,
+      "ext": ".md"
+    },
+    {
+      "name": "building-submission.md",
+      "type": "file",
+      "size": 4693,
+      "ext": ".md"
+    },
+    {
+      "name": "city-guide-pipeline.md",
+      "type": "file",
+      "size": 4240,
+      "ext": ".md"
+    },
+    {
+      "name": "cre-product-enrichment.md",
+      "type": "file",
+      "size": 3177,
+      "ext": ".md"
+    },
+    {
+      "name": "dashboard-updates.md",
+      "type": "file",
+      "size": 2216,
+      "ext": ".md"
+    },
+    {
+      "name": "pinterest-pin-creation.md",
+      "type": "file",
+      "size": 3337,
+      "ext": ".md"
+    }
+  ],
+  "agent_configs": [
+    {
+      "name": "mason.md",
+      "type": "file",
+      "size": 2114,
+      "ext": ".md"
+    },
+    {
+      "name": "scout.md",
+      "type": "file",
+      "size": 1553,
+      "ext": ".md"
+    },
+    {
+      "name": "scribe.md",
+      "type": "file",
+      "size": 1955,
+      "ext": ".md"
+    }
+  ],
+  "scripts": [
+    {
+      "name": "barcelona-ready.json",
+      "type": "file",
+      "size": 3310,
+      "ext": ".json"
+    },
+    {
+      "name": "barcelona-remaining.json",
+      "type": "file",
+      "size": 3501,
+      "ext": ".json"
+    },
+    {
+      "name": "bruges.json",
+      "type": "file",
+      "size": 5098,
+      "ext": ".json"
+    },
+    {
+      "name": "bulk-submit.rb",
+      "type": "file",
+      "size": 3135,
+      "ext": ".rb"
+    },
+    {
+      "name": "content-barcelona.html",
+      "type": "file",
+      "size": 8110,
+      "ext": ".html"
+    },
+    {
+      "name": "content-bruges.html",
+      "type": "file",
+      "size": 8995,
+      "ext": ".html"
+    },
+    {
+      "name": "content-edinburgh.html",
+      "type": "file",
+      "size": 8823,
+      "ext": ".html"
+    },
+    {
+      "name": "content-krakow.html",
+      "type": "file",
+      "size": 9917,
+      "ext": ".html"
+    },
+    {
+      "name": "create-typefully-drafts.sh",
+      "type": "file",
+      "size": 5553,
+      "ext": ".sh"
+    },
+    {
+      "name": "edinburgh.json",
+      "type": "file",
+      "size": 5647,
+      "ext": ".json"
+    },
+    {
+      "name": "fetch_buildings.py",
+      "type": "file",
+      "size": 10488,
+      "ext": ".py"
+    },
+    {
+      "name": "krakow.json",
+      "type": "file",
+      "size": 6591,
+      "ext": ".json"
+    },
+    {
+      "name": "refresh-content-queue.sh",
+      "type": "file",
+      "size": 2525,
+      "ext": ".sh"
+    },
+    {
+      "name": "source-images.py",
+      "type": "file",
+      "size": 3422,
+      "ext": ".py"
+    }
+  ],
+  "skills": [
+    {
+      "name": "1password",
+      "has_skill_md": true
+    },
+    {
+      "name": "apple-notes",
+      "has_skill_md": true
+    },
+    {
+      "name": "apple-reminders",
+      "has_skill_md": true
+    },
+    {
+      "name": "bear-notes",
+      "has_skill_md": true
+    },
+    {
+      "name": "blogwatcher",
+      "has_skill_md": true
+    },
+    {
+      "name": "blucli",
+      "has_skill_md": true
+    },
+    {
+      "name": "bluebubbles",
+      "has_skill_md": true
+    },
+    {
+      "name": "camsnap",
+      "has_skill_md": true
+    },
+    {
+      "name": "canvas",
+      "has_skill_md": true
+    },
+    {
+      "name": "clawhub",
+      "has_skill_md": true
+    },
+    {
+      "name": "coding-agent",
+      "has_skill_md": true
+    },
+    {
+      "name": "discord",
+      "has_skill_md": true
+    },
+    {
+      "name": "eightctl",
+      "has_skill_md": true
+    },
+    {
+      "name": "food-order",
+      "has_skill_md": true
+    },
+    {
+      "name": "gemini",
+      "has_skill_md": true
+    },
+    {
+      "name": "gh-issues",
+      "has_skill_md": true
+    },
+    {
+      "name": "gifgrep",
+      "has_skill_md": true
+    },
+    {
+      "name": "github",
+      "has_skill_md": true
+    },
+    {
+      "name": "gog",
+      "has_skill_md": true
+    },
+    {
+      "name": "goplaces",
+      "has_skill_md": true
+    },
+    {
+      "name": "healthcheck",
+      "has_skill_md": true
+    },
+    {
+      "name": "himalaya",
+      "has_skill_md": true
+    },
+    {
+      "name": "humanizer",
+      "has_skill_md": true
+    },
+    {
+      "name": "imsg",
+      "has_skill_md": true
+    },
+    {
+      "name": "mcporter",
+      "has_skill_md": true
+    },
+    {
+      "name": "model-usage",
+      "has_skill_md": true
+    },
+    {
+      "name": "nano-banana-pro",
+      "has_skill_md": true
+    },
+    {
+      "name": "nano-pdf",
+      "has_skill_md": true
+    },
+    {
+      "name": "notion",
+      "has_skill_md": true
+    },
+    {
+      "name": "obsidian",
+      "has_skill_md": true
+    },
+    {
+      "name": "openai-image-gen",
+      "has_skill_md": true
+    },
+    {
+      "name": "openai-whisper",
+      "has_skill_md": true
+    },
+    {
+      "name": "openai-whisper-api",
+      "has_skill_md": true
+    },
+    {
+      "name": "openhue",
+      "has_skill_md": true
+    },
+    {
+      "name": "oracle",
+      "has_skill_md": true
+    },
+    {
+      "name": "ordercli",
+      "has_skill_md": true
+    },
+    {
+      "name": "peekaboo",
+      "has_skill_md": true
+    },
+    {
+      "name": "sag",
+      "has_skill_md": true
+    },
+    {
+      "name": "session-logs",
+      "has_skill_md": true
+    },
+    {
+      "name": "sherpa-onnx-tts",
+      "has_skill_md": true
+    },
+    {
+      "name": "skill-creator",
+      "has_skill_md": true
+    },
+    {
+      "name": "slack",
+      "has_skill_md": true
+    },
+    {
+      "name": "songsee",
+      "has_skill_md": true
+    },
+    {
+      "name": "sonoscli",
+      "has_skill_md": true
+    },
+    {
+      "name": "spotify-player",
+      "has_skill_md": true
+    },
+    {
+      "name": "summarize",
+      "has_skill_md": true
+    },
+    {
+      "name": "things-mac",
+      "has_skill_md": true
+    },
+    {
+      "name": "tmux",
+      "has_skill_md": true
+    },
+    {
+      "name": "trello",
+      "has_skill_md": true
+    },
+    {
+      "name": "underwriting",
+      "has_skill_md": true
+    },
+    {
+      "name": "video-frames",
+      "has_skill_md": true
+    },
+    {
+      "name": "voice-call",
+      "has_skill_md": true
+    },
+    {
+      "name": "wacli",
+      "has_skill_md": true
+    },
+    {
+      "name": "weather",
+      "has_skill_md": true
+    }
+  ],
+  "skills_count": 54,
+  "skills_ready": 54
+}

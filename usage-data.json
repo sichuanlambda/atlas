@@ -1,0 +1,47 @@
+{
+  "updated": "2026-02-20T16:10:00Z",
+  "model": "anthropic/claude-opus-4-6",
+  "pricing": {
+    "input_per_1m": 15.00,
+    "output_per_1m": 75.00,
+    "cache_read_per_1m": 1.88,
+    "note": "Anthropic Claude Opus 4 pricing as of Feb 2026"
+  },
+  "cron_jobs": [
+    {"name": "Heartbeat", "id": "3aad1143", "freq": "Every 30min", "runs_per_day": 48, "avg_tokens": 5000, "daily_cost": 15.12, "monthly_cost": 453.60, "note": "Biggest cost driver. Consider reducing frequency."},
+    {"name": "Pinterest Posting", "id": "bc621e88", "freq": "4x daily", "runs_per_day": 4, "avg_tokens": 6000, "daily_cost": 1.51, "monthly_cost": 45.36, "note": "Browser automation is token-heavy"},
+    {"name": "Status Update", "id": "0f53741f", "freq": "4x daily", "runs_per_day": 4, "avg_tokens": 400, "daily_cost": 0.10, "monthly_cost": 3.02, "note": "Cheap, quick checks"},
+    {"name": "Dashboard Refresh", "id": "c51c6094", "freq": "Every 3h", "runs_per_day": 8, "avg_tokens": 3000, "daily_cost": 1.51, "monthly_cost": 45.36, "note": "Reads memory files, updates data.json"},
+    {"name": "Daily Content", "id": "07e3b369", "freq": "1x daily", "runs_per_day": 1, "avg_tokens": 9000, "daily_cost": 0.57, "monthly_cost": 17.01, "note": "Creates Typefully drafts with images"},
+    {"name": "Pinterest Review", "id": "9bfc068d", "freq": "Every 3 days", "runs_per_day": 0.33, "avg_tokens": 8000, "daily_cost": 0.17, "monthly_cost": 4.99, "note": "Analytics scraping"}
+  ],
+  "interactive_estimate": {
+    "sessions_per_day": 3,
+    "avg_tokens_per_session": 150000,
+    "daily_cost_estimate": 22.50,
+    "monthly_cost_estimate": 675.00,
+    "note": "Varies widely. Heavy building days (like today) use more."
+  },
+  "subagent_estimate": {
+    "avg_per_day": 4,
+    "avg_tokens_per_run": 30000,
+    "daily_cost_estimate": 7.20,
+    "monthly_cost_estimate": 216.00,
+    "note": "Sub-agents for building submission, content writing, enrichment"
+  },
+  "totals": {
+    "daily_cron": 18.98,
+    "daily_interactive": 22.50,
+    "daily_subagents": 7.20,
+    "daily_total": 48.68,
+    "monthly_total": 1460.00,
+    "note": "Estimates based on today's usage patterns. Actual varies."
+  },
+  "optimization_notes": [
+    "Heartbeat runs 48x/day at $15/day — consider reducing to every 1-2h ($3-7/day)",
+    "Dashboard refresh could be 2x/day instead of 8x ($0.38 vs $1.51)",
+    "Status update cron is stale — needs rewrite or kill",
+    "Sub-agents on default model (Opus) — could use Sonnet for routine tasks (10x cheaper)",
+    "Cache hits reduce cost significantly — long sessions with compaction help"
+  ]
+}

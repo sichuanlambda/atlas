@@ -7,6 +7,8 @@ let DATA = {};
 let TASKS = [];
 let PINS = {};
 let CONTENT_Q = {};
+let USAGE_DATA = {};
+let FS_DATA = {};
 let NOTES_CACHE = {};
 let CHATS = JSON.parse(localStorage.getItem('atlas_chats') || '{}');
 let ACTIVE_CHAT = localStorage.getItem('atlas_active_chat') || null;
@@ -24,7 +26,9 @@ const routes = {
   '/metrics': { title: 'Metrics', render: renderMetrics },
   '/chat': { title: 'Chat', render: renderChat },
   '/agents': { title: 'Agents', render: renderAgents },
-  '/content': { title: 'Content Queue', render: renderContent },
+  '/content': { title: 'Content Hub', render: renderContent },
+  '/usage': { title: 'Usage & Costs', render: renderUsage },
+  '/filesystem': { title: 'File System', render: renderFilesystem },
 };
 
 function navigate() {
@@ -41,16 +45,20 @@ function navigate() {
 // === DATA LOADING ===
 async function loadData() {
   try {
-    const [dataRes, tasksRes, pinsRes, contentRes] = await Promise.all([
+    const [dataRes, tasksRes, pinsRes, contentRes, usageRes, fsRes] = await Promise.all([
       fetch('data.json?' + Date.now()),
       fetch('tasks.json?' + Date.now()),
       fetch('memory/pinterest-pins.json?' + Date.now()).catch(() => null),
       fetch('content-queue.json?' + Date.now()).catch(() => null),
+      fetch('usage-data.json?' + Date.now()).catch(() => null),
+      fetch('filesystem-data.json?' + Date.now()).catch(() => null),
     ]);
     DATA = await dataRes.json();
     TASKS = (await tasksRes.json()).tasks || [];
     if (pinsRes && pinsRes.ok) PINS = await pinsRes.json();
     if (contentRes && contentRes.ok) CONTENT_Q = await contentRes.json();
+    if (usageRes && usageRes.ok) USAGE_DATA = await usageRes.json();
+    if (fsRes && fsRes.ok) FS_DATA = await fsRes.json();
   } catch (e) { console.error('Data load error:', e); }
   updateStatus();
 }
@@ -771,143 +779,88 @@ function renderContent(el) {
   const statusColors = { draft: '#6b7280', scheduled: '#3b82f6', published: '#10b981', publishing: '#f59e0b', error: '#ef4444' };
   const statusIcons = { draft: '📝', scheduled: '🕐', published: '✅', publishing: '⏳', error: '❌' };
 
-  const draftCount = drafts.filter(d => d.status === 'draft').length;
-  const scheduledCount = drafts.filter(d => d.status === 'scheduled').length;
-  const publishedCount = drafts.filter(d => d.status === 'published').length;
+  // Group by status for board columns
+  const byStatus = { draft: [], scheduled: [], published: [] };
+  drafts.forEach(d => {
+    const s = d.status || 'draft';
+    if (!byStatus[s]) byStatus[s] = [];
+    byStatus[s].push(d);
+  });
+
+  const totalPosts = drafts.length;
   const threadCount = drafts.filter(d => d.is_thread).length;
   const imageCount = drafts.reduce((sum, d) => sum + (d.image_count || 0), 0);
 
-  let html = '<div style="max-width:900px;margin:0 auto;">';
+  let html = '<div style="max-width:1200px;margin:0 auto;">';
 
-  // Summary cards
-  html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:28px;">';
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
-    <div style="font-size:28px;font-weight:700;color:#6b7280;">${draftCount}</div>
-    <div style="color:#9ca3af;font-size:12px;">Drafts</div></div>`;
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
-    <div style="font-size:28px;font-weight:700;color:#3b82f6;">${scheduledCount}</div>
-    <div style="color:#9ca3af;font-size:12px;">Scheduled</div></div>`;
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
-    <div style="font-size:28px;font-weight:700;color:#10b981;">${publishedCount}</div>
-    <div style="color:#9ca3af;font-size:12px;">Published</div></div>`;
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
-    <div style="font-size:28px;font-weight:700;color:#8b5cf6;">${threadCount}</div>
-    <div style="color:#9ca3af;font-size:12px;">Threads</div></div>`;
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
-    <div style="font-size:28px;font-weight:700;color:#f59e0b;">${imageCount}</div>
-    <div style="color:#9ca3af;font-size:12px;">Images</div></div>`;
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
-    <div style="font-size:28px;font-weight:700;color:#ec4899;">${pinQueue}</div>
-    <div style="color:#9ca3af;font-size:12px;">Pinterest Queue</div></div>`;
+  // Compact summary row
+  html += '<div style="display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap;align-items:center;">';
+  html += `<span style="color:#9ca3af;font-size:13px;">${totalPosts} posts</span>`;
+  html += `<span style="color:#9ca3af;font-size:13px;">🧵 ${threadCount} threads</span>`;
+  html += `<span style="color:#9ca3af;font-size:13px;">🖼 ${imageCount} images</span>`;
+  html += `<span style="color:#9ca3af;font-size:13px;">📌 ${pinQueue} pins queued</span>`;
   html += '</div>';
 
-  // Group by account
-  const byAccount = {};
-  drafts.forEach(d => {
-    if (!byAccount[d.account]) byAccount[d.account] = [];
-    byAccount[d.account].push(d);
-  });
+  // Board view: 3 columns
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:start;">';
 
-  // Render each account
-  Object.entries(byAccount).forEach(([accountName, items]) => {
-    html += `<div style="margin-bottom:24px;">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
-        <span style="font-size:18px;">𝕏</span>
-        <h3 style="margin:0;font-size:17px;">${accountName}</h3>
-        <span style="color:#6b7280;font-size:13px;">(${items.length} posts)</span>
-      </div>`;
+  function renderColumn(title, color, icon, items) {
+    let col = `<div>
+      <div style="background:${color}22;border-radius:10px 10px 0 0;padding:12px 16px;border-bottom:2px solid ${color};display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:14px;font-weight:700;color:${color};">${icon} ${title}</span>
+        <span style="background:${color}33;color:${color};padding:2px 8px;border-radius:10px;font-size:12px;font-weight:600;">${items.length}</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;padding-top:8px;">`;
+
+    if (items.length === 0) {
+      col += '<div style="padding:20px;text-align:center;color:#4b5563;font-size:13px;">Empty</div>';
+    }
 
     items.forEach(draft => {
-      const color = statusColors[draft.status] || '#6b7280';
-      const icon = statusIcons[draft.status] || '📝';
-      const threadBadge = draft.is_thread 
-        ? `<span style="background:#8b5cf6;color:#fff;padding:2px 8px;border-radius:8px;font-size:11px;margin-left:6px;">🧵 ${draft.post_count} posts</span>` 
-        : '';
-      const imgBadge = draft.image_count > 0
-        ? `<span style="background:#1e3a5e;color:#60a5fa;padding:2px 8px;border-radius:8px;font-size:11px;margin-left:6px;">🖼 ${draft.image_count}</span>`
-        : '';
+      const acctColor = draft.account?.includes('CRE') ? '#f59e0b' : '#1d9bf0';
+      const acctLabel = draft.account?.includes('CRE') ? 'CRE' : 'AH';
+      const threadBadge = draft.is_thread ? `<span style="background:#8b5cf622;color:#8b5cf6;padding:1px 6px;border-radius:6px;font-size:10px;">🧵${draft.post_count}</span>` : '';
+      const imgBadge = draft.image_count > 0 ? `<span style="background:#3b82f622;color:#60a5fa;padding:1px 6px;border-radius:6px;font-size:10px;">🖼${draft.image_count}</span>` : '';
 
-      html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-bottom:14px;border-left:3px solid ${color};">`;
+      // First post text preview
+      const firstPost = (draft.posts || [])[0];
+      const preview = firstPost ? firstPost.text.substring(0, 120).replace(/\n/g, ' ') + (firstPost.text.length > 120 ? '...' : '') : '';
 
-      // Header
-      html += `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-          <span style="color:${color};font-size:13px;font-weight:600;">${icon} ${draft.status}</span>
-          ${threadBadge}${imgBadge}
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <span style="color:#6b7280;font-size:12px;">${draft.created}</span>
-          ${draft.private_url ? `<a href="${draft.private_url}" target="_blank" style="color:#3b82f6;font-size:12px;text-decoration:none;">Open in Typefully ↗</a>` : ''}
-        </div>
-      </div>`;
+      col += `<div style="background:#1a1a2e;border-radius:10px;padding:14px;border:1px solid #2a2a3e;cursor:pointer;" ${draft.private_url ? `onclick="window.open('${draft.private_url}','_blank')"` : ''}>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div style="display:flex;gap:4px;align-items:center;">
+            <span style="background:${acctColor}22;color:${acctColor};padding:2px 6px;border-radius:4px;font-size:10px;font-weight:700;">${acctLabel}</span>
+            ${threadBadge}${imgBadge}
+          </div>
+          <span style="color:#4b5563;font-size:11px;">${draft.created || ''}</span>
+        </div>`;
 
       if (draft.title) {
-        html += `<div style="color:#9ca3af;font-size:12px;margin-bottom:8px;font-weight:600;">${draft.title}</div>`;
+        col += `<div style="font-size:12px;font-weight:600;color:#d1d5db;margin-bottom:6px;">${draft.title}</div>`;
       }
 
-      // Posts (tweet-like cards)
-      (draft.posts || []).forEach((post, idx) => {
-        const isFirst = idx === 0;
-        const indent = isFirst ? '' : 'margin-left:24px;border-left:2px solid #2a2a3e;padding-left:16px;';
-
-        // Extract image URLs from post text (AH building URLs)
-        const ahMatch = post.text.match(/app\.architecturehelper\.com\/architecture_explorer\/(\d+)/);
-        const placeMatch = post.text.match(/app\.architecturehelper\.com\/places\/([a-z-]+)/);
-
-        html += `<div style="background:#0d1117;border-radius:10px;padding:14px;margin-bottom:8px;${indent}">`;
-        
-        // Post text
-        let displayText = post.text.replace(/\n/g, '<br>');
-        // Make URLs clickable
-        displayText = displayText.replace(/(https?:\/\/[^\s<]+|app\.architecturehelper\.com[^\s<]+|cresoftware\.tech[^\s<]+)/g, 
-          '<a href="https://$1" target="_blank" style="color:#1d9bf0;text-decoration:none;">$1</a>');
-        // Fix double https
-        displayText = displayText.replace(/https:\/\/https:\/\//g, 'https://');
-        
-        html += `<div style="font-size:14px;line-height:1.6;color:#e7e9ea;white-space:normal;">${displayText}</div>`;
-
-        // Image indicator
-        if (post.has_image) {
-          html += `<div style="margin-top:10px;background:#1a1a2e;border:1px solid #2a2a3e;border-radius:8px;padding:12px;display:flex;align-items:center;gap:8px;">
-            <span style="font-size:20px;">🖼</span>
-            <span style="color:#9ca3af;font-size:13px;">Image attached</span>
-          </div>`;
-        }
-
-        html += '</div>';
-      });
-
-      // Published URL
-      if (draft.x_url) {
-        html += `<div style="margin-top:8px;"><a href="${draft.x_url}" target="_blank" style="color:#1d9bf0;font-size:13px;text-decoration:none;">View on X ↗</a></div>`;
-      }
-
-      html += '</div>';
+      col += `<div style="font-size:12px;color:#9ca3af;line-height:1.5;">${preview}</div>`;
+      col += '</div>';
     });
 
-    html += '</div>';
-  });
+    col += '</div></div>';
+    return col;
+  }
 
-  // Pinterest section
-  html += `<div style="margin-bottom:24px;">
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
-      <span style="font-size:18px;">📌</span>
-      <h3 style="margin:0;font-size:17px;">Pinterest</h3>
-    </div>
-    <div style="background:#1a1a2e;border-radius:12px;padding:20px;">
-      <div style="color:#e5e7eb;font-size:14px;">
-        <strong>${pinQueue}</strong> pins queued &middot; <strong>${pinPublished}</strong> published &middot; Auto-posting 4x daily
-      </div>
-    </div>
-  </div>`;
+  html += renderColumn('Drafts', '#6b7280', '📝', byStatus.draft || []);
+  html += renderColumn('Scheduled', '#3b82f6', '🕐', byStatus.scheduled || []);
+  html += renderColumn('Published', '#10b981', '✅', byStatus.published || []);
 
-  // How it works
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-top:12px;">
-    <h3 style="margin:0 0 10px;font-size:15px;">🔄 How This Works</h3>
-    <div style="color:#9ca3af;font-size:13px;line-height:1.8;">
-      <strong>Typefully</strong> → Atlas creates drafts via API with images. Scheduled to auto-post or saved for Nathan to review.<br>
-      <strong>Pinterest</strong> → Auto-posts 4x daily. No action needed.<br>
-      <strong>Daily cron</strong> → Creates 1 new post/day from building library. Varies templates automatically.
+  html += '</div>';
+
+  // Pinterest row
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:16px;margin-top:20px;display:flex;justify-content:space-between;align-items:center;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span style="font-size:16px;">📌</span>
+      <span style="font-size:14px;color:#e5e7eb;">Pinterest</span>
+    </div>
+    <div style="color:#9ca3af;font-size:13px;">
+      <strong>${pinQueue}</strong> queued &middot; <strong>${pinPublished}</strong> published &middot; 4x daily auto-post
     </div>
   </div>`;
 
@@ -922,6 +875,226 @@ document.getElementById('mobile-menu').addEventListener('click', () => {
 document.querySelectorAll('.nav-item').forEach(el => {
   el.addEventListener('click', () => document.getElementById('sidebar').classList.remove('open'));
 });
+
+// === USAGE & COSTS ===
+function renderUsage(el) {
+  const u = USAGE_DATA;
+  if (!u.cron_jobs) { el.innerHTML = '<p style="color:#6b7280;">Loading usage data...</p>'; return; }
+
+  const cronTotal = u.totals?.daily_cron || 0;
+  const interactiveTotal = u.interactive_estimate?.daily_cost_estimate || 0;
+  const subagentTotal = u.subagent_estimate?.daily_cost_estimate || 0;
+  const dailyTotal = u.totals?.daily_total || 0;
+  const monthlyTotal = u.totals?.monthly_total || 0;
+
+  let html = '<div style="max-width:900px;margin:0 auto;">';
+
+  // Summary cards
+  html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:28px;">';
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
+    <div style="font-size:24px;font-weight:700;color:#ef4444;">$${dailyTotal.toFixed(0)}</div>
+    <div style="color:#9ca3af;font-size:12px;">Est. Daily</div></div>`;
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
+    <div style="font-size:24px;font-weight:700;color:#f59e0b;">$${monthlyTotal.toFixed(0)}</div>
+    <div style="color:#9ca3af;font-size:12px;">Est. Monthly</div></div>`;
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
+    <div style="font-size:24px;font-weight:700;color:#3b82f6;">$${cronTotal.toFixed(0)}</div>
+    <div style="color:#9ca3af;font-size:12px;">Cron/Day</div></div>`;
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
+    <div style="font-size:24px;font-weight:700;color:#8b5cf6;">$${interactiveTotal.toFixed(0)}</div>
+    <div style="color:#9ca3af;font-size:12px;">Interactive/Day</div></div>`;
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
+    <div style="font-size:24px;font-weight:700;color:#10b981;">$${subagentTotal.toFixed(0)}</div>
+    <div style="color:#9ca3af;font-size:12px;">Sub-agents/Day</div></div>`;
+  html += '</div>';
+
+  // Cost breakdown bar
+  const total = cronTotal + interactiveTotal + subagentTotal;
+  const cronPct = total > 0 ? (cronTotal / total * 100) : 0;
+  const intPct = total > 0 ? (interactiveTotal / total * 100) : 0;
+  const subPct = total > 0 ? (subagentTotal / total * 100) : 0;
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-bottom:20px;">
+    <h3 style="margin:0 0 12px;font-size:15px;color:#fff;">Daily Cost Breakdown</h3>
+    <div style="display:flex;border-radius:6px;overflow:hidden;height:24px;margin-bottom:12px;">
+      <div style="width:${cronPct}%;background:#3b82f6;" title="Cron: $${cronTotal.toFixed(2)}"></div>
+      <div style="width:${intPct}%;background:#8b5cf6;" title="Interactive: $${interactiveTotal.toFixed(2)}"></div>
+      <div style="width:${subPct}%;background:#10b981;" title="Sub-agents: $${subagentTotal.toFixed(2)}"></div>
+    </div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;">
+      <span style="font-size:12px;color:#9ca3af;"><span style="color:#3b82f6;">●</span> Cron ${cronPct.toFixed(0)}%</span>
+      <span style="font-size:12px;color:#9ca3af;"><span style="color:#8b5cf6;">●</span> Interactive ${intPct.toFixed(0)}%</span>
+      <span style="font-size:12px;color:#9ca3af;"><span style="color:#10b981;">●</span> Sub-agents ${subPct.toFixed(0)}%</span>
+    </div>
+  </div>`;
+
+  // Cron job table
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-bottom:20px;">
+    <h3 style="margin:0 0 16px;font-size:15px;color:#fff;">Cron Job Costs</h3>
+    <div style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+    <thead><tr style="border-bottom:1px solid #2a2a3e;">
+      <th style="text-align:left;padding:8px;color:#9ca3af;">Job</th>
+      <th style="text-align:left;padding:8px;color:#9ca3af;">Frequency</th>
+      <th style="text-align:right;padding:8px;color:#9ca3af;">Runs/Day</th>
+      <th style="text-align:right;padding:8px;color:#9ca3af;">$/Day</th>
+      <th style="text-align:right;padding:8px;color:#9ca3af;">$/Month</th>
+    </tr></thead><tbody>`;
+
+  u.cron_jobs.sort((a, b) => b.daily_cost - a.daily_cost).forEach(job => {
+    const isHot = job.daily_cost > 5;
+    html += `<tr style="border-bottom:1px solid #1a1a2e;">
+      <td style="padding:8px;color:#e5e7eb;">${job.name} ${isHot ? '🔥' : ''}</td>
+      <td style="padding:8px;color:#9ca3af;">${job.freq}</td>
+      <td style="padding:8px;text-align:right;color:#9ca3af;">${job.runs_per_day}</td>
+      <td style="padding:8px;text-align:right;color:${isHot ? '#ef4444' : '#e5e7eb'};">$${job.daily_cost.toFixed(2)}</td>
+      <td style="padding:8px;text-align:right;color:${isHot ? '#ef4444' : '#e5e7eb'};">$${job.monthly_cost.toFixed(2)}</td>
+    </tr>`;
+  });
+  html += '</tbody></table></div></div>';
+
+  // Model info
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-bottom:20px;">
+    <h3 style="margin:0 0 12px;font-size:15px;color:#fff;">Model & Pricing</h3>
+    <div style="color:#9ca3af;font-size:13px;line-height:1.8;">
+      <strong style="color:#e5e7eb;">Model:</strong> ${u.model || 'claude-opus-4'}<br>
+      <strong style="color:#e5e7eb;">Input:</strong> $${u.pricing?.input_per_1m}/1M tokens<br>
+      <strong style="color:#e5e7eb;">Output:</strong> $${u.pricing?.output_per_1m}/1M tokens<br>
+      <strong style="color:#e5e7eb;">Cache Read:</strong> $${u.pricing?.cache_read_per_1m}/1M tokens
+    </div>
+  </div>`;
+
+  // Optimization notes
+  if (u.optimization_notes?.length) {
+    html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;">
+      <h3 style="margin:0 0 12px;font-size:15px;color:#fff;">💡 Optimization Ideas</h3>`;
+    u.optimization_notes.forEach(note => {
+      html += `<div style="padding:6px 0;color:#d1d5db;font-size:13px;">• ${note}</div>`;
+    });
+    html += '</div>';
+  }
+
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+// === FILE SYSTEM ===
+function renderFilesystem(el) {
+  const fs = FS_DATA;
+  if (!fs.workspace) { el.innerHTML = '<p style="color:#6b7280;">Loading filesystem data...</p>'; return; }
+
+  let html = '<div style="max-width:900px;margin:0 auto;">';
+
+  // System files
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-bottom:20px;">
+    <h3 style="margin:0 0 16px;font-size:15px;color:#fff;">🏛️ Core System Files</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;">`;
+  (fs.workspace || []).forEach(f => {
+    html += `<div style="background:#0d1117;border-radius:8px;padding:12px;border:1px solid #2a2a3e;">
+      <div style="font-size:13px;font-weight:600;color:#e5e7eb;">📄 ${f.name}</div>
+      <div style="font-size:11px;color:#6b7280;margin-top:4px;">${f.desc || ''}</div>
+    </div>`;
+  });
+  html += '</div></div>';
+
+  // Skills
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-bottom:20px;">
+    <h3 style="margin:0 0 4px;font-size:15px;color:#fff;">🧩 Skills (${fs.skills_ready}/${fs.skills_count})</h3>
+    <p style="color:#6b7280;font-size:12px;margin:0 0 16px;">Installed OpenClaw skills</p>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;">`;
+  const activeSkills = ['humanizer', 'blogwatcher', 'coding-agent', 'healthcheck', 'skill-creator', 'tmux', 'weather', 'underwriting'];
+  (fs.skills || []).forEach(s => {
+    const isActive = activeSkills.includes(s.name);
+    const bg = isActive ? '#1e3a5e' : '#0d1117';
+    const border = isActive ? '#3b82f6' : '#2a2a3e';
+    const color = isActive ? '#60a5fa' : '#6b7280';
+    html += `<span style="background:${bg};border:1px solid ${border};border-radius:6px;padding:4px 10px;font-size:12px;color:${color};">${s.name}</span>`;
+  });
+  html += '</div></div>';
+
+  // Agent configs
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-bottom:20px;">
+    <h3 style="margin:0 0 16px;font-size:15px;color:#fff;">🤖 Agent Configs</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;">`;
+  (fs.agent_configs || []).forEach(f => {
+    const icon = f.name === 'mason.md' ? '🧱' : f.name === 'scout.md' ? '🔍' : f.name === 'scribe.md' ? '✍️' : '📄';
+    html += `<div style="background:#0d1117;border-radius:8px;padding:12px;border:1px solid #2a2a3e;">
+      <div style="font-size:13px;font-weight:600;color:#e5e7eb;">${icon} ${f.name}</div>
+    </div>`;
+  });
+  html += '</div></div>';
+
+  // Memory files
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-bottom:20px;">
+    <h3 style="margin:0 0 4px;font-size:15px;color:#fff;">🧠 Memory Files (${(fs.memory_files || []).length})</h3>
+    <p style="color:#6b7280;font-size:12px;margin:0 0 16px;">Daily logs, research, reports, and tracking data</p>
+    <div style="max-height:400px;overflow-y:auto;">`;
+
+  // Group memory files by type
+  const memFiles = fs.memory_files || [];
+  const dailyLogs = memFiles.filter(f => f.name && f.name.match(/^\d{4}-\d{2}-\d{2}/));
+  const reports = memFiles.filter(f => f.name && !f.name.match(/^\d{4}-\d{2}-\d{2}/) && f.type === 'file');
+  const dirs = memFiles.filter(f => f.type === 'dir');
+
+  if (dailyLogs.length) {
+    html += '<div style="margin-bottom:12px;"><div style="font-size:12px;font-weight:600;color:#9ca3af;margin-bottom:6px;">📅 Daily Logs</div>';
+    dailyLogs.slice(-7).reverse().forEach(f => {
+      const sizeKB = f.size ? (f.size / 1024).toFixed(1) + 'KB' : '';
+      html += `<div style="padding:4px 8px;font-size:12px;color:#d1d5db;display:flex;justify-content:space-between;">
+        <span>📝 ${f.name}</span><span style="color:#6b7280;">${sizeKB}</span></div>`;
+    });
+    html += '</div>';
+  }
+
+  if (dirs.length) {
+    dirs.forEach(d => {
+      html += `<div style="margin-bottom:12px;"><div style="font-size:12px;font-weight:600;color:#9ca3af;margin-bottom:6px;">📁 ${d.name}/ (${d.count} files)</div>`;
+      (d.children || []).slice(0, 10).forEach(f => {
+        html += `<div style="padding:4px 8px 4px 16px;font-size:12px;color:#d1d5db;">📄 ${f.name}</div>`;
+      });
+      html += '</div>';
+    });
+  }
+
+  if (reports.length) {
+    html += '<div style="margin-bottom:12px;"><div style="font-size:12px;font-weight:600;color:#9ca3af;margin-bottom:6px;">📊 Reports & Research</div>';
+    reports.forEach(f => {
+      const sizeKB = f.size ? (f.size / 1024).toFixed(1) + 'KB' : '';
+      html += `<div style="padding:4px 8px;font-size:12px;color:#d1d5db;display:flex;justify-content:space-between;">
+        <span>📄 ${f.name}</span><span style="color:#6b7280;">${sizeKB}</span></div>`;
+    });
+    html += '</div>';
+  }
+
+  html += '</div></div>';
+
+  // Runbooks
+  if (fs.runbooks?.length) {
+    html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-bottom:20px;">
+      <h3 style="margin:0 0 16px;font-size:15px;color:#fff;">📋 Runbooks (${fs.runbooks.length})</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;">`;
+    fs.runbooks.forEach(f => {
+      html += `<div style="background:#0d1117;border-radius:8px;padding:12px;border:1px solid #2a2a3e;">
+        <div style="font-size:13px;font-weight:600;color:#e5e7eb;">📋 ${f.name}</div>
+      </div>`;
+    });
+    html += '</div></div>';
+  }
+
+  // Scripts
+  if (fs.scripts?.length) {
+    html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;">
+      <h3 style="margin:0 0 16px;font-size:15px;color:#fff;">⚡ Scripts (${fs.scripts.length})</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">`;
+    fs.scripts.forEach(f => {
+      const color = f.ext === '.py' ? '#3572A5' : f.ext === '.sh' ? '#89e051' : f.ext === '.rb' ? '#CC342D' : '#6b7280';
+      html += `<span style="background:#0d1117;border:1px solid #2a2a3e;border-radius:6px;padding:4px 10px;font-size:12px;color:${color};">${f.name}</span>`;
+    });
+    html += '</div></div>';
+  }
+
+  html += '</div>';
+  el.innerHTML = html;
+}
 
 // === INIT ===
 window.addEventListener('hashchange', navigate);
