@@ -1,7 +1,7 @@
 {
-  "lastHeartbeat": "2026-02-20T03:56:00Z",
+  "lastHeartbeat": "2026-02-20T04:26:00Z",
   "status": "idle",
-  "lastAction": "No changes — all actionable tasks blocked on browser relay",
+  "lastAction": "No changes — all actionable tasks blocked on browser relay or GCP API",
   "activeJobs": [],
   "blockedItems": [
     "philly-buildings: browser relay disconnected",
