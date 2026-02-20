@@ -316,6 +316,21 @@
       "template": "v1",
       "created": "2026-02-20T09:00:00Z",
       "metrics": {}
+    },
+    {
+      "id": "1143281055426047751",
+      "url": "https://www.pinterest.com/pin/1143281055426047751",
+      "building_id": 923,
+      "building_name": "Old U.S. Mint",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": ["Neoclassical Architecture"],
+      "styles": ["Classical Roman", "Neoclassical", "Victorian"],
+      "link": "https://app.architecturehelper.com/architecture_explorer/923",
+      "title": "Old U.S. Mint | Classical Roman Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-20T13:00:00Z",
+      "metrics": {}
     }
   ],
   "boards": [
@@ -387,11 +402,6 @@
     }
   },
   "queue": [
-    {
-      "building_id": 923,
-      "city": "New Orleans",
-      "name": "Old U.S. Mint"
-    },
     {
       "building_id": 935,
       "city": "New York City",
@@ -1224,6 +1234,6 @@
       "21:00"
     ]
   },
-  "lastPosted": "2026-02-20T09:00:00Z",
-  "totalPinsCreated": 13
+  "lastPosted": "2026-02-20T13:00:00Z",
+  "totalPinsCreated": 14
 }
