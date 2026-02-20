@@ -301,6 +301,21 @@
       "template": "v1",
       "created": "2026-02-19T21:00:00Z",
       "metrics": {}
+    },
+    {
+      "id": "1143281055426039381",
+      "url": "https://www.pinterest.com/pin/1143281055426039381",
+      "building_id": 932,
+      "building_name": "Preservation Hall",
+      "city": "New Orleans",
+      "board": "New Orleans Architecture",
+      "cross_posted": ["Victorian Architecture"],
+      "styles": ["Victorian", "Spanish Colonial Revival", "Gothic Revival"],
+      "link": "https://app.architecturehelper.com/architecture_explorer/932",
+      "title": "Preservation Hall | Victorian Architecture in New Orleans",
+      "template": "v1",
+      "created": "2026-02-20T09:00:00Z",
+      "metrics": {}
     }
   ],
   "boards": [
@@ -372,11 +387,6 @@
     }
   },
   "queue": [
-    {
-      "building_id": 932,
-      "city": "New Orleans",
-      "name": "Preservation Hall"
-    },
     {
       "building_id": 923,
       "city": "New Orleans",
@@ -1214,6 +1224,6 @@
       "21:00"
     ]
   },
-  "lastPosted": "2026-02-19T21:00:00Z",
-  "totalPinsCreated": 12
+  "lastPosted": "2026-02-20T09:00:00Z",
+  "totalPinsCreated": 13
 }
