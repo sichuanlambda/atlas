@@ -764,126 +764,150 @@ function formatTime(dateStr) {
 
 // === CONTENT QUEUE ===
 function renderContent(el) {
-  const q = CONTENT_Q.queue || [];
-  const accounts = CONTENT_Q.accounts || {};
-  const analytics = CONTENT_Q.analytics || [];
-  const learnings = CONTENT_Q.learnings || [];
-
-  // Group by account
-  const byAccount = {};
-  q.forEach(item => {
-    if (!byAccount[item.account]) byAccount[item.account] = [];
-    byAccount[item.account].push(item);
-  });
-
-  // Pinterest stats
+  const drafts = CONTENT_Q.drafts || [];
   const pinQueue = (PINS.queue || []).length;
   const pinPublished = (PINS.published || []).length;
 
-  const statusColors = {
-    draft: '#6b7280',
-    ready: '#3b82f6',
-    posted: '#10b981',
-    rejected: '#ef4444'
-  };
-  const statusLabels = {
-    draft: '📝 Draft',
-    ready: '🟢 Ready to Post',
-    posted: '✅ Posted',
-    rejected: '❌ Rejected'
-  };
+  const statusColors = { draft: '#6b7280', scheduled: '#3b82f6', published: '#10b981', publishing: '#f59e0b', error: '#ef4444' };
+  const statusIcons = { draft: '📝', scheduled: '🕐', published: '✅', publishing: '⏳', error: '❌' };
+
+  const draftCount = drafts.filter(d => d.status === 'draft').length;
+  const scheduledCount = drafts.filter(d => d.status === 'scheduled').length;
+  const publishedCount = drafts.filter(d => d.status === 'published').length;
+  const threadCount = drafts.filter(d => d.is_thread).length;
+  const imageCount = drafts.reduce((sum, d) => sum + (d.image_count || 0), 0);
 
   let html = '<div style="max-width:900px;margin:0 auto;">';
 
   // Summary cards
-  html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px;">';
-  const readyCount = q.filter(i => i.status === 'ready').length;
-  const draftCount = q.filter(i => i.status === 'draft').length;
-  const postedCount = q.filter(i => i.status === 'posted').length;
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
-    <div style="font-size:32px;font-weight:700;color:#3b82f6;">${readyCount}</div>
-    <div style="color:#9ca3af;font-size:13px;">Ready for Nathan</div>
-  </div>`;
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
-    <div style="font-size:32px;font-weight:700;color:#6b7280;">${draftCount}</div>
-    <div style="color:#9ca3af;font-size:13px;">Drafts</div>
-  </div>`;
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
-    <div style="font-size:32px;font-weight:700;color:#10b981;">${pinQueue}</div>
-    <div style="color:#9ca3af;font-size:13px;">Pinterest Queued</div>
-  </div>`;
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;text-align:center;">
-    <div style="font-size:32px;font-weight:700;color:#f59e0b;">${postedCount + pinPublished}</div>
-    <div style="color:#9ca3af;font-size:13px;">Total Posted</div>
-  </div>`;
+  html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:28px;">';
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
+    <div style="font-size:28px;font-weight:700;color:#6b7280;">${draftCount}</div>
+    <div style="color:#9ca3af;font-size:12px;">Drafts</div></div>`;
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
+    <div style="font-size:28px;font-weight:700;color:#3b82f6;">${scheduledCount}</div>
+    <div style="color:#9ca3af;font-size:12px;">Scheduled</div></div>`;
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
+    <div style="font-size:28px;font-weight:700;color:#10b981;">${publishedCount}</div>
+    <div style="color:#9ca3af;font-size:12px;">Published</div></div>`;
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
+    <div style="font-size:28px;font-weight:700;color:#8b5cf6;">${threadCount}</div>
+    <div style="color:#9ca3af;font-size:12px;">Threads</div></div>`;
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
+    <div style="font-size:28px;font-weight:700;color:#f59e0b;">${imageCount}</div>
+    <div style="color:#9ca3af;font-size:12px;">Images</div></div>`;
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:18px;text-align:center;">
+    <div style="font-size:28px;font-weight:700;color:#ec4899;">${pinQueue}</div>
+    <div style="color:#9ca3af;font-size:12px;">Pinterest Queue</div></div>`;
   html += '</div>';
 
-  // Account sections
-  Object.entries(accounts).forEach(([key, acct]) => {
-    const items = byAccount[key] || [];
-    const icon = acct.platform === 'pinterest' ? '📌' : '𝕏';
-    const autoTag = acct.auto_post
-      ? '<span style="background:#10b981;color:#fff;padding:2px 8px;border-radius:8px;font-size:11px;margin-left:8px;">AUTO</span>'
-      : '<span style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:8px;font-size:11px;margin-left:8px;">NATHAN</span>';
+  // Group by account
+  const byAccount = {};
+  drafts.forEach(d => {
+    if (!byAccount[d.account]) byAccount[d.account] = [];
+    byAccount[d.account].push(d);
+  });
 
-    html += `<div style="background:#1a1a2e;border-radius:12px;padding:24px;margin-bottom:20px;">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-        <span style="font-size:20px;">${icon}</span>
-        <h3 style="margin:0;font-size:18px;">${acct.name}</h3>
-        ${autoTag}
-      </div>
-      <div style="color:#6b7280;font-size:12px;margin-bottom:16px;font-style:italic;">Voice: ${acct.voice.substring(0, 100)}...</div>`;
-
-    if (acct.platform === 'pinterest') {
-      html += `<div style="color:#9ca3af;">
-        <strong>${pinQueue}</strong> pins queued (auto-posting 4x daily) &middot;
-        <strong>${pinPublished}</strong> published
+  // Render each account
+  Object.entries(byAccount).forEach(([accountName, items]) => {
+    html += `<div style="margin-bottom:24px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+        <span style="font-size:18px;">𝕏</span>
+        <h3 style="margin:0;font-size:17px;">${accountName}</h3>
+        <span style="color:#6b7280;font-size:13px;">(${items.length} posts)</span>
       </div>`;
-    } else if (items.length === 0) {
-      html += '<div style="color:#6b7280;padding:12px 0;">No content queued yet</div>';
-    } else {
-      items.forEach(item => {
-        const color = statusColors[item.status] || '#6b7280';
-        const label = statusLabels[item.status] || item.status;
-        html += `<div style="border:1px solid #2a2a3e;border-radius:8px;padding:16px;margin-bottom:12px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-            <span style="color:${color};font-size:13px;font-weight:600;">${label}</span>
-            <span style="color:#6b7280;font-size:12px;">${item.created}</span>
-          </div>
-          <div style="background:#0f0f1a;border-radius:6px;padding:12px;font-size:14px;line-height:1.6;white-space:pre-wrap;color:#e5e7eb;">${item.content}</div>`;
-        if (item.notes) {
-          html += `<div style="margin-top:8px;color:#6b7280;font-size:12px;">💡 ${item.notes}</div>`;
+
+    items.forEach(draft => {
+      const color = statusColors[draft.status] || '#6b7280';
+      const icon = statusIcons[draft.status] || '📝';
+      const threadBadge = draft.is_thread 
+        ? `<span style="background:#8b5cf6;color:#fff;padding:2px 8px;border-radius:8px;font-size:11px;margin-left:6px;">🧵 ${draft.post_count} posts</span>` 
+        : '';
+      const imgBadge = draft.image_count > 0
+        ? `<span style="background:#1e3a5e;color:#60a5fa;padding:2px 8px;border-radius:8px;font-size:11px;margin-left:6px;">🖼 ${draft.image_count}</span>`
+        : '';
+
+      html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-bottom:14px;border-left:3px solid ${color};">`;
+
+      // Header
+      html += `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+          <span style="color:${color};font-size:13px;font-weight:600;">${icon} ${draft.status}</span>
+          ${threadBadge}${imgBadge}
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="color:#6b7280;font-size:12px;">${draft.created}</span>
+          ${draft.private_url ? `<a href="${draft.private_url}" target="_blank" style="color:#3b82f6;font-size:12px;text-decoration:none;">Open in Typefully ↗</a>` : ''}
+        </div>
+      </div>`;
+
+      if (draft.title) {
+        html += `<div style="color:#9ca3af;font-size:12px;margin-bottom:8px;font-weight:600;">${draft.title}</div>`;
+      }
+
+      // Posts (tweet-like cards)
+      (draft.posts || []).forEach((post, idx) => {
+        const isFirst = idx === 0;
+        const indent = isFirst ? '' : 'margin-left:24px;border-left:2px solid #2a2a3e;padding-left:16px;';
+
+        // Extract image URLs from post text (AH building URLs)
+        const ahMatch = post.text.match(/app\.architecturehelper\.com\/architecture_explorer\/(\d+)/);
+        const placeMatch = post.text.match(/app\.architecturehelper\.com\/places\/([a-z-]+)/);
+
+        html += `<div style="background:#0d1117;border-radius:10px;padding:14px;margin-bottom:8px;${indent}">`;
+        
+        // Post text
+        let displayText = post.text.replace(/\n/g, '<br>');
+        // Make URLs clickable
+        displayText = displayText.replace(/(https?:\/\/[^\s<]+|app\.architecturehelper\.com[^\s<]+|cresoftware\.tech[^\s<]+)/g, 
+          '<a href="https://$1" target="_blank" style="color:#1d9bf0;text-decoration:none;">$1</a>');
+        // Fix double https
+        displayText = displayText.replace(/https:\/\/https:\/\//g, 'https://');
+        
+        html += `<div style="font-size:14px;line-height:1.6;color:#e7e9ea;white-space:normal;">${displayText}</div>`;
+
+        // Image indicator
+        if (post.has_image) {
+          html += `<div style="margin-top:10px;background:#1a1a2e;border:1px solid #2a2a3e;border-radius:8px;padding:12px;display:flex;align-items:center;gap:8px;">
+            <span style="font-size:20px;">🖼</span>
+            <span style="color:#9ca3af;font-size:13px;">Image attached</span>
+          </div>`;
         }
-        if (item.feedback) {
-          html += `<div style="margin-top:8px;padding:8px;background:#1e3a2e;border-radius:6px;color:#86efac;font-size:13px;">📣 Nathan: ${item.feedback}</div>`;
-        }
+
         html += '</div>';
       });
-    }
+
+      // Published URL
+      if (draft.x_url) {
+        html += `<div style="margin-top:8px;"><a href="${draft.x_url}" target="_blank" style="color:#1d9bf0;font-size:13px;text-decoration:none;">View on X ↗</a></div>`;
+      }
+
+      html += '</div>';
+    });
+
     html += '</div>';
   });
 
-  // Analytics section
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:24px;margin-bottom:20px;">
-    <h3 style="margin:0 0 12px;">📊 Analytics & Learnings</h3>
-    <p style="color:#9ca3af;font-size:14px;">Send Atlas screenshots of post analytics — he'll track engagement metrics and use them to improve future content.</p>
-    <p style="color:#6b7280;font-size:13px;">Learnings so far:</p>`;
-  if (learnings.length === 0) {
-    html += '<div style="color:#4b5563;font-size:13px;padding:8px 0;">No learnings yet — post some content and share results!</div>';
-  } else {
-    learnings.forEach(l => {
-      html += `<div style="padding:6px 0;color:#d1d5db;font-size:13px;">• ${l}</div>`;
-    });
-  }
-  html += '</div>';
+  // Pinterest section
+  html += `<div style="margin-bottom:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+      <span style="font-size:18px;">📌</span>
+      <h3 style="margin:0;font-size:17px;">Pinterest</h3>
+    </div>
+    <div style="background:#1a1a2e;border-radius:12px;padding:20px;">
+      <div style="color:#e5e7eb;font-size:14px;">
+        <strong>${pinQueue}</strong> pins queued &middot; <strong>${pinPublished}</strong> published &middot; Auto-posting 4x daily
+      </div>
+    </div>
+  </div>`;
 
   // How it works
-  html += `<div style="background:#1a1a2e;border-radius:12px;padding:24px;">
-    <h3 style="margin:0 0 12px;">🔄 How This Works</h3>
-    <div style="color:#9ca3af;font-size:14px;line-height:1.8;">
-      <strong>Pinterest</strong> → Atlas auto-posts 4x daily. No action needed.<br>
-      <strong>X Posts</strong> → Atlas drafts content → Nathan reviews here → Posts manually → Shares analytics screenshot → Atlas learns & improves.<br><br>
-      <strong>Feedback loop:</strong> Tell Atlas "I changed the wording to X" or "this one got 50 likes" — he'll update the queue and adjust future content.
+  html += `<div style="background:#1a1a2e;border-radius:12px;padding:20px;margin-top:12px;">
+    <h3 style="margin:0 0 10px;font-size:15px;">🔄 How This Works</h3>
+    <div style="color:#9ca3af;font-size:13px;line-height:1.8;">
+      <strong>Typefully</strong> → Atlas creates drafts via API with images. Scheduled to auto-post or saved for Nathan to review.<br>
+      <strong>Pinterest</strong> → Auto-posts 4x daily. No action needed.<br>
+      <strong>Daily cron</strong> → Creates 1 new post/day from building library. Varies templates automatically.
     </div>
   </div>`;
 
