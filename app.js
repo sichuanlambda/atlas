@@ -1047,9 +1047,10 @@ window.viewFile = function(name, path) {
   title.textContent = name;
   content.textContent = 'Loading...';
   modal.style.display = 'flex';
-  // Try to load from filesystem-contents if available, otherwise show path
+  // Load from filesystem-contents using -- as path separator
   const fullPath = path || name;
-  fetch('filesystem-contents/' + encodeURIComponent(fullPath) + '?' + Date.now())
+  const flatName = fullPath.replace(/\//g, '--');
+  fetch('filesystem-contents/' + flatName + '?' + Date.now())
     .then(r => r.ok ? r.text() : Promise.reject())
     .then(text => { content.textContent = text; })
     .catch(() => { content.textContent = '(File contents not available. Path: ' + fullPath + ')'; });
