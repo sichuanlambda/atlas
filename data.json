@@ -1,38 +1,34 @@
 {
-  "lastUpdated": "2026-02-20T09:04:00Z",
+  "lastUpdated": "2026-02-20T12:02:00Z",
   "status": "active",
-  "currentWork": "Feb 20 — Pinterest cron running (pin #13 posted 09:00 UTC). 87 pins queued (~22 days). Waiting on Nathan for X API, GSC indexing, and strategic review.",
+  "currentWork": "Feb 20 — BREAKTHROUGH: Direct DB pipeline (30x faster building submission). Barcelona: 15 buildings live. Dashboard content page fixed.",
   "todaySummary": {
-    "date": "2026-02-19",
-    "headline": "Biggest day: Heroku autonomous, 17 building images fixed, content queue system, 208 CRE products, Barcelona pipeline launched, 4 pins posted",
+    "date": "2026-02-20",
+    "headline": "Direct DB pipeline breakthrough (30x faster), 15 Barcelona buildings submitted, dashboard fixes, content system docs",
     "sections": [
       {
-        "title": "🚀 Infrastructure",
+        "title": "🔥 Direct DB Pipeline",
         "items": [
-          "Heroku CLI installed — autonomous deploys + rake tasks (first deploy: v382)",
-          "Image pipeline fixed: ACL error resolved, fix_batch ran, all broken images on S3",
-          "Agent configs created: Scout (research), Mason (buildings), Scribe (content)",
-          "Content queue system built in Control Center (#/content) — unified X/Pinterest view"
+          "Eliminated Playwright browser entirely for building submissions",
+          "New: heroku run rails runner with heredoc → direct DB insert + S3 upload + GPT analysis",
+          "Performance: 9 buildings in 30 seconds (was ~90s/building with browser)",
+          "Scales to 600+ buildings per run — entire city pipelines in minutes",
+          "Runbook updated to v3"
         ]
       },
       {
-        "title": "🏛️ Buildings & Images",
+        "title": "🏛️ Barcelona",
         "items": [
-          "Boston: 12 wrong images replaced with proper Wikimedia photos + Place hero fixed",
-          "Philly: 5 wrong images replaced (were PDFs/paintings/plaques)",
-          "Full audit: SF, NOLA, NYC, DC all clean — only #953 is a stale test upload",
-          "2 new buildings from Nathan: Armour-Stiner Octagon (#1030), Schwerin Castle (#1031)",
-          "Barcelona pipeline launched: 16-18 buildings planned with image validation"
+          "15 buildings submitted (6 from sub-agent + 9 via direct pipeline)",
+          "All images on S3, all GPT analyses completed",
+          "Still needs: Place page creation, Pinterest queue additions"
         ]
       },
       {
-        "title": "📊 Marketing & Content",
+        "title": "🛠️ Fixes",
         "items": [
-          "Marketing framework + 3 action plans written (Plotzy, AH, CRE)",
-          "5 X posts drafted for @architectrHelpr, 2 for @nathansrobinson",
-          "Pinterest: 4 pins posted today (12 total), 88 in queue (~22 days)",
-          "Pinterest 3-day review: 107 impressions, 10 saves, 9.3% save rate",
-          "CRE: 208 products, 65 enriched, Scout running on remainder"
+          "Dashboard content page: fixed escaped template literals (v8 cache bust)",
+          "Content system and social style guide docs created"
         ]
       },
       {
@@ -41,7 +37,7 @@
           "Apply for X API Free tier (developer.x.com) — unblocks automated posting",
           "Enable Google Search Indexing API in Cloud Console",
           "Read morning briefing & respond to strategic questions",
-          "Review marketing action plans (memory/marketing-*.md)"
+          "Review marketing action plans"
         ]
       }
     ]
@@ -79,7 +75,7 @@
     }
   ],
   "metrics": {
-    "citiesLive": 9,
+    "citiesLive": 10,
     "citiesList": [
       "Denver",
       "Den Haag",
@@ -89,10 +85,10 @@
       "New York City",
       "Washington DC",
       "Philadelphia",
-      "Boston"
+      "Boston",
+      "Barcelona"
     ],
     "citiesInPipeline": [
-      "Barcelona",
       "Bruges",
       "Edinburgh",
       "Kraków",
@@ -104,7 +100,7 @@
       "Los Angeles",
       "Miami"
     ],
-    "totalBuildings": 502,
+    "totalBuildings": 517,
     "totalStyles": 30,
     "prsMerged": 19,
     "totalUsers": 334,
@@ -159,6 +155,26 @@
     }
   },
   "recentActivity": [
+    {
+      "date": "2026-02-20T12:02:00Z",
+      "text": "Dashboard refresh — Barcelona + direct pipeline metrics",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-20T10:40:00Z",
+      "text": "BREAKTHROUGH: Direct DB pipeline — 9 Barcelona buildings in 30 seconds (30x faster)",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-20T10:35:00Z",
+      "text": "Barcelona: 15 buildings submitted (6 sub-agent + 9 direct pipeline)",
+      "type": "milestone"
+    },
+    {
+      "date": "2026-02-20T09:44:00Z",
+      "text": "Dashboard content page fixed — escaped template literals, v8 cache bust",
+      "type": "task"
+    },
     {
       "date": "2026-02-20T09:00:00Z",
       "text": "Pinterest pin #13 posted: Preservation Hall (New Orleans) + cross-posted to Victorian Architecture",
