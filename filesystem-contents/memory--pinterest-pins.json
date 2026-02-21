@@ -331,6 +331,21 @@
       "template": "v1",
       "created": "2026-02-20T13:00:00Z",
       "metrics": {}
+    },
+    {
+      "id": "1143281055426058862",
+      "url": "https://www.pinterest.com/pin/1143281055426058862",
+      "building_id": 935,
+      "building_name": "Empire State Building",
+      "city": "New York City",
+      "board": "NYC Architecture",
+      "cross_posted": ["Art Deco Buildings"],
+      "styles": ["Art Deco", "Beaux-Arts", "Modern Movement"],
+      "link": "https://app.architecturehelper.com/architecture_explorer/935",
+      "title": "Empire State Building | Art Deco Architecture in New York City",
+      "template": "v1",
+      "created": "2026-02-20T17:00:00Z",
+      "metrics": {}
     }
   ],
   "boards": [
@@ -402,11 +417,6 @@
     }
   },
   "queue": [
-    {
-      "building_id": 935,
-      "city": "New York City",
-      "name": "Empire State Building"
-    },
     {
       "building_id": 936,
       "city": "New York City",
@@ -1234,6 +1244,6 @@
       "21:00"
     ]
   },
-  "lastPosted": "2026-02-20T13:00:00Z",
-  "totalPinsCreated": 14
+  "lastPosted": "2026-02-20T17:00:00Z",
+  "totalPinsCreated": 15
 }
