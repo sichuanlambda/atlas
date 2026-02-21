@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-02-20T21:02:00Z",
+  "lastUpdated": "2026-02-21T00:02:00Z",
   "status": "active",
-  "currentWork": "Feb 20 evening — Google Indexing API live (49 URLs submitted), dashboard analytics system building, cost optimization (Sonnet 4 default), underwriting skill validated. 1105 buildings, 13 cities, 15 Pinterest pins.",
+  "currentWork": "Feb 20 complete — Historic day: 61 buildings (Barcelona/Edinburgh/Bruges/Kraków), Typefully API, Google indexing, analytics system. 1105 buildings across 13 cities. Ready for weekend.",
   "todaySummary": {
     "date": "2026-02-20",
     "headline": "61 buildings, 4 new cities, Typefully API, CRE buyer’s guides approved, PR #21, humanizer skill, 264 pSEO URLs targeted",
@@ -82,6 +82,15 @@
           "Context pruning enabled: 30min TTL, compaction at 150K tokens",
           "Underwriting skill validated: analyzed $1.2M OKC deal (doesn’t pencil)",
           "Dashboard files page: collapsible sections, modal viewer, activity feeds"
+        ]
+      },
+      {
+        "title": "🔧 Late Night Fixes",
+        "items": [
+          "PR #23 deployed but caused 500 on /places (country column doesn’t exist)",
+          "Fixed: removed country reference, force-pushed to sync GitHub/Heroku",
+          "Homepage 500: recurring bug with building_analyses_in_place vs building_analyses",
+          "Both fixes deployed, sites stable"
         ]
       }
     ]
@@ -198,8 +207,18 @@
   },
   "recentActivity": [
     {
-      "date": "2026-02-20T21:02:00Z",
-      "text": "Dashboard refresh — evening: Google indexing live, analytics system, cost optimization",
+      "date": "2026-02-21T00:02:00Z",
+      "text": "Dashboard refresh — end of Feb 20: PR #23 fixes deployed, sites stable",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-20T23:33:00Z",
+      "text": "Homepage 500 fix: building_analyses_in_place recurring bug",
+      "type": "task"
+    },
+    {
+      "date": "2026-02-20T23:25:00Z",
+      "text": "PR #23 fix: Places 500 error (country column), GitHub/Heroku sync",
       "type": "task"
     },
     {
@@ -285,16 +304,6 @@
     {
       "date": "2026-02-20T11:30:00Z",
       "text": "3-city blitz: Edinburgh (13) + Bruges (16) + Kraków (17) = 46 buildings in 30 min",
-      "type": "milestone"
-    },
-    {
-      "date": "2026-02-20T10:40:00Z",
-      "text": "BREAKTHROUGH: Direct DB pipeline — 9 Barcelona buildings in 30 seconds",
-      "type": "milestone"
-    },
-    {
-      "date": "2026-02-20T10:35:00Z",
-      "text": "Barcelona: 15 buildings submitted total",
       "type": "milestone"
     }
   ],
