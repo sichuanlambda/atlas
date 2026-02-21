@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-02-21T18:02:00Z",
+  "lastUpdated": "2026-02-21T21:02:00Z",
   "status": "active",
-  "currentWork": "Feb 21 evening — Pinterest automation completely broken: 3 consecutive cron failures (09:00, 13:00, 17:00 UTC). No pins posted all day. Nathan still hasn't provided homepage direction. System requires manual intervention to restore Pinterest posting functionality.",
-  "todaySummary": "Critical automation failure: Pinterest cron failed 3 consecutive times (09:00, 13:00, 17:00 UTC) due to browser timeout/permission issues. Zero pins posted today despite 49 in queue. Haiku model fix successful. Nathan reviewing homepage city guides but no direction provided. All other systems stable.",
+  "currentWork": "Feb 21 evening — Major breakthrough: Thumbnail system deployed (80-90% page weight reduction), homepage stats removed per Nathan's request. Pinterest still broken (4 consecutive failures, Chrome relay needs tab connection). Building count corrected to 592 total in DB.",
+  "todaySummary": "MAJOR PROGRESS: Thumbnail system activated - 80-90% page weight reduction on listing pages. Nathan requested homepage stats removal - deployed. Pinterest automation completely failed (4 consecutive cron failures, Chrome extension relay running but no tab connected). Building count corrected: 592 total buildings, not 1105.",
   "waitingOnNathan": [
-    "Direction on homepage city guides section updates",
-    "Pinterest posting failure resolution (manual intervention may be needed)",
+    "Chrome extension relay tab connection for Pinterest posting (highest priority)",
+    "Direction on homepage city guides section updates", 
     "Anthropic console usage screenshot (for real cost data)", 
     "PR #21 merge (sticky sidebar + map on Place pages)",
     "X API developer access application",
@@ -13,7 +13,9 @@
   ],
   "metrics": {
     "ah_cities": 13,
-    "ah_buildings": 1105,
+    "ah_buildings": 592,
+    "ah_buildings_with_images": 586,
+    "ah_buildings_on_s3": 553,
     "ah_styles": 30,
     "ah_prs_merged": 23,
     "cre_products": 208,
@@ -53,7 +55,7 @@
       ]
     },
     "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
-    "note": "CRITICAL: 3 consecutive failures (09:00, 13:00, 17:00 UTC). Zero pins posted today. Browser timeout/permission issues persist. Last attempt: 21:00 UTC.",
+    "note": "CRITICAL: 4 consecutive failures (09:00, 13:00, 17:00, 21:00 UTC). Chrome extension relay running but no tab connected. Chrysler Building stuck at queue position #1.",
     "totalMetrics": {
       "impressions": 107,
       "saves": 10,
@@ -64,6 +66,30 @@
     }
   },
   "recentActivity": [
+    {
+      "time": "21:02",
+      "text": "Dashboard refresh - Thumbnail system live, homepage stats removed, Pinterest still broken (4 failures)",
+      "type": "status", 
+      "date": "2026-02-21"
+    },
+    {
+      "time": "21:00",
+      "text": "Pinterest cron failed (4th consecutive) - Chrome extension relay needs tab connection",
+      "type": "error",
+      "date": "2026-02-21"
+    },
+    {
+      "time": "19:30",
+      "text": "Homepage stats removed per Nathan request - building & city counts hidden (v394)",
+      "type": "shipped",
+      "date": "2026-02-21"
+    },
+    {
+      "time": "14:09",
+      "text": "BREAKTHROUGH: Thumbnail system deployed - 80-90% page weight reduction on listing pages",
+      "type": "milestone",
+      "date": "2026-02-21"
+    },
     {
       "time": "18:02",
       "text": "Dashboard refresh - Pinterest automation critically broken (3 failures), urgent intervention needed",
@@ -123,45 +149,31 @@
       "text": "Working branch synced: /tmp/feedback-loop on fix-places, GitHub + Heroku aligned",
       "type": "fix",
       "date": "2026-02-21"
-    },
-    {
-      "time": "23:33",
-      "text": "Fixed homepage 500 - Place model building_analyses_in_place bug (recurring issue)", 
-      "type": "fix",
-      "date": "2026-02-20"
-    },
-    {
-      "time": "23:25",
-      "text": "Fixed /places 500 error - removed non-existent p.country column reference",
-      "type": "fix",
-      "date": "2026-02-20"
-    },
-    {
-      "time": "21:30", 
-      "text": "PR #23 merged: Places index redesign with search, filter, regional grouping",
-      "type": "shipped",
-      "date": "2026-02-20"
-    },
-    {
-      "time": "20:45",
-      "text": "Dashboard analytics + agents & cron management pages built and deployed",
-      "type": "shipped", 
-      "date": "2026-02-20"
     }
   ],
   "projectLatest": {
     "architecture-helper": {
-      "updated": "2026-02-21T18:02:00Z",
-      "summary": "CRITICAL: Pinterest automation completely broken (3 failures today). Haiku model stable. Homepage awaiting Nathan direction.",
+      "updated": "2026-02-21T21:02:00Z",
+      "summary": "Major performance breakthrough: Thumbnail system live (80-90% faster pages). Pinterest automation completely broken (4 failures).",
       "items": [
         {
-          "type": "critical",
-          "text": "Pinterest cron: COMPLETE FAILURE - 3 consecutive runs failed (09:00, 13:00, 17:00 UTC)",
+          "type": "milestone",
+          "text": "Thumbnail system deployed: 80-90% page weight reduction, ~30-50KB vs 1-3MB images",
           "date": "2026-02-21"
         },
         {
-          "type": "issue",
-          "text": "Zero pins posted today, 49 backed up in queue, automation completely non-functional",
+          "type": "builds",
+          "text": "494 thumbnails generated: 230 new + 264 existing, stored in S3 uploads/thumbs/",
+          "date": "2026-02-21"
+        },
+        {
+          "type": "builds",
+          "text": "Homepage stats removed: building & city counts hidden per Nathan request (v394)",
+          "date": "2026-02-21"
+        },
+        {
+          "type": "critical",
+          "text": "Pinterest cron: 4 consecutive failures (Chrome extension relay needs tab connection)",
           "date": "2026-02-21"
         },
         {
@@ -214,16 +226,16 @@
         },
         {
           "type": "critical",
-          "text": "Pinterest posting: URGENT MANUAL INTERVENTION REQUIRED - automation completely broken"
+          "text": "Pinterest: Chrome extension relay needs tab connection to resume automated posting"
         },
         {
           "type": "stats",
-          "text": "13 cities live, 1105 buildings total, 30 style pages, 23 PRs merged"
+          "text": "13 cities live, 592 buildings total (586 with images), 30 style pages, 23 PRs merged"
         }
       ]
     },
     "cre-software": {
-      "updated": "2026-02-21T18:02:00Z",
+      "updated": "2026-02-21T21:02:00Z",
       "summary": "Homepage carousel redesigned. 4/14 buyer's guides complete. Awaiting Nathan review to proceed.", 
       "items": [
         {
@@ -260,7 +272,7 @@
       ]
     },
     "plotzy": {
-      "updated": "2026-02-21T18:02:00Z",
+      "updated": "2026-02-21T21:02:00Z",
       "summary": "Live zoning lookups functional. Vision clear: comprehensive spatial analysis from address input.",
       "items": [
         {
