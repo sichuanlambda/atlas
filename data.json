@@ -1,8 +1,8 @@
 {
-  "lastUpdated": "2026-02-21T09:02:00Z",
+  "lastUpdated": "2026-02-21T12:02:00Z",
   "status": "active",
-  "currentWork": "Feb 21 mid-morning — Very quiet period. Nathan still reviewing AH homepage 'Explore City Architecture Guides' section, no new direction provided. All systems stable and running normally. Pinterest cron active, no new pins posted yet today.",
-  "todaySummary": "Quiet morning continuing from overnight. Nathan requested updates to homepage city guides section yesterday but hasn't specified changes. All systems stable: 13 cities, 1105 buildings, 15 Pinterest pins published, 49 queued. Direct DB pipeline from yesterday enables rapid scaling when needed.",
+  "currentWork": "Feb 21 noon — Pinterest cron failing due to browser permissions (09:00 UTC missed), Haiku model name fixed (was causing heartbeat errors). Nathan still awaiting direction on homepage city guides section. All other systems stable.",
+  "todaySummary": "Morning issues resolved: Pinterest cron failed at 09:00 due to browser timeout + permission issues trying to restart gateway. Haiku model name was wrong (anthropic/claude-haiku-3-5-20241022 doesn't exist) causing 17 consecutive heartbeat errors - fixed to claude-haiku-3-5-latest at 10:48 UTC. Nathan still reviewing homepage city guides, no new direction.",
   "waitingOnNathan": [
     "Direction on homepage city guides section updates",
     "Anthropic console usage screenshot (for real cost data)", 
@@ -52,7 +52,7 @@
       ]
     },
     "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
-    "note": "49 queued pins remaining. ~12 days of content at 4/day rate. No new pins posted today yet (next at 09:00 UTC).",
+    "note": "ISSUE: 09:00 UTC cron failed due to browser timeout. Cron tried to restart gateway but lacks permission. Next attempt at 13:00 UTC.",
     "totalMetrics": {
       "impressions": 107,
       "saves": 10,
@@ -63,6 +63,24 @@
     }
   },
   "recentActivity": [
+    {
+      "time": "12:02",
+      "text": "Dashboard refresh - Pinterest cron failed, Haiku model fixed, awaiting homepage direction",
+      "type": "status",
+      "date": "2026-02-21"
+    },
+    {
+      "time": "10:48",
+      "text": "Fixed Haiku model name: claude-haiku-3-5-20241022 → claude-haiku-3-5-latest (17 errors cleared)",
+      "type": "fix",
+      "date": "2026-02-21"
+    },
+    {
+      "time": "09:00",
+      "text": "Pinterest cron failed - browser timeout, tried to restart gateway but lacks permission",
+      "type": "error",
+      "date": "2026-02-21"
+    },
     {
       "time": "09:02",
       "text": "Dashboard refresh - quiet morning, awaiting Nathan direction on homepage",
@@ -128,31 +146,23 @@
       "text": "Live zoning lookups tested: Edmond OK (Zone A), OKC (R-1 with CUP risk)",
       "type": "research",
       "date": "2026-02-20"
-    },
-    {
-      "time": "15:00",
-      "text": "Underwriting skill tested on real deal: 32nd St Apts OKC ($1.2M - doesn't pencil)",
-      "type": "research", 
-      "date": "2026-02-20"
-    },
-    {
-      "time": "12:30",
-      "text": "Typefully integration live: 18 social drafts created, daily content cron active",
-      "type": "shipped",
-      "date": "2026-02-20"
-    },
-    {
-      "time": "10:40",
-      "text": "BREAKTHROUGH: Direct DB pipeline eliminates browser - 9 buildings in 30 seconds",
-      "type": "milestone", 
-      "date": "2026-02-20"
     }
   ],
   "projectLatest": {
     "architecture-helper": {
-      "updated": "2026-02-21T09:02:00Z",
-      "summary": "Quiet morning after record day. Nathan reviewing homepage city guides section, awaiting creative direction.",
+      "updated": "2026-02-21T12:02:00Z",
+      "summary": "Operational issues this morning: Pinterest cron failing, model name fixes applied. Awaiting Nathan direction.",
       "items": [
+        {
+          "type": "issue",
+          "text": "Pinterest cron failing: browser timeouts, gateway restart permission denied",
+          "date": "2026-02-21"
+        },
+        {
+          "type": "fix",
+          "text": "Haiku model name corrected: claude-haiku-3-5-20241022 → claude-haiku-3-5-latest",
+          "date": "2026-02-21"
+        },
         {
           "type": "milestone",
           "text": "Direct DB pipeline eliminates browser: 9 buildings in 30 seconds vs 90s each",
@@ -184,11 +194,6 @@
           "date": "2026-02-20"
         },
         {
-          "type": "automation",
-          "text": "Pinterest 4x daily posts, 49 pins queued (~12 days of content)",
-          "date": "2026-02-21"
-        },
-        {
           "type": "learning",
           "text": "CRITICAL BUG: Place model uses building_analyses_in_place (NOT building_analyses)",
           "date": "2026-02-21"
@@ -202,13 +207,17 @@
           "text": "Homepage city guides section needs creative direction from Nathan"
         },
         {
+          "type": "pending",
+          "text": "Pinterest posting: fix browser permissions or investigate API alternatives"
+        },
+        {
           "type": "stats",
           "text": "13 cities live, 1105 buildings total, 30 style pages, 23 PRs merged"
         }
       ]
     },
     "cre-software": {
-      "updated": "2026-02-21T09:02:00Z",
+      "updated": "2026-02-21T12:02:00Z",
       "summary": "Homepage carousel redesigned. 4/14 buyer's guides complete. Awaiting Nathan review to proceed.", 
       "items": [
         {
@@ -245,7 +254,7 @@
       ]
     },
     "plotzy": {
-      "updated": "2026-02-21T09:02:00Z",
+      "updated": "2026-02-21T12:02:00Z",
       "summary": "Live zoning lookups functional. Vision clear: comprehensive spatial analysis from address input.",
       "items": [
         {
