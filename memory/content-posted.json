@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "date": "2026-02-20",
+      "account": "@ArchitectrHelpr",
+      "template": "building_spotlight",
+      "building_id": "1034",
+      "building_name": "Casa Milà (La Pedrera)",
+      "draft_id": 8156773,
+      "scheduled_for": "2026-02-23T11:00:00Z"
+    },
+    {
+      "date": "2026-02-20",
+      "account": "@CRESoftware",
+      "template": "category_spotlight",
+      "draft_id": 8156782,
+      "scheduled_for": "2026-02-20T16:00:00Z"
+    }
+  ],
+  "threads": [],
+  "last_cre_post_day": 20,
+  "featured_building_ids": ["1034"],
+  "featured_cities": []
+}

@@ -1,12 +1,14 @@
 {
-  "lastUpdated": "2026-02-21T03:02:00Z",
+  "lastUpdated": "2026-02-21T06:02:00Z",
   "status": "active",
-  "currentWork": "Feb 21 early morning — Quiet overnight. Nathan reviewing homepage city guides section, waiting for direction. All systems nominal. 1105 buildings, 13 cities, 15 Pinterest pins.",
-  "todaySummary": "Massive day. Direct DB pipeline (30x faster), 4 European cities launched, Google Indexing API live (49 URLs), dashboard analytics built, cost optimization (Sonnet/Haiku for sub-agents/cron), places page redesigned, zoning lookups working, underwriting skill tested on real deal.",
+  "currentWork": "Feb 21 early morning — Quiet overnight. Nathan reviewing AH homepage 'Explore City Architecture Guides' section, awaiting direction for updates. All systems stable: 13 cities live, 1105 buildings, 15 Pinterest pins published.",
+  "todaySummary": "Very quiet early morning. Carried over: Nathan asked to update homepage city guides section but hasn't specified changes yet. Working branch /tmp/feedback-loop on fix-places branch, synced with GitHub + Heroku. All PRs merged (#22 city guides on homepage, #23 places index redesign). Key reminder: Place model uses building_analyses_in_place NOT building_analyses.",
   "waitingOnNathan": [
-    "Anthropic console usage screenshot (for real cost data)",
-    "PR #21 merge (sticky sidebar)",
-    "X API developer access application"
+    "Direction on homepage city guides section updates",
+    "Anthropic console usage screenshot (for real cost data)", 
+    "PR #21 merge (sticky sidebar + map on Place pages)",
+    "X API developer access application",
+    "Review of 4 CRE buyer's guides before generating remaining 10"
   ],
   "metrics": {
     "ah_cities": 13,
@@ -16,8 +18,8 @@
     "cre_products": 208,
     "cre_guides_done": 4,
     "cre_guides_total": 14,
-    "pinterest_published": 14,
-    "pinterest_queued": 88,
+    "pinterest_published": 15,
+    "pinterest_queued": 49,
     "zoning_cities": 10,
     "zoning_zones": 120000,
     "urls_indexed": 49
@@ -25,16 +27,16 @@
   "pinterest": {
     "account": "@nathaninproduct",
     "totalPins": 15,
-    "queue": 85,
+    "queue": 49,
     "boards": {
       "city": [
         "New Orleans Architecture",
-        "San Francisco Architecture",
+        "San Francisco Architecture", 
         "Chicago Architecture",
         "Denver Architecture",
         "NYC Architecture",
         "Washington DC Architecture",
-        "Boston Architecture",
+        "Boston Architecture", 
         "Edinburgh Architecture",
         "Barcelona Architecture",
         "Bruges Architecture",
@@ -44,13 +46,13 @@
         "Gothic Architecture",
         "Beaux-Arts Architecture",
         "Neoclassical Architecture",
-        "Art Deco Buildings",
+        "Art Deco Buildings", 
         "Victorian Architecture",
         "Baroque Architecture"
       ]
     },
     "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
-    "note": "85 queued pins. ~21 days at 4/day. First NYC pin posted (Empire State Building).",
+    "note": "49 queued pins remaining. ~12 days of content at 4/day rate. First NYC pin posted yesterday (Empire State Building).",
     "totalMetrics": {
       "impressions": 107,
       "saves": 10,
@@ -62,90 +64,108 @@
   },
   "recentActivity": [
     {
-      "time": "23:33",
-      "text": "Dashboard refresh — quiet overnight, waiting on Nathan direction for homepage",
+      "time": "06:02",
+      "text": "Dashboard refresh - quiet overnight, Nathan reviewing homepage city guides",
+      "type": "status",
+      "date": "2026-02-21"
+    },
+    {
+      "time": "00:19",
+      "text": "Working branch synced: /tmp/feedback-loop on fix-places, GitHub + Heroku aligned",
       "type": "fix",
-      "date": "2026-02-21T03:02:00Z"
+      "date": "2026-02-21"
+    },
+    {
+      "time": "23:33",
+      "text": "Fixed homepage 500 - Place model building_analyses_in_place bug (recurring issue)", 
+      "type": "fix",
+      "date": "2026-02-20"
     },
     {
       "time": "23:25",
-      "text": "Fixed /places 500 (p.country column missing)",
-      "type": "fix"
+      "text": "Fixed /places 500 error - removed non-existent p.country column reference",
+      "type": "fix",
+      "date": "2026-02-20"
     },
     {
-      "time": "21:30",
-      "text": "PR #23: Places index redesign with search, filter, featured cards",
-      "type": "shipped"
+      "time": "21:30", 
+      "text": "PR #23 merged: Places index redesign with search, filter, regional grouping",
+      "type": "shipped",
+      "date": "2026-02-20"
     },
     {
       "time": "20:45",
-      "text": "Dashboard analytics + agents & cron pages built",
-      "type": "shipped"
+      "text": "Dashboard analytics + agents & cron management pages built and deployed",
+      "type": "shipped", 
+      "date": "2026-02-20"
     },
     {
       "time": "20:15",
-      "text": "Cost optimization: sub-agents on Sonnet, cron on Sonnet/Haiku",
-      "type": "config"
+      "text": "Cost optimization: sub-agents defaulted to Sonnet, cron jobs on Sonnet/Haiku",
+      "type": "config",
+      "date": "2026-02-20"
     },
     {
       "time": "17:15",
-      "text": "Google Indexing API live - 49 AH URLs + CRE URLs submitted",
-      "type": "shipped"
+      "text": "Google Indexing API live - 49 AH URLs + all CRE URLs submitted for crawling",
+      "type": "shipped",
+      "date": "2026-02-20"
     },
     {
-      "time": "17:00",
-      "text": "PR #22 merged: city guides on homepage with featured hero",
-      "type": "shipped"
-    },
-    {
-      "time": "16:00",
-      "text": "CRE carousel redesign + expanded category descriptions",
-      "type": "shipped"
+      "time": "17:00", 
+      "text": "PR #22 merged: City guides showcase on homepage with featured hero card",
+      "type": "shipped",
+      "date": "2026-02-20"
     },
     {
       "time": "15:30",
-      "text": "Zoning lookups: Edmond (Zone A), OKC (R-1 with CUP)",
-      "type": "research"
+      "text": "Live zoning lookups tested: Edmond OK (Zone A), OKC (R-1 with CUP risk)",
+      "type": "research",
+      "date": "2026-02-20"
     },
     {
       "time": "15:00",
-      "text": "Underwriting skill tested: 32nd St Apts OKC ($1.2M, doesn't pencil)",
-      "type": "research"
+      "text": "Underwriting skill tested on real deal: 32nd St Apts OKC ($1.2M - doesn't pencil)",
+      "type": "research", 
+      "date": "2026-02-20"
     },
     {
       "time": "12:30",
-      "text": "Typefully integration live, 18 drafts created, daily content cron running",
-      "type": "shipped"
+      "text": "Typefully integration live: 18 social drafts created, daily content cron active",
+      "type": "shipped",
+      "date": "2026-02-20"
     },
     {
       "time": "10:40",
-      "text": "BREAKTHROUGH: Direct DB pipeline - 9 buildings in 30 seconds",
-      "type": "milestone"
+      "text": "BREAKTHROUGH: Direct DB pipeline eliminates browser - 9 buildings in 30 seconds",
+      "type": "milestone", 
+      "date": "2026-02-20"
     },
     {
       "time": "10:00",
-      "text": "4 European cities launched: Barcelona, Edinburgh, Bruges, Krakow",
-      "type": "shipped"
+      "text": "4 European cities launched: Barcelona (15), Edinburgh (13), Bruges (16), Kraków (17)",
+      "type": "shipped",
+      "date": "2026-02-20"
     }
   ],
   "projectLatest": {
     "architecture-helper": {
-      "updated": "2026-02-21T00:20:31.061518Z",
-      "summary": "Record day. Direct DB pipeline, 4 European cities, Google indexing, homepage + places redesign.",
+      "updated": "2026-02-21T06:02:00Z",
+      "summary": "Record-breaking day yesterday. Direct DB pipeline live, 4 European cities launched, Google indexing API active.",
       "items": [
         {
           "type": "milestone",
-          "text": "Direct DB pipeline live: 9 buildings in 30 seconds (was 90s/building)",
+          "text": "Direct DB pipeline eliminates browser: 9 buildings in 30 seconds vs 90s each",
+          "date": "2026-02-20"
+        },
+        {
+          "type": "builds", 
+          "text": "4 European cities: Barcelona (15), Edinburgh (13), Bruges (16), Kraków (17)",
           "date": "2026-02-20"
         },
         {
           "type": "builds",
-          "text": "4 European cities: Barcelona (15), Edinburgh (13), Bruges (16), Krakow (17)",
-          "date": "2026-02-20"
-        },
-        {
-          "type": "builds",
-          "text": "Google Indexing API live - 49 URLs submitted for crawling",
+          "text": "Google Indexing API live - 49 URLs submitted for search crawler priority",
           "date": "2026-02-20"
         },
         {
@@ -154,123 +174,118 @@
           "date": "2026-02-20"
         },
         {
-          "type": "builds",
-          "text": "Homepage city guides section with featured hero card",
+          "type": "builds", 
+          "text": "Homepage city guides section with featured hero card system",
           "date": "2026-02-20"
         },
         {
           "type": "content",
-          "text": "Typefully integration + daily content cron (14:00 UTC)",
+          "text": "Typefully integration + daily automated content cron (14:00 UTC)",
           "date": "2026-02-20"
         },
         {
           "type": "automation",
-          "text": "Pinterest 4x daily, 88 pins queued (~22 days content)",
-          "date": "2026-02-20"
-        },
-        {
-          "type": "automation",
-          "text": "3-day performance review cron adapts future content",
-          "date": "2026-02-20"
+          "text": "Pinterest 4x daily posts, 49 pins queued (~12 days of content)",
+          "date": "2026-02-21"
         },
         {
           "type": "learning",
-          "text": "Place model: always use building_analyses_in_place (not building_analyses)",
-          "date": "2026-02-20"
+          "text": "CRITICAL BUG: Place model uses building_analyses_in_place (NOT building_analyses)",
+          "date": "2026-02-21"
+        },
+        {
+          "type": "pending", 
+          "text": "PR #21: sticky sidebar + map positioning on Place pages (awaiting merge)"
         },
         {
           "type": "pending",
-          "text": "PR #21: sticky sidebar + map on Place pages"
-        },
-        {
-          "type": "pending",
-          "text": "Homepage city guides section needs creative refresh"
+          "text": "Homepage city guides section needs creative direction from Nathan"
         },
         {
           "type": "stats",
-          "text": "13 cities, ~1105 buildings, 30 style pages, 23 PRs merged"
+          "text": "13 cities live, 1105 buildings total, 30 style pages, 23 PRs merged"
         }
       ]
     },
     "cre-software": {
-      "updated": "2026-02-21T00:20:31.061518Z",
-      "summary": "Category carousel redesigned. 4/14 buyer's guides done. pSEO push in progress.",
+      "updated": "2026-02-21T06:02:00Z",
+      "summary": "Homepage carousel redesigned. 4/14 buyer's guides complete. Full pSEO push in progress.", 
       "items": [
         {
           "type": "builds",
-          "text": "Homepage carousel: bigger cards, expanded descriptions, numbered pager",
+          "text": "Homepage carousel: larger cards, expanded descriptions, numbered pagination",
           "date": "2026-02-20"
         },
         {
           "type": "content",
-          "text": "4/14 buyer's guides complete (Property Mgmt, Investment, CRM, Construction)",
+          "text": "4/14 buyer's guides complete: Property Mgmt, Investment, CRM, Construction",
           "date": "2026-02-20"
         },
         {
-          "type": "builds",
-          "text": "Google Indexing API - all category + guide URLs submitted",
+          "type": "builds", 
+          "text": "Google Indexing API - all category + guide URLs submitted for crawling",
           "date": "2026-02-20"
         },
         {
           "type": "pending",
-          "text": "10 remaining buyer's guides to generate"
+          "text": "Nathan review of buyer's guide template before generating remaining 10"
         },
         {
           "type": "pending",
-          "text": "49 products with thin descriptions need enrichment"
+          "text": "49 products with thin descriptions need enrichment for comparison pages"
         },
         {
           "type": "decision",
-          "text": "Traffic = revenue. Rank first, monetize later. LinkedIn is the CRE channel."
+          "text": "Strategy: Traffic = revenue. Rank first, monetize later. LinkedIn primary channel."
         },
         {
-          "type": "stats",
-          "text": "208 products, 14 categories, 100% enriched, SSL live"
+          "type": "stats", 
+          "text": "208 products, 14 categories, 100% data enriched, SSL certificate live"
         }
       ]
     },
     "plotzy": {
-      "updated": "2026-02-21T00:20:31.061518Z",
-      "summary": "Zoning lookups working on real addresses. Vision: address to full spatial report.",
+      "updated": "2026-02-21T06:02:00Z",
+      "summary": "Live zoning lookups working. Vision: comprehensive spatial analysis from any address input.",
       "items": [
         {
           "type": "milestone",
-          "text": "Live zoning lookups: Edmond (Zone A), OKC (R-1 with CUP)",
+          "text": "Live zoning lookups working: Edmond OK (Zone A), OKC (R-1 with CUP)",
+          "date": "2026-02-20" 
+        },
+        {
+          "type": "builds",
+          "text": "Underwriting skill tested on real property: 32nd St Apts, OKC",
           "date": "2026-02-20"
         },
         {
           "type": "builds",
-          "text": "Underwriting skill tested on real deal (32nd St Apts, OKC)",
-          "date": "2026-02-20"
-        },
-        {
-          "type": "builds",
-          "text": "10 cities, 120K zones, 566 MB zoning data acquired",
+          "text": "Zoning database: 10 cities, 120K zones, 566 MB spatial data acquired",
           "date": "2026-02-19"
         },
         {
           "type": "idea",
-          "text": "Vision: address in -> zoning + parcel boundary + surrounding parcels + shapefiles + property data"
+          "text": "Product vision: address → zoning + parcel boundary + surrounding parcels + property data"
         },
         {
-          "type": "idea",
-          "text": "Screenshot public GIS portals as trust signal for users"
-        },
-        {
-          "type": "learning",
-          "text": "OKC GIS has CAPTCHA, county assessors block VPS access"
+          "type": "idea", 
+          "text": "Trust signal: screenshot public GIS portals rather than generate custom maps"
         },
         {
           "type": "learning",
-          "text": "Standard CRE data: spatial layers, property, market, transactions, income, demographics, regulatory, risk"
+          "text": "Barriers: OKC GIS has CAPTCHA, county assessors block VPS datacenter IPs"
+        },
+        {
+          "type": "learning",
+          "text": "CRE data layers: spatial, property, market, transactions, income, demographics, regulatory, risk"
         },
         {
           "type": "pending",
-          "text": "Package as OpenClaw skill (not built yet)"
+          "text": "Package complete system as OpenClaw skill (not yet built)"
         },
         {
           "type": "stats",
-          "text": "CA: LA/Sacramento/SF | TX: Austin/Dallas | FL: Tampa/Miami/Orlando/FtL | OK: Norman"
+          "text": "Coverage: CA (LA/Sacramento/SF) | TX (Austin/Dallas) | FL (Tampa/Miami/Orlando/FtL) | OK (Norman)"
         }
       ]
     }

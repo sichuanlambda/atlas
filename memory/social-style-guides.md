@@ -3,20 +3,34 @@
 ## CRITICAL: Correct URLs
 - Architecture Helper: **app.architecturehelper.com** (NOT architecturehelper.com — that's a 404)
 - CRE Software: **cresoftware.tech** (categories: cresoftware.tech/category.html#slug, products: cresoftware.tech/product.html#slug)
-- Building pages: app.architecturehelper.com/building_analyses/{id}
+- Building pages: app.architecturehelper.com/architecture_explorer/{id} (NOT /building_analyses/{id} — that 404s)
 - Place pages: app.architecturehelper.com/places/{slug}
 - Style pages: app.architecturehelper.com/styles/{name}
 
+## Language Rules (ALL accounts)
+- NEVER say "GPT analysis" or "AI analysis" publicly. Use: "analysis", "architecture analysis", "style analysis", "breakdown", "deep dive"
+- NEVER reference GPT, AI, or LLMs in public-facing content. The analysis is just "our analysis" or "a detailed breakdown"
+
 ## Humanizer Rules (ALL accounts)
+**Skill reference:** /home/openclaw/openclaw/skills/humanizer/SKILL.md (read for full patterns)
+
+### Quick checklist before posting:
 - No "Excited to announce" / "Thrilled to share" / "We're proud to"
-- No "Dive into" / "Discover" / "Explore" as openers (overused AI patterns)
+- No "Dive into" / "Discover" / "Explore" as openers
 - No "In today's [noun]..." / "In the world of..."
 - No triple emoji stacking (🏛️🔥✨)
+- No AI vocabulary: "delve", "tapestry", "vibrant", "nestled", "showcasing", "testament", "underscores", "pivotal", "crucial", "landscape" (abstract), "fostering", "garnering", "interplay", "intricate"
+- No copula avoidance: say "is" not "serves as" / "stands as" / "represents"
+- No superficial -ing analyses: "highlighting...", "showcasing...", "reflecting..."
+- No promotional puffery: "breathtaking", "stunning", "must-visit", "renowned", "groundbreaking"
+- No em dashes (Nathan's preference)
+- No rule-of-three lists unless genuinely needed
 - Vary sentence length. Mix short punchy lines with longer ones.
 - Start with the interesting thing, not the setup
 - Use contractions naturally (it's, don't, can't, we're)
 - Imperfect punctuation is fine (& instead of and, dropping periods on short lines)
 - Questions work. Rhetorical ones too.
+- Have opinions. React to facts, don't just report them.
 - Sound like a person who cares about this stuff, not a brand manager
 
 ## @ArchitectrHelpr (ID: 207404)
@@ -81,6 +95,16 @@
 4. **Wait 15 seconds** for media processing
 5. Use returned `media_id` in draft's `posts[].media_ids[]`
 6. Note: Building S3 URLs vary — some are `uploads/building_{id}_{ts}.jpg`, others are `building_analyses/{id}/original.jpg`. Query DB for actual URL.
+
+### Link Strategy (X/Twitter — critical for reach)
+X penalizes posts with external links in the algorithm. Rotate through these approaches:
+
+1. **No link (~40% of posts)** — Just content. Let the post stand on its own. Build brand, not clicks.
+2. **Dot notation (~20%)** — "app.architecturehelper(dot)com/places/barcelona" or "cresoftware(dot)tech" — avoids the link penalty while still directing people.
+3. **Link in reply/comment (~20%)** — Post the content, then immediately reply to yourself with the link. The main post gets reach, the link is there for anyone who wants it.
+4. **Direct link (~20%)** — For high-intent posts where the CTA is the point (buyer's guides, new city launches, etc.)
+
+Never put a link in every post. Mix it up. The best-performing posts are usually the ones with no link at all.
 
 ### Which images to use
 - **Building spotlights:** Use the building's S3 image from AH
