@@ -1,147 +1,492 @@
 {
   "daily": [
     {
-      "date": "2026-02-20",
+      "date": "2026-02-14",
       "models": {
-        "opus": {"tokens_in": 125000, "tokens_out": 48000, "cost_usd": 5.475},
-        "sonnet": {"tokens_in": 340000, "tokens_out": 89000, "cost_usd": 2.355}, 
-        "haiku": {"tokens_in": 78000, "tokens_out": 23000, "cost_usd": 0.154}
+        "opus": {
+          "tokens_in": 89000,
+          "tokens_out": 39000,
+          "cost_usd": 4.26
+        },
+        "sonnet": {
+          "tokens_in": 234000,
+          "tokens_out": 62000,
+          "cost_usd": 1.632
+        },
+        "haiku": {
+          "tokens_in": 55000,
+          "tokens_out": 16000,
+          "cost_usd": 0.108
+        }
       },
       "by_activity": {
-        "main_session": {"tokens_in": 89000, "tokens_out": 35000, "cost_usd": 4.010},
-        "sub_agents": {"tokens_in": 156000, "tokens_out": 67000, "cost_usd": 1.473},
-        "cron_pinterest": {"tokens_in": 45000, "tokens_out": 12000, "cost_usd": 0.315},
-        "cron_content": {"tokens_in": 98000, "tokens_out": 28000, "cost_usd": 0.714},
-        "cron_heartbeat": {"tokens_in": 155000, "tokens_out": 18000, "cost_usd": 0.196}
-      }
-    },
-    {
-      "date": "2026-02-19",
-      "models": {
-        "opus": {"tokens_in": 98000, "tokens_out": 42000, "cost_usd": 4.620},
-        "sonnet": {"tokens_in": 278000, "tokens_out": 73000, "cost_usd": 1.929},
-        "haiku": {"tokens_in": 65000, "tokens_out": 19000, "cost_usd": 0.128}
-      },
-      "by_activity": {
-        "main_session": {"tokens_in": 78000, "tokens_out": 31000, "cost_usd": 3.495},
-        "sub_agents": {"tokens_in": 134000, "tokens_out": 56000, "cost_usd": 1.242},
-        "cron_pinterest": {"tokens_in": 42000, "tokens_out": 11000, "cost_usd": 0.291},
-        "cron_content": {"tokens_in": 89000, "tokens_out": 25000, "cost_usd": 0.642},
-        "cron_heartbeat": {"tokens_in": 98000, "tokens_out": 11000, "cost_usd": 0.122}
-      }
-    },
-    {
-      "date": "2026-02-18",
-      "models": {
-        "opus": {"tokens_in": 87000, "tokens_out": 38000, "cost_usd": 4.155},
-        "sonnet": {"tokens_in": 245000, "tokens_out": 65000, "cost_usd": 1.710},
-        "haiku": {"tokens_in": 58000, "tokens_out": 17000, "cost_usd": 0.114}
-      },
-      "by_activity": {
-        "main_session": {"tokens_in": 67000, "tokens_out": 28000, "cost_usd": 3.105},
-        "sub_agents": {"tokens_in": 123000, "tokens_out": 48000, "cost_usd": 1.089},
-        "cron_pinterest": {"tokens_in": 38000, "tokens_out": 10000, "cost_usd": 0.254},
-        "cron_content": {"tokens_in": 82000, "tokens_out": 23000, "cost_usd": 0.591},
-        "cron_heartbeat": {"tokens_in": 80000, "tokens_out": 11000, "cost_usd": 0.108}
-      }
-    },
-    {
-      "date": "2026-02-17",
-      "models": {
-        "opus": {"tokens_in": 105000, "tokens_out": 45000, "cost_usd": 4.950},
-        "sonnet": {"tokens_in": 298000, "tokens_out": 78000, "cost_usd": 2.064},
-        "haiku": {"tokens_in": 72000, "tokens_out": 21000, "cost_usd": 0.142}
-      },
-      "by_activity": {
-        "main_session": {"tokens_in": 82000, "tokens_out": 33000, "cost_usd": 3.705},
-        "sub_agents": {"tokens_in": 189000, "tokens_out": 67000, "cost_usd": 1.572},
-        "cron_pinterest": {"tokens_in": 47000, "tokens_out": 12000, "cost_usd": 0.318},
-        "cron_content": {"tokens_in": 95000, "tokens_out": 27000, "cost_usd": 0.690},
-        "cron_heartbeat": {"tokens_in": 62000, "tokens_out": 5000, "cost_usd": 0.070}
-      }
-    },
-    {
-      "date": "2026-02-16",
-      "models": {
-        "opus": {"tokens_in": 92000, "tokens_out": 41000, "cost_usd": 4.455},
-        "sonnet": {"tokens_in": 267000, "tokens_out": 71000, "cost_usd": 1.866},
-        "haiku": {"tokens_in": 63000, "tokens_out": 18000, "cost_usd": 0.122}
-      },
-      "by_activity": {
-        "main_session": {"tokens_in": 71000, "tokens_out": 30000, "cost_usd": 3.315},
-        "sub_agents": {"tokens_in": 145000, "tokens_out": 59000, "cost_usd": 1.320},
-        "cron_pinterest": {"tokens_in": 40000, "tokens_out": 10000, "cost_usd": 0.270},
-        "cron_content": {"tokens_in": 88000, "tokens_out": 24000, "cost_usd": 0.624},
-        "cron_heartbeat": {"tokens_in": 78000, "tokens_out": 7000, "cost_usd": 0.090}
+        "main_session": {
+          "tokens_in": 68000,
+          "tokens_out": 29000,
+          "cost_usd": 3.195
+        },
+        "sub_agents": {
+          "tokens_in": 123000,
+          "tokens_out": 51000,
+          "cost_usd": 1.134
+        },
+        "cron_pinterest": {
+          "tokens_in": 36000,
+          "tokens_out": 9000,
+          "cost_usd": 0.243
+        },
+        "cron_content": {
+          "tokens_in": 79000,
+          "tokens_out": 22000,
+          "cost_usd": 0.567
+        },
+        "cron_heartbeat": {
+          "tokens_in": 72000,
+          "tokens_out": 6000,
+          "cost_usd": 0.081
+        }
       }
     },
     {
       "date": "2026-02-15",
       "models": {
-        "opus": {"tokens_in": 76000, "tokens_out": 35000, "cost_usd": 3.765},
-        "sonnet": {"tokens_in": 198000, "tokens_out": 54000, "cost_usd": 1.404},
-        "haiku": {"tokens_in": 48000, "tokens_out": 14000, "cost_usd": 0.094}
+        "opus": {
+          "tokens_in": 76000,
+          "tokens_out": 35000,
+          "cost_usd": 3.765
+        },
+        "sonnet": {
+          "tokens_in": 198000,
+          "tokens_out": 54000,
+          "cost_usd": 1.404
+        },
+        "haiku": {
+          "tokens_in": 48000,
+          "tokens_out": 14000,
+          "cost_usd": 0.094
+        }
       },
       "by_activity": {
-        "main_session": {"tokens_in": 56000, "tokens_out": 26000, "cost_usd": 2.790},
-        "sub_agents": {"tokens_in": 98000, "tokens_out": 42000, "cost_usd": 0.924},
-        "cron_pinterest": {"tokens_in": 32000, "tokens_out": 8000, "cost_usd": 0.216},
-        "cron_content": {"tokens_in": 72000, "tokens_out": 19000, "cost_usd": 0.501},
-        "cron_heartbeat": {"tokens_in": 64000, "tokens_out": 8000, "cost_usd": 0.083}
+        "main_session": {
+          "tokens_in": 56000,
+          "tokens_out": 26000,
+          "cost_usd": 2.79
+        },
+        "sub_agents": {
+          "tokens_in": 98000,
+          "tokens_out": 42000,
+          "cost_usd": 0.924
+        },
+        "cron_pinterest": {
+          "tokens_in": 32000,
+          "tokens_out": 8000,
+          "cost_usd": 0.216
+        },
+        "cron_content": {
+          "tokens_in": 72000,
+          "tokens_out": 19000,
+          "cost_usd": 0.501
+        },
+        "cron_heartbeat": {
+          "tokens_in": 64000,
+          "tokens_out": 8000,
+          "cost_usd": 0.083
+        }
       }
     },
     {
-      "date": "2026-02-14",
+      "date": "2026-02-16",
       "models": {
-        "opus": {"tokens_in": 89000, "tokens_out": 39000, "cost_usd": 4.260},
-        "sonnet": {"tokens_in": 234000, "tokens_out": 62000, "cost_usd": 1.632},
-        "haiku": {"tokens_in": 55000, "tokens_out": 16000, "cost_usd": 0.108}
+        "opus": {
+          "tokens_in": 92000,
+          "tokens_out": 41000,
+          "cost_usd": 4.455
+        },
+        "sonnet": {
+          "tokens_in": 267000,
+          "tokens_out": 71000,
+          "cost_usd": 1.866
+        },
+        "haiku": {
+          "tokens_in": 63000,
+          "tokens_out": 18000,
+          "cost_usd": 0.122
+        }
       },
       "by_activity": {
-        "main_session": {"tokens_in": 68000, "tokens_out": 29000, "cost_usd": 3.195},
-        "sub_agents": {"tokens_in": 123000, "tokens_out": 51000, "cost_usd": 1.134},
-        "cron_pinterest": {"tokens_in": 36000, "tokens_out": 9000, "cost_usd": 0.243},
-        "cron_content": {"tokens_in": 79000, "tokens_out": 22000, "cost_usd": 0.567},
-        "cron_heartbeat": {"tokens_in": 72000, "tokens_out": 6000, "cost_usd": 0.081}
+        "main_session": {
+          "tokens_in": 71000,
+          "tokens_out": 30000,
+          "cost_usd": 3.315
+        },
+        "sub_agents": {
+          "tokens_in": 145000,
+          "tokens_out": 59000,
+          "cost_usd": 1.32
+        },
+        "cron_pinterest": {
+          "tokens_in": 40000,
+          "tokens_out": 10000,
+          "cost_usd": 0.27
+        },
+        "cron_content": {
+          "tokens_in": 88000,
+          "tokens_out": 24000,
+          "cost_usd": 0.624
+        },
+        "cron_heartbeat": {
+          "tokens_in": 78000,
+          "tokens_out": 7000,
+          "cost_usd": 0.09
+        }
       }
+    },
+    {
+      "date": "2026-02-17",
+      "models": {
+        "opus": {
+          "tokens_in": 105000,
+          "tokens_out": 45000,
+          "cost_usd": 4.95
+        },
+        "sonnet": {
+          "tokens_in": 298000,
+          "tokens_out": 78000,
+          "cost_usd": 2.064
+        },
+        "haiku": {
+          "tokens_in": 72000,
+          "tokens_out": 21000,
+          "cost_usd": 0.142
+        }
+      },
+      "by_activity": {
+        "main_session": {
+          "tokens_in": 82000,
+          "tokens_out": 33000,
+          "cost_usd": 3.705
+        },
+        "sub_agents": {
+          "tokens_in": 189000,
+          "tokens_out": 67000,
+          "cost_usd": 1.572
+        },
+        "cron_pinterest": {
+          "tokens_in": 47000,
+          "tokens_out": 12000,
+          "cost_usd": 0.318
+        },
+        "cron_content": {
+          "tokens_in": 95000,
+          "tokens_out": 27000,
+          "cost_usd": 0.69
+        },
+        "cron_heartbeat": {
+          "tokens_in": 62000,
+          "tokens_out": 5000,
+          "cost_usd": 0.07
+        }
+      }
+    },
+    {
+      "date": "2026-02-18",
+      "models": {
+        "opus": {
+          "tokens_in": 87000,
+          "tokens_out": 38000,
+          "cost_usd": 4.155
+        },
+        "sonnet": {
+          "tokens_in": 245000,
+          "tokens_out": 65000,
+          "cost_usd": 1.71
+        },
+        "haiku": {
+          "tokens_in": 58000,
+          "tokens_out": 17000,
+          "cost_usd": 0.114
+        }
+      },
+      "by_activity": {
+        "main_session": {
+          "tokens_in": 67000,
+          "tokens_out": 28000,
+          "cost_usd": 3.105
+        },
+        "sub_agents": {
+          "tokens_in": 123000,
+          "tokens_out": 48000,
+          "cost_usd": 1.089
+        },
+        "cron_pinterest": {
+          "tokens_in": 38000,
+          "tokens_out": 10000,
+          "cost_usd": 0.254
+        },
+        "cron_content": {
+          "tokens_in": 82000,
+          "tokens_out": 23000,
+          "cost_usd": 0.591
+        },
+        "cron_heartbeat": {
+          "tokens_in": 80000,
+          "tokens_out": 11000,
+          "cost_usd": 0.108
+        }
+      }
+    },
+    {
+      "date": "2026-02-19",
+      "models": {
+        "opus": {
+          "tokens_in": 98000,
+          "tokens_out": 42000,
+          "cost_usd": 4.62
+        },
+        "sonnet": {
+          "tokens_in": 278000,
+          "tokens_out": 73000,
+          "cost_usd": 1.929
+        },
+        "haiku": {
+          "tokens_in": 65000,
+          "tokens_out": 19000,
+          "cost_usd": 0.128
+        }
+      },
+      "by_activity": {
+        "main_session": {
+          "tokens_in": 78000,
+          "tokens_out": 31000,
+          "cost_usd": 3.495
+        },
+        "sub_agents": {
+          "tokens_in": 134000,
+          "tokens_out": 56000,
+          "cost_usd": 1.242
+        },
+        "cron_pinterest": {
+          "tokens_in": 42000,
+          "tokens_out": 11000,
+          "cost_usd": 0.291
+        },
+        "cron_content": {
+          "tokens_in": 89000,
+          "tokens_out": 25000,
+          "cost_usd": 0.642
+        },
+        "cron_heartbeat": {
+          "tokens_in": 98000,
+          "tokens_out": 11000,
+          "cost_usd": 0.122
+        }
+      }
+    },
+    {
+      "date": "2026-02-20",
+      "models": {
+        "opus": {
+          "tokens_in": 125000,
+          "tokens_out": 48000,
+          "cost_usd": 5.475
+        },
+        "sonnet": {
+          "tokens_in": 340000,
+          "tokens_out": 89000,
+          "cost_usd": 2.355
+        },
+        "haiku": {
+          "tokens_in": 78000,
+          "tokens_out": 23000,
+          "cost_usd": 0.154
+        }
+      },
+      "by_activity": {
+        "main_session": {
+          "tokens_in": 89000,
+          "tokens_out": 35000,
+          "cost_usd": 4.01
+        },
+        "sub_agents": {
+          "tokens_in": 156000,
+          "tokens_out": 67000,
+          "cost_usd": 1.473
+        },
+        "cron_pinterest": {
+          "tokens_in": 45000,
+          "tokens_out": 12000,
+          "cost_usd": 0.315
+        },
+        "cron_content": {
+          "tokens_in": 98000,
+          "tokens_out": 28000,
+          "cost_usd": 0.714
+        },
+        "cron_heartbeat": {
+          "tokens_in": 155000,
+          "tokens_out": 18000,
+          "cost_usd": 0.196
+        }
+      }
+    },
+    {
+      "date": "2026-02-21",
+      "total_cost_usd": 0,
+      "models": {
+        "opus": {
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cache_read": 0,
+          "cost_usd": 0
+        },
+        "sonnet": {
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cache_read": 0,
+          "cost_usd": 0
+        },
+        "haiku": {
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cache_read": 0,
+          "cost_usd": 0
+        }
+      },
+      "by_activity": {}
     }
   ],
   "models": {
     "opus": {
+      "cost_per_1m_in": 15.0,
+      "cost_per_1m_out": 75.0,
+      "cost_per_1m_cache": 3.75,
       "label": "Claude Opus 4",
-      "cost_per_1k_in": 0.015,
-      "cost_per_1k_out": 0.075,
       "color": "#f59e0b"
     },
     "sonnet": {
+      "cost_per_1m_in": 3.0,
+      "cost_per_1m_out": 15.0,
+      "cost_per_1m_cache": 0.75,
       "label": "Claude Sonnet 4",
-      "cost_per_1k_in": 0.003,
-      "cost_per_1k_out": 0.015,
       "color": "#3b82f6"
     },
     "haiku": {
+      "cost_per_1m_in": 0.8,
+      "cost_per_1m_out": 4.0,
+      "cost_per_1m_cache": 0.2,
       "label": "Claude Haiku 3.5",
-      "cost_per_1k_in": 0.0008,
-      "cost_per_1k_out": 0.004,
       "color": "#10b981"
     }
   },
   "agents": [
-    {"id": "main", "name": "Atlas (Main)", "model": "opus", "description": "Direct chat with Nathan"},
-    {"id": "sub_building", "name": "Building Submissions", "model": "sonnet", "description": "City guide pipeline"},
-    {"id": "sub_content", "name": "Content Writer", "model": "sonnet", "description": "Social media drafts"},
-    {"id": "sub_enrichment", "name": "CRE Enrichment", "model": "sonnet", "description": "Product data enrichment"},
-    {"id": "cron_pinterest", "name": "Pinterest Poster", "model": "sonnet", "description": "4x daily pin posting"},
-    {"id": "cron_content", "name": "Content Cron", "model": "sonnet", "description": "Daily content generation"},
-    {"id": "cron_heartbeat", "name": "Heartbeat", "model": "haiku", "description": "Periodic health checks"},
-    {"id": "cron_review", "name": "Performance Review", "model": "sonnet", "description": "3-day content review"},
-    {"id": "cron_dashboard", "name": "Dashboard Update", "model": "haiku", "description": "Refresh dashboard data"}
+    {
+      "id": "main",
+      "name": "Atlas (Main)",
+      "model": "opus",
+      "description": "Direct chat with Nathan"
+    },
+    {
+      "id": "sub_building",
+      "name": "Building Submissions",
+      "model": "sonnet",
+      "description": "City guide pipeline"
+    },
+    {
+      "id": "sub_content",
+      "name": "Content Writer",
+      "model": "sonnet",
+      "description": "Social media & guides"
+    },
+    {
+      "id": "sub_enrichment",
+      "name": "CRE Enrichment",
+      "model": "sonnet",
+      "description": "Product data enrichment"
+    },
+    {
+      "id": "sub_dashboard",
+      "name": "Dashboard Builder",
+      "model": "sonnet",
+      "description": "Analytics & UI builds"
+    },
+    {
+      "id": "cron_pinterest",
+      "name": "Pinterest Poster",
+      "model": "sonnet",
+      "schedule": "4x daily",
+      "status": "error"
+    },
+    {
+      "id": "cron_content",
+      "name": "Content Cron",
+      "model": "sonnet",
+      "schedule": "14:00 UTC",
+      "status": "active"
+    },
+    {
+      "id": "cron_heartbeat",
+      "name": "Heartbeat",
+      "model": "haiku",
+      "schedule": "30min",
+      "status": "active"
+    },
+    {
+      "id": "cron_review",
+      "name": "Performance Review",
+      "model": "sonnet",
+      "schedule": "3 days",
+      "status": "active"
+    },
+    {
+      "id": "cron_dashboard",
+      "name": "Dashboard Refresh",
+      "model": "sonnet",
+      "schedule": "3h",
+      "status": "active"
+    }
   ],
   "cron_jobs": [
-    {"id": "bc621e88", "name": "Pinterest Post", "model": "sonnet", "schedule": "4x daily", "last_run": "2026-02-20T18:30:00Z", "status": "active"},
-    {"id": "07e3b369", "name": "Daily Content", "model": "sonnet", "schedule": "14:00 UTC", "last_run": "2026-02-20T14:00:00Z", "status": "active"},
-    {"id": "9bfc068d", "name": "Performance Review", "model": "sonnet", "schedule": "Every 3 days", "last_run": "2026-02-19T09:00:00Z", "status": "active"},
-    {"id": "c51c6094", "name": "Dashboard Refresh", "model": "haiku", "schedule": "Every 3h", "last_run": "2026-02-20T18:00:00Z", "status": "active"},
-    {"id": "3aad1143", "name": "Heartbeat Check", "model": "haiku", "schedule": "Every 30m", "last_run": null, "status": "disabled"}
-  ]
+    {
+      "id": "bc621e88",
+      "name": "Pinterest Post",
+      "model": "sonnet",
+      "schedule": "4x daily",
+      "last_run": "2026-02-20T18:30:00Z",
+      "status": "active"
+    },
+    {
+      "id": "07e3b369",
+      "name": "Daily Content",
+      "model": "sonnet",
+      "schedule": "14:00 UTC",
+      "last_run": "2026-02-20T14:00:00Z",
+      "status": "active"
+    },
+    {
+      "id": "9bfc068d",
+      "name": "Performance Review",
+      "model": "sonnet",
+      "schedule": "Every 3 days",
+      "last_run": "2026-02-19T09:00:00Z",
+      "status": "active"
+    },
+    {
+      "id": "c51c6094",
+      "name": "Dashboard Refresh",
+      "model": "haiku",
+      "schedule": "Every 3h",
+      "last_run": "2026-02-20T18:00:00Z",
+      "status": "active"
+    },
+    {
+      "id": "3aad1143",
+      "name": "Heartbeat Check",
+      "model": "haiku",
+      "schedule": "Every 30m",
+      "last_run": null,
+      "status": "disabled"
+    }
+  ],
+  "tracking_note": "Cost estimates based on token counts from session metadata and cron run stats. For exact costs, check console.anthropic.com.",
+  "last_tracked": "2026-02-21T12:45:19.971925+00:00"
 }
