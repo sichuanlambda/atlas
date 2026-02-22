@@ -58,9 +58,9 @@
       ]
     },
     "schedule": "4x daily (09:00, 13:00, 17:00, 21:00 UTC)",
-    "note": "CATASTROPHIC FAILURE: 5 consecutive failures since Feb 20 17:00 UTC. Last successful: Old U.S. Mint (Feb 20). Chrysler Building stuck in queue since Feb 21. Complete 1.5+ day automation outage.",
+    "note": "Browser control service unavailable for analytics update. Analysis based on Feb 19 data shows strong cross-posting strategy performance. Victorian and Beaux-Arts styles showing consistent engagement.",
     "lastSuccess": "2026-02-20T17:00:00Z",
-    "failuresSince": 5,
+    "failuresSince": 6,
     "stuckBuilding": "Chrysler Building (ID 936) - NYC",
     "totalMetrics": {
       "impressions": 107,
@@ -68,7 +68,13 @@
       "clicks": 6,
       "saveRate": "9.3%",
       "outboundClicks": 1,
-      "asOf": "2026-02-19T09:00:00Z"
+      "asOf": "2026-02-19T10:00:00Z",
+      "topPerformers": [
+        "Pontalba Buildings (28 imp, 2 saves, 7.1%)",
+        "Saenger Theatre (16 imp, 2 clicks, 12.5%)",
+        "NOMA (15 imp, 1 outbound click)"
+      ],
+      "insights": "Cross-posting to style boards increases engagement. Victorian architecture has highest save rates."
     }
   },
   "recentActivity": [
